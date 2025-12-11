@@ -5,7 +5,16 @@ use pyo3::{
 use tokio::runtime::Runtime;
 
 use crate::{
-    config::{Language, ToolConfig, TranslateMode, TranslateOption}, models::{backend::{WhichBackend, get_or_create_backend}, model_interface::get_model_interface}, util::{get_model_directory_safe_name, load_json_lines, load_json_lines_with_id}
+    config::{Language, ToolConfig, TranslateMode, TranslateOption},
+    models::{
+        backend::{WhichBackend, get_or_create_backend},
+        model_interface::get_model_interface,
+    },
+    tool_bfcl_decl::BfclDatasetEntry,
+    util::{
+        get_model_directory_safe_name, load_json_lines, load_json_lines_with_id,
+        sort_and_write_json_lines, write_json_lines_to_file,
+    },
 };
 
 const CATEGORY_CACHE_PATH: &str = "tool_category_cache.json";
@@ -168,22 +177,20 @@ pub async fn tool_run_async(configs: Vec<ToolConfig>, num_gpus: usize) {
             println!("Skipping question translation (pre-translate not enabled)");
         } else {
             assert_eq!(pre_translate_tag, "_pretrans");
-            let (mut pre_translate_results, existing_pre_translate_ids) = match load_json_lines_with_id(
-                &pre_translate_output_path
-                    .clone()
-                    .expect("pre_translate_output_path should have value"),
-            ) {
-                Ok(results) => results,
-                Err(_) => {
-                    println!(
-                        "File {} not found. It will be created.",
-                        pre_translate_output_path
-                            .clone()
-                            .expect("pre_translate_output_path should have value")
-                    );
-                    (Vec::new(), Vec::new())
-                }
-            };
+            let pre_translate_output_path = pre_translate_output_path
+                .as_ref()
+                .expect("pre_translate_output_path should have value");
+            let (mut pre_translate_results, existing_pre_translate_ids) =
+                match load_json_lines_with_id(&pre_translate_output_path) {
+                    Ok(results) => results,
+                    Err(_) => {
+                        println!(
+                            "File {} not found. It will be created.",
+                            pre_translate_output_path
+                        );
+                        (Vec::new(), Vec::new())
+                    }
+                };
             let cases_to_translate: Vec<serde_json::Value> = test_cases
                 .iter()
                 .filter(|case| {
@@ -204,54 +211,64 @@ pub async fn tool_run_async(configs: Vec<ToolConfig>, num_gpus: usize) {
                     cases_to_translate.len()
                 );
 
-                
+                let cases_to_translate_parsed: Vec<BfclDatasetEntry> = cases_to_translate
+                    .iter()
+                    .map(|case| {
+                        BfclDatasetEntry::try_from(case.clone())
+                            .expect("Dataset entry has wrong format")
+                    })
+                    .collect();
 
                 // Get backend and interface for translation
-                let main_backend = get_or_create_backend(
-                    config.model,
-                    WhichBackend::Main,
-                    num_gpus,
-                )
-                .await;
+                let main_backend =
+                    get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
+                let main_backend = main_backend
+                    .as_ref()
+                    .expect("Backend should be created by the call above");
                 let main_interface = get_model_interface(config.model);
-            
 
                 // async fn translate_single_question(
                 //     case: &serde_json::Value,
                 //     translation_backend: &crate::util::ModelBackend,
                 //     translation_interface: &crate::util::ModelInterface,
                 // ) -> serde_json::Value {
-                let mut translate_single_question = async |case: &serde_json::Value| {
-                    let question = case
-                        .get("question")
-                        .and_then(|q| q.as_array())
-                        .and_then(|arr| arr.get(0))
-                        .and_then(|q0| q0.get(0))
-                        .and_then(|q00| q00.get("content"))
-                        .and_then(|content| content.as_str())
-                        .expect("Failed to extract question content");
+                let mut translate_single_question = async |case: &BfclDatasetEntry| {
+                    let question = &case.question_content;
                     // Use the dedicated translation method
-                    let translated_question = translation_interface
-                        .translate_tool_question_async(translation_backend, question.to_string())
+                    let translated_question = main_interface
+                        .translate_tool_question_async(main_backend.as_ref(), question)
                         .await;
-                    // Create modified case with translated question
-                    let mut modified_case = case.clone();
-                    if let Some(question_array) = modified_case
-                        .get_mut("question")
-                        .and_then(|q| q.as_array_mut())
-                    {
-                        if let Some(first_elem) = question_array.get_mut(0) {
-                            if let Some(inner_array) = first_elem.as_array_mut() {
-                                if let Some(first_inner_elem) = inner_array.get_mut(0) {
-                                    if let Some(content_field) = first_inner_elem.get_mut("content")
-                                    {
-                                        *content_field =
-                                            serde_json::Value::String(translated_question);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    let modified_case = case
+                        .modify_question_content(&translated_question)
+                        .expect("Failed to modify question content");
+                    modified_case
+                };
+                for (i, case) in cases_to_translate_parsed.iter().enumerate() {
+                    let modified_case = translate_single_question(case).await;
+                    println!(
+                        "[{}/{}] Translated question for case {}",
+                        i + 1,
+                        cases_to_translate_parsed.len(),
+                        modified_case
+                            .get("id")
+                            .and_then(|id| id.as_str())
+                            .expect("Modified case missing 'id' field")
+                    );
+                    pre_translate_results.push(modified_case);
+                    // Write to file immediately
+                    write_json_lines_to_file(&pre_translate_output_path, &pre_translate_results)
+                        .expect("Failed to write pre-translation results to file");
+                }
+                println!(
+                    "All {} questions translated.",
+                    cases_to_translate_parsed.len()
+                );
+                // Final sort and write
+                if !pre_translate_results.is_empty() {
+                    sort_and_write_json_lines(
+                        pre_translate_output_path,
+                        &mut pre_translate_results,
+                    );
                 }
             }
         }

@@ -1,10 +1,9 @@
-use pyo3::{
-    Py, PyAny, Python,
-    ffi::c_str,
-    types::{PyDict, PyDictMethods},
-};
+use pyo3::{Py, PyAny, Python, types::{PyAnyMethods, PyDict}};
 
-use crate::{config::ApiModel, models::backend::{GenerationResult, ModelBackend}};
+use crate::{
+    config::ApiModel,
+    models::backend::{GenerationResult, ModelBackend},
+};
 use std::env;
 
 pub struct ApiBackend {
@@ -21,36 +20,22 @@ impl ApiBackend {
             api_key_name
         ));
         let client = Python::attach(|py| {
-            let locals = PyDict::new(py);
-            locals.set_item("model_name", model.to_string()).unwrap();
-            locals.set_item("api_key", api_key).unwrap();
+            let api_backend_module = py
+                .import("src_py.api_backend")
+                .expect("Failed to import src_py.api_backend module");
 
-            py.eval(
-                c_str!(
-                    r#"
-try:
-    from openai import AsyncOpenAI
-except ImportError:
-    raise ImportError(
-        "API backend requires the openai library. "
-        "Install with: pip install openai"
-    )
-client = AsyncOpenAI(api_key=api_key)
-print(f"Initialized AsyncOpenAI client for model {model_name}")
-client
-                "#
-                ),
-                None,
-                None,
-            )
-            .expect("Failed to eval python code to get client")
-            .unbind()
+            let create_fn = api_backend_module
+                .getattr("create_api_backend")
+                .expect("Failed to get create_api_backend function");
+
+            create_fn
+                .call1((model.to_string(), api_key))
+                .expect("Failed to call create_api_backend")
+                .unbind()
         });
         ApiBackend { model, client }
     }
 }
-
-
 
 #[async_trait::async_trait]
 impl ModelBackend for ApiBackend {
@@ -61,8 +46,24 @@ impl ModelBackend for ApiBackend {
         temperature: f32,
         return_logprobs: bool,
     ) -> GenerationResult {
-        // Implementation of asynchronous text generation using API
-        unimplemented!()
+        let fut = Python::attach(|py| {
+            let api_backend_module = py
+                .import("src_py.api_backend")
+                .expect("Failed to import src_py.api_backend module");
+            let generate_async_fn = api_backend_module
+                .getattr("generate_async")
+                .expect("Failed to get generate_response function");
+            let api_params = PyDict::new(py);
+            let python_future = generate_async_fn.call1((api_params,)).expect("Failed to call generate_response");
+            pyo3_async_runtimes::tokio::into_future(python_future).expect("Failed to convert to Rust future")
+        });
+        let generation_result = fut.await.expect("API call failed");
+        let generation_result = Python::attach(|py|{
+            generation_result
+            .extract::<GenerationResult>(py)
+            .expect("Failed to extract GenerationResult")
+        });        
+        generation_result
     }
 
     async fn forward_async(

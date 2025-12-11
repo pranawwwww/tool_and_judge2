@@ -20,7 +20,9 @@ pub mod codebase_rs {
     use crate::tool_run_impl;
 
     #[pymodule_export]
-    use super::config::{
+    use super::{config::{
         AddNoiseMode, ApiModel, Language, LocalModel, Model, TranslateMode, TranslateOption, ToolConfig,
-    };
+    },
+    models::backend::GenerationResult,
+};
 }

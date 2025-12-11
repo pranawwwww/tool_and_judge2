@@ -16,7 +16,13 @@ pub trait ModelInterface: Send + Sync {
         user_question: &str,
         prompt_passing_in_english: bool,
         name_mapper: &mut FunctionNameMapper,
-    );
+    ) -> String;
+
+    async fn translate_tool_question_async(
+        &self,
+        backend: &dyn ModelBackend,
+        user_question: &str,
+    ) -> String;
 }
 
 pub fn get_model_interface(model: Model) -> Box<dyn ModelInterface> {

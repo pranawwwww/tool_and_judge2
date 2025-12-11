@@ -1,15 +1,19 @@
 use std::collections::HashMap;
 
 use lazy_static::lazy_static;
-use pyo3::Bound;
+use pyo3::{Bound, pyclass};
 
 use crate::{config::Model, models::api_backend::ApiBackend};
 
+
+#[pyclass]
+#[derive(Clone)]
 pub struct GenerationResult {
     pub generated_text: String,
-    pub generated_token_ids: Vec<u32>,
+    pub generated_token_ids: Option<Vec<u32>>,
     pub logits: Option<Vec<HashMap<u32, f32>>>,
 }
+
 #[async_trait::async_trait]
 pub trait ModelBackend: Send + Sync {
     async fn generate_async(
