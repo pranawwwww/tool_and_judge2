@@ -4,6 +4,8 @@ pub mod config;
 pub mod tool_error_analysis;
 pub mod tool_run_impl;
 pub mod util;
+pub mod category_cache;
+pub mod models;
 
 #[pymodule]
 pub mod codebase_rs {

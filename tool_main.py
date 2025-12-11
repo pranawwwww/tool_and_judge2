@@ -193,53 +193,6 @@ def get_model_directory_name(model: Model) -> str:
     return safe_name
 
 
-def extract_model_size_in_billions(local_model: LocalModel) -> int:
-    """
-    Extract model size in billions from LocalModel enum value.
-
-    Args:
-        local_model: LocalModel enum
-
-    Returns:
-        Model size in billions (e.g., 8 for 8B model)
-
-    Raises:
-        ValueError: If model size cannot be extracted from model name
-    """
-    model_value = local_model.value
-
-    # Extract number followed by 'B' (case insensitive)
-    # Matches patterns like "8B", "14B", "32B", "80B"
-    match = re.search(r'(\d+)B', model_value, re.IGNORECASE)
-
-    if match:
-        return int(match.group(1))
-    else:
-        raise ValueError(f"Cannot extract model size from model name: {model_value}")
-
-
-def calculate_batch_size_for_local_model(local_model: LocalModel, num_gpus: int) -> int:
-    """
-    Calculate batch size for local inference based on model size and number of GPUs.
-
-    Formula: batch_size * x = 120 * num_gpus
-    Where x is the model size in billions (e.g., 8 for an 8B model)
-
-    Args:
-        local_model: LocalModel enum
-        num_gpus: Number of GPUs available
-
-    Returns:
-        Calculated batch size (rounded down to nearest integer)
-    """
-    model_size_b = extract_model_size_in_billions(local_model)
-    batch_size = (120 * num_gpus) // model_size_b
-
-    # Ensure batch size is at least 1
-    batch_size = max(1, batch_size)
-
-    return batch_size
-
 def get_or_create_backend(model: Model, num_gpus: int = 1, max_model_len: int = 2000, instance_name: str = "default"):
     """
     Get or create a backend for the given model.

@@ -1,7 +1,7 @@
 use pyo3::prelude::*;
 use strum_macros::{Display, EnumString};
 #[pyclass]
-#[derive(Clone, EnumString, Display)]
+#[derive(Clone, EnumString, Display, PartialEq, Eq, Copy)]
 pub enum ApiModel {
     #[strum(serialize = "gpt-5")]
     Gpt5,
@@ -17,6 +17,16 @@ pub enum ApiModel {
     Llama3_1_70B,
 }
 
+impl ApiModel {
+    pub fn api_key_name(&self) -> String {
+        match self {
+            ApiModel::Gpt5 | ApiModel::Gpt5Mini | ApiModel::Gpt5Nano => "OPENAI_API_KEY".to_string(),
+            ApiModel::DeepSeek => "DEEPSEEK_API_KEY".to_string(),
+            ApiModel::Llama3_1_8B | ApiModel::Llama3_1_70B => panic!("Llama 3 does not use an API key"),
+        }
+    }
+}
+
 impl std::fmt::Debug for ApiModel {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self)
@@ -24,7 +34,7 @@ impl std::fmt::Debug for ApiModel {
 }
 
 #[pyclass]
-#[derive(Clone, EnumString, Display)]
+#[derive(Clone, EnumString, Display, PartialEq, Eq, Copy)]
 pub enum LocalModel {
     #[strum(serialize = "ibm-granite/granite-4.0-h-tiny")]
     Granite4_0HTiny,    
@@ -50,10 +60,19 @@ impl std::fmt::Debug for LocalModel {
 
 
 #[pyclass]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, Eq, Copy)]
 pub enum Model {
     Api(ApiModel),
     Local(LocalModel),
+}
+
+impl Model{
+    pub fn to_string(&self) -> String {
+        match self {
+            Model::Api(api_model) => api_model.to_string(),
+            Model::Local(local_model) => local_model.to_string(),
+        }
+    }
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
@@ -106,7 +125,7 @@ pub enum TranslateMode {
 }
 
 #[pyclass]
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct ToolConfig {
     pub model: Model,
     pub translate_mode: TranslateMode,
