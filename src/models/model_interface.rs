@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use atomic_refcell::AtomicRefCell;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 use crate::{
     config::{ApiModel, Model},
@@ -9,14 +9,8 @@ use crate::{
         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
         gpt5_interface::Gpt5Interface,
     },
-    tool_bfcl_decl::BfclFunctionDef, tool_error_analysis::EvaluationError,
+    tool_bfcl_decl::BfclFunctionDef, tool_error_analysis::EvaluationError, tool_file_models::ToolCallParsingResult,
 };
-
-#[derive(Serialize)]
-pub enum ToolCallParsingResult{
-    Success(Vec<serde_json::Value>),
-    Failure(EvaluationError),
-}
 
 
 #[async_trait::async_trait]
@@ -34,6 +28,12 @@ pub trait ModelInterface: Send + Sync {
         &self,
         backend: Arc<dyn ModelBackend>,
         user_question: String,
+    ) -> String;
+
+    async fn translate_tool_answer_async(
+        &self,
+        backend: Arc<dyn ModelBackend>,
+        parameter_value: String,
     ) -> String;
 
     fn postprocess_tool_calls(

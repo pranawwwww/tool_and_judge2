@@ -5,7 +5,9 @@ pub mod config;
 pub mod models;
 pub mod tool_bfcl_decl;
 pub mod tool_error_analysis;
+pub mod tool_file_models;
 pub mod tool_run;
+pub mod tool_translate_function_call;
 pub mod util;
 
 #[pymodule]

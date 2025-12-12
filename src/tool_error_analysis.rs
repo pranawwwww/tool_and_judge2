@@ -1,4 +1,4 @@
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumString};
 
 #[derive(Clone, EnumString, Display)]
@@ -23,7 +23,7 @@ pub enum ToolErrorCategory {
     OtherErrors,
 }
 
-#[derive(Clone, Display, Serialize)]
+#[derive(Clone, Display, Serialize, Deserialize)]
 pub enum EvaluationError {
     NoFunctionCallsFound{
         raw_output: String,

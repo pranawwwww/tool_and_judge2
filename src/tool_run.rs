@@ -4,17 +4,19 @@ use pyo3::{
     Py, Python,
     types::{PyAnyMethods, PyList, PyListMethods},
 };
-use std::sync::Arc;
+use std::{collections::HashMap, sync::Arc};
 
 use crate::{
-    config::{Language, ToolConfig, TranslateMode, TranslateOption},
-    models::{
-        backend::{WhichBackend, get_or_create_backend}, function_name_mapper::{self, FunctionNameMapper}, model_interface::{ToolCallParsingResult, get_model_interface}
-    },
-    tool_bfcl_decl::BfclDatasetEntry,
-    util::{
-        get_model_directory_safe_name, load_json_lines, load_json_lines_with_id, parse_test_cases, sort_and_write_json_lines, write_json_lines_to_file
-    },
+    config::{Language, ToolConfig, TranslateMode, TranslateOption}, models::{
+        backend::{WhichBackend, get_or_create_backend},
+        function_name_mapper::{self, FunctionNameMapper},
+        model_interface::get_model_interface,
+    }, tool_bfcl_decl::BfclDatasetEntry, tool_file_models::{InferenceJsonEntry, InferenceRawEntry, ToolCallParsingResult}, tool_translate_function_call::translate_function_call, util::{
+        compare_id, deserialize_test_cases, get_model_directory_safe_name, load_json_lines,
+        load_test_cases, parse_inference_json_entries, serialize_inference_json_entries,
+        serialize_inference_raw_entries, serialize_test_cases, try_load_inference_json_and_ids,
+        try_load_inference_raw_and_ids, try_load_test_cases_and_ids, write_json_lines_to_file,
+    }
 };
 
 const CATEGORY_CACHE_PATH: &str = "tool_category_cache.json";
@@ -164,17 +166,12 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             "tool/result/categorize_score/{model_dir_name}/{post_translate_output_combined_tags}.json"
         );
 
-        let test_cases =
-            load_json_lines(&unpretranslated_dataset_path).expect("Failed to load test cases");
-        let ground_truths =
-            load_json_lines(ground_truth_path).expect("Failed to load ground truths");
+        // let test_cases =
+        //     load_json_lines(&unpretranslated_dataset_path).expect("Failed to load test cases");
+        // let ground_truths =
+        //     load_json_lines(ground_truth_path).expect("Failed to load ground truths");
 
-        println!(
-            "Loaded {} test cases from {}",
-            test_cases.len(),
-            unpretranslated_dataset_path
-        );
-        let test_cases = parse_test_cases(test_cases);
+        // let test_cases = parse_test_cases(test_cases);
 
         /* ════════════════════════════════════════════════════════════════════════════════ */
         /* PASS 1: Translated Questions (Pre-Translation)                                   */
@@ -183,108 +180,91 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* This pass runs when FULLY_TRANSLATED_PRE_TRANSLATE option is enabled.            */
         /* Output: tool/result/pre_translate/{model}/{language}.json                        */
         /* ════════════════════════════════════════════════════════════════════════════════ */
-        if pre_translate_tag == "_nopretrans" {
-            // Skip translation - pass through original test cases
-            println!("Skipping question translation (pre-translate not enabled)");
-        } else {
+        let pre_translate_pass = async || {
+            if pre_translate_tag == "_nopretrans" {
+                // Skip translation - pass through original test cases
+                println!("Skipping question translation (pre-translate not enabled)");
+                return;
+            }
             assert_eq!(pre_translate_tag, "_pretrans");
             let pre_translate_output_path = pre_translate_output_path
                 .as_ref()
                 .expect("pre_translate_output_path should have value");
             let (mut pre_translate_results, existing_pre_translate_ids) =
-                match load_json_lines_with_id(&pre_translate_output_path) {
-                    Ok(results) => results,
-                    Err(_) => {
-                        println!(
-                            "File {} not found. It will be created.",
-                            pre_translate_output_path
-                        );
-                        (Vec::new(), Vec::new())
-                    }
-                };
+                try_load_test_cases_and_ids(&pre_translate_output_path);
+            let test_cases = load_test_cases(&pre_translate_input_path)
+                .expect(&format!("Failed to open file {}", pre_translate_input_path));
             let cases_to_translate: Vec<BfclDatasetEntry> = test_cases
-                .iter()
-                .filter(|case|{
-                    !existing_pre_translate_ids.contains(&case.id)
-                }).cloned().collect();
+                .into_iter()
+                .filter(|case| !existing_pre_translate_ids.contains(&case.id))
+                .collect();
 
             if cases_to_translate.is_empty() {
                 println!("All test cases have already been translated. Skipping translation.");
-            } else {
+                return;
+            }
+            println!(
+                "Translating {} questions to English...",
+                cases_to_translate.len()
+            );
+            // Get backend and interface for translation
+            let main_backend =
+                get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
+            let main_backend = main_backend
+                .as_ref()
+                .expect("Backend should be created by the call above");
+            let main_interface = get_model_interface(config.model);
+
+            // Create tasks for all translations
+            let total_cases = cases_to_translate.len();
+            let mut tasks = Vec::new();
+
+            for case in cases_to_translate.iter() {
+                let question = case.question_content.clone();
+                let mut case_clone = case.clone();
+                let main_interface = main_interface.clone();
+                let main_backend = main_backend.clone();
+                let task = async move {
+                    // Use the dedicated translation method
+                    let translated_question = main_interface
+                        .translate_tool_question_async(main_backend, question)
+                        .await;
+                    case_clone
+                        .modify_question_content(&translated_question)
+                        .expect("Failed to modify question content");
+                    case_clone
+                };
+                tasks.push(task);
+            }
+
+            // Create a stream from the tasks and process up to 200 concurrently
+            let mut translate_stream = stream::iter(tasks).buffer_unordered(200);
+
+            let mut completed_count = 0;
+            while let Some(modified_case) = translate_stream.next().await {
+                completed_count += 1;
                 println!(
-                    "Translating {} questions to English...",
-                    cases_to_translate.len()
+                    "[{}/{}] Translated question for case {}",
+                    completed_count, total_cases, modified_case.id
                 );
-
-                // Get backend and interface for translation
-                let main_backend =
-                    get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
-                let main_backend = main_backend
-                    .as_ref()
-                    .expect("Backend should be created by the call above");
-                let main_interface = get_model_interface(config.model);
-
-                // Create tasks for all translations
-                let total_cases = cases_to_translate.len();
-                let mut tasks = Vec::new();
-
-                for case in cases_to_translate.iter() {
-                    let question = case.question_content.clone();
-                    let case_clone = case.clone();
-                    let main_interface = main_interface.clone();
-                    let main_backend = main_backend.clone();
-                    let task = async move {
-                        // Use the dedicated translation method
-                        let translated_question = main_interface
-                            .translate_tool_question_async(main_backend, question)
-                            .await;
-                        let modified_case = case_clone
-                            .modify_question_content(&translated_question)
-                            .expect("Failed to modify question content");
-                        modified_case
-                    };
-                    tasks.push(task);
-                }
-
-                // Create a stream from the tasks and process up to 200 concurrently
-                let mut translation_stream = stream::iter(tasks).buffer_unordered(200);
-
-                let mut completed_count = 0;
-                while let Some(modified_case) = translation_stream.next().await {
-                    completed_count += 1;
-                    println!(
-                        "[{}/{}] Translated question for case {}",
-                        completed_count,
-                        total_cases,
-                        modified_case
-                            .get("id")
-                            .and_then(|id| id.as_str())
-                            .expect("Modified case missing 'id' field")
-                    );
-                    pre_translate_results.push(modified_case);
-                    // Write to file immediately
-                    if completed_count % 10 == 0 {
-                        write_json_lines_to_file(
-                            &pre_translate_output_path,
-                            &pre_translate_results,
-                        )
+                pre_translate_results.push(modified_case);
+                // Write to file immediately
+                if completed_count % 10 == 0 {
+                    let serialized_test_cases = serialize_test_cases(&pre_translate_results);
+                    write_json_lines_to_file(&pre_translate_output_path, &serialized_test_cases)
                         .expect("Failed to write pre-translation results to file");
-                    }
-                }
-                println!(
-                    "All {} questions translated.",
-                    cases_to_translate.len()
-                );
-                // Final sort and write
-                if !pre_translate_results.is_empty() {
-                    sort_and_write_json_lines(
-                        pre_translate_output_path,
-                        &mut pre_translate_results,
-                    )
-                    .expect("Failed to sort and write pre-translation results");
                 }
             }
-        }
+            println!("All {} questions translated.", cases_to_translate.len());
+            // Final sort and write
+            if !pre_translate_results.is_empty() {
+                pre_translate_results.sort_by(|a, b| compare_id(&a.id, &b.id));
+                let serialized_test_cases = serialize_test_cases(&pre_translate_results);
+                write_json_lines_to_file(&pre_translate_output_path, &serialized_test_cases)
+                    .expect("Failed to write pre-translation results to file");
+            }
+        };
+        pre_translate_pass().await;
         /* ════════════════════════════════════════════════════════════════════════════════ */
         /* PASS 2: Inference Raw                                                            */
         /* ════════════════════════════════════════════════════════════════════════════════ */
@@ -292,42 +272,28 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* Input: test_cases (from pre_translate if pre-translate enabled, else dataset)    */
         /* Output: tool/result/inference_raw/{model}/{filename}.json                        */
         /* ════════════════════════════════════════════════════════════════════════════════ */
-        let (mut inference_raw_outputs, existing_inference_ids) = match
-            load_json_lines_with_id(&inference_raw_output_path)
-        {
-            Ok(results) => results,
-            Err(_) => {
-                println!(
-                    "File {} not found. It will be created.",
-                    inference_raw_output_path
-                );
-                (Vec::new(), Vec::new())
-            }
-        };
+        let inference_raw_pass = async || {
+            let (mut inference_raw_outputs, existing_inference_ids) =
+                try_load_inference_raw_and_ids(&inference_raw_output_path);
 
-        let preprocessed_test_cases = load_json_lines(&inference_raw_input_path).expect(
-            "Failed to load pre-translation test cases for inference",
-        );
-        let preprocessed_test_cases = parse_test_cases(preprocessed_test_cases);
-        let cases_to_process = preprocessed_test_cases
-            .into_iter()
-            .filter(|case| {
-                !existing_inference_ids.contains(&case.id)
-            })
-            .collect::<Vec<BfclDatasetEntry>>();
-        if cases_to_process.is_empty(){
-            println!("All test cases for {} have already been processed. Skipping model loading and inference.", config.model.to_string());
-        }else{
+            let preprocessed_test_cases = load_json_lines(&inference_raw_input_path)
+                .expect("Failed to load pre-translation test cases for inference");
+            let preprocessed_test_cases = deserialize_test_cases(preprocessed_test_cases);
+            let cases_to_process = preprocessed_test_cases
+                .into_iter()
+                .filter(|case| !existing_inference_ids.contains(&case.id))
+                .collect::<Vec<BfclDatasetEntry>>();
+            if cases_to_process.is_empty() {
+                println!(
+                    "All test cases for {} have already been processed. Skipping model loading and inference.",
+                    config.model.to_string()
+                );
+                return;
+            }
             let total_cases = cases_to_process.len();
-            println!(
-                "Generating functions for {} cases...",
-                total_cases
-            );
-            let main_backend = get_or_create_backend(
-                config.model,
-                WhichBackend::Main,
-                num_gpus,
-            ).await;
+            println!("Generating functions for {} cases...", total_cases);
+            let main_backend =
+                get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
             let main_backend = main_backend
                 .as_ref()
                 .expect("Backend should be created by the call above");
@@ -345,7 +311,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             for case in cases_to_process.iter() {
                 let functions = case.functions.clone();
                 let user_question = case.question_content.clone();
-                let case_clone = case.clone();
+                let case_id = case.id.clone();
                 let main_interface = main_interface.clone();
                 let main_backend = main_backend.clone();
                 let function_name_mapper = function_name_mapper.clone();
@@ -359,7 +325,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                             function_name_mapper,
                         )
                         .await;
-                    (case_clone.id.clone(), result)
+                    InferenceRawEntry::new(case_id, result)
                 };
                 tasks.push(task);
             }
@@ -370,37 +336,34 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 completed_count += 1;
                 println!(
                     "[{}/{}] Case {} processed",
-                    completed_count,
-                    total_cases,
-                    result.0
+                    completed_count, total_cases, result.id
                 );
-                let result_to_write = serde_json::json!({
-                    "id": result.0,
-                    "result": result.1
-                });
-                inference_raw_outputs.push(result_to_write);
+                inference_raw_outputs.push(result);
                 // Write to file immediately
                 if completed_count % 10 == 0 {
+                    let inference_raw_outputs_serialized =
+                        serialize_inference_raw_entries(&inference_raw_outputs);
                     write_json_lines_to_file(
                         &inference_raw_output_path,
-                        &inference_raw_outputs,
+                        &inference_raw_outputs_serialized,
                     )
                     .expect("Failed to write inference raw results to file");
                 }
             }
-            println!(
-                "All {} cases processed.",
-                cases_to_process.len()
-            );
+            println!("All {} cases processed.", cases_to_process.len());
             // Final sort and write
             if !inference_raw_outputs.is_empty() {
-                sort_and_write_json_lines(
+                inference_raw_outputs.sort_by(|a, b| compare_id(&a.id, &b.id));
+                let inference_raw_outputs_serialized =
+                    serialize_inference_raw_entries(&inference_raw_outputs);
+                write_json_lines_to_file(
                     &inference_raw_output_path,
-                    &mut inference_raw_outputs,
+                    &inference_raw_outputs_serialized,
                 )
                 .expect("Failed to sort and write inference raw results");
             }
-        }
+        };
+        inference_raw_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 3: Inference JSON                                                  */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -423,23 +386,24 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 .and_then(|v| v.as_str())
                 .expect("Missing or invalid 'result' field")
                 .to_string();
-            let result = main_interface.postprocess_tool_calls(&result_str, function_name_mapper.clone());
+            let result =
+                main_interface.postprocess_tool_calls(&result_str, function_name_mapper.clone());
             let valid = match &result {
                 ToolCallParsingResult::Success(_) => true,
                 ToolCallParsingResult::Failure(_) => false,
             };
-            let result_json = serde_json::to_value(result)
-                .expect("Failed to serialize post-processed tool call result");
-            let output_entry = serde_json::json!({
-                "id": id,
-                "valid": valid,
-                "result": result_json
-            });
+            let output_entry = InferenceJsonEntry::new(id, valid, result);
+            // let output_entry = serde_json::to_value(output_entry)
+            //     .expect("Failed to serialize InferenceJsonEntry to JSON value");
             inference_json_outputs.push(output_entry);
         }
-        sort_and_write_json_lines(
+        // Final sort and write
+        inference_json_outputs.sort_by(|a, b| compare_id(&a.id, &b.id));
+        let inference_json_outputs_serialized =
+            serialize_inference_json_entries(&inference_json_outputs);
+        write_json_lines_to_file(
             &inference_json_output_path,
-            &mut inference_json_outputs,
+            &inference_json_outputs_serialized,
         )
         .expect("Failed to sort and write inference JSON results");
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -449,244 +413,341 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* This pass runs when FULLY_TRANSLATED_POST_TRANSLATE option is enabled.  */
         /* Output: tool/result/post_translate/{model}/{language}.json              */
         /* ═══════════════════════════════════════════════════════════════════════ */
-        if post_translate_tag == "_noposttrans" {
-            // Skip translation - pass through original inference json results
-            println!("Skipping answer translation (post-translate not enabled)");
-        } else {
+        let post_translate_pass = async || {
+            if post_translate_tag == "_noposttrans" {
+                // Skip translation - pass through original inference json results
+                println!("Skipping answer translation (post-translate not enabled)");
+                return;
+            }
             assert_eq!(post_translate_tag, "_posttrans");
+            let post_translate_output_path = post_translate_output_path
+                .as_ref()
+                .expect("post_translate_output_path should have value");
             // Load inference json results
-            let inference_json_results = load_json_lines(&post_translate_input_path)
+            let inference_json_inputs = load_json_lines(&post_translate_input_path)
                 .expect("Failed to load inference JSON results for post-translation");
+            let inference_json_entries = parse_inference_json_entries(inference_json_inputs);
 
             let (mut translated_answers_results, existing_translated_answers_ids) =
-                match load_json_lines_with_id(
-                    post_translate_output_path
-                        .as_ref()
-                        .expect("post_translate_output_path should have value"),
-                ) {
-                    Ok(results) => results,
-                    Err(_) => {
-                        println!(
-                            "File {} not found. It will be created.",
-                            post_translate_output_path
-                                .as_ref()
-                                .expect("post_translate_output_path should have value")
-                        );
-                        (Vec::new(), Vec::new())
+                try_load_inference_json_and_ids(&post_translate_output_path);
+            let samples_to_translate: Vec<InferenceJsonEntry> = inference_json_entries
+                .into_iter()
+                .filter(|entry| !existing_translated_answers_ids.contains(&entry.id))
+                .collect();
+            if samples_to_translate.is_empty() {
+                println!("All answers have already been translated. Skipping translation.");
+                return;
+            }
+            println!(
+                "Translating {} answers to English...",
+                samples_to_translate.len()
+            );
+            let main_backend =
+                get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
+            let main_backend = main_backend
+                .as_ref()
+                .expect("Backend should be created by the call above");
+            let main_interface = get_model_interface(config.model);
+            let total_cases = samples_to_translate.len();
+            let mut translate_functions_tasks = Vec::new();
+            for entry in samples_to_translate.iter() {
+                let entry = entry.clone();
+                let main_interface = main_interface.clone();
+                let main_backend = main_backend.clone();
+                let task = async move {
+                    let function_calls = match entry.result {
+                        ToolCallParsingResult::Success(function_calls) => function_calls,
+                        _ => {
+                            return entry;
+                        }
+                    };
+                    let mut translated_function_calls: HashMap<usize, serde_json::Value> = HashMap::new();
+                    let mut translate_single_function_tasks = Vec::new();
+                    for (i, func_call) in function_calls.iter().enumerate() {
+                        let main_interface = main_interface.clone();
+                        let main_backend = main_backend.clone();
+                        let task = async move {
+                            let translated_function_call = translate_function_call(
+                                main_interface.clone(),
+                                main_backend.clone(),
+                                func_call.clone(),
+                            )
+                            .await;
+                        (i, translated_function_call)
+                        };
+                        translate_single_function_tasks.push(task);
+                    }
+                    let results = futures::future::join_all(translate_single_function_tasks).await;
+                    for (i, translated_function_call) in results {
+                        translated_function_calls.insert(i, translated_function_call);
+                    }
+                    // reorder
+                    let translated_function_calls: Vec<serde_json::Value> = (0..translated_function_calls.len())
+                        .map(|i| {
+                            translated_function_calls
+                                .get(&i)
+                                .cloned()
+                                .expect("Translated function call should exist")
+                        }).collect();
+                    InferenceJsonEntry{
+                        id: entry.id,
+                        valid: entry.valid,
+                        result: ToolCallParsingResult::Success(translated_function_calls),
                     }
                 };
-            
+                translate_functions_tasks.push(task);                
+            }
+            let mut translate_stream = stream::iter(translate_functions_tasks).buffer_unordered(200);
+            let mut completed_count = 0;
+            while let Some(translated_entry) = translate_stream.next().await {
+                completed_count += 1;
+                println!(
+                    "[{}/{}] Translated answer for case {}",
+                    completed_count, total_cases, translated_entry.id
+                );
+                translated_answers_results.push(translated_entry);
+                // Write to file immediately
+                if completed_count % 10 == 0 {
+                    let serialized_translated_answers =
+                        serialize_inference_json_entries(&translated_answers_results);
+                    write_json_lines_to_file(
+                        &post_translate_output_path,
+                        &serialized_translated_answers,
+                    )
+                    .expect("Failed to write translated answers to file");
+                }
+            }
+            println!("All {} answers translated.", samples_to_translate.len());
+            // Final sort and write
+            if !translated_answers_results.is_empty() {
+                translated_answers_results
+                    .sort_by(|a, b| compare_id(&a.id, &b.id));
+                let serialized_translated_answers =
+                    serialize_inference_json_entries(&translated_answers_results);
+                write_json_lines_to_file(
+                    &post_translate_output_path,
+                    &serialized_translated_answers,
+                )
+                .expect("Failed to write translated answers to file");
+            }
+        };
+        post_translate_pass().await;
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* PASS 5: Evaluation                                                      */       
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* Evaluates model outputs against ground truth to determine correctness.  */
+        /* Checks function names, parameter names, and parameter values.           */
+        /* Input: tool/result/post_translate if post-translate enabled, else inference_json */
+        /* Output: tool/result/evaluation/{model}/{filename}.json                  */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        println!("PASS 5: Evaluation not yet implemented.");
     }
 }
 
 
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # PASS 4: Translated Answers (Post-Translation)
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # Translates function call parameter values from source language to English.
-//         # This pass runs when FULLY_TRANSLATED_POST_TRANSLATE option is enabled.
-//         # Input: tool/result/inference_json/{model}/{filename}.json
-//         # Output: tool/result/translated_answers/{model}/{language}.json
-//         # ═══════════════════════════════════════════════════════════════════════
-//         if post_translate_tag == "_noposttrans":
-//             # Skip translation - pass through original inference json results
-//             print(f"Skipping answer translation (post-translate not enabled)")
-//         else:
-//             assert post_translate_tag == "_posttrans"
-//             # Load inference json results
-//             try:
-//                 inference_json_results = load_json_lines(post_translate_input_path)
-//             except FileNotFoundError:
-//                 print(f"Error: File {post_translate_input_path} not found.")
-//                 exit(1)
 
-//             try:
-//                 translated_answers_results, existing_translated_answers_ids = load_json_lines_with_id(post_translate_output_path)
-//                 existing_translated_answers_ids = {entry["id"] for entry in translated_answers_results}
-//             except FileNotFoundError:
-//                 print(f"File {post_translate_output_path} not found. It will be created.")
-//                 translated_answers_results = []
-//                 existing_translated_answers_ids = set()
 
-//             # Filter samples that haven't been translated yet
-//             samples_to_translate = [sample for sample in inference_json_results if sample['id'] not in existing_translated_answers_ids]
 
-//             if len(samples_to_translate) == 0:
-//                 print(f"All answers have already been translated. Skipping translation.")
+
+
+// # ═══════════════════════════════════════════════════════════════════════
+//         # PASS 5: Evaluation
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # Evaluates model outputs against ground truth to determine correctness.
+//         # Checks function names, parameter names, and parameter values.
+//         # Input: tool/result/post_translate if post-translate enabled, else inference_json
+//         # Output: tool/result/evaluation/{model}/{filename}.json
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # reload inference results for evaluation
+//         try:
+//             inference_results = load_json_lines(evaluation_input_path)
+//         except FileNotFoundError:
+//             print(f"File {evaluation_input_path} not found. Skipping evaluation.")
+//             exit(1)
+//         evaluation_results = []
+
+//         for (inference_line, ground_truth_line, test_case) in zip(inference_results, ground_truths, test_cases):
+//             id = inference_line["id"]
+//             assert id == ground_truth_line["id"], f"Mismatch in IDs: {id} vs {ground_truth_line['id']}"
+//             assert id == test_case["id"], f"Mismatch in IDs: {id} vs {test_case['id']}"
+
+//             # Check if postprocess result was valid
+//             if inference_line.get("valid", True):  # Default to True for backward compatibility
+//                 # Valid result: evaluate normally
+//                 inference_result = inference_line["result"]
+//                 ground_truth = ground_truth_line["ground_truth"]
+//                 func_description = test_case['function']
+
+//                 eval_result = evaluate_json(id, inference_result, ground_truth, func_description)
+
+//                 # Check if evaluation returned error or success
+//                 if isinstance(eval_result, tuple):
+//                     # Evaluation error
+//                     error, metadata = eval_result
+//                     evaluation_entry = {
+//                         "id": id,
+//                         "valid": False,
+//                         "error": error.value,
+//                         "error_meta": metadata
+//                     }
+//                 else:
+//                     # Evaluation success
+//                     assert isinstance(eval_result, dict)
+//                     evaluation_entry = eval_result
 //             else:
-//                 print(f"Translating {len(samples_to_translate)} answers to English...")
+//                 # Invalid result from postprocess: pass through the error
+//                 evaluation_entry = {
+//                     "id": id,
+//                     "valid": False,
+//                     "error": inference_line.get('error', 'unknown'),
+//                     "error_meta": inference_line.get("error_meta", {})
+//                 }
 
-//                 # Get backend and interface for translation
-//                 translation_backend = get_or_create_backend(
-//                     model=config.model,
-//                     num_gpus=args.num_gpus,
-//                     max_model_len=2000,
-//                     instance_name="experiment"  # Use experiment instance for post-translation
-//                 )
-//                 translation_interface = get_or_create_model_interface(config.model)
+//             evaluation_results.append(evaluation_entry)
 
-//                 async def translate_answers_async():
-//                     """Translate function call parameters asynchronously."""
-//                     async def translate_list_values(items: list) -> list:
-//                         """
-//                         Recursively translate string values within a list.
+//             # Write batch results to file
+//             write_json_lines_to_file(evaluation_output_path, evaluation_results)
 
-//                         For example:
-//                         ["鸡肉", "蘑菇"] -> ["chicken", "mushroom"]
-//                         """
-//                         # Collect all items that need translation
-//                         translation_tasks = []
-//                         indices_for_strings = []
+//         # Final sort and write
+//         if len(evaluation_results) > 0:
+//             append_and_rewrite_json_lines(evaluation_output_path, evaluation_results)
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # PASS 6: Score
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # Calculates accuracy and aggregates wrong cases for analysis.
+//         # Input: tool/result/evaluation/{model}/{filename}.json
+//         # Output: tool/result/score/{model}/{filename}.json
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # reload evaluation results
+//         try:
+//             evaluation_entries = load_json_lines(score_input_path)
+//         except FileNotFoundError:
+//             print(f"File {score_input_path} not found. Skipping scoring.")
+//             exit(1)
+//         # Calculate and write score results
+//         total_cases = 0
+//         correct_cases = 0
+//         wrong_cases = []
+//         score_results = []
 
-//                         for i, item in enumerate(items):
-//                             if isinstance(item, str) and item.strip():
-//                                 # Translate string items
-//                                 translation_tasks.append(
-//                                     translation_interface.translate_tool_answer_async(
-//                                         backend=translation_backend,
-//                                         parameter_value=item
-//                                     )
-//                                 )
-//                                 indices_for_strings.append(i)
+//         for evaluation_entry in evaluation_entries:
+//             total_cases += 1
+//             if evaluation_entry['valid']:
+//                 correct_cases += 1
+//             else:
+//                 wrong_cases.append(evaluation_entry)
 
-//                         # Create result list with original items
-//                         translated_list = list(items)
+//         accuracy = correct_cases / total_cases if total_cases > 0 else 0.0
+//         # Add summary score
+//         score_result = {
+//             "accuracy": accuracy,
+//             "total_cases": total_cases,
+//             "correct_cases": correct_cases,
+//         }
+//         score_results.append(score_result)
 
-//                         # Wait for all string translations to complete
-//                         if translation_tasks:
-//                             translated_values = await asyncio.gather(*translation_tasks)
-//                             # Replace translated strings at their original indices
-//                             for idx, translated_value in zip(indices_for_strings, translated_values):
-//                                 translated_list[idx] = translated_value
+//         # Add wrong cases
+//         score_results.extend(wrong_cases)
 
-//                         # Second pass: recursively translate nested dicts and lists
-//                         for i, item in enumerate(translated_list):
-//                             if isinstance(item, dict):
-//                                 translated_list[i] = await translate_dict_values(item)
-//                             elif isinstance(item, list):
-//                                 translated_list[i] = await translate_list_values(item)
+//         # Write all results to file
+//         write_json_lines_to_file(score_output_path, score_results)
+//         print(f"Score result written to {score_output_path}: {score_result}")
 
-//                         return translated_list
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # PASS 7: Categorize
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # Categorizes each error sample into different error types.
+//         # Input: tool/result/score/{model}/{filename}.json
+//         # Output: tool/result/categorize/{model}/{filename}.json
+//         # ═══════════════════════════════════════════════════════════════════════
+//         # Load error samples from score file
+//         try:
+//             score_entries = load_json_lines(categorize_input_path)
+//         except FileNotFoundError:
+//             print(f"File {categorize_input_path} not found. Skipping categorization.")
+//             score_entries = []
 
-//                     async def translate_dict_values(arguments: dict) -> dict:
-//                         """
-//                         Recursively translate only the VALUES in a dictionary, preserving all KEYS unchanged.
+//         # Filter out the summary entry (first line in score file)
+//         samples_to_categorize = [entry for entry in score_entries if 'accuracy' not in entry]
 
-//                         For example:
-//                         {"location": "北京"} -> {"location": "Beijing"}  # Key preserved, value translated
-//                         """
-//                         translated = {}
+//         if len(samples_to_categorize) == 0:
+//             print(f"No error samples found. Skipping categorization.")
+//         else:
+//             print(f"Categorizing {len(samples_to_categorize)} error samples...")
 
-//                         # First pass: collect all string values that need translation
-//                         # IMPORTANT: We only translate VALUES, never KEYS (parameter names)
-//                         translation_tasks = []
-//                         keys_for_string_values = []  # Store parameter names (not translated)
+//             # Acquire cache lock for entire categorize pass
+//             print("Acquiring cache lock...")
+//             cache_lock.acquire()
+//             print("Acquired cache lock")
 
-//                         for param_name, param_value in arguments.items():
-//                             if isinstance(param_value, str) and param_value.strip():
-//                                 # Translate this string VALUE
-//                                 # The parameter NAME (param_name) is preserved as-is
-//                                 translation_tasks.append(
-//                                     translation_interface.translate_tool_answer_async(
-//                                         backend=translation_backend,
-//                                         parameter_value=param_value
-//                                     )
-//                                 )
-//                                 keys_for_string_values.append(param_name)
-//                             elif isinstance(param_value, (dict, list)):
-//                                 # Skip for now - will handle in second pass
-//                                 pass
-//                             else:
-//                                 # Keep non-string values as-is (numbers, booleans, etc.)
-//                                 translated[param_name] = param_value
+//             # Load category cache
+//             category_cache = load_category_cache(category_cache_path)
 
-//                         # Wait for all string value translations to complete
-//                         if translation_tasks:
-//                             translated_values = await asyncio.gather(*translation_tasks)
-//                             # Map translated values back to their ORIGINAL parameter names
-//                             for param_name, translated_value in zip(keys_for_string_values, translated_values):
-//                                 translated[param_name] = translated_value
+//             categorize_results = []
+//             cache_hits = 0
+//             cache_misses = 0
 
-//                         # Second pass: recursively translate nested dictionaries and lists
-//                         # Again, only the values in nested dicts/lists are translated, not the keys
-//                         for param_name, param_value in arguments.items():
-//                             if isinstance(param_value, dict):
-//                                 translated[param_name] = await translate_dict_values(param_value)
-//                             elif isinstance(param_value, list):
-//                                 translated[param_name] = await translate_list_values(param_value)
+//             async def categorize_samples_async():
+//                 """Categorize error samples asynchronously."""
+//                 nonlocal cache_hits, cache_misses
 
-//                         return translated
+//                 async def categorize_with_sample(sample):
+//                     """Wrapper to return sample, category, and cache hit status."""
+//                     category_enum, cache_hit = await categorize_single_sample_async(sample, category_cache)
+//                     return sample, category_enum, cache_hit
 
-//                     async def translate_single_answer(sample):
-//                         """Translate parameters in a single sample and return the modified sample."""
-//                         # If sample is invalid (postprocess error), return as-is
-//                         if not sample.get("valid", True):  # Default to True for backward compatibility
-//                             return sample
+//                 # Create all categorization tasks
+//                 tasks = [categorize_with_sample(sample) for sample in samples_to_categorize]
 
-//                         result = sample.get("result", [])
+//                 # Process results as they complete
+//                 completed_count = 0
+//                 for coro in asyncio.as_completed(tasks):
+//                     sample, category_enum, cache_hit = await coro
+//                     completed_count += 1
 
-//                         # If result is not a list or is empty, return as is
-//                         if not isinstance(result, list) or len(result) == 0:
-//                             return sample
+//                     # Track cache statistics
+//                     if cache_hit:
+//                         cache_hits += 1
+//                     else:
+//                         cache_misses += 1
 
-//                         modified_result = []
-//                         for func_call in result:
-//                             if not isinstance(func_call, dict):
-//                                 modified_result.append(func_call)
-//                                 continue
+//                     # Assemble the result dict (assembly logic in tool_main.py)
+//                     categorized_sample = {
+//                         "id": sample["id"],
+//                         "category": category_enum.value,  # Store enum value as string
+//                         "evaluation_entry": sample
+//                     }
 
-//                             # Get the function name and arguments
-//                             func_name = list(func_call.keys())[0] if func_call else None
-//                             if not func_name:
-//                                 modified_result.append(func_call)
-//                                 continue
+//                     # Only print on cache miss, and only show parameter comparison details
+//                     if not cache_hit:
+//                         error_meta = sample.get("error_meta", {})
+//                         actual_value = error_meta.get("actual_value")
+//                         expected_values = error_meta.get("expected_values", [])
+//                         if actual_value is not None and expected_values:
+//                             print(f"[{completed_count}/{len(samples_to_categorize)}] Comparing actual: {json.dumps(actual_value, ensure_ascii=False)} with expected: {json.dumps(expected_values, ensure_ascii=False)} -> {category_enum.value}")
 
-//                             arguments = func_call.get(func_name, {})
+//                     categorize_results.append(categorized_sample)
 
-//                             # If no arguments, skip translation
-//                             if not arguments or not isinstance(arguments, dict):
-//                                 modified_result.append(func_call)
-//                                 continue
+//                     # Write to file immediately
+//                     write_json_lines_to_file(categorize_output_path, categorize_results)
 
-//                             # Translate all string values in arguments
-//                             try:
-//                                 translated_arguments = await translate_dict_values(arguments)
+//             try:
+//                 # Run the async categorization
+//                 await categorize_samples_async()
 
-//                                 # Create modified function call with translated arguments
-//                                 modified_result.append({func_name: translated_arguments})
-//                             except Exception as e:
-//                                 print(f"Error: Failed to translate parameters for sample {sample['id']}: {e}")
-//                                 exit(1)
-//                                 # # Keep original if translation fails
-//                                 # modified_result.append(func_call)
-
-//                         # Create modified sample with translated parameters
-//                         modified_sample = sample.copy()
-//                         modified_sample["result"] = modified_result
-
-//                         return modified_sample
-
-//                     # Create all translation tasks
-//                     tasks = [translate_single_answer(sample) for sample in samples_to_translate]
-
-//                     # Process results as they complete
-//                     completed_count = 0
-//                     for coro in asyncio.as_completed(tasks):
-//                         modified_sample = await coro
-//                         completed_count += 1
-
-//                         print(f"[{completed_count}/{len(samples_to_translate)}] Translated answer parameters for sample {modified_sample['id']}")
-
-//                         translated_answers_results.append(modified_sample)
-
-//                         # Write to file immediately
-//                         write_json_lines_to_file(post_translate_output_path, translated_answers_results)
-
-//                 # Run the async translation
-//                 await translate_answers_async()
-
-//                 print(f"All {len(samples_to_translate)} answers translated.")
+//                 print(f"All {len(samples_to_categorize)} samples categorized.")
+//                 print(f"Cache statistics - Hits: {cache_hits}, Misses: {cache_misses}, Hit rate: {cache_hits / (cache_hits + cache_misses) * 100:.2f}%" if (cache_hits + cache_misses) > 0 else "Cache statistics - No cache lookups performed")
 
 //                 # Final sort and write
-//                 if len(translated_answers_results) > 0:
-//                     append_and_rewrite_json_lines(post_translate_output_path, translated_answers_results)
+//                 if len(categorize_results) > 0:
+//                     append_and_rewrite_json_lines(categorize_output_path, categorize_results)
+
+//                 # Write cache back to file once at the end
+//                 save_category_cache(category_cache_path, category_cache)
+//             finally:
+//                 # Release lock at the end of categorize pass
+//                 cache_lock.release()
+//                 print("Released cache lock")
+
+//             # Destroy local cache container (Python will handle this automatically when it goes out of scope)
+//             del category_cache

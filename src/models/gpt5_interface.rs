@@ -5,7 +5,7 @@ use crate::{
         api_backend::ApiBackend, backend::ModelBackend, function_name_mapper::FunctionNameMapper,
         model_interface::ModelInterface,
     },
-    tool_bfcl_decl::BfclFunctionDef,
+    tool_bfcl_decl::BfclFunctionDef, tool_error_analysis::EvaluationError, tool_file_models::ToolCallParsingResult,
 };
 use atomic_refcell::AtomicRefCell;
 use pyo3::{Py, PyAny, Python, types::PyAnyMethods};
@@ -202,52 +202,88 @@ impl ModelInterface for Gpt5Interface {
         raw_output: &str,
         name_mapper: Arc<AtomicRefCell<FunctionNameMapper>>,
     ) -> ToolCallParsingResult {
-        match serde_json::from_str::<Value>(raw_output) {
-            Ok(response_data) => {
-                let function_calls = if response_data.is_array() {
-                    response_data.as_array().unwrap().clone()
-                } else if response_data.is_object() && response_data.get("function_calls").is_some()
-                {
-                    response_data
-                        .get("function_calls")
-                        .unwrap()
-                        .as_array()
-                        .unwrap()
-                        .clone()
-                } else {
-                    return ToolCallParsingResult::Failure(
-                        EvaluationError::NO_FUNCTION_CALLS_FOUND,
-                    );
-                };
+        let output_json = serde_json::from_str::<Value>(raw_output);
+        
+        // match serde_json::from_str::<Value>(raw_output) {
+        //     Ok(response_data) => {
+        //         let function_calls = if response_data.is_array() {
+        //             response_data.as_array().unwrap().clone()
+        //         } else if response_data.is_object() && response_data.get("function_calls").is_some()
+        //         {
+        //             response_data
+        //                 .get("function_calls")
+        //                 .unwrap()
+        //                 .as_array()
+        //                 .unwrap()
+        //                 .clone()
+        //         } else {
+        //             return ToolCallParsingResult::Failure(
+        //                 EvaluationError::NoFunctionCallsFound { raw_output: raw_output.to_string() },
+        //             );
+        //         };
 
-                let mut extracted = Vec::new();
-                for func_call in function_calls {
-                    if func_call.get("type") == Some(&json!("function_call")) {
-                        let sanitized_name = func_call.get("name").and_then(|v| v.as_str());
-                        let arguments = func_call.get("arguments").cloned().unwrap_or(json!({}));
+        //         let mut extracted = Vec::new();
+        //         for func_call in function_calls {
+        //             if func_call.get("type") == Some(&json!("function_call")) {
+        //                 let sanitized_name = func_call.get("name").and_then(|v| v.as_str());
+        //                 let arguments = func_call.get("arguments").cloned().unwrap_or(json!({}));
 
-                        if let Some(sanitized_name) = sanitized_name {
-                            let original_name = {
-                                let name_mapper_borrow = name_mapper.borrow();
-                                name_mapper_borrow
-                                    .sanitized_to_original
-                                    .get(sanitized_name)
-                                    .cloned()
-                                    .unwrap_or(sanitized_name.to_string())
-                            };
-                            extracted.push(json!({original_name: arguments}));
-                        }
-                    }
-                }
+        //                 if let Some(sanitized_name) = sanitized_name {
+        //                     let original_name = {
+        //                         let name_mapper_borrow = name_mapper.borrow();
+        //                         name_mapper_borrow
+        //                             .sanitized_to_original
+        //                             .get(sanitized_name)
+        //                             .cloned()
+        //                             .unwrap_or(sanitized_name.to_string())
+        //                     };
+        //                     extracted.push(json!({original_name: arguments}));
+        //                 }
+        //             }
+        //         }
 
-                if !extracted.is_empty() {
-                    ToolCallParsingResult::Success(extracted)
-                } else {
-                    ToolCallParsingResult::Failure(EvaluationError::NO_FUNCTION_CALLS_FOUND)
-                }
-            }
-            Err(_) => ToolCallParsingResult::Failure(EvaluationError::JSON_DECODE_ERROR),
-        }
+        //         if !extracted.is_empty() {
+        //             ToolCallParsingResult::Success(extracted)
+        //         } else {
+        //             ToolCallParsingResult::Failure(EvaluationError::NoFunctionCallsFound { raw_output: () })
+        //         }
+        //     }
+        //     Err(_) => ToolCallParsingResult::Failure(EvaluationError::JsonDecodeError { error_message: (), raw_output: () }),
+        // }
+        todo!()
+    }
+    async fn translate_tool_answer_async(
+        &self,
+        backend: Arc<dyn ModelBackend>,
+        parameter_value: String,
+    ) -> String {
+        // downcast backend to api backend
+        let api_backend = (backend.as_ref() as &dyn Any)
+            .downcast_ref::<ApiBackend>()
+            .expect("Failed to downcast to ApiBackend");
+        let client = &api_backend.client;
+
+        let fut = Python::attach(|py| {
+            let gpt5_backend_module = py
+                .import("src_py.gpt5_backend")
+                .expect("Failed to import src_py.gpt5_backend module");
+            let translate_tool_answer_async_fn = gpt5_backend_module
+                .getattr("translate_tool_answer_async")
+                .expect("Failed to get translate_tool_answer_async function");
+            let model_name = backend.get_model_info().to_string();
+            let arguments = (model_name, client, parameter_value);
+            let fut = translate_tool_answer_async_fn
+                .call1(arguments)
+                .expect("Failed to call translate_tool_answer_async");
+            pyo3_async_runtimes::tokio::into_future(fut).expect("Failed to convert to Rust future")
+        });
+        let response_str = fut.await.expect("GPT-5 tool answer translation failed");
+        let response_str = Python::attach(|py| {
+            response_str
+                .extract::<String>(py)
+                .expect("Failed to extract response string")
+        });
+        response_str
     }
 }
 

@@ -95,8 +95,8 @@ impl BfclDatasetEntry {
             raw_entry,
         })
     }
-    pub fn modify_question_content(&self, new_content: &str) -> Result<serde_json::Value, String> {
-        let mut raw_entry = self.raw_entry.clone();
+    pub fn modify_question_content(&mut self, new_content: &str) -> Result<(), String> {
+        let raw_entry = &mut self.raw_entry;
         let question_array = raw_entry
             .get_mut("question")
             .and_then(|v| v.as_array_mut())
@@ -113,7 +113,8 @@ impl BfclDatasetEntry {
             "content".to_string(),
             serde_json::Value::String(new_content.to_string()),
         );
-        Ok(raw_entry)
+        self.question_content = new_content.to_string();
+        Ok(())
     }
 }
 
