@@ -8,7 +8,7 @@ use std::env;
 
 pub struct ApiBackend {
     pub model: ApiModel,
-    client: Py<PyAny>,
+    pub client: Py<PyAny>,
 }
 
 impl ApiBackend {
@@ -39,51 +39,32 @@ impl ApiBackend {
 
 #[async_trait::async_trait]
 impl ModelBackend for ApiBackend {
-    async fn generate_async(
-        &self,
-        prompt: &str,
-        max_new_tokens: usize,
-        temperature: f32,
-        return_logprobs: bool,
-    ) -> GenerationResult {
-        let fut = Python::attach(|py| {
-            let api_backend_module = py
-                .import("src_py.api_backend")
-                .expect("Failed to import src_py.api_backend module");
-            let generate_async_fn = api_backend_module
-                .getattr("generate_async")
-                .expect("Failed to get generate_response function");
-            let api_params = PyDict::new(py);
-            let python_future = generate_async_fn.call1((api_params,)).expect("Failed to call generate_response");
-            pyo3_async_runtimes::tokio::into_future(python_future).expect("Failed to convert to Rust future")
-        });
-        let generation_result = fut.await.expect("API call failed");
-        let generation_result = Python::attach(|py|{
-            generation_result
-            .extract::<GenerationResult>(py)
-            .expect("Failed to extract GenerationResult")
-        });        
-        generation_result
-    }
-
-    async fn forward_async(
-        &self,
-        prompt: &str,
-        max_length: usize,
-    ) -> (Vec<u32>, Vec<std::collections::HashMap<u32, f32>>) {
-        // Forward pass is not supported for API backends
-        unimplemented!()
-    }
-
-    async fn shutdown(&self) {
-        // Cleanup resources if necessary
-        unimplemented!()
-    }
-
-    fn get_tokenizer<'a>(&self) -> pyo3::Bound<'a, pyo3::PyAny> {
-        // Get tokenizer is not supported for API backends
-        unimplemented!()
-    }
+    // async fn generate_async(
+    //     &self,
+    //     prompt: &str,
+    //     max_new_tokens: usize,
+    //     temperature: f32,
+    //     return_logprobs: bool,
+    // ) -> GenerationResult {
+    //     let fut = Python::attach(|py| {
+    //         let api_backend_module = py
+    //             .import("src_py.api_backend")
+    //             .expect("Failed to import src_py.api_backend module");
+    //         let generate_async_fn = api_backend_module
+    //             .getattr("generate_async")
+    //             .expect("Failed to get generate_response function");
+    //         let api_params = PyDict::new(py);
+    //         let python_future = generate_async_fn.call1((api_params,)).expect("Failed to call generate_response");
+    //         pyo3_async_runtimes::tokio::into_future(python_future).expect("Failed to convert to Rust future")
+    //     });
+    //     let generation_result = fut.await.expect("API call failed");
+    //     let generation_result = Python::attach(|py|{
+    //         generation_result
+    //         .extract::<GenerationResult>(py)
+    //         .expect("Failed to extract GenerationResult")
+    //     });        
+    //     generation_result
+    // }
 
     fn get_model_info(&self) -> crate::config::Model {
         crate::config::Model::Api(self.model.clone())

@@ -1,12 +1,13 @@
-use std::collections::HashMap;
+use std::{any::Any, collections::HashMap};
 
 use crate::{
     models::{
-        backend::ModelBackend, function_name_mapper::FunctionNameMapper,
-        model_interface::ModelInterface,
+        api_backend::ApiBackend, backend::ModelBackend, function_name_mapper::FunctionNameMapper, model_interface::ModelInterface
     },
     tool_bfcl_decl::BfclFunctionDef,
 };
+use pyo3::{prelude::*, types::PyList};
+use pyo3::{Py, PyAny, Python, types::PyAnyMethods};
 use serde::Serialize;
 
 #[derive(Serialize)]
@@ -108,10 +109,38 @@ impl ModelInterface for Gpt5Interface {
         prompt_passing_in_english: bool,
         name_mapper: &mut FunctionNameMapper,
     ) -> String {
+        // downcast backend to api backend
+        let api_backend = (backend as &dyn Any).downcast_ref::<ApiBackend>().expect("Failed to downcast to ApiBackend");
+        let client = &api_backend.client;
+        let gpt5_tools = Gpt5Interface::sanitize_and_convert_function_format(
+            raw_functions,
+            prompt_passing_in_english,
+            name_mapper,
+        );
+        let gpt5_tools_serialized = serde_json::to_string(&gpt5_tools).expect("Failed to serialize GPT-5 tools");
         
-
-
-        
+        let fut = Python::attach(|py|{
+            let gpt5_backend_module = py.import("src_py.gpt5_backend").expect("Failed to import src_py.gpt5_backend module");
+            let generate_tool_call_async_fn = gpt5_backend_module.getattr("generate_tool_call_async").expect("Failed to get generate_tool_call_async function");
+            let model_name = backend.get_model_info().to_string();
+            let json = py.import("json").expect("failed to import json");
+            let gpt5_tools_obj = json.call_method("loads", (gpt5_tools_serialized,), None).expect("Failed to parse GPT-5 tools JSON");
+            assert!(gpt5_tools_obj.is_instance_of::<PyList>());
+            let arguments = (
+                model_name,
+                client,
+                user_question,
+                gpt5_tools_obj,
+                prompt_passing_in_english,
+            );
+            let fut = generate_tool_call_async_fn.call1(arguments).expect("Failed to call generate_tool_call_async");
+            pyo3_async_runtimes::tokio::into_future(fut).expect("Failed to convert to Rust future")
+        });
+        let response_str = fut.await.expect("GPT-5 tool call generation failed");
+        let response_str = Python::attach(|py| {
+            response_str.extract::<String>(py).expect("Failed to extract response string")
+        });
+        response_str
     }
 
     async fn translate_tool_question_async(
@@ -119,9 +148,6 @@ impl ModelInterface for Gpt5Interface {
         backend: &dyn ModelBackend,
         user_question: &str,
     ) -> String {
-        // Implementation for GPT-5 model question translation
-        println!("Translating tool question using GPT-5 Interface...");
-        // Placeholder logic
-        user_question.to_string()
+        unimplemented!()
     }
 }

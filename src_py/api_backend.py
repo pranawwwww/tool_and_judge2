@@ -19,10 +19,6 @@ def create_api_backend(
     return client
 
 
-def generate_response(
-    client: any,
-    api_params: dict,
-) -> 
 
 # The problem is that API models have different calling conventions
 

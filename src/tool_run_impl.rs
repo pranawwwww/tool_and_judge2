@@ -232,7 +232,7 @@ pub async fn tool_run_async(configs: Vec<ToolConfig>, num_gpus: usize) {
                 //     translation_backend: &crate::util::ModelBackend,
                 //     translation_interface: &crate::util::ModelInterface,
                 // ) -> serde_json::Value {
-                let mut translate_single_question = async |case: &BfclDatasetEntry| {
+                let translate_single_question = async |case: &BfclDatasetEntry| {
                     let question = &case.question_content;
                     // Use the dedicated translation method
                     let translated_question = main_interface
@@ -268,9 +268,10 @@ pub async fn tool_run_async(configs: Vec<ToolConfig>, num_gpus: usize) {
                     sort_and_write_json_lines(
                         pre_translate_output_path,
                         &mut pre_translate_results,
-                    );
+                    ).expect("Failed to sort and write pre-translation results");
                 }
             }
+            println!("Pass 1 completed.");
         }
     }
 }

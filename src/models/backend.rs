@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{any::Any, collections::HashMap};
 
 use lazy_static::lazy_static;
 use pyo3::{Bound, pyclass};
@@ -15,23 +15,24 @@ pub struct GenerationResult {
 }
 
 #[async_trait::async_trait]
-pub trait ModelBackend: Send + Sync {
-    async fn generate_async(
-        &self,
-        prompt: &str,
-        max_new_tokens: usize,
-        temperature: f32,
-        return_logprobs: bool,
-    ) -> GenerationResult;
+pub trait ModelBackend: Any + Send + Sync {
+    // The inner interfaces are hidden and will be implemented in Python side.
+    // async fn generate_async(
+    //     &self,
+    //     prompt: &str,
+    //     max_new_tokens: usize,
+    //     temperature: f32,
+    //     return_logprobs: bool,
+    // ) -> GenerationResult;
 
-    async fn forward_async(
-        &self,
-        prompt: &str,
-        max_length: usize,
-    ) -> (Vec<u32>, Vec<HashMap<u32, f32>>);
-    async fn shutdown(&self);
+    // async fn forward_async(
+    //     &self,
+    //     prompt: &str,
+    //     max_length: usize,
+    // ) -> (Vec<u32>, Vec<HashMap<u32, f32>>);
+    // async fn shutdown(&self);
 
-    fn get_tokenizer<'py>(&self) -> Bound<'py, pyo3::PyAny>;
+    // fn get_tokenizer<'py>(&self) -> Bound<'py, pyo3::PyAny>;
 
     fn get_model_info(&self) -> Model;
 }
