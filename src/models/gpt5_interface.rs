@@ -148,6 +148,26 @@ impl ModelInterface for Gpt5Interface {
         backend: &dyn ModelBackend,
         user_question: &str,
     ) -> String {
-        unimplemented!()
+        // downcast backend to api backend
+        let api_backend = (backend as &dyn Any).downcast_ref::<ApiBackend>().expect("Failed to downcast to ApiBackend");
+        let client = &api_backend.client;
+
+        let fut = Python::attach(|py|{
+            let gpt5_backend_module = py.import("src_py.gpt5_backend").expect("Failed to import src_py.gpt5_backend module");
+            let translate_tool_question_async_fn = gpt5_backend_module.getattr("translate_tool_question_async").expect("Failed to get translate_tool_question_async function");
+            let model_name = backend.get_model_info().to_string();
+            let arguments = (
+                model_name,
+                client,
+                user_question,
+            );
+            let fut = translate_tool_question_async_fn.call1(arguments).expect("Failed to call translate_tool_question_async");
+            pyo3_async_runtimes::tokio::into_future(fut).expect("Failed to convert to Rust future")
+        });
+        let response_str = fut.await.expect("GPT-5 tool question translation failed");
+        let response_str = Python::attach(|py| {
+            response_str.extract::<String>(py).expect("Failed to extract response string")
+        });
+        response_str
     }
 }

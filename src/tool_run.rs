@@ -1,5 +1,5 @@
 use pyo3::{
-    Bound,
+    Bound, Py, Python,
     types::{PyAnyMethods, PyList, PyListMethods},
 };
 use tokio::runtime::Runtime;
@@ -20,32 +20,32 @@ use crate::{
 const CATEGORY_CACHE_PATH: &str = "tool_category_cache.json";
 const CATEGORY_CACHE_LOCK_PATH: &str = "tool_category_cache.json.lock";
 
-pub fn tool_run_impl<'py>(configs: &Bound<'py, PyList>, num_gpus: usize) {
+pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+    let (extracted_configs, config_len): (Vec<ToolConfig>, usize) = Python::attach(|py| {
+        let configs = configs.bind(py);
+        let config_len = configs.len();
+        let extracted_configs = configs
+            .iter()
+            .map(|config| {
+                config
+                    .extract()
+                    .expect("Failed to extract ToolConfig from Python object")
+            })
+            .collect();
+        (extracted_configs, config_len)
+    });
+
     println!(
-        "Tool run implementation called with {} configs and {} GPUs.",
-        configs.len(),
-        num_gpus
+        "Tool run implementation called with {} configs and  {} GPUs.",
+        config_len, num_gpus
     );
-    let extracted_configs: Vec<ToolConfig> = configs
-        .iter()
-        .map(|config| {
-            config
-                .extract()
-                .expect("Failed to extract ToolConfig from Python object")
-        })
-        .collect();
 
     // load environment variables from .env file
     dotenvy::dotenv().ok();
     println!("Loaded environment variables from .env file.");
-    let rt = Runtime::new().unwrap();
     println!("Starting async tool run...");
-    rt.block_on(tool_run_async(extracted_configs, num_gpus));
-}
-
-pub async fn tool_run_async(configs: Vec<ToolConfig>, num_gpus: usize) {
-    println!("Starting tool run with {} configs.", configs.len());
-    for config in configs {
+    println!("Starting tool run with {} configs.", config_len);
+    for config in extracted_configs {
         println!("Processing config: {:?}", config);
         let language_tag = match &config.translate_mode {
             TranslateMode::Translated { language, .. } => match language {
@@ -276,7 +276,8 @@ pub async fn tool_run_async(configs: Vec<ToolConfig>, num_gpus: usize) {
                     sort_and_write_json_lines(
                         pre_translate_output_path,
                         &mut pre_translate_results,
-                    ).expect("Failed to sort and write pre-translation results");
+                    )
+                    .expect("Failed to sort and write pre-translation results");
                 }
             }
             println!("Pass 1 completed.");

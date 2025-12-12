@@ -1,4 +1,5 @@
 import argparse
+import asyncio
 import subprocess
 import time
 
@@ -25,10 +26,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 # Load configs from specified file
-if args.config:
-    print(f"Loading configs from: {args.config}")
-    configs = load_configs_from_file(args.config, "configs")
-else:
+if not args.config:
     print("Error: Please specify a config file using --config argument. For example, --config config1.py")
     exit(1)
 
@@ -40,4 +38,14 @@ result = subprocess.run(["maturin", "develop"], check=True)
 time.sleep(2)  # Give some time for the build to complete
 import codebase_rs
 
-codebase_rs.tool_run(configs, args.num_gpus)
+print(f"Loading configs from: {args.config}")
+configs = load_configs_from_file(args.config, "configs")
+
+# Set up asyncio event loop
+# loop = asyncio.new_event_loop()
+# asyncio.set_event_loop(loop)
+asyncio.run(codebase_rs.tool_run_async(configs, args.num_gpus))
+
+
+
+# asyncio.run(process_all_configs())
