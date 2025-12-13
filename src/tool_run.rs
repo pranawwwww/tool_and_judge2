@@ -615,7 +615,9 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             println!("[{}/{}] Evaluated case {}", i + 1, total_cases, id);
         }
         // Final sort and write
+        println!("Sorting evaluation results.");
         evaluation_results.sort_by(|a, b| compare_id(&a.id, &b.id));
+        println!("Sorted evaluation results. Writing to file.");
         let evaluation_results_serialized =
             serialize_evaluation_result_entries(&evaluation_results);
         write_json_lines_to_file(&evaluation_output_path, &evaluation_results_serialized)
@@ -627,6 +629,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* Input: tool/result/evaluation/{model}/{filename}.json                 */
         /* Output: tool/result/score/{model}/{filename}.json                     */
         /* ═══════════════════════════════════════════════════════════════════════ */
+        println!("Scoring evaluation results...");
         let evaluation_entries = load_json_lines(&score_input_path)
             .expect("Failed to load evaluation results for scoring");
         let evaluation_entries = deserialize_evaluation_result_entries(evaluation_entries);

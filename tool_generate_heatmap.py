@@ -211,7 +211,7 @@ if __name__ == "__main__":
     # Model names should match the directory names in result/score/
     # Examples: "gpt-5", "gpt-5-mini", "gpt-5-nano"
     # models = ["gpt-5-nano", "gpt-5-mini", "gpt-5"]
-    models = ['Qwen-Qwen3-14B']
+    models = ['gpt-5-nano']
 
     for model in models:
         print(f"\n{'='*60}")

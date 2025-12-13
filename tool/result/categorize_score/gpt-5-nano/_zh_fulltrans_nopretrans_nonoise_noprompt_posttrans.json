@@ -1,11 +1,55 @@
 {
   "summary": {
     "WrongValue": 3,
-    "RelevantButIncorrect": 23,
     "MiscError": 12,
-    "ExactlySameMeaning": 33
+    "ExactlySameMeaning": 33,
+    "RelevantButIncorrect": 23
   },
   "samples": {
+    "RelevantButIncorrect": [
+      "multiple_4",
+      "multiple_23",
+      "multiple_38",
+      "multiple_59",
+      "multiple_64",
+      "multiple_65",
+      "multiple_89",
+      "multiple_94",
+      "multiple_99",
+      "multiple_104",
+      "multiple_123",
+      "multiple_152",
+      "multiple_157",
+      "multiple_164",
+      "multiple_173",
+      "multiple_175",
+      "multiple_182",
+      "multiple_184",
+      "multiple_186",
+      "multiple_187",
+      "multiple_190",
+      "multiple_193",
+      "multiple_196"
+    ],
+    "MiscError": [
+      "multiple_7",
+      "multiple_8",
+      "multiple_9",
+      "multiple_10",
+      "multiple_18",
+      "multiple_25",
+      "multiple_36",
+      "multiple_40",
+      "multiple_74",
+      "multiple_76",
+      "multiple_83",
+      "multiple_119"
+    ],
+    "WrongValue": [
+      "multiple_105",
+      "multiple_109",
+      "multiple_139"
+    ],
     "ExactlySameMeaning": [
       "multiple_29",
       "multiple_33",
@@ -40,50 +84,6 @@
       "multiple_191",
       "multiple_194",
       "multiple_199"
-    ],
-    "RelevantButIncorrect": [
-      "multiple_4",
-      "multiple_23",
-      "multiple_38",
-      "multiple_59",
-      "multiple_64",
-      "multiple_65",
-      "multiple_89",
-      "multiple_94",
-      "multiple_99",
-      "multiple_104",
-      "multiple_123",
-      "multiple_152",
-      "multiple_157",
-      "multiple_164",
-      "multiple_173",
-      "multiple_175",
-      "multiple_182",
-      "multiple_184",
-      "multiple_186",
-      "multiple_187",
-      "multiple_190",
-      "multiple_193",
-      "multiple_196"
-    ],
-    "WrongValue": [
-      "multiple_105",
-      "multiple_109",
-      "multiple_139"
-    ],
-    "MiscError": [
-      "multiple_7",
-      "multiple_8",
-      "multiple_9",
-      "multiple_10",
-      "multiple_18",
-      "multiple_25",
-      "multiple_36",
-      "multiple_40",
-      "multiple_74",
-      "multiple_76",
-      "multiple_83",
-      "multiple_119"
     ]
   }
 }
