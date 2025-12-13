@@ -4,29 +4,27 @@ use pyo3::{
     Py, Python,
     types::{PyAnyMethods, PyList, PyListMethods},
 };
-use std::{collections::HashMap, sync::Arc};
+use std::{
+    collections::HashMap,
+    fs::{self, File, OpenOptions},
+    hash::Hash,
+    sync::Arc,
+};
 
 use crate::{
-    config::{Language, ToolConfig, TranslateMode, TranslateOption},
-    models::{
+    config::{Language, ToolConfig, TranslateMode, TranslateOption}, models::{
         backend::{WhichBackend, get_or_create_backend},
         function_name_mapper::{self, FunctionNameMapper},
         model_interface::get_model_interface,
-    },
-    tool_bfcl_formats::BfclDatasetEntry,
-    tool_file_models::{InferenceJsonEntry, InferenceRawEntry},
-    tool_translate_function_call::translate_function_call,
-    util::{
-        compare_id, deserialize_test_cases, get_model_directory_safe_name, load_json_lines,
-        load_test_cases, parse_inference_json_entries, parse_inference_raw_entries,
-        serialize_inference_json_entries, serialize_inference_raw_entries, serialize_test_cases,
-        try_load_inference_json_and_ids, try_load_inference_raw_and_ids,
-        try_load_test_cases_and_ids, write_json_lines_to_file,
-    },
+    }, tool_bfcl_formats::{BfclDatasetEntry, BfclGroundTruthEntry}, tool_categorize::categorize_entry, tool_category_cache::CategoryCache, tool_evaluate::evaluate_entry, tool_file_models::{
+        CategorizedEntry, EvaluationResultEntry, EvaluationSummary, InferenceJsonEntry, InferenceRawEntry
+    }, tool_translate_function_call::translate_function_call, util::{
+        compare_id, deserialize_categorized_entries, deserialize_evaluation_result_entries, deserialize_ground_truth_entries, deserialize_inference_json_entries, deserialize_inference_raw_entries, deserialize_test_cases, get_model_directory_safe_name, load_json_lines, load_test_cases, serialize_categorized_entries, serialize_evaluation_result_entries, serialize_inference_json_entries, serialize_inference_raw_entries, serialize_test_cases, try_load_inference_json_and_ids, try_load_inference_raw_and_ids, try_load_test_cases_and_ids, write_json_lines_to_file
+    }
 };
 
 const CATEGORY_CACHE_PATH: &str = "tool_category_cache.jsonl";
-const CATEGORY_CACHE_LOCK_PATH: &str = "tool_category_cache.jsonl.lock";
+const CATEGORY_CACHE_LOCK_PATH: &str = "tool_category_cache.lock";
 
 pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
     let (extracted_configs, config_len): (Vec<ToolConfig>, usize) = Python::attach(|py| {
@@ -379,7 +377,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* ═══════════════════════════════════════════════════════════════════════ */
         let inference_json_inputs = load_json_lines(&inference_json_input_path)
             .expect("Failed to load inference raw outputs for JSON conversion");
-        let inference_raw_entries = parse_inference_raw_entries(inference_json_inputs);
+        let inference_raw_entries = deserialize_inference_raw_entries(inference_json_inputs);
         let main_interface = get_model_interface(config.model);
         let mut inference_json_outputs = Vec::new();
         for entry in inference_raw_entries.iter() {
@@ -429,7 +427,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             // Load inference json results
             let inference_json_inputs = load_json_lines(&post_translate_input_path)
                 .expect("Failed to load inference JSON results for post-translation");
-            let inference_json_entries = parse_inference_json_entries(inference_json_inputs);
+            let inference_json_entries = deserialize_inference_json_entries(inference_json_inputs);
 
             let (mut translated_answers_results, existing_translated_answers_ids) =
                 try_load_inference_json_and_ids(&post_translate_output_path);
@@ -546,208 +544,260 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* Input: tool/result/post_translate if post-translate enabled, else inference_json */
         /* Output: tool/result/evaluation/{model}/{filename}.json                  */
         /* ═══════════════════════════════════════════════════════════════════════ */
-        println!("PASS 5: Evaluation not yet implemented.");
+        let inference_results = load_json_lines(&evaluation_input_path)
+            .expect("Failed to load inference results for evaluation");
+        let inference_results = deserialize_inference_json_entries(inference_results);
+        let inference_results: HashMap<String, InferenceJsonEntry> = inference_results
+            .into_iter()
+            .map(|entry| (entry.id.clone(), entry))
+            .collect();
+        let test_cases = load_json_lines(&inference_raw_input_path)
+            .expect("Failed to load test cases for evaluation");
+        let test_cases = deserialize_test_cases(test_cases);
+        let test_cases: HashMap<String, BfclDatasetEntry> = test_cases
+            .into_iter()
+            .map(|case| (case.id.clone(), case))
+            .collect();
+        let ground_truths = load_json_lines(ground_truth_path)
+            .expect("Failed to load ground truths for evaluation");
+        let ground_truths = deserialize_ground_truth_entries(ground_truths);
+        let ground_truths: HashMap<String, BfclGroundTruthEntry> = ground_truths
+            .into_iter()
+            .map(|entry| (entry.id.clone(), entry))
+            .collect();
+        let mut evaluation_results: Vec<EvaluationResultEntry> = Vec::new();
+        let ids: Vec<String> = inference_results.keys().cloned().collect();
+        for id in ids.iter() {
+            let inference_result = inference_results
+                .get(id)
+                .expect("Inference result should exist");
+            let test_case = test_cases.get(id).expect("Test case should exist");
+            let ground_truth = ground_truths.get(id).expect("Ground truth should exist");
+            let evaluation_result = evaluate_entry(id, inference_result, test_case, ground_truth);
+            evaluation_results.push(evaluation_result);
+        }
+        // Final sort and write
+        evaluation_results.sort_by(|a, b| compare_id(&a.id, &b.id));
+        let evaluation_results_serialized =
+            serialize_evaluation_result_entries(&evaluation_results);
+        write_json_lines_to_file(&evaluation_output_path, &evaluation_results_serialized)
+            .expect("Failed to sort and write evaluation results");
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* PASS 6: Score                                                          */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* Calculates accuracy and aggregates wrong cases for analysis.          */
+        /* Input: tool/result/evaluation/{model}/{filename}.json                 */
+        /* Output: tool/result/score/{model}/{filename}.json                     */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        let evaluation_entries = load_json_lines(&score_input_path)
+            .expect("Failed to load evaluation results for scoring");
+        let evaluation_entries = deserialize_evaluation_result_entries(evaluation_entries);
+        let mut total_cases = 0;
+        let mut correct_cases = 0;
+        let mut wrong_cases: Vec<EvaluationResultEntry> = Vec::new();
+        for entry in evaluation_entries.iter() {
+            total_cases += 1;
+            if entry.valid {
+                correct_cases += 1;
+            } else {
+                wrong_cases.push(entry.clone());
+            }
+        }
+        let accuracy = if total_cases > 0 {
+            correct_cases as f32 / total_cases as f32
+        } else {
+            0.0
+        };
+        let evaluation_summary = EvaluationSummary {
+            accuracy,
+            total_cases,
+            correct_cases,
+        };
+        let evaluation_summary_json = serde_json::to_value(&evaluation_summary)
+            .expect("Failed to serialize evaluation summary");
+        let mut output_json_lines = serialize_evaluation_result_entries(&wrong_cases);
+        output_json_lines.insert(0, evaluation_summary_json);
+        write_json_lines_to_file(&score_output_path, &output_json_lines)
+            .expect("Failed to write score results to file");
+        println!(
+            "Score result written to {}: {:?}",
+            score_output_path, evaluation_summary
+        );
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* PASS 7: Categorize                                                    */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* Categorizes each error sample into different error types.            */
+        /* Input: tool/result/score/{model}/{filename}.json                    */
+        /* Output: tool/result/categorize/{model}/{filename}.json              */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        let categorize_pass = async || {
+            let mut score_entries = load_json_lines(&categorize_input_path)
+                .expect("Failed to load score results for categorization");
+            let evaluation_summary = &score_entries[0];
+            score_entries.remove(0); // remove summary entry
+            if score_entries.is_empty() {
+                println!("No error samples found. Skipping categorization.");
+                return;
+            }
+            println!("Categorizing {} error samples...", score_entries.len());
+            let score_entries =
+                deserialize_evaluation_result_entries(score_entries);
+            
+            println!("Acquiring lock for category cache file...");
+            let lock_file = File::create(CATEGORY_CACHE_LOCK_PATH)
+                .expect("Failed to create lock file for category cache");
+            lock_file.lock().expect("Failed to lock the lock file");
+            println!("Acquired lock for category cache file.");
+            let category_cache =
+                CategoryCache::load_or_create(CATEGORY_CACHE_PATH);
+            let category_cache = Arc::new(AtomicRefCell::new(category_cache));
+            let main_interface = get_model_interface(config.model);
+            let main_backend = get_or_create_backend(config.model, WhichBackend::Main, num_gpus)
+                .await;
+            let main_backend = main_backend
+                .as_ref()
+                .expect("Backend should be created by the call above");
+
+            let mut categorize_tasks = Vec::new();
+            for entry in score_entries.iter() {
+                let main_interface = main_interface.clone();
+                let main_backend = main_backend.clone();
+                let category_cache = category_cache.clone();
+                
+                let id = entry.id.clone();
+                let error = entry.error.clone().expect("Error should exist for wrong cases");
+                let task = async move {
+                    categorize_entry(
+                        &entry.id,
+                        &error,
+                        main_interface,
+                        main_backend,                        
+                    )
+                    .await
+                };
+                categorize_tasks.push(task);
+            }
+            let mut categorize_stream =
+                stream::iter(categorize_tasks).buffer_unordered(200);
+            let mut categorized_entries: Vec<CategorizedEntry> = Vec::new();
+            let mut completed_count = 0;
+            while let Some(categorized_entry) = categorize_stream.next().await {
+                completed_count += 1;
+                println!(
+                    "[{}/{}] Categorized error for case {}",
+                    completed_count,
+                    score_entries.len(),
+                    categorized_entry.id
+                );
+                categorized_entries.push(categorized_entry);
+            }
+            println!("All {} error samples categorized.", score_entries.len());
+            // Final sort and write
+            categorized_entries.sort_by(|a, b| compare_id(&a.id, &b.id));
+            let categorized_entries_serialized =
+                serialize_categorized_entries(&categorized_entries);
+            write_json_lines_to_file(
+                &categorize_output_path,
+                &categorized_entries_serialized,
+            ).expect("Failed to write to categorized file");
+            // Save category cache
+            let category_cache = category_cache.borrow();
+            category_cache.save(CATEGORY_CACHE_PATH);
+            // release the lock
+            lock_file.unlock().expect("Failed to unlock the lock file");
+            println!("Released lock for category cache file.");
+        };
+        categorize_pass().await;
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* PASS 8: Categorize Score                                              */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* Aggregates categorization results and counts errors for each category.*/
+        /* Lightweight pass that always overwrites existing file.               */
+        /* Input: tool/result/categorize/{model}/{filename}.json                */
+        /* Output: tool/result/categorize_score/{model}/{filename}.json        */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        let categorize_score_inputs = load_json_lines(&categorize_score_input_path)
+            .expect("Failed to load categorize results for categorize scoring");
+        let categorize_score_entries =
+            deserialize_categorized_entries(categorize_score_inputs);
+        // no need to skip because even if there is no categorized samples, we still want to write an empty summary
+        let mut category_counts: HashMap<String, usize> = HashMap::new();
+        let mut category_samples: HashMap<String, Vec<String>> = HashMap::new();
+        for entry in categorize_score_entries.iter() {
+            let category = entry.error_category.to_string();
+            *category_counts.entry(category.clone()).or_insert(0) += 1;
+            category_samples
+                .entry(category.clone())
+                .or_insert_with(Vec::new)
+                .push(entry.id.clone());
+        }
+        let final_output = serde_json::json!({
+            "summary": category_counts,
+            "samples": category_samples
+        });
+        let final_output_serialized =
+            serde_json::to_string_pretty(&final_output)
+                .expect("Failed to serialize categorize score output");
+        // write the json object to file manually
+        fs::write(categorize_score_output_path, final_output_serialized)
+            .expect("Failed to write categorize score results to file");
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        /* All passes completed                                                    */
+        /* ═══════════════════════════════════════════════════════════════════════ */
+        println!(
+            "Completed processing for config: {:?}",
+            config
+        );
     }
 }
 
 // # ═══════════════════════════════════════════════════════════════════════
-//         # PASS 5: Evaluation
+//         # PASS 8: Categorize Score
 //         # ═══════════════════════════════════════════════════════════════════════
-//         # Evaluates model outputs against ground truth to determine correctness.
-//         # Checks function names, parameter names, and parameter values.
-//         # Input: tool/result/post_translate if post-translate enabled, else inference_json
-//         # Output: tool/result/evaluation/{model}/{filename}.json
+//         # Aggregates categorization results and counts errors for each category.
+//         # Lightweight pass that always overwrites existing file.
+//         # Input: tool/result/categorize/{model}/{filename}.json
+//         # Output: tool/result/categorize_score/{model}/{filename}.json
 //         # ═══════════════════════════════════════════════════════════════════════
-//         # reload inference results for evaluation
+//         # Load categorized results
 //         try:
-//             inference_results = load_json_lines(evaluation_input_path)
+//             categorized_samples = load_json_lines(categorize_score_input_path)
 //         except FileNotFoundError:
-//             print(f"File {evaluation_input_path} not found. Skipping evaluation.")
-//             exit(1)
-//         evaluation_results = []
+//             print(f"File {categorize_score_input_path} not found. Skipping categorize scoring.")
+//             categorized_samples = []
 
-//         for (inference_line, ground_truth_line, test_case) in zip(inference_results, ground_truths, test_cases):
-//             id = inference_line["id"]
-//             assert id == ground_truth_line["id"], f"Mismatch in IDs: {id} vs {ground_truth_line['id']}"
-//             assert id == test_case["id"], f"Mismatch in IDs: {id} vs {test_case['id']}"
-
-//             # Check if postprocess result was valid
-//             if inference_line.get("valid", True):  # Default to True for backward compatibility
-//                 # Valid result: evaluate normally
-//                 inference_result = inference_line["result"]
-//                 ground_truth = ground_truth_line["ground_truth"]
-//                 func_description = test_case['function']
-
-//                 eval_result = evaluate_json(id, inference_result, ground_truth, func_description)
-
-//                 # Check if evaluation returned error or success
-//                 if isinstance(eval_result, tuple):
-//                     # Evaluation error
-//                     error, metadata = eval_result
-//                     evaluation_entry = {
-//                         "id": id,
-//                         "valid": False,
-//                         "error": error.value,
-//                         "error_meta": metadata
-//                     }
-//                 else:
-//                     # Evaluation success
-//                     assert isinstance(eval_result, dict)
-//                     evaluation_entry = eval_result
-//             else:
-//                 # Invalid result from postprocess: pass through the error
-//                 evaluation_entry = {
-//                     "id": id,
-//                     "valid": False,
-//                     "error": inference_line.get('error', 'unknown'),
-//                     "error_meta": inference_line.get("error_meta", {})
-//                 }
-
-//             evaluation_results.append(evaluation_entry)
-
-//             # Write batch results to file
-//             write_json_lines_to_file(evaluation_output_path, evaluation_results)
-
-//         # Final sort and write
-//         if len(evaluation_results) > 0:
-//             append_and_rewrite_json_lines(evaluation_output_path, evaluation_results)
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # PASS 6: Score
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # Calculates accuracy and aggregates wrong cases for analysis.
-//         # Input: tool/result/evaluation/{model}/{filename}.json
-//         # Output: tool/result/score/{model}/{filename}.json
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # reload evaluation results
-//         try:
-//             evaluation_entries = load_json_lines(score_input_path)
-//         except FileNotFoundError:
-//             print(f"File {score_input_path} not found. Skipping scoring.")
-//             exit(1)
-//         # Calculate and write score results
-//         total_cases = 0
-//         correct_cases = 0
-//         wrong_cases = []
-//         score_results = []
-
-//         for evaluation_entry in evaluation_entries:
-//             total_cases += 1
-//             if evaluation_entry['valid']:
-//                 correct_cases += 1
-//             else:
-//                 wrong_cases.append(evaluation_entry)
-
-//         accuracy = correct_cases / total_cases if total_cases > 0 else 0.0
-//         # Add summary score
-//         score_result = {
-//             "accuracy": accuracy,
-//             "total_cases": total_cases,
-//             "correct_cases": correct_cases,
-//         }
-//         score_results.append(score_result)
-
-//         # Add wrong cases
-//         score_results.extend(wrong_cases)
-
-//         # Write all results to file
-//         write_json_lines_to_file(score_output_path, score_results)
-//         print(f"Score result written to {score_output_path}: {score_result}")
-
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # PASS 7: Categorize
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # Categorizes each error sample into different error types.
-//         # Input: tool/result/score/{model}/{filename}.json
-//         # Output: tool/result/categorize/{model}/{filename}.json
-//         # ═══════════════════════════════════════════════════════════════════════
-//         # Load error samples from score file
-//         try:
-//             score_entries = load_json_lines(categorize_input_path)
-//         except FileNotFoundError:
-//             print(f"File {categorize_input_path} not found. Skipping categorization.")
-//             score_entries = []
-
-//         # Filter out the summary entry (first line in score file)
-//         samples_to_categorize = [entry for entry in score_entries if 'accuracy' not in entry]
-
-//         if len(samples_to_categorize) == 0:
-//             print(f"No error samples found. Skipping categorization.")
+//         if len(categorized_samples) == 0:
+//             print(f"No categorized samples found. Skipping categorize scoring.")
 //         else:
-//             print(f"Categorizing {len(samples_to_categorize)} error samples...")
+//             # Aggregate statistics by category
+//             category_counts = {}
+//             category_samples = {}
+//             for result in categorized_samples:
+//                 category = result['category']
+//                 if category not in category_counts:
+//                     category_counts[category] = 0
+//                     category_samples[category] = []
+//                 category_counts[category] += 1
+//                 category_samples[category].append(result['id'])
 
-//             # Acquire cache lock for entire categorize pass
-//             print("Acquiring cache lock...")
-//             cache_lock.acquire()
-//             print("Acquired cache lock")
+//             # Prepare final output with summary and samples
+//             final_output = {
+//                 "summary": category_counts,
+//                 "samples": category_samples
+//             }
 
-//             # Load category cache
-//             category_cache = load_category_cache(category_cache_path)
+//             # Create parent directory if it doesn't exist
+//             parent_dir = os.path.dirname(categorize_score_output_path)
+//             if parent_dir:
+//                 os.makedirs(parent_dir, exist_ok=True)
 
-//             categorize_results = []
-//             cache_hits = 0
-//             cache_misses = 0
+//             # Write final aggregated results (single write, overwrites existing)
+//             with open(categorize_score_output_path, 'w', encoding='utf-8') as f:
+//                 json.dump(final_output, f, ensure_ascii=False, indent=2)
 
-//             async def categorize_samples_async():
-//                 """Categorize error samples asynchronously."""
-//                 nonlocal cache_hits, cache_misses
+//             print(f"Categorize score results written to {categorize_score_output_path}")
+//             print("\nError Category Summary:")
+//             for category, count in sorted(category_counts.items(), key=lambda x: x[1], reverse=True):
+//                 print(f"  {category}: {count}")
 
-//                 async def categorize_with_sample(sample):
-//                     """Wrapper to return sample, category, and cache hit status."""
-//                     category_enum, cache_hit = await categorize_single_sample_async(sample, category_cache)
-//                     return sample, category_enum, cache_hit
-
-//                 # Create all categorization tasks
-//                 tasks = [categorize_with_sample(sample) for sample in samples_to_categorize]
-
-//                 # Process results as they complete
-//                 completed_count = 0
-//                 for coro in asyncio.as_completed(tasks):
-//                     sample, category_enum, cache_hit = await coro
-//                     completed_count += 1
-
-//                     # Track cache statistics
-//                     if cache_hit:
-//                         cache_hits += 1
-//                     else:
-//                         cache_misses += 1
-
-//                     # Assemble the result dict (assembly logic in tool_main.py)
-//                     categorized_sample = {
-//                         "id": sample["id"],
-//                         "category": category_enum.value,  # Store enum value as string
-//                         "evaluation_entry": sample
-//                     }
-
-//                     # Only print on cache miss, and only show parameter comparison details
-//                     if not cache_hit:
-//                         error_meta = sample.get("error_meta", {})
-//                         actual_value = error_meta.get("actual_value")
-//                         expected_values = error_meta.get("expected_values", [])
-//                         if actual_value is not None and expected_values:
-//                             print(f"[{completed_count}/{len(samples_to_categorize)}] Comparing actual: {json.dumps(actual_value, ensure_ascii=False)} with expected: {json.dumps(expected_values, ensure_ascii=False)} -> {category_enum.value}")
-
-//                     categorize_results.append(categorized_sample)
-
-//                     # Write to file immediately
-//                     write_json_lines_to_file(categorize_output_path, categorize_results)
-
-//             try:
-//                 # Run the async categorization
-//                 await categorize_samples_async()
-
-//                 print(f"All {len(samples_to_categorize)} samples categorized.")
-//                 print(f"Cache statistics - Hits: {cache_hits}, Misses: {cache_misses}, Hit rate: {cache_hits / (cache_hits + cache_misses) * 100:.2f}%" if (cache_hits + cache_misses) > 0 else "Cache statistics - No cache lookups performed")
-
-//                 # Final sort and write
-//                 if len(categorize_results) > 0:
-//                     append_and_rewrite_json_lines(categorize_output_path, categorize_results)
-
-//                 # Write cache back to file once at the end
-//                 save_category_cache(category_cache_path, category_cache)
-//             finally:
-//                 # Release lock at the end of categorize pass
-//                 cache_lock.release()
-//                 print("Released cache lock")
-
-//             # Destroy local cache container (Python will handle this automatically when it goes out of scope)
-//             del category_cache
+//         print(f"Completed processing for config: {config}")

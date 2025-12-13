@@ -1,11 +1,13 @@
-use std::{any::Any, collections::HashMap, os::linux::raw, sync::Arc};
+use std::{any::Any, collections::HashMap, sync::Arc};
 
 use crate::{
     models::{
         api_backend::ApiBackend, backend::ModelBackend, function_name_mapper::FunctionNameMapper,
         model_interface::ModelInterface,
     },
-    tool_bfcl_formats::{BfclFunctionDef, BfclGroundTruthFunctionCall, BfclOutputFunctionCall, BfclParameter},
+    tool_bfcl_formats::{
+        BfclFunctionDef, BfclGroundTruthFunctionCall, BfclOutputFunctionCall, BfclParameter,
+    },
     tool_error_analysis::EvaluationError,
 };
 use atomic_refcell::AtomicRefCell;
@@ -58,17 +60,31 @@ impl Gpt5OutputFunctionCall {
         json_value: &serde_json::Value,
         raw_output: &str,
     ) -> Result<Gpt5OutputFunctionCall, EvaluationError> {
-        let json_obj = json_value.as_object().expect("This is tested before calling this function");
-        let name = json_obj.get("name").and_then(|s|s.as_str())
-            .ok_or_else( || EvaluationError::ParsingError { error_message: "Missing parameter 'name' or 'name' is not of type 'str'".into(), raw_output: raw_output.into() })?.to_string();
-        let arguments_str = json_obj.get("arguments").and_then(|s|s.as_str())
-            .ok_or_else( || EvaluationError::ParsingError { error_message: "Missing parameter 'arguments' or 'arguments' is not of type 'str'".into(), raw_output: raw_output.into() })?;
+        let json_obj = json_value
+            .as_object()
+            .expect("This is tested before calling this function");
+        let name = json_obj
+            .get("name")
+            .and_then(|s| s.as_str())
+            .ok_or_else(|| EvaluationError::ParsingError {
+                error_message: "Missing parameter 'name' or 'name' is not of type 'str'".into(),
+                raw_output: raw_output.into(),
+            })?
+            .to_string();
+        let arguments_str = json_obj
+            .get("arguments")
+            .and_then(|s| s.as_str())
+            .ok_or_else(|| EvaluationError::ParsingError {
+                error_message: "Missing parameter 'arguments' or 'arguments' is not of type 'str'"
+                    .into(),
+                raw_output: raw_output.into(),
+            })?;
         let arguments = serde_json::from_str::<IndexMap<String, serde_json::Value>>(arguments_str)
-        .map_err(|e| EvaluationError::JsonDecodeError { error_message: e.to_string(), raw_output: raw_output.into() })?;
-        Ok(Gpt5OutputFunctionCall {
-            name,
-            arguments,
-        })
+            .map_err(|e| EvaluationError::JsonDecodeError {
+                error_message: e.to_string(),
+                raw_output: raw_output.into(),
+            })?;
+        Ok(Gpt5OutputFunctionCall { name, arguments })
     }
 }
 
@@ -270,12 +286,13 @@ impl ModelInterface for Gpt5Interface {
             })?;
         let mut func_calls = Vec::new();
         for potential_func_call in output_list {
-            let json_obj = potential_func_call.as_object().ok_or(
-                EvaluationError::ParsingError {
-                    error_message: "Expected JSON object for function call".into(),
-                    raw_output: raw_output.to_string(),
-                },
-            )?;
+            let json_obj =
+                potential_func_call
+                    .as_object()
+                    .ok_or(EvaluationError::ParsingError {
+                        error_message: "Expected JSON object for function call".into(),
+                        raw_output: raw_output.to_string(),
+                    })?;
             let ty = json_obj.get("type").and_then(|v| v.as_str()).ok_or(
                 EvaluationError::ParsingError {
                     error_message: "Missing 'type' field in function call".into(),
@@ -288,16 +305,16 @@ impl ModelInterface for Gpt5Interface {
                 }
                 continue; // skip non-function_call entries
             }
-            let func_call = Gpt5OutputFunctionCall::try_deserialize_from_json(potential_func_call, raw_output)?;
+            let func_call =
+                Gpt5OutputFunctionCall::try_deserialize_from_json(potential_func_call, raw_output)?;
             let original_function_name = {
                 let name_mapper_borrow = name_mapper.borrow();
                 name_mapper_borrow.get_original_name(&func_call.name)
             };
-            let parameters: serde_json::Map<String, serde_json::Value> = func_call
-                .arguments
-                .into_iter()
-                .collect();
-            let bfcl_output_function_call = BfclOutputFunctionCall::new(original_function_name, parameters);
+            let parameters: serde_json::Map<String, serde_json::Value> =
+                func_call.arguments.into_iter().collect();
+            let bfcl_output_function_call =
+                BfclOutputFunctionCall::new(original_function_name, parameters);
             func_calls.push(bfcl_output_function_call);
         }
         Ok(func_calls)

@@ -1,26 +1,26 @@
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumString};
 
-#[derive(Clone, EnumString, Display)]
+#[derive(Clone, Serialize, Deserialize, Display)]
 pub enum ToolErrorCategory {
-    #[strum(serialize = "syntax_error")]
+    #[serde(rename = "syntax error")]
     SyntaxError,
-    #[strum(serialize = "misc_errors")]
-    MiscErrors,
-    #[strum(serialize = "wrong_values")]
-    WrongValues,
-    #[strum(serialize = "relevant_but_incorrect")]
+    #[serde(rename = "misc error")]
+    MiscError,
+    #[serde(rename = "wrong value")]
+    WrongValue,
+    #[serde(rename = "relevant but incorrect")]
     RelevantButIncorrect,
-    #[strum(serialize = "exactly_same_meaning")]
+    #[serde(rename = "exactly same meaning")]
     ExactlySameMeaning,
-    #[strum(serialize = "language_mismatch_wrong_values")]
-    LanguageMismatchWrongValues,
-    #[strum(serialize = "language_mismatch_relevant_but_incorrect")]
+    #[serde(rename = "language mismatch wrong value")]
+    LanguageMismatchWrongValue,
+    #[serde(rename = "language mismatch relevant but incorrect")]
     LanguageMismatchRelevantButIncorrect,
-    #[strum(serialize = "language_mismatch_exactly_same_meaning")]
+    #[serde(rename = "language mismatch exactly same meaning")]
     LanguageMismatchExactlySameMeaning,
-    #[strum(serialize = "other_errors")]
-    OtherErrors,
+    #[serde(rename = "other error")]
+    OtherError,
 }
 
 #[derive(Clone, Display, Serialize, Deserialize)]

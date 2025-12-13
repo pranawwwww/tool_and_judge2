@@ -1,6 +1,6 @@
 use pyo3::prelude::*;
 
-pub mod category_cache;
+pub mod tool_category_cache;
 pub mod config;
 pub mod models;
 pub mod tool_bfcl_formats;
@@ -8,6 +8,8 @@ pub mod tool_error_analysis;
 pub mod tool_file_models;
 pub mod tool_run;
 pub mod tool_translate_function_call;
+pub mod tool_evaluate;
+pub mod tool_categorize;
 pub mod util;
 
 #[pymodule]

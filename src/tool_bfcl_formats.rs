@@ -208,15 +208,6 @@ impl BfclOutputFunctionCall {
 }
 
 impl BfclGroundTruthFunctionCall {
-    // pub fn new(
-    //     function_name: String,
-    //     parameters: HashMap<String, Vec<serde_json::Value>>,
-    // ) -> Self {
-    //     Self {
-    //         function_name,
-    //         parameters,
-    //     }
-    // }
     pub fn serialize_to_json(self) -> serde_json::Value {
         let parameters_json = self
             .parameters
@@ -249,6 +240,35 @@ impl BfclGroundTruthFunctionCall {
             function_name: function_name.clone(),
             parameters,
         })
+    }
+}
+
+#[derive(Clone)]
+pub struct BfclGroundTruthEntry {
+    pub id: String,
+    pub ground_truth: Vec<BfclGroundTruthFunctionCall>,
+}
+
+impl BfclGroundTruthEntry {
+    pub fn deserialize_from_json(raw_entry: serde_json::Value) -> Result<Self, String> {
+        let id = raw_entry
+            .get("id")
+            .and_then(|v| v.as_str())
+            .ok_or("Missing or invalid 'id' field")?
+            .to_string();
+
+        let gt_array = raw_entry
+            .get("ground_truth")
+            .and_then(|v| v.as_array())
+            .ok_or("Missing or invalid 'ground_truth' field")?;
+
+        let mut ground_truth = Vec::new();
+        for gt_val in gt_array {
+            let function_call = BfclGroundTruthFunctionCall::deserialize_from_json(gt_val)?;
+            ground_truth.push(function_call);
+        }
+
+        Ok(BfclGroundTruthEntry { id, ground_truth })
     }
 }
 // sample ground truth function call:

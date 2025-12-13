@@ -1,35 +1,9 @@
+use std::fs::File;
+
 use crate::{
-    tool_bfcl_formats::BfclDatasetEntry,
-    tool_file_models::{InferenceJsonEntry, InferenceRawEntry},
+    tool_bfcl_formats::{BfclDatasetEntry, BfclGroundTruthEntry},
+    tool_file_models::{CategorizedEntry, EvaluationResultEntry, InferenceJsonEntry, InferenceRawEntry},
 };
-
-// pub fn load_json_lines_with_id(
-//     file_path: &str,
-// ) -> Result<(Vec<serde_json::Value>, Vec<String>), String> {
-//     use serde_json::Value;
-//     use std::fs::File;
-//     use std::io::{BufRead, BufReader};
-
-//     let file = File::open(file_path).map_err(|e| format!("Unable to open file: {}", e))?;
-//     let reader = BufReader::new(file);
-
-//     let mut results = Vec::new();
-//     let mut existing_ids = Vec::new();
-
-//     for line in reader.lines() {
-//         let line = line.map_err(|e| format!("Unable to read line: {}", e))?;
-//         let line_json: Value =
-//             serde_json::from_str(&line).map_err(|e| format!("Unable to parse JSON: {}", e))?;
-//         if let Some(id) = line_json.get("id") {
-//             if let Some(id_str) = id.as_str() {
-//                 existing_ids.push(id_str.to_string());
-//             }
-//         }
-//         results.push(line_json);
-//     }
-
-//     Ok((results, existing_ids))
-// }
 
 pub fn load_json_lines(file_path: &str) -> Result<Vec<serde_json::Value>, String> {
     use serde_json::Value;
@@ -49,6 +23,7 @@ pub fn load_json_lines(file_path: &str) -> Result<Vec<serde_json::Value>, String
     }
     Ok(results)
 }
+
 
 pub fn load_test_cases(file_path: &str) -> Result<Vec<BfclDatasetEntry>, String> {
     let json_lines = load_json_lines(file_path)?;
@@ -74,7 +49,7 @@ pub fn try_load_test_cases_and_ids(file_path: &str) -> (Vec<BfclDatasetEntry>, V
 
 pub fn try_load_inference_raw_and_ids(file_path: &str) -> (Vec<InferenceRawEntry>, Vec<String>) {
     let inference_entries = match load_json_lines(file_path) {
-        Ok(json_lines) => parse_inference_raw_entries(json_lines),
+        Ok(json_lines) => deserialize_inference_raw_entries(json_lines),
         Err(_) => {
             println!("File {} does not exist, it will be created.", file_path);
             Vec::new()
@@ -89,7 +64,7 @@ pub fn try_load_inference_raw_and_ids(file_path: &str) -> (Vec<InferenceRawEntry
 
 pub fn try_load_inference_json_and_ids(file_path: &str) -> (Vec<InferenceJsonEntry>, Vec<String>) {
     let inference_entries = match load_json_lines(file_path) {
-        Ok(json_lines) => parse_inference_json_entries(json_lines),
+        Ok(json_lines) => deserialize_inference_json_entries(json_lines),
         Err(_) => {
             println!("File {} does not exist, it will be created.", file_path);
             Vec::new()
@@ -151,13 +126,28 @@ pub fn serialize_inference_json_entries(
         .map(|entry| serde_json::to_value(entry).expect("Unable to serialize InferenceJsonEntry"))
         .collect()
 }
-// pub fn write_test_cases_to_file(
-//     file_path: &str,
-//     test_cases: &Vec<BfclDatasetEntry>,
-// ) -> Result<(), String> {
-//     let json_lines = serialize_test_cases(test_cases);
-//     write_json_lines_to_file(file_path, &json_lines)
-// }
+
+pub fn serialize_evaluation_result_entries(
+    evaluation_result_entries: &Vec<EvaluationResultEntry>,
+) -> Vec<serde_json::Value> {
+    evaluation_result_entries
+        .iter()
+        .map(|entry| {
+            serde_json::to_value(entry).expect("Unable to serialize EvaluationResultEntry")
+        })
+        .collect()
+}
+
+pub fn serialize_categorized_entries(
+    categorized_entries: &Vec<CategorizedEntry>,
+) -> Vec<serde_json::Value> {
+    categorized_entries
+        .iter()
+        .map(|entry| {
+            serde_json::to_value(entry).expect("Unable to serialize CategorizedEntry")
+        })
+        .collect()
+}
 
 pub fn compare_id(id1: &str, id2: &str) -> std::cmp::Ordering {
     use regex::Regex;
@@ -173,30 +163,6 @@ pub fn compare_id(id1: &str, id2: &str) -> std::cmp::Ordering {
     num1.cmp(&num2)
 }
 
-// pub fn sort_results_by_id(mut results: Vec<serde_json::Value>) -> Vec<serde_json::Value> {
-//     use regex::Regex;
-//     let re = Regex::new(r"\d+").unwrap();
-//     results.sort_by_key(|x| {
-//         if let Some(id_value) = x.get("id") {
-//             if let Some(id_str) = id_value.as_str() {
-//                 if let Some(mat) = re.find(id_str) {
-//                     return mat.as_str().parse::<u32>().unwrap_or(u32::MAX);
-//                 }
-//             }
-//         }
-//         u32::MAX
-//     });
-//     results.to_vec()
-// }
-
-// pub fn sort_and_write_json_lines(
-//     file_path: &str,
-//     results: Vec<serde_json::Value>,
-// ) -> Result<(), String> {
-//     let sorted_results = sort_results_by_id(results);
-//     write_json_lines_to_file(file_path, &sorted_results)
-// }
-
 pub fn get_model_directory_safe_name(model_name: &str) -> String {
     model_name.replace("/", "-").replace(":", "-")
 }
@@ -211,7 +177,7 @@ pub fn deserialize_test_cases(cases_to_translate: Vec<serde_json::Value>) -> Vec
         .collect()
 }
 
-pub fn parse_inference_json_entries(
+pub fn deserialize_inference_json_entries(
     inference_json_entries: Vec<serde_json::Value>,
 ) -> Vec<InferenceJsonEntry> {
     inference_json_entries
@@ -222,13 +188,47 @@ pub fn parse_inference_json_entries(
         .collect()
 }
 
-pub fn parse_inference_raw_entries(
+pub fn deserialize_inference_raw_entries(
     inference_raw_entries: Vec<serde_json::Value>,
 ) -> Vec<InferenceRawEntry> {
     inference_raw_entries
         .iter()
         .map(|entry| {
             serde_json::from_value(entry.clone()).expect("Inference raw entry has wrong format")
+        })
+        .collect()
+}
+
+pub fn deserialize_ground_truth_entries(
+    ground_truth_entries: Vec<serde_json::Value>,
+) -> Vec<BfclGroundTruthEntry> {
+    ground_truth_entries
+        .iter()
+        .map(|entry| {
+            BfclGroundTruthEntry::deserialize_from_json(entry.clone())
+                .expect("Ground truth entry has wrong format")
+        })
+        .collect()
+}
+
+pub fn deserialize_evaluation_result_entries(
+    evaluation_result_entries: Vec<serde_json::Value>,
+) -> Vec<EvaluationResultEntry> {
+    evaluation_result_entries
+        .iter()
+        .map(|entry| {
+            serde_json::from_value(entry.clone())
+                .expect("Evaluation result entry has wrong format")
+        })
+        .collect()
+}
+pub fn deserialize_categorized_entries(
+    categorized_entries: Vec<serde_json::Value>,
+) -> Vec<CategorizedEntry> {
+    categorized_entries
+        .iter()
+        .map(|entry| {
+            serde_json::from_value(entry.clone()).expect("Categorized entry has wrong format")
         })
         .collect()
 }
