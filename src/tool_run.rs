@@ -600,7 +600,9 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             .collect();
         let mut evaluation_results: Vec<EvaluationResultEntry> = Vec::new();
         let ids: Vec<String> = inference_results.keys().cloned().collect();
-        for id in ids.iter() {
+        let total_cases = ids.len();
+        println!("Evaluating {} cases...", total_cases);
+        for (i, id) in ids.iter().enumerate() {
             let inference_result = inference_results
                 .get(id)
                 .expect("Inference result should exist");
@@ -608,7 +610,9 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             let ground_truth = ground_truths.get(id).expect("Ground truth should exist");
             let evaluation_result =
                 evaluate_entry(id.into(), inference_result, test_case, ground_truth);
+            
             evaluation_results.push(evaluation_result);
+            println!("[{}/{}] Evaluated case {}", i + 1, total_cases, id);
         }
         // Final sort and write
         evaluation_results.sort_by(|a, b| compare_id(&a.id, &b.id));

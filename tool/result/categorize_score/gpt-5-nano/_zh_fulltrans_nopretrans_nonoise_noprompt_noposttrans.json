@@ -1,12 +1,26 @@
 {
   "summary": {
+    "LanguageMismatchExactlySameMeaning": 10,
     "WrongValue": 3,
-    "RelevantButIncorrect": 20,
-    "MiscError": 12,
     "ExactlySameMeaning": 29,
-    "LanguageMismatchExactlySameMeaning": 10
+    "RelevantButIncorrect": 20,
+    "MiscError": 12
   },
   "samples": {
+    "MiscError": [
+      "multiple_7",
+      "multiple_8",
+      "multiple_9",
+      "multiple_10",
+      "multiple_18",
+      "multiple_25",
+      "multiple_36",
+      "multiple_40",
+      "multiple_74",
+      "multiple_76",
+      "multiple_83",
+      "multiple_119"
+    ],
     "LanguageMismatchExactlySameMeaning": [
       "multiple_38",
       "multiple_73",
@@ -19,10 +33,27 @@
       "multiple_187",
       "multiple_191"
     ],
-    "WrongValue": [
-      "multiple_105",
-      "multiple_109",
-      "multiple_139"
+    "RelevantButIncorrect": [
+      "multiple_4",
+      "multiple_23",
+      "multiple_59",
+      "multiple_64",
+      "multiple_65",
+      "multiple_94",
+      "multiple_99",
+      "multiple_104",
+      "multiple_123",
+      "multiple_152",
+      "multiple_157",
+      "multiple_164",
+      "multiple_173",
+      "multiple_175",
+      "multiple_182",
+      "multiple_184",
+      "multiple_186",
+      "multiple_190",
+      "multiple_193",
+      "multiple_196"
     ],
     "ExactlySameMeaning": [
       "multiple_29",
@@ -55,41 +86,10 @@
       "multiple_194",
       "multiple_199"
     ],
-    "RelevantButIncorrect": [
-      "multiple_4",
-      "multiple_23",
-      "multiple_59",
-      "multiple_64",
-      "multiple_65",
-      "multiple_94",
-      "multiple_99",
-      "multiple_104",
-      "multiple_123",
-      "multiple_152",
-      "multiple_157",
-      "multiple_164",
-      "multiple_173",
-      "multiple_175",
-      "multiple_182",
-      "multiple_184",
-      "multiple_186",
-      "multiple_190",
-      "multiple_193",
-      "multiple_196"
-    ],
-    "MiscError": [
-      "multiple_7",
-      "multiple_8",
-      "multiple_9",
-      "multiple_10",
-      "multiple_18",
-      "multiple_25",
-      "multiple_36",
-      "multiple_40",
-      "multiple_74",
-      "multiple_76",
-      "multiple_83",
-      "multiple_119"
+    "WrongValue": [
+      "multiple_105",
+      "multiple_109",
+      "multiple_139"
     ]
   }
 }
