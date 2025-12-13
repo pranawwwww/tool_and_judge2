@@ -42,6 +42,13 @@ use crate::{
 const CATEGORY_CACHE_PATH: &str = "tool_category_cache.jsonl";
 const CATEGORY_CACHE_LOCK_PATH: &str = "tool_category_cache.lock";
 
+// Maximum concurrent API requests. Adjust based on your OpenAI tier:
+// - Tier 1: 500 RPM  -> use 20-30 concurrent
+// - Tier 2: 5000 RPM -> use 50-80 concurrent
+// - Tier 3+: higher  -> use 100+ concurrent
+// Setting this too high will cause rate limit throttling (429 errors)
+const MAX_CONCURRENT_REQUESTS: usize = 50;
+
 pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
     let (extracted_configs, config_len): (Vec<ToolConfig>, usize) = Python::attach(|py| {
         let configs = configs.bind(py);
@@ -257,8 +264,8 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 tasks.push(task);
             }
 
-            // Create a stream from the tasks and process up to 200 concurrently
-            let mut translate_stream = stream::iter(tasks).buffer_unordered(200);
+            // Create a stream from the tasks and process concurrently
+            let mut translate_stream = stream::iter(tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
 
             let mut completed_count = 0;
             while let Some(modified_case) = translate_stream.next().await {
@@ -349,8 +356,8 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 };
                 tasks.push(task);
             }
-            // Create a stream from the tasks and process up to 200 concurrently
-            let mut inference_stream = stream::iter(tasks).buffer_unordered(200);
+            // Create a stream from the tasks and process concurrently
+            let mut inference_stream = stream::iter(tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
             let mut completed_count = 0;
             while let Some(result) = inference_stream.next().await {
                 completed_count += 1;
@@ -528,7 +535,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 translate_functions_tasks.push(task);
             }
             let mut translate_stream =
-                stream::iter(translate_functions_tasks).buffer_unordered(200);
+                stream::iter(translate_functions_tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
             let mut completed_count = 0;
             while let Some(translated_entry) = translate_stream.next().await {
                 completed_count += 1;
@@ -713,7 +720,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 };
                 categorize_tasks.push(task);
             }
-            let mut categorize_stream = stream::iter(categorize_tasks).buffer_unordered(200);
+            let mut categorize_stream = stream::iter(categorize_tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
             let mut categorized_entries: Vec<CategorizedEntry> = Vec::new();
             let mut completed_count = 0;
             while let Some(categorized_entry) = categorize_stream.next().await {
