@@ -21,31 +21,42 @@ translate_modes = [
 
 noise_modes = ["NO_NOISE", "PARAPHRASE", "SYNONYM"]
 
-# Error categories (from ToolErrorCategory enum)
+# Error categories (from ToolErrorCategory enum) - PascalCase format
 error_categories = [
-    "syntax_error",
-    "misc_error",
-    "language_mismatch_wrong_value",
-    "language_mismatch_relevant_but_incorrect",
-    "language_mismatch_exactly_same_meaning",
-    "wrong_value",
-    "relevant_but_incorrect",
-    "exactly_same_meaning",    
-    "other_error",
+    "SyntaxError",
+    "MiscError",
+    "LanguageMismatchWrongValue",
+    "LanguageMismatchRelevantButIncorrect",
+    "LanguageMismatchExactlySameMeaning",
+    "WrongValue",
+    "RelevantButIncorrect",
+    "ExactlySameMeaning",
+    "OtherError",
 ]
 
 # Color map for each error category (darker, uniform brightness)
 category_colors = {
-    "syntax_error": "#b30000",  # Dark red
-    "misc_error": "#b35900",  # Dark orange
-    "language_mismatch_wrong_value": "#5a1585", # Dark purple
-    "language_mismatch_relevant_but_incorrect": "#7a1aa0",  # Medium purple
-    "language_mismatch_exactly_same_meaning": "#9060b0",  # Light purple
-    "wrong_value": "#b3b300",  # Dark yellow
-    "relevant_but_incorrect": "#88b300",  # Dark yellow-green
-    "exactly_same_meaning": "#269900",  # Dark green
-    "other_error": "#707070",  # Dark gray
+    "SyntaxError": "#b30000",  # Dark red
+    "MiscError": "#b35900",  # Dark orange
+    "LanguageMismatchWrongValue": "#5a1585", # Dark purple
+    "LanguageMismatchRelevantButIncorrect": "#7a1aa0",  # Medium purple
+    "LanguageMismatchExactlySameMeaning": "#9060b0",  # Light purple
+    "WrongValue": "#b3b300",  # Dark yellow
+    "RelevantButIncorrect": "#88b300",  # Dark yellow-green
+    "ExactlySameMeaning": "#269900",  # Dark green
+    "OtherError": "#707070",  # Dark gray
 }
+
+
+def pascal_to_readable(pascal_str: str) -> str:
+    """
+    Convert PascalCase string to lowercase with spaces.
+    E.g., "LanguageMismatchExactlySameMeaning" -> "language mismatch exactly same meaning"
+    """
+    import re
+    # Insert space before uppercase letters (except the first one)
+    spaced = re.sub(r'(?<!^)(?=[A-Z])', ' ', pascal_str)
+    return spaced.lower()
 
 
 def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str,
@@ -213,7 +224,9 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
     bottom = np.zeros(len(bar_labels))
     for category in error_categories:
         values = df_rate[category].values
-        ax.bar(bar_labels, values, label=category, bottom=bottom,
+        # Convert category name to readable format for legend
+        readable_label = pascal_to_readable(category)
+        ax.bar(bar_labels, values, label=readable_label, bottom=bottom,
                color=category_colors[category], edgecolor='white', linewidth=0.5)
         bottom += values
 
@@ -259,7 +272,7 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
 # Example usage
 if __name__ == "__main__":
     # Generate stacked bar charts for different models
-    models = ["gpt-5-nano"]  # Add more models as needed
+    models = ["gpt-5"]  # Add more models as needed
     # models = ['Qwen-Qwen3-8B', 'Qwen-Qwen3-30B-A3B', 'Qwen-Qwen3-14B']
 
     for model in models:

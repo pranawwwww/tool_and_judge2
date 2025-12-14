@@ -2,8 +2,6 @@ import argparse
 import asyncio
 import subprocess
 import time
-import signal
-import sys
 
 from load_configs_from_file import load_configs_from_file
 
@@ -43,30 +41,7 @@ import codebase_rs
 print(f"Loading configs from: {args.config}")
 configs = load_configs_from_file(args.config, "configs")
 
-# Set up signal handlers for fast Ctrl+C interruption
-async def run_with_cancellation():
-    """Run the main task with proper cancellation on Ctrl+C."""
-    main_task = asyncio.create_task(codebase_rs.tool_run_async(configs, args.num_gpus))
-
-    def signal_handler(_signum, _frame):
-        print("\n⚠️  Ctrl+C detected! Cancelling all tasks...", flush=True)
-        main_task.cancel()
-        # Cancel all other running tasks
-        for task in asyncio.all_tasks():
-            if not task.done():
-                task.cancel()
-
-    # Register signal handler
-    signal.signal(signal.SIGINT, signal_handler)
-
-    try:
-        await main_task
-    except asyncio.CancelledError:
-        print("✓ Tasks cancelled successfully.", flush=True)
-        sys.exit(130)  # Standard exit code for Ctrl+C
-
-asyncio.run(run_with_cancellation())
-
-
-
-# asyncio.run(process_all_configs())
+# Run the async task
+# Note: Ctrl+C handling is done in Rust (tool_run.rs) using the ctrlc crate
+# The Rust handler will gracefully shut down between configs
+asyncio.run(codebase_rs.tool_run_async(configs, args.num_gpus))

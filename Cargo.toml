@@ -19,6 +19,7 @@ serde_json = {version = "1.0.145", features = ["preserve_order", "arbitrary_prec
 strum = "0.27.2"
 strum_macros = "0.27.2"
 tokio = {version="1.48.0", features=["full"]}
+ctrlc = "3.4"
 futures = "0.3"
 atomic_refcell = "0.1.13"
 indexmap = {version="2.12.1", features=["serde"]}

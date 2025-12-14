@@ -1,0 +1,200 @@
+{"id":"multiple_0","valid":true,"error":null}
+{"id":"multiple_1","valid":true,"error":null}
+{"id":"multiple_2","valid":true,"error":null}
+{"id":"multiple_3","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":6,"expected_values":["",0],"decoded_output":"[{\"EuclideanDistance.calculate\":{\"rounding\":6,\"pointA\":[3,4],\"pointB\":[1,2]}}]"}}}
+{"id":"multiple_4","valid":true,"error":null}
+{"id":"multiple_5","valid":true,"error":null}
+{"id":"multiple_6","valid":true,"error":null}
+{"id":"multiple_7","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"wildlife_population.assess_growth\":{\"duration\":10,\"species\":\"deer\",\"location\":\"Washington State\"}},{\"ecological_impact.analyze\":{\"location\":\"Washington State\",\"ecosystem\":\"forest land\",\"species\":\"deer\",\"timeframe\":10}}]"}}}
+{"id":"multiple_8","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":3,"decoded_output":"[{\"realestate.find_properties\":{\"propertyType\":\"house\",\"bedrooms\":3,\"location\":\"San Diego, CA\"}},{\"realestate.find_properties\":{\"propertyType\":\"condo\",\"bedrooms\":3,\"location\":\"San Diego, CA\"}},{\"realestate.find_properties\":{\"propertyType\":\"townhouse\",\"bedrooms\":3,\"location\":\"San Diego, CA\"}}]"}}}
+{"id":"multiple_9","valid":false,"error":{"MissingRequiredParam":{"missing_param":"gradeDict","required_params":["gradeDict"],"decoded_output":"[{\"calculate_average\":{}}]"}}}
+{"id":"multiple_10","valid":false,"error":{"WrongFuncName":{"expected_name":"database.modify_columns","actual_name":"database.create_backup","decoded_output":"[{\"database.create_backup\":{\"db_name\":\"employee_database\",\"timestamp\":true,\"backup_location\":\"backups/employee_database_pre_column_removal\"}}]"}}}
+{"id":"multiple_11","valid":true,"error":null}
+{"id":"multiple_12","valid":true,"error":null}
+{"id":"multiple_13","valid":false,"error":{"InvalidParamValue":{"param":"company","actual_value":"Company XYZ","expected_values":["XYZ"],"decoded_output":"[{\"corporate_finance.revenue_forecast\":{\"product\":\"Product A\",\"sales_units_increase_percentage\":10,\"company\":\"Company XYZ\"}}]"}}}
+{"id":"multiple_14","valid":true,"error":null}
+{"id":"multiple_15","valid":true,"error":null}
+{"id":"multiple_16","valid":true,"error":null}
+{"id":"multiple_17","valid":true,"error":null}
+{"id":"multiple_18","valid":true,"error":null}
+{"id":"multiple_19","valid":true,"error":null}
+{"id":"multiple_20","valid":true,"error":null}
+{"id":"multiple_21","valid":true,"error":null}
+{"id":"multiple_22","valid":true,"error":null}
+{"id":"multiple_23","valid":true,"error":null}
+{"id":"multiple_24","valid":false,"error":{"InvalidParamValue":{"param":"method","actual_value":"shortest","expected_values":["fastest",""],"decoded_output":"[{\"route_planner.calculate_route\":{\"destination\":\"Edinburgh\",\"start\":\"London\",\"method\":\"shortest\"}}]"}}}
+{"id":"multiple_25","valid":false,"error":{"InvalidParamValue":{"param":"game_title","actual_value":"Assassin's Creed Valhalla","expected_values":["Assassins Creed Valhalla"],"decoded_output":"[{\"video_games.store_price\":{\"game_title\":\"Assassin's Creed Valhalla\",\"platform\":\"PlayStation\",\"region\":\"United States\"}}]"}}}
+{"id":"multiple_26","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"game_rewards.get\":{\"game\":\"Fortnite\",\"platform\":\"Playstation\",\"mission\":\"\",\"trophy\":\"\"}},{\"game_missions.list\":{\"game\":\"Fortnite\"}}]"}}}
+{"id":"multiple_27","valid":true,"error":null}
+{"id":"multiple_28","valid":true,"error":null}
+{"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
+{"id":"multiple_30","valid":true,"error":null}
+{"id":"multiple_31","valid":true,"error":null}
+{"id":"multiple_32","valid":true,"error":null}
+{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3x^2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"a\":1,\"func\":\"3x^2\",\"b\":2}}]"}}}
+{"id":"multiple_34","valid":true,"error":null}
+{"id":"multiple_35","valid":true,"error":null}
+{"id":"multiple_36","valid":true,"error":null}
+{"id":"multiple_37","valid":true,"error":null}
+{"id":"multiple_38","valid":true,"error":null}
+{"id":"multiple_39","valid":true,"error":null}
+{"id":"multiple_40","valid":true,"error":null}
+{"id":"multiple_41","valid":true,"error":null}
+{"id":"multiple_42","valid":true,"error":null}
+{"id":"multiple_43","valid":true,"error":null}
+{"id":"multiple_44","valid":true,"error":null}
+{"id":"multiple_45","valid":true,"error":null}
+{"id":"multiple_46","valid":true,"error":null}
+{"id":"multiple_47","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":6,"expected_values":["",0],"decoded_output":"[{\"cosine_similarity.calculate\":{\"rounding\":6,\"vector1\":[3,2,1],\"vector2\":[1,2,3]}}]"}}}
+{"id":"multiple_48","valid":false,"error":{"InvalidParamValue":{"param":"preferences","actual_value":["pet-friendly","disabled access"],"expected_values":[["Pet-friendly","Disabled Access"],["Disabled Access","Pet-friendly"]],"decoded_output":"[{\"library.find_nearby\":{\"location\":\"New York City, NY\",\"preferences\":[\"pet-friendly\",\"disabled access\"]}}]"}}}
+{"id":"multiple_49","valid":true,"error":null}
+{"id":"multiple_50","valid":true,"error":null}
+{"id":"multiple_51","valid":true,"error":null}
+{"id":"multiple_52","valid":true,"error":null}
+{"id":"multiple_53","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"linear_regression\":{\"forecast_period\":5,\"independent_var\":[\"interest rate\",\"unemployment rate\"],\"dependent_var\":\"house prices\"}},{\"random_forest_regression\":{\"dependent_var\":\"house prices\",\"independent_var\":[\"interest rate\",\"unemployment rate\"],\"forecast_period\":5,\"n_estimators\":200}}]"}}}
+{"id":"multiple_54","valid":true,"error":null}
+{"id":"multiple_55","valid":false,"error":{"InvalidParamValue":{"param":"company","actual_value":"Alphabet Inc. (GOOGL)","expected_values":["Google","GOOG"],"decoded_output":"[{\"stock_forecast\":{\"days\":3,\"model\":\"regression\",\"company\":\"Alphabet Inc. (GOOGL)\"}}]"}}}
+{"id":"multiple_56","valid":false,"error":{"InvalidParamValue":{"param":"company","actual_value":"Apple Inc.","expected_values":["Apple"],"decoded_output":"[{\"avg_closing_price\":{\"days\":60,\"company\":\"Apple Inc.\",\"data_source\":\"yahoo finance\"}}]"}}}
+{"id":"multiple_57","valid":true,"error":null}
+{"id":"multiple_58","valid":true,"error":null}
+{"id":"multiple_59","valid":true,"error":null}
+{"id":"multiple_60","valid":true,"error":null}
+{"id":"multiple_61","valid":false,"error":{"InvalidParamValue":{"param":"specialization","actual_value":"small-scale garden design","expected_values":["small space garden design"],"decoded_output":"[{\"landscape_architect.find_specialty\":{\"years_experience\":5,\"specialization\":\"small-scale garden design\",\"location\":\"Portland, OR\"}}]"}}}
+{"id":"multiple_62","valid":false,"error":{"InvalidParamValue":{"param":"features","actual_value":["camping","scenic views"],"expected_values":[["Camping","Scenic View"],["Scenic View","Camping"]],"decoded_output":"[{\"nature_park.find_nearby\":{\"location\":\"Boston, MA\",\"features\":[\"camping\",\"scenic views\"]}}]"}}}
+{"id":"multiple_63","valid":true,"error":null}
+{"id":"multiple_64","valid":false,"error":{"InvalidParamValue":{"param":"date","actual_value":"06-02-2023","expected_values":["06-01-2023"],"decoded_output":"[{\"uv_index.get_future\":{\"date\":\"06-02-2023\",\"location\":\"Tokyo\"}}]"}}}
+{"id":"multiple_65","valid":false,"error":{"InvalidParamValue":{"param":"unit","actual_value":"kilometers","expected_values":["miles",""],"decoded_output":"[{\"geodistance.find\":{\"unit\":\"kilometers\",\"origin\":\"New York City\",\"destination\":\"Los Angeles\"}}]"}}}
+{"id":"multiple_66","valid":false,"error":{"InvalidParamValue":{"param":"end_location","actual_value":"Los Angeles, CA","expected_values":["Los Angeles"],"decoded_output":"[{\"traffic_estimate\":{\"end_location\":\"Los Angeles, CA\",\"time_period\":\"weekend\",\"start_location\":\"Las Vegas, NV\"}}]"}}}
+{"id":"multiple_67","valid":true,"error":null}
+{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"genre","actual_value":"Historical fiction","expected_values":["Historical Fiction","historical fiction"],"decoded_output":"[{\"library.search_books\":{\"genre\":\"Historical fiction\",\"title\":\"\",\"location\":\"New York Public Library\"}}]"}}}
+{"id":"multiple_69","valid":true,"error":null}
+{"id":"multiple_70","valid":true,"error":null}
+{"id":"multiple_71","valid":true,"error":null}
+{"id":"multiple_72","valid":true,"error":null}
+{"id":"multiple_73","valid":true,"error":null}
+{"id":"multiple_74","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":15,"decoded_output":"[{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Christie's\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Sotheby's\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Phillips\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Bonhams\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Heritage Auctions\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Poly Auction\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"China Guardian\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Artcurial\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Dorotheum\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Bukowskis\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Seoul Auction\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Saffronart\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"K Auction\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Tajan\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"platform\":\"Hindman\",\"artist\":\"Vincent van Gogh\"}}]"}}}
+{"id":"multiple_75","valid":true,"error":null}
+{"id":"multiple_76","valid":true,"error":null}
+{"id":"multiple_77","valid":false,"error":{"InvalidParamValue":{"param":"era","actual_value":"modern","expected_values":["contemporary",""],"decoded_output":"[{\"artwork_search.find\":{\"location\":\"New York\",\"era\":\"modern\",\"type\":\"sculpture\"}}]"}}}
+{"id":"multiple_78","valid":false,"error":{"InvalidParamValue":{"param":"features","actual_value":["opening hours","exhibitions","amenities"],"expected_values":[["timings","exhibitions","accessibility"],["exhibitions","timings","accessibility"],["exhibitions","accessibility","timings"],["accessibility","timings","exhibitions"],["accessibility","exhibitions","timings"],["timings","accessibility","exhibitions"]],"decoded_output":"[{\"museum_info\":{\"museum\":\"Natural History Museum\",\"features\":[\"opening hours\",\"exhibitions\",\"amenities\"],\"city\":\"London\"}}]"}}}
+{"id":"multiple_79","valid":false,"error":{"InvalidParamValue":{"param":"museum_name","actual_value":"The Museum of Modern Art","expected_values":["Museum of Modern Art","MOMA","Museum of Modern Art, New York"],"decoded_output":"[{\"exhibition_info\":{\"museum_name\":\"The Museum of Modern Art\",\"month\":1}}]"}}}
+{"id":"multiple_80","valid":false,"error":{"InvalidParamValue":{"param":"services","actual_value":["violin lessons"],"expected_values":[["Violin Lessons"]],"decoded_output":"[{\"music_shop.find_nearby\":{\"services\":[\"violin lessons\"],\"location\":\"Nashville, TN\",\"instruments\":[\"guitars\"]}}]"}}}
+{"id":"multiple_81","valid":false,"error":{"InvalidParamValue":{"param":"add_ons","actual_value":["backstage pass"],"expected_values":[["Backstage Pass"]],"decoded_output":"[{\"concert.book_ticket\":{\"add_ons\":[\"backstage pass\"],\"artist\":\"Eminem\",\"location\":\"New York City\"}}]"}}}
+{"id":"multiple_82","valid":true,"error":null}
+{"id":"multiple_83","valid":true,"error":null}
+{"id":"multiple_84","valid":true,"error":null}
+{"id":"multiple_85","valid":true,"error":null}
+{"id":"multiple_86","valid":true,"error":null}
+{"id":"multiple_87","valid":true,"error":null}
+{"id":"multiple_88","valid":true,"error":null}
+{"id":"multiple_89","valid":false,"error":{"InvalidParamValue":{"param":"ingredients","actual_value":["chicken","mushroom"],"expected_values":[["chicken","mushrooms"],["mushrooms","chicken"]],"decoded_output":"[{\"recipe_search\":{\"meal\":\"lunch\",\"ingredients\":[\"chicken\",\"mushroom\"],\"calories\":500}}]"}}}
+{"id":"multiple_90","valid":true,"error":null}
+{"id":"multiple_91","valid":true,"error":null}
+{"id":"multiple_92","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"walmart.vegan_products\":{\"location\":\"Denver, CO\",\"categories\":[]}},{\"walmart.vegan_products\":{\"location\":\"Denver, CO\",\"categories\":[\"gluten-free\"]}}]"}}}
+{"id":"multiple_93","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"Deluxe Room","expected_values":["deluxe","Deluxe"],"decoded_output":"[{\"hotel.book\":{\"roomType\":\"Deluxe Room\",\"additional_services\":[\"Breakfast\"],\"location\":\"New York Marriott Hotel\",\"nights\":2}}]"}}}
+{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"Suite with double bed","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"nights\":3,\"hotelName\":\"Hilton New York\",\"roomType\":\"Suite with double bed\"}}]"}}}
+{"id":"multiple_95","valid":true,"error":null}
+{"id":"multiple_96","valid":true,"error":null}
+{"id":"multiple_97","valid":true,"error":null}
+{"id":"multiple_98","valid":true,"error":null}
+{"id":"multiple_99","valid":false,"error":{"InvalidParamValue":{"param":"function","actual_value":"2*x^2","expected_values":["2x**2","lambda x: 2x**2"],"decoded_output":"[{\"calculus.derivative\":{\"function_variable\":\"x\",\"value\":1,\"function\":\"2*x^2\"}}]"}}}
+{"id":"multiple_100","valid":true,"error":null}
+{"id":"multiple_101","valid":true,"error":null}
+{"id":"multiple_102","valid":true,"error":null}
+{"id":"multiple_103","valid":true,"error":null}
+{"id":"multiple_104","valid":false,"error":{"InvalidParamValue":{"param":"origin","actual_value":"New York City, NY, USA","expected_values":["New York City","NYC"],"decoded_output":"[{\"get_shortest_driving_distance\":{\"origin\":\"New York City, NY, USA\",\"destination\":\"Washington, DC, USA\",\"unit\":\"kilometers\"}}]"}}}
+{"id":"multiple_105","valid":true,"error":null}
+{"id":"multiple_106","valid":true,"error":null}
+{"id":"multiple_107","valid":true,"error":null}
+{"id":"multiple_108","valid":true,"error":null}
+{"id":"multiple_109","valid":true,"error":null}
+{"id":"multiple_110","valid":true,"error":null}
+{"id":"multiple_111","valid":true,"error":null}
+{"id":"multiple_112","valid":true,"error":null}
+{"id":"multiple_113","valid":true,"error":null}
+{"id":"multiple_114","valid":false,"error":{"InvalidParamValue":{"param":"species","actual_value":"human","expected_values":["Homo Sapiens","Homo sapiens"],"decoded_output":"[{\"prediction.evolution\":{\"species\":\"human\",\"years\":50,\"model\":\"Darwin\"}}]"}}}
+{"id":"multiple_115","valid":false,"error":{"InvalidParamValue":{"param":"dietary_requirements","actual_value":["vegetarian"],"expected_values":[["vegan"]],"decoded_output":"[{\"find_restaurants\":{\"number\":5,\"dietary_requirements\":[\"vegetarian\"],\"location\":\"Manhattan\",\"food_type\":\"Thai\"}}]"}}}
+{"id":"multiple_116","valid":true,"error":null}
+{"id":"multiple_117","valid":true,"error":null}
+{"id":"multiple_118","valid":true,"error":null}
+{"id":"multiple_119","valid":false,"error":{"MissingRequiredParam":{"missing_param":"conditions","required_params":["table","conditions"],"decoded_output":"[{\"database.query\":{\"table\":\"users\"}}]"}}}
+{"id":"multiple_120","valid":true,"error":null}
+{"id":"multiple_121","valid":true,"error":null}
+{"id":"multiple_122","valid":false,"error":{"InvalidParamValue":{"param":"target","actual_value":"Purchase Amount","expected_values":["Purchase_Amount"],"decoded_output":"[{\"run_linear_regression\":{\"standardize\":true,\"target\":\"Purchase Amount\",\"predictors\":[\"Age\",\"Income\",\"Education Level\"]}}]"}}}
+{"id":"multiple_123","valid":false,"error":{"InvalidParamValue":{"param":"round_to","actual_value":4,"expected_values":["",2],"decoded_output":"[{\"calculate_probability\":{\"round_to\":4,\"favorable_outcomes\":4,\"total_outcomes\":52}}]"}}}
+{"id":"multiple_124","valid":false,"error":{"InvalidParamValue":{"param":"round","actual_value":4,"expected_values":["",2],"decoded_output":"[{\"probabilities.calculate_single\":{\"total_outcomes\":52,\"round\":4,\"event_outcomes\":4}}]"}}}
+{"id":"multiple_125","valid":true,"error":null}
+{"id":"multiple_126","valid":true,"error":null}
+{"id":"multiple_127","valid":true,"error":null}
+{"id":"multiple_128","valid":true,"error":null}
+{"id":"multiple_129","valid":true,"error":null}
+{"id":"multiple_130","valid":true,"error":null}
+{"id":"multiple_131","valid":true,"error":null}
+{"id":"multiple_132","valid":true,"error":null}
+{"id":"multiple_133","valid":true,"error":null}
+{"id":"multiple_134","valid":true,"error":null}
+{"id":"multiple_135","valid":false,"error":{"InvalidParamValue":{"param":"court","actual_value":"Alameda County Superior Court","expected_values":["California","CA"],"decoded_output":"[{\"get_case_info\":{\"court\":\"Alameda County Superior Court\",\"info_type\":\"victim\",\"docket\":\"2022/AL2562\"}}]"}}}
+{"id":"multiple_136","valid":false,"error":{"InvalidParamValue":{"param":"type","actual_value":"violent crime","expected_values":["violent","Violent"],"decoded_output":"[{\"get_crime_rate\":{\"type\":\"violent crime\",\"year\":2020,\"city\":\"San Francisco\",\"state\":\"California\"}}]"}}}
+{"id":"multiple_137","valid":true,"error":null}
+{"id":"multiple_138","valid":false,"error":{"InvalidParamValue":{"param":"case_id","actual_value":"R v Adams","expected_values":["R vs Adams","R_vs_Adams"],"decoded_output":"[{\"legal_case.fetch\":{\"case_id\":\"R v Adams\",\"details\":true}}]"}}}
+{"id":"multiple_139","valid":true,"error":null}
+{"id":"multiple_140","valid":false,"error":{"InvalidParamValue":{"param":"company_name","actual_value":"Google LLC","expected_values":["Google"],"decoded_output":"[{\"lawsuits_search\":{\"company_name\":\"Google LLC\",\"year\":2020,\"location\":\"California\",\"case_type\":\"all\"}}]"}}}
+{"id":"multiple_141","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"lawsuit.check_case\":{\"case_id\":1234,\"closed_status\":true}},{\"lawsuit.check_case\":{\"case_id\":1234,\"closed_status\":false}}]"}}}
+{"id":"multiple_142","valid":true,"error":null}
+{"id":"multiple_143","valid":true,"error":null}
+{"id":"multiple_144","valid":true,"error":null}
+{"id":"multiple_145","valid":true,"error":null}
+{"id":"multiple_146","valid":true,"error":null}
+{"id":"multiple_147","valid":true,"error":null}
+{"id":"multiple_148","valid":true,"error":null}
+{"id":"multiple_149","valid":true,"error":null}
+{"id":"multiple_150","valid":true,"error":null}
+{"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"sub_topics","actual_value":["behavior","group dynamics"],"expected_values":[["behaviour","group dynamics"],["group dynamics","behaviour"]],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"region\":\"global\",\"sub_topics\":[\"behavior\",\"group dynamics\"],\"topic\":\"psychology\"}}]"}}}
+{"id":"multiple_152","valid":false,"error":{"InvalidParamValue":{"param":"event_type","actual_value":["war"],"expected_values":[["War"]],"decoded_output":"[{\"history.get_key_events\":{\"start_year\":1871,\"end_year\":1945,\"country\":\"Germany\",\"event_type\":[\"war\"]}}]"}}}
+{"id":"multiple_153","valid":true,"error":null}
+{"id":"multiple_154","valid":true,"error":null}
+{"id":"multiple_155","valid":false,"error":{"InvalidParamValue":{"param":"discovery","actual_value":"discovery of the neutron","expected_values":["neutron"],"decoded_output":"[{\"get_discoverer\":{\"detail\":true,\"discovery\":\"discovery of the neutron\"}}]"}}}
+{"id":"multiple_156","valid":false,"error":{"InvalidParamValue":{"param":"category","actual_value":"All","expected_values":["","all"],"decoded_output":"[{\"historical_contrib.get_contrib\":{\"scientist\":\"Albert Einstein\",\"category\":\"All\",\"date\":\"1915-03-17\"}}]"}}}
+{"id":"multiple_157","valid":false,"error":{"InvalidParamValue":{"param":"source","actual_value":"scriptures","expected_values":["historical records"],"decoded_output":"[{\"get_earliest_reference\":{\"source\":\"scriptures\",\"name\":\"Jesus Christ\"}}]"}}}
+{"id":"multiple_158","valid":true,"error":null}
+{"id":"multiple_159","valid":true,"error":null}
+{"id":"multiple_160","valid":false,"error":{"InvalidParamValue":{"param":"artist_name","actual_value":"Jaume Plensa","expected_values":["James Plensa"],"decoded_output":"[{\"get_sculpture_info\":{\"detail\":true,\"artist_name\":\"Jaume Plensa\"}}]"}}}
+{"id":"multiple_161","valid":false,"error":{"InvalidParamValue":{"param":"month","actual_value":"January 2026","expected_values":["upcoming","next month","upcoming month","next",""],"decoded_output":"[{\"find_exhibition\":{\"location\":\"New York, NY\",\"user_ratings\":\"high\",\"month\":\"January 2026\",\"art_form\":\"modern sculpture\"}}]"}}}
+{"id":"multiple_162","valid":true,"error":null}
+{"id":"multiple_163","valid":true,"error":null}
+{"id":"multiple_164","valid":true,"error":null}
+{"id":"multiple_165","valid":false,"error":{"InvalidParamValue":{"param":"condition","actual_value":"excellent","expected_values":["Excellent"],"decoded_output":"[{\"guitar_price.find\":{\"model\":\"Gibson Les Paul\",\"condition\":\"excellent\",\"location\":\"Chicago, IL\"}}]"}}}
+{"id":"multiple_166","valid":false,"error":{"InvalidParamValue":{"param":"price_range","actual_value":"under $50","expected_values":["cheap"],"decoded_output":"[{\"concert.search\":{\"date\":\"this weekend\",\"genre\":\"classical\",\"price_range\":\"under $50\",\"location\":\"Los Angeles\"}}]"}}}
+{"id":"multiple_167","valid":true,"error":null}
+{"id":"multiple_168","valid":true,"error":null}
+{"id":"multiple_169","valid":true,"error":null}
+{"id":"multiple_170","valid":true,"error":null}
+{"id":"multiple_171","valid":false,"error":{"InvalidParamValue":{"param":"teams","actual_value":["Los Angeles Lakers","Los Angeles Clippers"],"expected_values":[["Lakers","Clippers"],["Clippers","Lakers"]],"decoded_output":"[{\"game_result.get_winner\":{\"venue\":\"\",\"teams\":[\"Los Angeles Lakers\",\"Los Angeles Clippers\"],\"date\":\"2021-01-28\"}}]"}}}
+{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"sport","actual_value":"basketball","expected_values":["Basketball"],"decoded_output":"[{\"sports_db.find_athlete\":{\"team\":\"\",\"sport\":\"basketball\",\"name\":\"LeBron James\"}}]"}}}
+{"id":"multiple_173","valid":false,"error":{"InvalidParamValue":{"param":"top","actual_value":30,"expected_values":[1,""],"decoded_output":"[{\"get_defense_ranking\":{\"top\":30,\"season\":2021}}]"}}}
+{"id":"multiple_174","valid":true,"error":null}
+{"id":"multiple_175","valid":true,"error":null}
+{"id":"multiple_176","valid":true,"error":null}
+{"id":"multiple_177","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York City","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"board_game.chess.get_top_players\":{\"minimum_rating\":2300,\"location\":\"New York City\",\"number_of_players\":10}}]"}}}
+{"id":"multiple_178","valid":true,"error":null}
+{"id":"multiple_179","valid":true,"error":null}
+{"id":"multiple_180","valid":true,"error":null}
+{"id":"multiple_181","valid":true,"error":null}
+{"id":"multiple_182","valid":true,"error":null}
+{"id":"multiple_183","valid":false,"error":{"InvalidParamValue":{"param":"website","actual_value":"foodnetwork.com","expected_values":["Foodnetwork.com"],"decoded_output":"[{\"recipe_info.get_calories\":{\"optional_meal_time\":\"\",\"recipe\":\"Beef Lasagna\",\"website\":\"foodnetwork.com\"}}]"}}}
+{"id":"multiple_184","valid":false,"error":{"InvalidParamValue":{"param":"ingredients","actual_value":["pasta","cheddar cheese","mozzarella cheese","garlic","butter","milk","olive oil","black pepper","salt","fresh basil"],"expected_values":[["pasta","cheese"],["cheese","pasta"]],"decoded_output":"[{\"recipe_search\":{\"dietary_restriction\":\"Vegetarian\",\"ingredients\":[\"pasta\",\"cheddar cheese\",\"mozzarella cheese\",\"garlic\",\"butter\",\"milk\",\"olive oil\",\"black pepper\",\"salt\",\"fresh basil\"],\"servings\":2}}]"}}}
+{"id":"multiple_185","valid":false,"error":{"InvalidParamValue":{"param":"amenities","actual_value":["patio"],"expected_values":[["Patio"]],"decoded_output":"[{\"restaurant_search.find_closest\":{\"location\":\"Boston, MA\",\"cuisine\":\"Sushi\",\"amenities\":[\"patio\"]}}]"}}}
+{"id":"multiple_186","valid":false,"error":{"InvalidParamValue":{"param":"dietary_restrictions","actual_value":"vegetarian","expected_values":["vegan"],"decoded_output":"[{\"find_recipe\":{\"dietary_restrictions\":\"vegetarian\",\"recipe_type\":\"brownie\",\"time\":30}}]"}}}
+{"id":"multiple_187","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Los Angeles, CA","expected_values":["Los Angeles","LA"],"decoded_output":"[{\"whole_foods.check_price\":{\"location\":\"Los Angeles, CA\",\"items\":[\"tomatoes\",\"lettuce\"]}}]"}}}
+{"id":"multiple_188","valid":true,"error":null}
+{"id":"multiple_189","valid":true,"error":null}
+{"id":"multiple_190","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"Hilton Chicago","expected_values":["Hilton Hotel","Hilton"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hilton Chicago\",\"room_type\":\"single room\",\"start_date\":\"2022-12-10\",\"location\":\"Chicago\",\"nights\":2}}]"}}}
+{"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"room_type","actual_value":"luxury room","expected_values":["luxury","Luxury"],"decoded_output":"[{\"book_hotel\":{\"location\":\"Las Vegas\",\"start_date\":\"05-12-2022\",\"room_type\":\"luxury room\",\"view\":\"city view\",\"stay_duration\":3,\"hotel_name\":\"Paradise Hotel Las Vegas\"}}]"}}}
+{"id":"multiple_192","valid":true,"error":null}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"end_location","actual_value":"Louvre Museum, Paris","expected_values":["Louvre Museum"],"decoded_output":"[{\"maps.get_distance_duration\":{\"end_location\":\"Louvre Museum, Paris\",\"start_location\":\"Eiffel Tower, Paris\",\"traffic\":false}}]"}}}
+{"id":"multiple_194","valid":false,"error":{"InvalidParamValue":{"param":"museum_name","actual_value":"The Metropolitan Museum of Art","expected_values":["Metropolitan Museum of Art","The Met","Met Museum"],"decoded_output":"[{\"get_museum_hours\":{\"museum_name\":\"The Metropolitan Museum of Art\",\"day\":\"Saturday\"}}]"}}}
+{"id":"multiple_195","valid":true,"error":null}
+{"id":"multiple_196","valid":false,"error":{"InvalidParamValue":{"param":"include_description","actual_value":true,"expected_values":["",false],"decoded_output":"[{\"cellbio.get_proteins\":{\"cell_compartment\":\"plasma membrane\",\"include_description\":true}}]"}}}
+{"id":"multiple_197","valid":true,"error":null}
+{"id":"multiple_198","valid":true,"error":null}
+{"id":"multiple_199","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Yellowstone National Park","expected_values":["Yellowstone","yellowstone"],"decoded_output":"[{\"forest_growth_forecast\":{\"location\":\"Yellowstone National Park\",\"years\":5,\"include_human_impact\":true}}]"}}}

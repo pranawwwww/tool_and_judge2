@@ -6,10 +6,8 @@ use pyo3::{
 };
 use std::{
     collections::HashMap,
-    fs::{self, File, OpenOptions},
-    hash::Hash,
-    io::Write,
-    sync::{Arc, atomic::AtomicUsize},
+    fs::{self, File},
+    sync::{Arc, atomic::{AtomicBool, AtomicUsize, Ordering}},
 };
 
 use crate::{
@@ -74,8 +72,22 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
     println!("Loaded environment variables from .env file.");
     println!("Starting tool run with {} configs.", config_len);
 
+    // Set up Ctrl+C handler for graceful shutdown
+    let shutdown = Arc::new(AtomicBool::new(false));
+    let shutdown_clone = shutdown.clone();
+    ctrlc::set_handler(move || {
+        println!("\n⚠️  Ctrl+C detected! Finishing current task and shutting down...");
+        shutdown_clone.store(true, Ordering::SeqCst);
+    }).expect("Error setting Ctrl+C handler");
+
     let function_name_mapper = Arc::new(AtomicRefCell::new(FunctionNameMapper::new()));
     for config in extracted_configs {
+        // Check for shutdown signal between configs
+        if shutdown.load(Ordering::SeqCst) {
+            println!("⚠️  Shutdown requested. Stopping before next config.");
+            break;
+        }
+
         println!("Processing config: {:?}", config);
         let language_tag = match &config.translate_mode {
             TranslateMode::Translated { language, .. } => match language {

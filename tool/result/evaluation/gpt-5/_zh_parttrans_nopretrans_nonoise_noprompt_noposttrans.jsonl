@@ -1,0 +1,200 @@
+{"id":"multiple_0","valid":true,"error":null}
+{"id":"multiple_1","valid":true,"error":null}
+{"id":"multiple_2","valid":true,"error":null}
+{"id":"multiple_3","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":3,"expected_values":["",0],"decoded_output":"[{\"EuclideanDistance.calculate\":{\"pointA\":[3,4],\"pointB\":[1,2],\"rounding\":3}}]"}}}
+{"id":"multiple_4","valid":true,"error":null}
+{"id":"multiple_5","valid":true,"error":null}
+{"id":"multiple_6","valid":true,"error":null}
+{"id":"multiple_7","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"wildlife_population.assess_growth\":{\"duration\":10,\"location\":\"Washington State\",\"species\":\"deer\"}},{\"ecological_impact.analyze\":{\"timeframe\":10,\"ecosystem\":\"forest\",\"species\":\"deer\",\"location\":\"Washington State\"}}]"}}}
+{"id":"multiple_8","valid":false,"error":{"MissingRequiredParam":{"missing_param":"budget","required_params":["location","propertyType","bedrooms","budget"],"decoded_output":"[{\"realestate.find_properties\":{\"bedrooms\":3,\"propertyType\":\"villa\",\"location\":\"San Diego, CA\"}}]"}}}
+{"id":"multiple_9","valid":false,"error":{"MissingRequiredParam":{"missing_param":"gradeDict","required_params":["gradeDict"],"decoded_output":"[{\"calculate_average\":{}}]"}}}
+{"id":"multiple_10","valid":false,"error":{"WrongFuncName":{"expected_name":"database.modify_columns","actual_name":"database.create_backup","decoded_output":"[{\"database.create_backup\":{\"timestamp\":true,\"db_name\":\"employees\",\"backup_location\":\"/var/backups/employees_privacy_cleanup\"}}]"}}}
+{"id":"multiple_11","valid":true,"error":null}
+{"id":"multiple_12","valid":true,"error":null}
+{"id":"multiple_13","valid":true,"error":null}
+{"id":"multiple_14","valid":true,"error":null}
+{"id":"multiple_15","valid":true,"error":null}
+{"id":"multiple_16","valid":true,"error":null}
+{"id":"multiple_17","valid":true,"error":null}
+{"id":"multiple_18","valid":true,"error":null}
+{"id":"multiple_19","valid":true,"error":null}
+{"id":"multiple_20","valid":true,"error":null}
+{"id":"multiple_21","valid":true,"error":null}
+{"id":"multiple_22","valid":true,"error":null}
+{"id":"multiple_23","valid":true,"error":null}
+{"id":"multiple_24","valid":true,"error":null}
+{"id":"multiple_25","valid":true,"error":null}
+{"id":"multiple_26","valid":false,"error":{"WrongFuncName":{"expected_name":"game_rewards.get","actual_name":"game_missions.list","decoded_output":"[{\"game_missions.list\":{\"game\":\"Fortnite\"}}]"}}}
+{"id":"multiple_27","valid":true,"error":null}
+{"id":"multiple_28","valid":true,"error":null}
+{"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
+{"id":"multiple_30","valid":true,"error":null}
+{"id":"multiple_31","valid":true,"error":null}
+{"id":"multiple_32","valid":true,"error":null}
+{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3x^2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"a\":1,\"func\":\"3x^2\",\"b\":2}}]"}}}
+{"id":"multiple_34","valid":true,"error":null}
+{"id":"multiple_35","valid":true,"error":null}
+{"id":"multiple_36","valid":true,"error":null}
+{"id":"multiple_37","valid":true,"error":null}
+{"id":"multiple_38","valid":true,"error":null}
+{"id":"multiple_39","valid":true,"error":null}
+{"id":"multiple_40","valid":true,"error":null}
+{"id":"multiple_41","valid":true,"error":null}
+{"id":"multiple_42","valid":true,"error":null}
+{"id":"multiple_43","valid":true,"error":null}
+{"id":"multiple_44","valid":true,"error":null}
+{"id":"multiple_45","valid":true,"error":null}
+{"id":"multiple_46","valid":true,"error":null}
+{"id":"multiple_47","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":6,"expected_values":["",0],"decoded_output":"[{\"cosine_similarity.calculate\":{\"vector2\":[1,2,3],\"vector1\":[3,2,1],\"rounding\":6}}]"}}}
+{"id":"multiple_48","valid":true,"error":null}
+{"id":"multiple_49","valid":true,"error":null}
+{"id":"multiple_50","valid":true,"error":null}
+{"id":"multiple_51","valid":true,"error":null}
+{"id":"multiple_52","valid":true,"error":null}
+{"id":"multiple_53","valid":false,"error":{"WrongFuncName":{"expected_name":"linear_regression","actual_name":"random_forest_regression","decoded_output":"[{\"random_forest_regression\":{\"n_estimators\":200,\"forecast_period\":5,\"independent_var\":[\"interest rates\",\"unemployment rates\"],\"dependent_var\":\"house price\"}}]"}}}
+{"id":"multiple_54","valid":false,"error":{"InvalidParamValue":{"param":"frequency","actual_value":"quarterly","expected_values":["","annually"],"decoded_output":"[{\"corporate_finance.dividend_data\":{\"frequency\":\"quarterly\",\"years\":5,\"company\":\"Apple Inc\"}}]"}}}
+{"id":"multiple_55","valid":true,"error":null}
+{"id":"multiple_56","valid":true,"error":null}
+{"id":"multiple_57","valid":true,"error":null}
+{"id":"multiple_58","valid":true,"error":null}
+{"id":"multiple_59","valid":true,"error":null}
+{"id":"multiple_60","valid":true,"error":null}
+{"id":"multiple_61","valid":true,"error":null}
+{"id":"multiple_62","valid":false,"error":{"InvalidParamValue":{"param":"features","actual_value":["camping","scenic view"],"expected_values":[["Camping","Scenic View"],["Scenic View","Camping"]],"decoded_output":"[{\"nature_park.find_nearby\":{\"features\":[\"camping\",\"scenic view\"],\"location\":\"Boston, MA\"}}]"}}}
+{"id":"multiple_63","valid":true,"error":null}
+{"id":"multiple_64","valid":true,"error":null}
+{"id":"multiple_65","valid":false,"error":{"InvalidParamValue":{"param":"unit","actual_value":"km","expected_values":["miles",""],"decoded_output":"[{\"geodistance.find\":{\"destination\":\"Los Angeles\",\"origin\":\"New York City\",\"unit\":\"km\"}}]"}}}
+{"id":"multiple_66","valid":true,"error":null}
+{"id":"multiple_67","valid":true,"error":null}
+{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"title\":\"\",\"genre\":\"historical fiction\",\"location\":\"New York Public Library\"}}]"}}}
+{"id":"multiple_69","valid":true,"error":null}
+{"id":"multiple_70","valid":true,"error":null}
+{"id":"multiple_71","valid":true,"error":null}
+{"id":"multiple_72","valid":true,"error":null}
+{"id":"multiple_73","valid":true,"error":null}
+{"id":"multiple_74","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":20,"decoded_output":"[{\"art_auction.fetch_artwork_price\":{\"platform\":\"Christie's\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Sotheby's\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Phillips\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Bonhams\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Heritage Auctions\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Poly Auction\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"China Guardian\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Artcurial\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Dorotheum\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Bukowskis\",\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Christie's\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Sotheby's\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Phillips\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Bonhams\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Heritage Auctions\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Poly Auction\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"China Guardian\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Artcurial\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Dorotheum\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}},{\"art_auction.fetch_artwork_price\":{\"platform\":\"Bukowskis\",\"artwork_name\":\"The Starry Night\",\"artist\":\"Vincent van Gogh\"}}]"}}}
+{"id":"multiple_75","valid":true,"error":null}
+{"id":"multiple_76","valid":true,"error":null}
+{"id":"multiple_77","valid":true,"error":null}
+{"id":"multiple_78","valid":true,"error":null}
+{"id":"multiple_79","valid":true,"error":null}
+{"id":"multiple_80","valid":false,"error":{"InvalidParamValue":{"param":"services","actual_value":["violin lessons"],"expected_values":[["Violin Lessons"]],"decoded_output":"[{\"music_shop.find_nearby\":{\"location\":\"Nashville, TN\",\"services\":[\"violin lessons\"],\"instruments\":[\"guitars\"]}}]"}}}
+{"id":"multiple_81","valid":true,"error":null}
+{"id":"multiple_82","valid":true,"error":null}
+{"id":"multiple_83","valid":true,"error":null}
+{"id":"multiple_84","valid":true,"error":null}
+{"id":"multiple_85","valid":true,"error":null}
+{"id":"multiple_86","valid":true,"error":null}
+{"id":"multiple_87","valid":true,"error":null}
+{"id":"multiple_88","valid":true,"error":null}
+{"id":"multiple_89","valid":true,"error":null}
+{"id":"multiple_90","valid":true,"error":null}
+{"id":"multiple_91","valid":true,"error":null}
+{"id":"multiple_92","valid":false,"error":{"InvalidParamValue":{"param":"categories","actual_value":[],"expected_values":[["vegan","gluten-free"],["gluten-free","vegan"]],"decoded_output":"[{\"walmart.vegan_products\":{\"categories\":[],\"location\":\"Denver, CO\"}}]"}}}
+{"id":"multiple_93","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Marriott","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"hotel.book\":{\"location\":\"New York Marriott\",\"nights\":2,\"additional_services\":[\"breakfast\"],\"roomType\":\"deluxe\"}}]"}}}
+{"id":"multiple_94","valid":true,"error":null}
+{"id":"multiple_95","valid":true,"error":null}
+{"id":"multiple_96","valid":true,"error":null}
+{"id":"multiple_97","valid":true,"error":null}
+{"id":"multiple_98","valid":true,"error":null}
+{"id":"multiple_99","valid":false,"error":{"InvalidParamValue":{"param":"function","actual_value":"2*x^2","expected_values":["2x**2","lambda x: 2x**2"],"decoded_output":"[{\"calculus.derivative\":{\"function_variable\":\"x\",\"function\":\"2*x^2\",\"value\":1}}]"}}}
+{"id":"multiple_100","valid":true,"error":null}
+{"id":"multiple_101","valid":true,"error":null}
+{"id":"multiple_102","valid":true,"error":null}
+{"id":"multiple_103","valid":true,"error":null}
+{"id":"multiple_104","valid":true,"error":null}
+{"id":"multiple_105","valid":true,"error":null}
+{"id":"multiple_106","valid":true,"error":null}
+{"id":"multiple_107","valid":true,"error":null}
+{"id":"multiple_108","valid":true,"error":null}
+{"id":"multiple_109","valid":false,"error":{"InvalidParamValue":{"param":"include_description","actual_value":true,"expected_values":[false,""],"decoded_output":"[{\"cellbio.get_proteins\":{\"include_description\":true,\"cell_compartment\":\"plasma membrane\"}}]"}}}
+{"id":"multiple_110","valid":true,"error":null}
+{"id":"multiple_111","valid":false,"error":{"InvalidParamValue":{"param":"genotype","actual_value":"homozygous dominant","expected_values":["AA"],"decoded_output":"[{\"calculate_genotype_frequency\":{\"allele_frequency\":0.3,\"genotype\":\"homozygous dominant\"}}]"}}}
+{"id":"multiple_112","valid":true,"error":null}
+{"id":"multiple_113","valid":true,"error":null}
+{"id":"multiple_114","valid":true,"error":null}
+{"id":"multiple_115","valid":true,"error":null}
+{"id":"multiple_116","valid":true,"error":null}
+{"id":"multiple_117","valid":true,"error":null}
+{"id":"multiple_118","valid":true,"error":null}
+{"id":"multiple_119","valid":false,"error":{"MissingRequiredParam":{"missing_param":"conditions","required_params":["table","conditions"],"decoded_output":"[{\"database.query\":{\"table\":\"user\"}}]"}}}
+{"id":"multiple_120","valid":true,"error":null}
+{"id":"multiple_121","valid":true,"error":null}
+{"id":"multiple_122","valid":true,"error":null}
+{"id":"multiple_123","valid":false,"error":{"InvalidParamValue":{"param":"round_to","actual_value":4,"expected_values":["",2],"decoded_output":"[{\"calculate_probability\":{\"favorable_outcomes\":4,\"total_outcomes\":52,\"round_to\":4}}]"}}}
+{"id":"multiple_124","valid":false,"error":{"InvalidParamValue":{"param":"round","actual_value":4,"expected_values":["",2],"decoded_output":"[{\"probabilities.calculate_single\":{\"total_outcomes\":52,\"event_outcomes\":4,\"round\":4}}]"}}}
+{"id":"multiple_125","valid":true,"error":null}
+{"id":"multiple_126","valid":true,"error":null}
+{"id":"multiple_127","valid":true,"error":null}
+{"id":"multiple_128","valid":true,"error":null}
+{"id":"multiple_129","valid":true,"error":null}
+{"id":"multiple_130","valid":true,"error":null}
+{"id":"multiple_131","valid":true,"error":null}
+{"id":"multiple_132","valid":true,"error":null}
+{"id":"multiple_133","valid":true,"error":null}
+{"id":"multiple_134","valid":true,"error":null}
+{"id":"multiple_135","valid":true,"error":null}
+{"id":"multiple_136","valid":true,"error":null}
+{"id":"multiple_137","valid":true,"error":null}
+{"id":"multiple_138","valid":true,"error":null}
+{"id":"multiple_139","valid":true,"error":null}
+{"id":"multiple_140","valid":true,"error":null}
+{"id":"multiple_141","valid":true,"error":null}
+{"id":"multiple_142","valid":true,"error":null}
+{"id":"multiple_143","valid":true,"error":null}
+{"id":"multiple_144","valid":true,"error":null}
+{"id":"multiple_145","valid":true,"error":null}
+{"id":"multiple_146","valid":true,"error":null}
+{"id":"multiple_147","valid":true,"error":null}
+{"id":"multiple_148","valid":true,"error":null}
+{"id":"multiple_149","valid":true,"error":null}
+{"id":"multiple_150","valid":true,"error":null}
+{"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"sub_topics","actual_value":["behavior","behaviour","group dynamics"],"expected_values":[["behaviour","group dynamics"],["group dynamics","behaviour"]],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"region\":\"global\",\"sub_topics\":[\"behavior\",\"behaviour\",\"group dynamics\"],\"topic\":\"psychology\"}}]"}}}
+{"id":"multiple_152","valid":false,"error":{"InvalidParamValue":{"param":"event_type","actual_value":["war"],"expected_values":[["War"]],"decoded_output":"[{\"history.get_key_events\":{\"country\":\"Germany\",\"start_year\":1871,\"event_type\":[\"war\"],\"end_year\":1945}}]"}}}
+{"id":"multiple_153","valid":true,"error":null}
+{"id":"multiple_154","valid":true,"error":null}
+{"id":"multiple_155","valid":true,"error":null}
+{"id":"multiple_156","valid":false,"error":{"InvalidParamValue":{"param":"category","actual_value":"All","expected_values":["","all"],"decoded_output":"[{\"historical_contrib.get_contrib\":{\"category\":\"All\",\"scientist\":\"Albert Einstein\",\"date\":\"1915-03-17\"}}]"}}}
+{"id":"multiple_157","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":3,"decoded_output":"[{\"get_earliest_reference\":{\"name\":\"Jesus Christ\",\"source\":\"scriptures\"}},{\"get_earliest_reference\":{\"name\":\"Jesus Christ\",\"source\":\"Roman historians\"}},{\"get_earliest_reference\":{\"name\":\"Jesus Christ\",\"source\":\"Jewish historians\"}}]"}}}
+{"id":"multiple_158","valid":true,"error":null}
+{"id":"multiple_159","valid":true,"error":null}
+{"id":"multiple_160","valid":false,"error":{"InvalidParamValue":{"param":"artist_name","actual_value":"Jaume Plensa","expected_values":["James Plensa"],"decoded_output":"[{\"get_sculpture_info\":{\"artist_name\":\"Jaume Plensa\",\"detail\":true}}]"}}}
+{"id":"multiple_161","valid":true,"error":null}
+{"id":"multiple_162","valid":true,"error":null}
+{"id":"multiple_163","valid":true,"error":null}
+{"id":"multiple_164","valid":true,"error":null}
+{"id":"multiple_165","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Chicago, IL","expected_values":["Chicago","Chicago area"],"decoded_output":"[{\"guitar_price.find\":{\"location\":\"Chicago, IL\",\"condition\":\"Excellent\",\"model\":\"Gibson Les Paul\"}}]"}}}
+{"id":"multiple_166","valid":true,"error":null}
+{"id":"multiple_167","valid":true,"error":null}
+{"id":"multiple_168","valid":true,"error":null}
+{"id":"multiple_169","valid":true,"error":null}
+{"id":"multiple_170","valid":true,"error":null}
+{"id":"multiple_171","valid":true,"error":null}
+{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"name","actual_value":"LeBron James","expected_values":["Lebron James"],"decoded_output":"[{\"sports_db.find_athlete\":{\"sport\":\"Basketball\",\"team\":\"\",\"name\":\"LeBron James\"}}]"}}}
+{"id":"multiple_173","valid":false,"error":{"InvalidParamValue":{"param":"top","actual_value":30,"expected_values":[1,""],"decoded_output":"[{\"get_defense_ranking\":{\"season\":2021,\"top\":30}}]"}}}
+{"id":"multiple_174","valid":true,"error":null}
+{"id":"multiple_175","valid":true,"error":null}
+{"id":"multiple_176","valid":true,"error":null}
+{"id":"multiple_177","valid":true,"error":null}
+{"id":"multiple_178","valid":true,"error":null}
+{"id":"multiple_179","valid":true,"error":null}
+{"id":"multiple_180","valid":true,"error":null}
+{"id":"multiple_181","valid":true,"error":null}
+{"id":"multiple_182","valid":true,"error":null}
+{"id":"multiple_183","valid":true,"error":null}
+{"id":"multiple_184","valid":true,"error":null}
+{"id":"multiple_185","valid":true,"error":null}
+{"id":"multiple_186","valid":true,"error":null}
+{"id":"multiple_187","valid":true,"error":null}
+{"id":"multiple_188","valid":true,"error":null}
+{"id":"multiple_189","valid":true,"error":null}
+{"id":"multiple_190","valid":false,"error":{"InvalidParamValue":{"param":"room_type","actual_value":"single room","expected_values":["single","Single"],"decoded_output":"[{\"book_hotel\":{\"start_date\":\"2022-12-10\",\"room_type\":\"single room\",\"nights\":2,\"hotel_name\":\"Hilton Hotel\",\"location\":\"Chicago\"}}]"}}}
+{"id":"multiple_191","valid":true,"error":null}
+{"id":"multiple_192","valid":true,"error":null}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"end_location","actual_value":"Louvre Museum, Paris, France","expected_values":["Louvre Museum"],"decoded_output":"[{\"maps.get_distance_duration\":{\"end_location\":\"Louvre Museum, Paris, France\",\"traffic\":false,\"start_location\":\"Eiffel Tower, Paris, France\"}}]"}}}
+{"id":"multiple_194","valid":true,"error":null}
+{"id":"multiple_195","valid":true,"error":null}
+{"id":"multiple_196","valid":true,"error":null}
+{"id":"multiple_197","valid":true,"error":null}
+{"id":"multiple_198","valid":true,"error":null}
+{"id":"multiple_199","valid":true,"error":null}

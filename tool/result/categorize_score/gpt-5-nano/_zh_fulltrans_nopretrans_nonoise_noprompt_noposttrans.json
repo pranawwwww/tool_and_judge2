@@ -1,42 +1,28 @@
 {
   "summary": {
     "WrongValue": 3,
-    "ExactlySameMeaning": 29,
-    "RelevantButIncorrect": 20,
     "LanguageMismatchExactlySameMeaning": 10,
+    "RelevantButIncorrect": 20,
+    "ExactlySameMeaning": 29,
     "MiscError": 12
   },
   "samples": {
-    "ExactlySameMeaning": [
-      "multiple_29",
-      "multiple_33",
-      "multiple_45",
-      "multiple_48",
-      "multiple_56",
-      "multiple_61",
-      "multiple_62",
-      "multiple_68",
-      "multiple_80",
-      "multiple_81",
-      "multiple_90",
-      "multiple_92",
-      "multiple_107",
-      "multiple_115",
-      "multiple_138",
-      "multiple_140",
-      "multiple_147",
-      "multiple_148",
-      "multiple_151",
-      "multiple_153",
-      "multiple_156",
-      "multiple_161",
-      "multiple_171",
-      "multiple_172",
-      "multiple_177",
-      "multiple_181",
-      "multiple_185",
-      "multiple_194",
-      "multiple_199"
+    "LanguageMismatchExactlySameMeaning": [
+      "multiple_38",
+      "multiple_73",
+      "multiple_78",
+      "multiple_89",
+      "multiple_93",
+      "multiple_121",
+      "multiple_122",
+      "multiple_160",
+      "multiple_187",
+      "multiple_191"
+    ],
+    "WrongValue": [
+      "multiple_105",
+      "multiple_109",
+      "multiple_139"
     ],
     "RelevantButIncorrect": [
       "multiple_4",
@@ -74,22 +60,36 @@
       "multiple_83",
       "multiple_119"
     ],
-    "WrongValue": [
-      "multiple_105",
-      "multiple_109",
-      "multiple_139"
-    ],
-    "LanguageMismatchExactlySameMeaning": [
-      "multiple_38",
-      "multiple_73",
-      "multiple_78",
-      "multiple_89",
-      "multiple_93",
-      "multiple_121",
-      "multiple_122",
-      "multiple_160",
-      "multiple_187",
-      "multiple_191"
+    "ExactlySameMeaning": [
+      "multiple_29",
+      "multiple_33",
+      "multiple_45",
+      "multiple_48",
+      "multiple_56",
+      "multiple_61",
+      "multiple_62",
+      "multiple_68",
+      "multiple_80",
+      "multiple_81",
+      "multiple_90",
+      "multiple_92",
+      "multiple_107",
+      "multiple_115",
+      "multiple_138",
+      "multiple_140",
+      "multiple_147",
+      "multiple_148",
+      "multiple_151",
+      "multiple_153",
+      "multiple_156",
+      "multiple_161",
+      "multiple_171",
+      "multiple_172",
+      "multiple_177",
+      "multiple_181",
+      "multiple_185",
+      "multiple_194",
+      "multiple_199"
     ]
   }
 }
