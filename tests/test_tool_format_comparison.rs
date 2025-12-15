@@ -42,7 +42,9 @@ fn test_rust_tool_format_generation() {
             .expect(&format!("Failed to parse JSON at line {}", line_num + 1));
 
         // Deserialize to BfclDatasetEntry
-        let dataset_entry = BfclDatasetEntry::deserialize_from_json(raw_entry.clone())
+        // let dataset_entry = BfclDatasetEntry::deserialize_from_json(raw_entry.clone())
+        //     .expect(&format!("Failed to deserialize entry at line {}", line_num + 1));
+        let dataset_entry: BfclDatasetEntry = serde_json::from_value(raw_entry)
             .expect(&format!("Failed to deserialize entry at line {}", line_num + 1));
 
         // Create a function name mapper for this entry
@@ -50,7 +52,7 @@ fn test_rust_tool_format_generation() {
 
         // Generate GPT-5 tools using the Rust implementation
         let gpt5_tools = Gpt5Interface::sanitize_and_convert_function_format(
-            &dataset_entry.functions,
+            &dataset_entry.function,
             &mut name_mapper,
         );
 
@@ -61,7 +63,7 @@ fn test_rust_tool_format_generation() {
         // Create result object with id and tools
         let result = serde_json::json!({
             "id": dataset_entry.id,
-            "question": dataset_entry.question_content,
+            "question": dataset_entry.question[0][0].content,
             "tools": tools_json,
             "name_mappings": {
                 "original_to_sanitized": name_mapper.original_to_sanitized,

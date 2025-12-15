@@ -1,5 +1,9 @@
+use indexmap::IndexMap;
+
 use crate::{
-    tool_bfcl_formats::{BfclDatasetEntry, BfclGroundTruthEntry, BfclOutputFunctionCall},
+    tool_bfcl_formats::{
+        BfclDatasetEntry, BfclGroundTruthEntry, BfclOutputFunctionCall, BfclParameter,
+    },
     tool_error_analysis::EvaluationError,
     tool_file_models::{EvaluationResultEntry, InferenceJsonEntry},
 };
@@ -54,29 +58,40 @@ pub fn evaluate_entry(
             }),
         };
     }
-    let target_test_case_function = test_case_entry
+    let test_case_function_def = test_case_entry
         .function
         .iter()
         .find(|f| f.name == *output_function_name)
         .expect("The test case should contain the target function");
+
+    let test_case_outermost_properties = test_case_function_def
+        .parameters
+        .properties
+        .as_ref()
+        .expect("The outermost parameter should have a properties field");
+    let test_case_outermost_required = &test_case_function_def
+        .parameters
+        .required
+        .as_ref()
+        .expect("The outermost parameter should have a required field");
+    let decoded_output = serde_json::to_string(functions).expect("Should serialize correctly");
     // let target_function_required_parameters = &target_test_case_function.required;
     let prarameters = &function.0.value;
-    // TODO: refactor the required parameters handling
-    for required_param in target_function_required_parameters {
-        if !prarameters.contains_key(required_param) {
-            return EvaluationResultEntry {
-                id,
-                valid: false,
-                error: Some(EvaluationError::MissingRequiredParam {
-                    missing_param: required_param.clone(),
-                    required_params: target_function_required_parameters.clone(),
-                    decoded_output: serde_json::to_string(functions)
-                        .expect("Should serialize correctly"),
-                }),
-            };
-        }
+    // Checking required parameters and unexpected parameters recursively
+    if let Err(error) = check_recursively_for_required_and_unexpected(
+        prarameters,
+        test_case_outermost_properties,
+        test_case_outermost_required,
+        &decoded_output,
+    ) {
+        return EvaluationResultEntry {
+            id,
+            valid: false,
+            error: Some(error),
+        };
     }
-    let ground_truth_parameters = &ground_truth_function.parameters;
+
+    let ground_truth_parameters = &ground_truth_function.0.value;
     for (param, value) in prarameters.iter() {
         let Some(ground_truth_parameter_values) = ground_truth_parameters.get(param) else {
             return EvaluationResultEntry {
@@ -109,6 +124,81 @@ pub fn evaluate_entry(
         valid: true,
         error: None,
     }
+}
+
+// enum RecursiveCheckResult {
+//     Valid,
+//     MissingRequiredParam {
+//         missing_param: String,
+//         required_params: Vec<String>,
+//     },
+//     UnexpectedParam {
+//         unexpected_param: String,
+//         expected_params: Vec<String>,
+//     },
+//     InvalidParamType,
+//     InvalidParamValue {
+//         param: String,
+//         actual_value: serde_json::Value,
+//         expected_values: Vec<serde_json::Value>,
+//     },
+// }
+
+fn check_recursively_for_required_and_unexpected(
+    parameters: &IndexMap<String, serde_json::Value>,
+    // parameters_def: &BfclParameter,
+    properties_def: &IndexMap<String, BfclParameter>,
+    required_params: &Vec<String>,
+    decoded_output: &String,
+    // required_params: &Vec<String>,
+) -> Result<(), EvaluationError> {
+    for required_param in required_params {
+        if !parameters.contains_key(required_param) {
+            return Err(EvaluationError::MissingRequiredParam {
+                missing_param: required_param.clone(),
+                required_params: required_params.clone(),
+                decoded_output: decoded_output.clone(),
+            });
+        }
+    }
+    // recursively check the sub-parameters
+    for (parameter_name, parameter_value) in parameters.iter() {
+        let Some(parameter_def) = properties_def.get(parameter_name) else {
+            return Err(EvaluationError::UnexpectedParam {
+                unexpected_param: parameter_name.clone(),
+                expected_params: properties_def.keys().cloned().collect(),
+                decoded_output: decoded_output.clone(),
+            });
+        };
+        let (Some(sub_properties), Some(sub_required_params)) =
+            (&parameter_def.properties, &parameter_def.required)
+        else {
+            assert!(
+                parameter_def.properties.is_none() && parameter_def.required.is_none(),
+                "If one of required or properties is None, both should be None, but got required is {:?} and properties is {:?}",
+                parameter_def.required,
+                parameter_def.properties
+            );
+            // if there are no required parameters for this property, skip to next
+            continue;
+        };
+        // this parameter shoud be a dict / object
+        let serde_json::Value::Object(sub_parameters_map) = parameter_value else {
+            // The parameter value does not have the correct type, stop doing recursive checking for required and unexpected sub-parameters.
+            // The type error will be caught at the invalid value checking stage.
+            return Ok(());
+        };
+        // Convert the Map<String, Value> to IndexMap<String, Value>
+        let sub_parameters_map: IndexMap<String, serde_json::Value> =
+            sub_parameters_map.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
+        check_recursively_for_required_and_unexpected(
+            &sub_parameters_map,
+            sub_properties,
+            sub_required_params,
+            decoded_output,
+        )?; // "?" is a syntax sugar that returns the function's return value if error occurs
+    }
+    Ok(())
 }
 
 fn value_matches_list(value: &serde_json::Value, expected_list: &Vec<serde_json::Value>) -> bool {

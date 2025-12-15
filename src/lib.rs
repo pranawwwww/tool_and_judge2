@@ -12,6 +12,7 @@ pub mod tool_evaluate;
 pub mod tool_categorize;
 pub mod util;
 pub mod one_entry_map;
+pub mod single_or_list;
 
 #[pymodule]
 pub mod codebase_rs {

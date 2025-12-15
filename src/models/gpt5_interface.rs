@@ -5,6 +5,8 @@ use crate::{
         api_backend::ApiBackend, backend::ModelBackend, function_name_mapper::FunctionNameMapper,
         model_interface::ModelInterface,
     },
+    one_entry_map::KeyValuePair,
+    single_or_list::SingleOrList,
     tool_bfcl_formats::{
         BfclFunctionDef, BfclGroundTruthFunctionCall, BfclOutputFunctionCall, BfclParameter,
     },
@@ -19,77 +21,90 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use serde_json::json;
 
+/// https://platform.openai.com/docs/guides/function-calling?strict-mode=enabled#defining-functions
 #[derive(Serialize)]
 pub struct Gpt5Tool {
     #[serde(rename = "type")]
     pub ty: String,
     pub name: String,
     pub description: String,
-    pub parameters: Gpt5Parameters,
+    pub strict: bool,
+    pub parameters: Gpt5Parameter,
 }
-
+/// JSON Schema for GPT-5 function parameters
 #[derive(Serialize)]
-pub struct Gpt5Parameters {
-    #[serde(rename = "type")]
-    pub ty: String,
-    pub properties: IndexMap<String, Gpt5PropertyValue>,
-    pub required: Vec<String>,
-}
-
-fn type_is_any(s: &String) -> bool {
-    s == "any"
-}
-
-#[derive(Serialize)]
-pub struct Gpt5PropertyValue {
+pub struct Gpt5Parameter {
     #[serde(rename = "type", skip_serializing_if = "type_is_any")]
-    pub ty: String,
+    pub ty: SingleOrList<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub items: Option<IndexMap<String, String>>,
+    pub properties: Option<IndexMap<String, Gpt5Parameter>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub items: Option<Box<Gpt5Parameter>>,
+    #[serde(rename = "enum", skip_serializing_if = "Option::is_none")]
+    pub r#enum: Option<Vec<serde_json::Value>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub required: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<serde_json::Value>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub properties: Option<IndexMap<String, Gpt5PropertyValue>>,
-    pub description: String,
 }
 
-#[derive(Clone)]
+fn type_is_any(s: &SingleOrList<String>) -> bool {
+    match s {
+        SingleOrList::Single(val) => val == "any",
+        SingleOrList::List(vals) => vals.iter().any(|v| v == "any"),
+    }
+}
+
+// #[derive(Serialize)]
+// pub struct Gpt5PropertyValue {
+//     #[serde(rename = "type", skip_serializing_if = "type_is_any")]
+//     pub ty: String,
+//     #[serde(skip_serializing_if = "Option::is_none")]
+//     pub items: Option<IndexMap<String, String>>,
+//     #[serde(skip_serializing_if = "Option::is_none")]
+//     pub default: Option<serde_json::Value>,
+//     #[serde(skip_serializing_if = "Option::is_none")]
+//     pub properties: Option<IndexMap<String, Gpt5PropertyValue>>,
+//     pub description: String,
+// }
+
+#[derive(Deserialize, Clone)]
 pub struct Gpt5OutputFunctionCall {
     name: String,
     arguments: IndexMap<String, serde_json::Value>,
 }
 
 impl Gpt5OutputFunctionCall {
-    pub fn try_deserialize_from_json(
-        json_value: &serde_json::Value,
-        raw_output: &str,
-    ) -> Result<Gpt5OutputFunctionCall, EvaluationError> {
-        let json_obj = json_value
-            .as_object()
-            .expect("This is tested before calling this function");
-        let name = json_obj
-            .get("name")
-            .and_then(|s| s.as_str())
-            .ok_or_else(|| EvaluationError::ParsingError {
-                error_message: "Missing parameter 'name' or 'name' is not of type 'str'".into(),
-                raw_output: raw_output.into(),
-            })?
-            .to_string();
-        let arguments_str = json_obj
-            .get("arguments")
-            .and_then(|s| s.as_str())
-            .ok_or_else(|| EvaluationError::ParsingError {
-                error_message: "Missing parameter 'arguments' or 'arguments' is not of type 'str'"
-                    .into(),
-                raw_output: raw_output.into(),
-            })?;
-        let arguments = serde_json::from_str::<IndexMap<String, serde_json::Value>>(arguments_str)
-            .map_err(|e| EvaluationError::JsonDecodeError {
-                error_message: e.to_string(),
-                raw_output: raw_output.into(),
-            })?;
-        Ok(Gpt5OutputFunctionCall { name, arguments })
-    }
+    // pub fn try_deserialize_from_json(
+    //     json_value: &serde_json::Value,
+    //     raw_output: &str,
+    // ) -> Result<Gpt5OutputFunctionCall, EvaluationError> {
+    //     let json_obj = json_value
+    //         .as_object()
+    //         .expect("This is tested before calling this function");
+    //     let name = json_obj
+    //         .get("name")
+    //         .and_then(|s| s.as_str())
+    //         .ok_or_else(|| EvaluationError::ParsingError {
+    //             error_message: "Missing parameter 'name' or 'name' is not of type 'str'".into(),
+    //             raw_output: raw_output.into(),
+    //         })?
+    //         .to_string();
+    //     let arguments_str = json_obj
+    //         .get("arguments")
+    //         .and_then(|s| s.as_str())
+    //         .ok_or_else(|| EvaluationError::ParsingError {
+    //             error_message: "Missing parameter 'arguments' or 'arguments' is not of type 'str'"
+    //                 .into(),
+    //             raw_output: raw_output.into(),
+    //         })?;
+    //     let arguments = serde_json::from_str::<IndexMap<String, serde_json::Value>>(arguments_str)
+    //         .map_err(|e| EvaluationError::JsonDecodeError {
+    //             error_message: e.to_string(),
+    //             raw_output: raw_output.into(),
+    //         })?;
+    //     Ok(Gpt5OutputFunctionCall { name, arguments })
+    // }
 }
 
 #[derive(Copy, Clone)]
@@ -105,54 +120,63 @@ impl Gpt5Interface {
         }
     }
     pub fn sanitize_and_convert_function_format(
-        functions: &Vec<BfclFunctionDef>,
+        bfcl_functions: &Vec<BfclFunctionDef>,
         name_mapper: &mut FunctionNameMapper,
     ) -> Vec<Gpt5Tool> {
-        let sanitized_functions = name_mapper.map_function_names(functions);
+        let sanitized_bfcl_functions = name_mapper.map_function_names(bfcl_functions);
         let mut gpt5_tools = Vec::new();
-        for func in &sanitized_functions {
-            let mut properties = IndexMap::new();
-            let required = func.required.clone();
-            for param in &func.parameters {
-                let items: Option<IndexMap<String, String>> = match &param.items_ty {
-                    Some(items_ty) => Some(
-                        [("type".to_string(), Gpt5Interface::map_type_hint(items_ty))]
-                            .iter()
-                            .cloned()
-                            .collect(),
-                    ),
-                    None => None,
-                };
-                properties.insert(
-                    param.name.clone(),
-                    Gpt5PropertyValue {
-                        ty: Gpt5Interface::map_type_hint(&param.ty),
-                        description: param.description.clone(),
-                        items,
-                    },
-                );
-            }
-            // let description = if prompt_passing_in_english {
-            //     format!(
-            //         "{} (IMPORTANT: PASS PARAMETER VALUES IN ENGLISH!)",
-            //         func.description
-            //     )
-            // } else {
-            //     func.description.clone()
-            // };
-            let description = func.description.clone();
+        for bfcl_func in &sanitized_bfcl_functions {
+            let bfcl_param = &bfcl_func.parameters;
+            let gpt5_params = bfcl_param_to_gpt5_param(bfcl_param, true);
+            let description = bfcl_func.description.clone();
             gpt5_tools.push(Gpt5Tool {
                 ty: "function".to_string(),
-                name: func.name.clone(),
+                name: bfcl_func.name.clone(),
                 description,
-                parameters: Gpt5Parameters {
-                    ty: "object".to_string(),
-                    properties,
-                    required,
-                },
+                parameters: gpt5_params,
+                strict: true,
             });
         }
         gpt5_tools
+    }
+}
+
+fn bfcl_param_to_gpt5_param(bfcl_parameter: &BfclParameter, required: bool) -> Gpt5Parameter {
+    let gpt5_type = Gpt5Interface::map_type_hint(&bfcl_parameter.ty);
+    // see https://platform.openai.com/docs/guides/function-calling#strict-mode
+    let gpt5_type = match required {
+        true => SingleOrList::Single(gpt5_type),
+        false => SingleOrList::List(vec![gpt5_type, "null".to_string()]),
+    };
+    let bfcl_required = bfcl_parameter.required.as_ref();
+    let gpt5_properties = bfcl_parameter.properties.as_ref().map(|props| {
+        let mut gpt5_props = IndexMap::new();
+        for (prop_name, prop_value) in props.iter() {
+            let sub_required = bfcl_required.map_or(false, |reqs| reqs.contains(prop_name));
+            let gpt5_prop_value = bfcl_param_to_gpt5_param(prop_value, sub_required);
+            gpt5_props.insert(prop_name.clone(), gpt5_prop_value);
+        }
+        gpt5_props
+    });
+
+    let gpt5_items = bfcl_parameter.items.as_ref().map(|item| {
+        let gpt5_item = bfcl_param_to_gpt5_param(item, true); // array items are always required
+        Box::new(gpt5_item)
+    });
+    let gpt5_enum = bfcl_parameter.r#enum.clone();
+    // in strict mode, all parameters must be set to be required
+    let gpt5_required: Option<Vec<String>> = bfcl_parameter
+        .properties
+        .as_ref()
+        .map(|props| props.keys().cloned().collect());
+    let gpt5_default = bfcl_parameter.default.clone();
+    Gpt5Parameter {
+        ty: gpt5_type,
+        properties: gpt5_properties,
+        items: gpt5_items,
+        r#enum: gpt5_enum,
+        required: gpt5_required,
+        default: gpt5_default,
     }
 }
 
@@ -303,21 +327,25 @@ impl ModelInterface for Gpt5Interface {
                 },
             )?;
             if ty != "function_call" {
-                if ty != "reasoning" {
-                    println!("Warning: Gpt5 outputs an item with unexpected type: {}", ty);
-                }
+                // if ty != "reasoning" {
+                //     println!("Warning: Gpt5 outputs an item with unexpected type: {}", ty);
+                // }
                 continue; // skip non-function_call entries
             }
-            let func_call =
-                Gpt5OutputFunctionCall::try_deserialize_from_json(potential_func_call, raw_output)?;
+            let func_call: Gpt5OutputFunctionCall = serde_json::from_value(
+                potential_func_call.clone(),
+            ).map_err(|e| EvaluationError::ParsingError {
+                error_message: format!("Failed to parse Gpt5OutputFunctionCall: {}", e),
+                raw_output: raw_output.to_string(),
+            })?;
             let original_function_name = {
                 let name_mapper_borrow = name_mapper.borrow();
                 name_mapper_borrow.get_original_name(&func_call.name)
             };
-            let parameters: serde_json::Map<String, serde_json::Value> =
-                func_call.arguments.into_iter().collect();
-            let bfcl_output_function_call =
-                BfclOutputFunctionCall::new(original_function_name, parameters);
+            let bfcl_output_function_call = BfclOutputFunctionCall(KeyValuePair {
+                key: original_function_name,
+                value: func_call.arguments,
+            });
             func_calls.push(bfcl_output_function_call);
         }
         Ok(func_calls)

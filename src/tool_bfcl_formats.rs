@@ -56,7 +56,7 @@ impl BfclDatasetEntry {
 pub struct BfclFunctionDef {
     pub name: String,
     pub description: String,
-    pub parameters: Vec<BfclParameter>,
+    pub parameters: BfclParameter,
 }
 
 /// This is the derivation of the structure model for BFCL's single parameter (by observing the dataset).
@@ -74,7 +74,7 @@ pub struct BfclFunctionDef {
 /// - The top level parameter always has "type": "dict", and always has a "properties" field.
 ///
 /// It may be reasonable to model the top level parameter separately, but it might be against BFCL's intended semantic.
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(deny_unknown_fields)]
 pub struct BfclParameter {
     #[serde(rename = "type")]
@@ -83,12 +83,14 @@ pub struct BfclParameter {
     pub properties: Option<IndexMap<String, BfclParameter>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub items: Option<Box<BfclParameter>>,
+    #[serde(rename="enum", skip_serializing_if = "Option::is_none")]
+    pub r#enum: Option<Vec<serde_json::Value>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub required: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default: Option<bool>,
+    pub default: Option<serde_json::Value>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub optional: Option<bool>,
 }
