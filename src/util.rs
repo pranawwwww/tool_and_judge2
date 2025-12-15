@@ -106,7 +106,9 @@ pub fn write_json_lines_to_file(
 pub fn serialize_test_cases(test_cases: &Vec<BfclDatasetEntry>) -> Vec<serde_json::Value> {
     test_cases
         .iter()
-        .map(|case| case.raw_entry.clone())
+        .map(|case| {
+            serde_json::to_value(case).expect("Unable to serialize BfclDatasetEntry")
+        })
         .collect()
 }
 
@@ -171,8 +173,7 @@ pub fn deserialize_test_cases(cases_to_translate: Vec<serde_json::Value>) -> Vec
     cases_to_translate
         .iter()
         .map(|case| {
-            BfclDatasetEntry::deserialize_from_json(case.clone())
-                .expect("Dataset entry has wrong format")
+            serde_json::from_value(case.clone()).expect("Test case has wrong format")
         })
         .collect()
 }
@@ -205,7 +206,7 @@ pub fn deserialize_ground_truth_entries(
     ground_truth_entries
         .iter()
         .map(|entry| {
-            BfclGroundTruthEntry::deserialize_from_json(entry.clone())
+            serde_json::from_value(entry.clone())
                 .expect("Ground truth entry has wrong format")
         })
         .collect()

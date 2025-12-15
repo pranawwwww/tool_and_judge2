@@ -11,6 +11,7 @@ pub mod tool_translate_function_call;
 pub mod tool_evaluate;
 pub mod tool_categorize;
 pub mod util;
+pub mod one_entry_map;
 
 #[pymodule]
 pub mod codebase_rs {

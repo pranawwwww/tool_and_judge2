@@ -1,34 +1,18 @@
 use std::{collections::HashMap, sync::Arc};
 
 use futures::{StreamExt, stream};
+use indexmap::IndexMap;
 use serde_json::Map;
 
-use crate::models::{backend::ModelBackend, model_interface::ModelInterface};
+use crate::{models::{backend::ModelBackend, model_interface::ModelInterface}, tool_bfcl_formats::BfclOutputFunctionCall};
 
 pub async fn translate_function_call(
     model_interface: Arc<dyn ModelInterface>,
     backend: Arc<dyn ModelBackend>,
-    function: serde_json::Value,
-) -> serde_json::Value {
-    let function = function
-        .as_object()
-        .expect("Function call should be a JSON object");
-    let function_name = function
-        .keys()
-        .next()
-        .expect("Function call should have a function name");
-    let params = function
-        .get(function_name)
-        .expect("Function call should have parameters");
-    let params = params
-        .as_object()
-        .expect("Function parameters should be a JSON object");
-    // let translated_params = params.iter().map(|(key, value)| {
-    //     let translated_value = translate_param_value(value.clone()).await;
-    //     (key.clone(), translated_value)
-    // }).collect::<serde_json::Map<String, serde_json::Value>>();
-
-    let mut translated_params = serde_json::Map::new();
+    function: BfclOutputFunctionCall,
+) -> BfclOutputFunctionCall {
+    // let function_name = &function.0.key;
+    let params = &function.0.value;
     let mut tasks = Vec::new();
     for (key, value) in params {
         let key = key.clone();
@@ -42,30 +26,20 @@ pub async fn translate_function_call(
         };
         tasks.push(task);
     }
-    let mut stream = stream::iter(tasks).buffer_unordered(200);
-    while let Some((key, translated_value)) = stream.next().await {
-        translated_params.insert(key, translated_value);
-    }
+    let translated_params = futures::future::join_all(tasks).await;
+    let translated_params: IndexMap<String, serde_json::Value> = translated_params.into_iter().collect();
     // make the translated params to have the same order as the original params
-    let translated_params = params
-        .iter()
-        .map(|(key, value)| {
-            (
-                key.clone(),
-                translated_params
-                    .get(key)
-                    .cloned()
-                    .expect("Translated value should exist"),
-            )
-        })
-        .collect::<serde_json::Map<String, serde_json::Value>>();
-
+    let mut sorted_translated_params: IndexMap<String, serde_json::Value> = IndexMap::new();
+    for (key, _value) in params {
+        let translated_value = translated_params
+            .get(key)
+            .cloned()
+            .expect("Translated value should exist");
+        sorted_translated_params.insert(key.clone(), translated_value);
+    }
     let mut new_function = function.clone();
-    new_function.insert(
-        function_name.clone(),
-        serde_json::Value::Object(translated_params),
-    );
-    serde_json::Value::Object(new_function)
+    new_function.0.value = sorted_translated_params;
+    new_function
 }
 
 pub async fn translate_param_value(

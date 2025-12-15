@@ -7,7 +7,10 @@ use pyo3::{
 use std::{
     collections::HashMap,
     fs::{self, File},
-    sync::{Arc, atomic::{AtomicBool, AtomicUsize, Ordering}},
+    sync::{
+        Arc,
+        atomic::{AtomicBool, AtomicUsize, Ordering},
+    },
 };
 
 use crate::{
@@ -17,7 +20,9 @@ use crate::{
         function_name_mapper::{self, FunctionNameMapper},
         model_interface::get_model_interface,
     },
-    tool_bfcl_formats::{BfclDatasetEntry, BfclFunctionDef, BfclGroundTruthEntry},
+    tool_bfcl_formats::{
+        BfclDatasetEntry, BfclFunctionDef, BfclGroundTruthEntry, BfclOutputFunctionCall,
+    },
     tool_categorize::categorize_entry,
     tool_category_cache::CategoryCache,
     tool_evaluate::evaluate_entry,
@@ -78,7 +83,8 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
     ctrlc::set_handler(move || {
         println!("\n⚠️  Ctrl+C detected! Finishing current task and shutting down...");
         shutdown_clone.store(true, Ordering::SeqCst);
-    }).expect("Error setting Ctrl+C handler");
+    })
+    .expect("Error setting Ctrl+C handler");
 
     let function_name_mapper = Arc::new(AtomicRefCell::new(FunctionNameMapper::new()));
     for config in extracted_configs {
@@ -259,7 +265,14 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             let mut tasks = Vec::new();
 
             for case in cases_to_translate.iter() {
-                let question = case.question_content.clone();
+                let question = case
+                    .question
+                    .get(0)
+                    .expect("Question should have at least one turn")
+                    .get(0)
+                    .expect("Question should have at least one message")
+                    .content
+                    .clone();
                 let mut case_clone = case.clone();
                 let main_interface = main_interface.clone();
                 let main_backend = main_backend.clone();
@@ -268,16 +281,15 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                     let translated_question = main_interface
                         .translate_tool_question_async(main_backend, question)
                         .await;
-                    case_clone
-                        .modify_question_content(&translated_question)
-                        .expect("Failed to modify question content");
+                    case_clone.question[0][0].content = translated_question;
                     case_clone
                 };
                 tasks.push(task);
             }
 
             // Create a stream from the tasks and process concurrently
-            let mut translate_stream = stream::iter(tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
+            let mut translate_stream =
+                stream::iter(tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
 
             let mut completed_count = 0;
             while let Some(modified_case) = translate_stream.next().await {
@@ -348,14 +360,14 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             let mut tasks = Vec::new();
 
             for case in cases_to_process.iter() {
-                let functions = case.functions.clone();
-                let user_question = case.question_content.clone();
-                let case_id = case.id.clone();
+                let functions = case.function.clone();
+                let user_question = case.question[0][0].content.clone();
+                let id = case.id.clone();
                 let main_interface = main_interface.clone();
                 let main_backend = main_backend.clone();
                 let function_name_mapper = function_name_mapper.clone();
                 let task = async move {
-                    let result = main_interface
+                    let raw_output = main_interface
                         .generate_tool_call_async(
                             main_backend.clone(),
                             functions,
@@ -364,12 +376,13 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                             function_name_mapper,
                         )
                         .await;
-                    InferenceRawEntry::new(case_id, result)
+                    InferenceRawEntry { id, raw_output }
                 };
                 tasks.push(task);
             }
             // Create a stream from the tasks and process concurrently
-            let mut inference_stream = stream::iter(tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
+            let mut inference_stream =
+                stream::iter(tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
             let mut completed_count = 0;
             while let Some(result) = inference_stream.next().await {
                 completed_count += 1;
@@ -421,7 +434,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         let preprocessed_test_cases = deserialize_test_cases(preprocessed_test_cases);
         let mut all_functions: Vec<BfclFunctionDef> = Vec::new();
         for case in preprocessed_test_cases.iter() {
-            for function in case.functions.iter() {
+            for function in case.function.iter() {
                 all_functions.push(function.clone());
             }
         }
@@ -434,17 +447,11 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             let raw_output = &entry.raw_output;
             let result =
                 main_interface.postprocess_tool_calls(raw_output, function_name_mapper.clone());
-            let result = result.map(|func_calls| {
-                func_calls
-                    .into_iter()
-                    .map(|func_call| func_call.serialize_to_json())
-                    .collect::<Vec<serde_json::Value>>()
-            });
             let valid = match &result {
                 Ok(_) => true,
                 Err(_) => false,
             };
-            let output_entry = InferenceJsonEntry::new(id, valid, result);
+            let output_entry = InferenceJsonEntry { id, valid, result };
             inference_json_outputs.push(output_entry);
         }
         // Final sort and write
@@ -511,7 +518,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                             return entry;
                         }
                     };
-                    let mut translated_function_calls: HashMap<usize, serde_json::Value> =
+                    let mut translated_function_calls: HashMap<usize, BfclOutputFunctionCall> =
                         HashMap::new();
                     let mut translate_single_function_tasks = Vec::new();
                     for (i, func_call) in function_calls.iter().enumerate() {
@@ -533,16 +540,20 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                         translated_function_calls.insert(i, translated_function_call);
                     }
                     // reorder
-                    let translated_function_calls: Vec<serde_json::Value> = (0
-                        ..translated_function_calls.len())
-                        .map(|i| {
-                            translated_function_calls
-                                .get(&i)
-                                .cloned()
-                                .expect("Translated function call should exist")
-                        })
-                        .collect();
-                    InferenceJsonEntry::new(entry.id, entry.valid, Ok(translated_function_calls))
+                    let mut sorted_translated_function_calls: Vec<BfclOutputFunctionCall> =
+                        Vec::new();
+                    for i in 0..translated_function_calls.len() {
+                        let func_call = translated_function_calls
+                            .get(&i)
+                            .cloned()
+                            .expect("Translated function call should exist");
+                        sorted_translated_function_calls.push(func_call);
+                    }
+                    InferenceJsonEntry {
+                        id: entry.id,
+                        valid: entry.valid,
+                        result: Ok(sorted_translated_function_calls),
+                    }
                 };
                 translate_functions_tasks.push(task);
             }
@@ -622,7 +633,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             let ground_truth = ground_truths.get(id).expect("Ground truth should exist");
             let evaluation_result =
                 evaluate_entry(id.into(), inference_result, test_case, ground_truth);
-            
+
             evaluation_results.push(evaluation_result);
             println!("[{}/{}] Evaluated case {}", i + 1, total_cases, id);
         }
@@ -739,7 +750,8 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 };
                 categorize_tasks.push(task);
             }
-            let mut categorize_stream = stream::iter(categorize_tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
+            let mut categorize_stream =
+                stream::iter(categorize_tasks).buffer_unordered(MAX_CONCURRENT_REQUESTS);
             let mut categorized_entries: Vec<CategorizedEntry> = Vec::new();
             let mut completed_count = 0;
             while let Some(categorized_entry) = categorize_stream.next().await {

@@ -33,8 +33,6 @@ pub fn evaluate_entry(
         };
     }
     let function = &functions[0];
-    let function = BfclOutputFunctionCall::deserialize_from_json(function)
-        .expect("The function call should be deserializable, otherwise it is intercepted at previous parsing pass");
     let ground_truth_functions = &ground_truth_entry.ground_truth;
     assert_eq!(
         ground_truth_functions.len(),
@@ -42,25 +40,28 @@ pub fn evaluate_entry(
         "Each ground truth entry should have exactly one function call"
     );
     let ground_truth_function = &ground_truth_functions[0];
-    if function.function_name != ground_truth_function.function_name {
+    let output_function_name = &function.0.key;
+    let ground_truth_function_name = &ground_truth_function.0.key;
+    if output_function_name != ground_truth_function_name {
         return EvaluationResultEntry {
             id,
             valid: false,
             error: Some(EvaluationError::WrongFuncName {
-                expected_name: ground_truth_function.function_name.clone(),
-                actual_name: function.function_name.clone(),
+                expected_name: ground_truth_function_name.clone(),
+                actual_name: output_function_name.clone(),
                 decoded_output: serde_json::to_string(functions)
                     .expect("Should serialize correctly"),
             }),
         };
     }
     let target_test_case_function = test_case_entry
-        .functions
+        .function
         .iter()
-        .find(|f| f.name == function.function_name)
+        .find(|f| f.name == *output_function_name)
         .expect("The test case should contain the target function");
-    let target_function_required_parameters = &target_test_case_function.required;
-    let prarameters = &function.parameters;
+    // let target_function_required_parameters = &target_test_case_function.required;
+    let prarameters = &function.0.value;
+    // TODO: refactor the required parameters handling
     for required_param in target_function_required_parameters {
         if !prarameters.contains_key(required_param) {
             return EvaluationResultEntry {

@@ -6,8 +6,7 @@ use crate::{
         model_interface::ModelInterface,
     },
     tool_bfcl_formats::{
-        BfclFunctionDef, BfclGroundTruthFunctionCallParameters, BfclOutputFunctionCall,
-        BfclParameter,
+        BfclFunctionDef, BfclGroundTruthFunctionCall, BfclOutputFunctionCall, BfclParameter,
     },
     tool_error_analysis::EvaluationError,
 };

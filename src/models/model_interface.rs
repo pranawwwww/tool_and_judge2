@@ -9,9 +9,9 @@ use crate::{
         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
         gpt5_interface::Gpt5Interface,
     },
-    tool_bfcl_formats::{BfclFunctionDef, BfclOutputFunctionCall}, tool_error_analysis::EvaluationError, 
+    tool_bfcl_formats::{BfclFunctionDef, BfclOutputFunctionCall},
+    tool_error_analysis::EvaluationError,
 };
-
 
 #[async_trait::async_trait]
 pub trait ModelInterface: Send + Sync {
