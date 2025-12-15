@@ -37,6 +37,8 @@ pub struct Gpt5Parameter {
     #[serde(rename = "type", skip_serializing_if = "type_is_any")]
     pub ty: SingleOrList<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub properties: Option<IndexMap<String, Gpt5Parameter>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub items: Option<Box<Gpt5Parameter>>,
@@ -46,6 +48,12 @@ pub struct Gpt5Parameter {
     pub required: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<serde_json::Value>,
+    // #[serde(rename = "additionalProperties")]
+    // pub additional_properties: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub format: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub maximum: Option<serde_json::Value>,
 }
 
 fn type_is_any(s: &SingleOrList<String>) -> bool {
@@ -134,7 +142,7 @@ impl Gpt5Interface {
                 name: bfcl_func.name.clone(),
                 description,
                 parameters: gpt5_params,
-                strict: true,
+                strict: false,
             });
         }
         gpt5_tools
@@ -142,14 +150,26 @@ impl Gpt5Interface {
 }
 
 fn bfcl_param_to_gpt5_param(bfcl_parameter: &BfclParameter, required: bool) -> Gpt5Parameter {
-    let gpt5_type = Gpt5Interface::map_type_hint(&bfcl_parameter.ty);
+    let BfclParameter {
+        ty: bfcl_type,
+        properties: bfcl_properties,
+        items: bfcl_items,
+        r#enum: bfcl_enum,
+        description: bfcl_description,
+        format: bfcl_format,
+        required: bfcl_required,
+        default: bfcl_default,
+        optional: _, // optional is unused because we use 'required' field to determine if a parameter is required
+        maximum: bfcl_maximum,
+    } = bfcl_parameter;
+    let gpt5_type = Gpt5Interface::map_type_hint(bfcl_type);
     // see https://platform.openai.com/docs/guides/function-calling#strict-mode
     let gpt5_type = match required {
         true => SingleOrList::Single(gpt5_type),
         false => SingleOrList::List(vec![gpt5_type, "null".to_string()]),
     };
-    let bfcl_required = bfcl_parameter.required.as_ref();
-    let gpt5_properties = bfcl_parameter.properties.as_ref().map(|props| {
+    let bfcl_required = bfcl_required.as_ref();
+    let gpt5_properties = bfcl_properties.as_ref().map(|props| {
         let mut gpt5_props = IndexMap::new();
         for (prop_name, prop_value) in props.iter() {
             let sub_required = bfcl_required.map_or(false, |reqs| reqs.contains(prop_name));
@@ -159,24 +179,28 @@ fn bfcl_param_to_gpt5_param(bfcl_parameter: &BfclParameter, required: bool) -> G
         gpt5_props
     });
 
-    let gpt5_items = bfcl_parameter.items.as_ref().map(|item| {
+    let gpt5_items = bfcl_items.as_ref().map(|item| {
         let gpt5_item = bfcl_param_to_gpt5_param(item, true); // array items are always required
         Box::new(gpt5_item)
     });
-    let gpt5_enum = bfcl_parameter.r#enum.clone();
+    let gpt5_enum = bfcl_enum.clone();
     // in strict mode, all parameters must be set to be required
-    let gpt5_required: Option<Vec<String>> = bfcl_parameter
-        .properties
+    // but strict mode is not compatible with some of the optional parameters in BFCL
+    // so we keep the strict mode format but does not fully follow strict requirement
+    let gpt5_required: Option<Vec<String>> = bfcl_properties
         .as_ref()
         .map(|props| props.keys().cloned().collect());
-    let gpt5_default = bfcl_parameter.default.clone();
     Gpt5Parameter {
         ty: gpt5_type,
         properties: gpt5_properties,
+        description: bfcl_description.clone(),
         items: gpt5_items,
         r#enum: gpt5_enum,
         required: gpt5_required,
-        default: gpt5_default,
+        default: bfcl_default.clone(),
+        // additional_properties: false, // in strict mode, additional properties are not allowed
+        format: bfcl_format.clone(),
+        maximum: bfcl_maximum.clone(),
     }
 }
 
@@ -221,7 +245,7 @@ impl ModelInterface for Gpt5Interface {
                 &mut *name_mapper_borrow,
             )
         };
-        println!("{}", serde_json::to_string(&gpt5_tools).unwrap());
+        // println!("{}", serde_json::to_string(&gpt5_tools).unwrap());
         let gpt5_tools_serialized =
             serde_json::to_string(&gpt5_tools).expect("Failed to serialize GPT-5 tools");
 
@@ -332,12 +356,13 @@ impl ModelInterface for Gpt5Interface {
                 // }
                 continue; // skip non-function_call entries
             }
-            let func_call: Gpt5OutputFunctionCall = serde_json::from_value(
-                potential_func_call.clone(),
-            ).map_err(|e| EvaluationError::ParsingError {
-                error_message: format!("Failed to parse Gpt5OutputFunctionCall: {}", e),
-                raw_output: raw_output.to_string(),
-            })?;
+
+            let func_call= parse_gpt5_function_call(potential_func_call).map_err(|e| {
+                    EvaluationError::ParsingError {
+                        error_message: format!("Failed to parse Gpt5OutputFunctionCall: {}", e),
+                        raw_output: raw_output.to_string(),
+                    }
+                })?;
             let original_function_name = {
                 let name_mapper_borrow = name_mapper.borrow();
                 name_mapper_borrow.get_original_name(&func_call.name)
@@ -383,6 +408,28 @@ impl ModelInterface for Gpt5Interface {
         });
         response_str
     }
+}
+
+fn parse_gpt5_function_call(
+    function_call: &serde_json::Value,
+) -> Result<Gpt5OutputFunctionCall, String> {
+    let mut function_call = function_call.clone();
+    // retrieve the "arguments" field
+    let arguments_value = function_call
+        .get("arguments")
+        .ok_or("Missing 'arguments' field in function call")?;
+    let arguments_str = arguments_value
+        .as_str()
+        .ok_or("'arguments' field is not a string")?;
+    // parse the arguments string as JSON
+    let arguments_json: serde_json::Value = serde_json::from_str(arguments_str)
+        .map_err(|e| format!("Failed to parse 'arguments' JSON string: {}", e))?;
+    // replace the "arguments" field with the parsed JSON object
+    function_call["arguments"] = arguments_json;
+    // deserialize the modified function call into Gpt5OutputFunctionCall
+    let gpt5_output_function_call: Gpt5OutputFunctionCall = serde_json::from_value(function_call)
+        .map_err(|e| format!("Failed to deserialize Gpt5OutputFunctionCall: {}", e))?;
+    Ok(gpt5_output_function_call)
 }
 
 // def postprocess_tool_calls(

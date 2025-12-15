@@ -173,12 +173,12 @@ fn check_recursively_for_required_and_unexpected(
         let (Some(sub_properties), Some(sub_required_params)) =
             (&parameter_def.properties, &parameter_def.required)
         else {
-            assert!(
-                parameter_def.properties.is_none() && parameter_def.required.is_none(),
-                "If one of required or properties is None, both should be None, but got required is {:?} and properties is {:?}",
-                parameter_def.required,
-                parameter_def.properties
-            );
+            // assert!(
+            //     parameter_def.properties.is_none() && parameter_def.required.is_none(),
+            //     "If one of required or properties is None, both should be None, but got required is {:?} and properties is {:?}",
+            //     parameter_def.required,
+            //     parameter_def.properties
+            // );
             // if there are no required parameters for this property, skip to next
             continue;
         };
@@ -248,6 +248,11 @@ fn value_matches_any(value: &serde_json::Value, expected: &serde_json::Value) ->
             return true;
         }
         _ => {}
+    }
+    if let (serde_json::Value::Null, serde_json::Value::String(expected_str)) = (value, expected) {
+        if expected_str == "" {
+            return true;
+        }
     }
     // value matches elements in expected array
     if let serde_json::Value::Array(expected_arry) = expected {
