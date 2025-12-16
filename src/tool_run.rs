@@ -16,7 +16,7 @@ use std::{
 use crate::{
     config::{Language, ToolConfig, TranslateMode, TranslateOption},
     models::{
-        backend::{WhichBackend, get_or_create_backend},
+        backend::{BackendType, WhichBackend, get_or_create_backend},
         function_name_mapper::{self, FunctionNameMapper},
         model_interface::get_model_interface,
     },
@@ -253,7 +253,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             );
             // Get backend and interface for translation
             let main_backend =
-                get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
+                get_or_create_backend(config.model, BackendType::ApiOrVllm, WhichBackend::Main, num_gpus).await;
             let main_backend = main_backend
                 .as_ref()
                 .expect("Backend should be created by the call above");
@@ -343,7 +343,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             let total_cases = cases_to_process.len();
             println!("Generating functions for {} cases...", total_cases);
             let main_backend =
-                get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
+                get_or_create_backend(config.model, BackendType::ApiOrVllm,WhichBackend::Main, num_gpus).await;
             let main_backend = main_backend
                 .as_ref()
                 .expect("Backend should be created by the call above");
@@ -506,7 +506,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 samples_to_translate.len()
             );
             let main_backend =
-                get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
+                get_or_create_backend(config.model, BackendType::ApiOrVllm, WhichBackend::Main, num_gpus).await;
             let main_backend = main_backend
                 .as_ref()
                 .expect("Backend should be created by the call above");
@@ -730,7 +730,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             let cache_hits = Arc::new(AtomicUsize::new(0));
             let main_interface = get_model_interface(config.model);
             let main_backend =
-                get_or_create_backend(config.model, WhichBackend::Main, num_gpus).await;
+                get_or_create_backend(config.model, BackendType::ApiOrVllm, WhichBackend::Main, num_gpus).await;
             let main_backend = main_backend
                 .as_ref()
                 .expect("Backend should be created by the call above");

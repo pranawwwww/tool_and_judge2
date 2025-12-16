@@ -4,10 +4,10 @@ use atomic_refcell::AtomicRefCell;
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    config::{ApiModel, Model},
+    config::{ApiModel, LocalModel, Model},
     models::{
         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
-        gpt5_interface::Gpt5Interface,
+        gpt5_interface::Gpt5Interface, llama3_1_interface::Llama3_1Interface,
     },
     tool_bfcl_formats::{BfclFunctionDef, BfclOutputFunctionCall},
     tool_error_analysis::EvaluationError,
@@ -17,7 +17,7 @@ use crate::{
 pub trait ModelInterface: Send + Sync {
     async fn generate_tool_call_async(
         &self,
-        backend: Arc<dyn ModelBackend>,
+        backend: Arc<ModelBackend>,
         raw_functions: Vec<BfclFunctionDef>,
         user_question: String,
         prompt_passing_in_english: bool,
@@ -26,13 +26,13 @@ pub trait ModelInterface: Send + Sync {
 
     async fn translate_tool_question_async(
         &self,
-        backend: Arc<dyn ModelBackend>,
+        backend: Arc<ModelBackend>,
         user_question: String,
     ) -> String;
 
     async fn translate_tool_answer_async(
         &self,
-        backend: Arc<dyn ModelBackend>,
+        backend: Arc<ModelBackend>,
         parameter_value: String,
     ) -> String;
 
@@ -51,8 +51,11 @@ pub fn get_model_interface(model: Model) -> Arc<dyn ModelInterface> {
                 unimplemented!("API model interfaces other than GPT-5 are not implemented yet.")
             }
         },
-        Model::Local(_) => {
-            unimplemented!("Local model interfaces are not implemented yet.")
+        Model::Local(local_model) => match local_model {
+            LocalModel::Llama3_1_8B | LocalModel::Llama3_1_70B => Arc::new(Llama3_1Interface),
+            _ => {
+                unimplemented!("Local model interfaces other than Llama 3.1 are not implemented yet.")
+            }
         }
     }
 }

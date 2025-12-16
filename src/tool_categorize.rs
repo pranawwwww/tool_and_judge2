@@ -10,7 +10,7 @@ use crate::{
     config::{ApiModel, Model},
     models::{
         api_backend::ApiBackend,
-        backend::{ModelBackend, WhichBackend, get_or_create_backend},
+        backend::{BackendType, ModelBackend, WhichBackend, get_or_create_backend},
         model_interface::ModelInterface,
     },
     tool_category_cache::CategoryCache,
@@ -21,7 +21,7 @@ use crate::{
 pub async fn categorize_entry(
     evaluation_error: &EvaluationError,
     model_interface: Arc<dyn ModelInterface>,
-    backend: Arc<dyn ModelBackend>,
+    backend: Arc<ModelBackend>,
     category_cache: Arc<AtomicRefCell<CategoryCache>>,
     cache_hits: Arc<AtomicUsize>,
 ) -> ToolErrorCategory {
@@ -68,7 +68,7 @@ pub async fn categorize_parameter_value_async(
     expected_values: &Vec<serde_json::Value>,
 ) -> ToolErrorCategory {
     let categorize_backend =
-        get_or_create_backend(Model::Api(ApiModel::Gpt5), WhichBackend::Assist, 1).await;
+        get_or_create_backend(Model::Api(ApiModel::Gpt5), BackendType::ApiOrVllm,  WhichBackend::Assist, 1).await;
     let categorize_backend = categorize_backend.as_ref().expect("Should get backend");
     let categorize_api_backend = (categorize_backend.as_ref() as &dyn Any)
         .downcast_ref::<ApiBackend>()
@@ -86,7 +86,7 @@ pub async fn categorize_parameter_value_async(
         let categorize_async_fn = gpt5_backend_module
             .getattr("categorize_parameter_value_async")
             .expect("Failed to get categorize_parameter_value_async function");
-        let model_name = categorize_api_backend.get_model_info().to_string();
+        let model_name = categorize_api_backend.model.to_string();
         let arguments = (
             model_name,
             client,

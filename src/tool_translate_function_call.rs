@@ -8,7 +8,7 @@ use crate::{models::{backend::ModelBackend, model_interface::ModelInterface}, to
 
 pub async fn translate_function_call(
     model_interface: Arc<dyn ModelInterface>,
-    backend: Arc<dyn ModelBackend>,
+    backend: Arc<ModelBackend>,
     function: BfclOutputFunctionCall,
 ) -> BfclOutputFunctionCall {
     // let function_name = &function.0.key;
@@ -45,7 +45,7 @@ pub async fn translate_function_call(
 pub async fn translate_param_value(
     value: &serde_json::Value,
     model_interface: Arc<dyn ModelInterface>,
-    backend: Arc<dyn ModelBackend>,
+    backend: Arc<ModelBackend>,
 ) -> serde_json::Value {
     match &value {
         serde_json::Value::Array(array) => {
@@ -125,7 +125,7 @@ pub async fn translate_param_value(
 
 pub async fn translate_string_async(
     model_interface: Arc<dyn ModelInterface>,
-    backend: Arc<dyn ModelBackend>,
+    backend: Arc<ModelBackend>,
     text: String,
 ) -> String {
     // if the text is all ascii, we assume it's english and skip translation

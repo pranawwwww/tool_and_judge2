@@ -227,7 +227,7 @@ fn bfcl_param_to_gpt5_param(bfcl_parameter: &BfclParameter, required: bool) -> G
 impl ModelInterface for Gpt5Interface {
     async fn generate_tool_call_async(
         &self,
-        backend: Arc<dyn ModelBackend>,
+        backend: Arc<ModelBackend>,
         raw_functions: Vec<BfclFunctionDef>,
         user_question: String,
         prompt_passing_in_english: bool,
@@ -258,7 +258,7 @@ impl ModelInterface for Gpt5Interface {
             let generate_tool_call_async_fn = gpt5_backend_module
                 .getattr("generate_tool_call_async")
                 .expect("Failed to get generate_tool_call_async function");
-            let model_name = backend.get_model_info().to_string();
+            let model_name = api_backend.model.to_string();
             let json = py.import("json").expect("failed to import json");
             let gpt5_tools_obj = json
                 .call_method("loads", (gpt5_tools_serialized,), None)
@@ -287,13 +287,16 @@ impl ModelInterface for Gpt5Interface {
 
     async fn translate_tool_question_async(
         &self,
-        backend: Arc<dyn ModelBackend>,
+        backend: Arc<ModelBackend>,
         user_question: String,
     ) -> String {
         // downcast backend to api backend
-        let api_backend = (backend.as_ref() as &dyn Any)
-            .downcast_ref::<ApiBackend>()
-            .expect("Failed to downcast to ApiBackend");
+        // let api_backend = (backend.as_ref() as &dyn Any)
+        //     .downcast_ref::<ApiBackend>()
+        //     .expect("Failed to downcast to ApiBackend");
+        let ModelBackend::Api(api_backend) = backend.as_ref() else {
+            panic!("gpt5 interface should use ApiBackend");
+        };
         let client = &api_backend.client;
 
         let fut = Python::attach(|py| {
@@ -303,7 +306,7 @@ impl ModelInterface for Gpt5Interface {
             let translate_tool_question_async_fn = gpt5_backend_module
                 .getattr("translate_tool_question_async")
                 .expect("Failed to get translate_tool_question_async function");
-            let model_name = backend.get_model_info().to_string();
+            let model_name = api_backend.model.to_string();
             let arguments = (model_name, client, user_question);
             let fut = translate_tool_question_async_fn
                 .call1(arguments)
@@ -377,13 +380,13 @@ impl ModelInterface for Gpt5Interface {
     }
     async fn translate_tool_answer_async(
         &self,
-        backend: Arc<dyn ModelBackend>,
+        backend: Arc<ModelBackend>,
         parameter_value: String,
     ) -> String {
         // downcast backend to api backend
-        let api_backend = (backend.as_ref() as &dyn Any)
-            .downcast_ref::<ApiBackend>()
-            .expect("Failed to downcast to ApiBackend");
+        let ModelBackend::Api(api_backend) = backend.as_ref() else {
+            panic!("gpt5 interface should use ApiBackend");
+        };
         let client = &api_backend.client;
 
         let fut = Python::attach(|py| {
@@ -393,7 +396,7 @@ impl ModelInterface for Gpt5Interface {
             let translate_tool_answer_async_fn = gpt5_backend_module
                 .getattr("translate_tool_answer_async")
                 .expect("Failed to get translate_tool_answer_async function");
-            let model_name = backend.get_model_info().to_string();
+            let model_name = api_backend.model.to_string();
             let arguments = (model_name, client, parameter_value);
             let fut = translate_tool_answer_async_fn
                 .call1(arguments)

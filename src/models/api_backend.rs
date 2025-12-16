@@ -37,39 +37,39 @@ impl ApiBackend {
     }
 }
 
-#[async_trait::async_trait]
-impl ModelBackend for ApiBackend {
-    // async fn generate_async(
-    //     &self,
-    //     prompt: &str,
-    //     max_new_tokens: usize,
-    //     temperature: f32,
-    //     return_logprobs: bool,
-    // ) -> GenerationResult {
-    //     let fut = Python::attach(|py| {
-    //         let api_backend_module = py
-    //             .import("src_py.api_backend")
-    //             .expect("Failed to import src_py.api_backend module");
-    //         let generate_async_fn = api_backend_module
-    //             .getattr("generate_async")
-    //             .expect("Failed to get generate_response function");
-    //         let api_params = PyDict::new(py);
-    //         let python_future = generate_async_fn.call1((api_params,)).expect("Failed to call generate_response");
-    //         pyo3_async_runtimes::tokio::into_future(python_future).expect("Failed to convert to Rust future")
-    //     });
-    //     let generation_result = fut.await.expect("API call failed");
-    //     let generation_result = Python::attach(|py|{
-    //         generation_result
-    //         .extract::<GenerationResult>(py)
-    //         .expect("Failed to extract GenerationResult")
-    //     });        
-    //     generation_result
-    // }
+// #[async_trait::async_trait]
+// impl ModelBackend for ApiBackend {
+//     // async fn generate_async(
+//     //     &self,
+//     //     prompt: &str,
+//     //     max_new_tokens: usize,
+//     //     temperature: f32,
+//     //     return_logprobs: bool,
+//     // ) -> GenerationResult {
+//     //     let fut = Python::attach(|py| {
+//     //         let api_backend_module = py
+//     //             .import("src_py.api_backend")
+//     //             .expect("Failed to import src_py.api_backend module");
+//     //         let generate_async_fn = api_backend_module
+//     //             .getattr("generate_async")
+//     //             .expect("Failed to get generate_response function");
+//     //         let api_params = PyDict::new(py);
+//     //         let python_future = generate_async_fn.call1((api_params,)).expect("Failed to call generate_response");
+//     //         pyo3_async_runtimes::tokio::into_future(python_future).expect("Failed to convert to Rust future")
+//     //     });
+//     //     let generation_result = fut.await.expect("API call failed");
+//     //     let generation_result = Python::attach(|py|{
+//     //         generation_result
+//     //         .extract::<GenerationResult>(py)
+//     //         .expect("Failed to extract GenerationResult")
+//     //     });        
+//     //     generation_result
+//     // }
 
-    fn get_model_info(&self) -> crate::config::Model {
-        crate::config::Model::Api(self.model.clone())
-    }
-}
+//     fn get_model_info(&self) -> crate::config::Model {
+//         crate::config::Model::Api(self.model.clone())
+//     }
+// }
 
 // """
 // API-based backend for inference using OpenAI-compatible APIs.

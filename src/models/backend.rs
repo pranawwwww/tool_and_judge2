@@ -3,7 +3,7 @@ use std::{any::Any, collections::HashMap, sync::Arc};
 use lazy_static::lazy_static;
 use pyo3::{Bound, pyclass};
 
-use crate::{config::Model, models::api_backend::ApiBackend};
+use crate::{config::Model, models::{api_backend::ApiBackend, vllm_backend::VllmBackend}};
 
 
 #[pyclass]
@@ -14,33 +14,64 @@ pub struct GenerationResult {
     pub logits: Option<Vec<HashMap<u32, f32>>>,
 }
 
-#[async_trait::async_trait]
-pub trait ModelBackend: Any + Send + Sync {
-    // The inner interfaces are hidden and will be implemented in Python side.
-    // async fn generate_async(
-    //     &self,
-    //     prompt: &str,
-    //     max_new_tokens: usize,
-    //     temperature: f32,
-    //     return_logprobs: bool,
-    // ) -> GenerationResult;
+// #[async_trait::async_trait]
+// pub trait ModelBackend: Any + Send + Sync {
+//     // The inner interfaces are hidden and will be implemented in Python side.
+//     // async fn generate_async(
+//     //     &self,
+//     //     prompt: &str,
+//     //     max_new_tokens: usize,
+//     //     temperature: f32,
+//     //     return_logprobs: bool,
+//     // ) -> GenerationResult;
 
-    // async fn forward_async(
-    //     &self,
-    //     prompt: &str,
-    //     max_length: usize,
-    // ) -> (Vec<u32>, Vec<HashMap<u32, f32>>);
-    // async fn shutdown(&self);
+//     // async fn forward_async(
+//     //     &self,
+//     //     prompt: &str,
+//     //     max_length: usize,
+//     // ) -> (Vec<u32>, Vec<HashMap<u32, f32>>);
+//     // async fn shutdown(&self);
 
-    // fn get_tokenizer<'py>(&self) -> Bound<'py, pyo3::PyAny>;
+//     // fn get_tokenizer<'py>(&self) -> Bound<'py, pyo3::PyAny>;
 
-    fn get_model_info(&self) -> Model;
+//     fn get_model_info(&self) -> Model;
+// }
+
+pub enum ModelBackend{
+    Api(ApiBackend),
+    HuggingFace,
+    Vllm(VllmBackend),
+}
+
+impl ModelBackend {
+    pub fn get_model_name(&self) -> Model {
+        match self {
+            ModelBackend::Api(api_backend) => Model::Api(api_backend.model),
+            ModelBackend::HuggingFace => {
+                unimplemented!("HuggingFace backend model info retrieval not implemented yet.")
+            }
+            ModelBackend::Vllm(vllm_backend) => Model::Local(vllm_backend.model),
+        }
+    }
+    pub fn get_backend_type(&self) -> BackendType {
+        match self {
+            ModelBackend::Api(_) => BackendType::ApiOrHuggingFace, // If we always set API's backend type to be ApiOrHuggingFace, it will not cause conflict when comparing the actual backend type.
+            ModelBackend::HuggingFace => BackendType::ApiOrHuggingFace,
+            ModelBackend::Vllm(_) => BackendType::ApiOrVllm,
+        }
+    }
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+pub enum BackendType{
+    ApiOrHuggingFace,
+    ApiOrVllm,
 }
 
 lazy_static! {
-    pub static ref GLOBAL_MAIN_BACKEND: tokio::sync::RwLock<Option<Arc<dyn ModelBackend>>> =
+    pub static ref GLOBAL_MAIN_BACKEND: tokio::sync::RwLock<Option<Arc<ModelBackend>>> =
         tokio::sync::RwLock::new(None);
-    pub static ref GLOBAL_ASSIST_BACKEND: tokio::sync::RwLock<Option<Arc<dyn ModelBackend>>> =
+    pub static ref GLOBAL_ASSIST_BACKEND: tokio::sync::RwLock<Option<Arc<ModelBackend>>> =
         tokio::sync::RwLock::new(None);
 }
 pub enum WhichBackend {
@@ -63,9 +94,10 @@ pub enum WhichBackend {
 
 pub async fn get_or_create_backend(
     model: Model,
+    backend_type: BackendType,
     which: WhichBackend,
     num_gpus: usize,
-) -> tokio::sync::RwLockReadGuard<'static, Option<Arc<dyn ModelBackend>>> {
+) -> tokio::sync::RwLockReadGuard<'static, Option<Arc<ModelBackend>>> {
     let backend_reference = match which {
         WhichBackend::Main => &*GLOBAL_MAIN_BACKEND,
         WhichBackend::Assist => &*GLOBAL_ASSIST_BACKEND,
@@ -75,8 +107,9 @@ pub async fn get_or_create_backend(
     loop {
         let mut needs_to_create = true;
         if let Some(backend) = backend_guard.as_ref().unwrap().as_ref() {
-            let existing_model = backend.get_model_info();
-            if existing_model == model {
+            let existing_model_name = backend.get_model_name();
+            let existing_backend_type = backend.get_backend_type();
+            if existing_model_name == model && existing_backend_type == backend_type {
                 needs_to_create = false;
             }
         }
@@ -90,11 +123,34 @@ pub async fn get_or_create_backend(
         // Even if they are, the worst that can happen is that we create the backend multiple times.
         let mut write_backend_guard = backend_reference.write().await;
         // create the new backend and assign it to the global variable
-        let new_backend: Arc<dyn ModelBackend> = match &model {
-            Model::Api(api_model) => Arc::new(ApiBackend::new(*api_model)),
-            Model::Local(_local_model) => {
-                // Implement local model backend creation here
-                unimplemented!()
+        // let new_backend: Arc<ModelBackend> = match &model {
+        //     Model::Api(api_model) => Arc::new(ModelBackend::Api(ApiBackend::new(*api_model))),
+        //     Model::Local(local_model) => {
+        //         // Create vLLM backend for local models
+        //         Arc::new(ModelBackend::Vllm(VllmBackend::new(*local_model, num_gpus)))
+        //     }
+        // };
+        let new_backend = match backend_type {
+            BackendType::ApiOrHuggingFace => {
+                match &model {
+                    Model::Api(api_model) => {
+                        Arc::new(ModelBackend::Api(ApiBackend::new(*api_model)))
+                    },
+                    Model::Local(_local_model) => {
+                        unimplemented!("HuggingFace backend creation not implemented yet.");
+                    }
+                }
+            },
+            BackendType::ApiOrVllm => {
+                match &model {
+                    Model::Api(api_model) => {
+                        Arc::new(ModelBackend::Api(ApiBackend::new(*api_model)))
+                    },
+                    Model::Local(local_model) => {
+                        // Create vLLM backend for local models
+                        Arc::new(ModelBackend::Vllm(VllmBackend::new(*local_model, num_gpus)))
+                    }
+                }
             }
         };
         *write_backend_guard = Some(new_backend);
