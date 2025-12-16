@@ -53,6 +53,38 @@ const CATEGORY_CACHE_LOCK_PATH: &str = "tool_category_cache.lock";
 // Setting this too high will cause rate limit throttling (429 errors)
 const MAX_CONCURRENT_REQUESTS: usize = 200;
 
+// Number of loop iterations before yielding to allow Ctrl+C cancellation
+const YIELD_EVERY_N_ITERATIONS: usize = 5;
+
+/// Runs a pass with Ctrl+C cancellation support using a shared shutdown receiver.
+/// Returns Ok(()) if the pass completed successfully, Err(()) if cancelled.
+async fn run_pass_with_cancellation<F, Fut>(
+    pass_name: &str,
+    pass_fn: F,
+    mut shutdown_rx: broadcast::Receiver<()>,
+) -> Result<(), ()>
+where
+    F: FnOnce() -> Fut,
+    Fut: std::future::Future<Output = ()>,
+{
+    tokio::select! {
+        _ = pass_fn() => { Ok(()) }
+        _ = shutdown_rx.recv() => {
+            println!("⚠️  Ctrl+C during {} pass. Skipping remaining passes.", pass_name);
+            Err(())
+        }
+    }
+}
+
+/// Helper to periodically yield control in synchronous loops for cancellation.
+/// Call this in loops to allow Ctrl+C to be detected.
+async fn yield_periodically(iteration: usize, total: usize, context: &str) {
+    if iteration % YIELD_EVERY_N_ITERATIONS == 0 && iteration > 0 {
+        tokio::task::yield_now().await;
+        println!("[{}/{}] {}", iteration, total, context);
+    }
+}
+
 pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
     let (extracted_configs, config_len): (Vec<ToolConfig>, usize) = Python::attach(|py| {
         let configs = configs.bind(py);
@@ -78,22 +110,19 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
     println!("Loaded environment variables from .env file.");
     println!("Starting tool run with {} configs.", config_len);
 
-    // Set up Ctrl+C handler for graceful shutdown
-    // let shutdown = Arc::new(AtomicBool::new(false));
-    // let shutdown_clone = shutdown.clone();
-    // ctrlc::set_handler(move || {
-    //     println!("\n⚠️  Ctrl+C detected! Finishing current task and shutting down...");
-    //     shutdown_clone.store(true, Ordering::SeqCst);
-    // })
-    // .expect("Error setting Ctrl+C handler");
+    // Set up Ctrl+C handler using a broadcast channel
+    let (shutdown_tx, _) = broadcast::channel::<()>(1);
+    let shutdown_tx_clone = shutdown_tx.clone();
+
+    // Spawn a task to listen for Ctrl+C and broadcast shutdown signal
+    tokio::spawn(async move {
+        tokio::signal::ctrl_c().await.expect("Failed to listen for Ctrl+C");
+        println!("\n⚠️  Ctrl+C detected! Finishing current operation and shutting down...");
+        let _ = shutdown_tx_clone.send(());
+    });
 
     let function_name_mapper = Arc::new(AtomicRefCell::new(FunctionNameMapper::new()));
     for config in extracted_configs {
-        // Check for shutdown signal between configs
-        // if shutdown.load(Ordering::SeqCst) {
-        //     println!("⚠️  Shutdown requested. Stopping before next config.");
-        //     break;
-        // }
 
         println!("Processing config: {:?}", config);
         let language_tag = match &config.translate_mode {
@@ -316,7 +345,9 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                     .expect("Failed to write pre-translation results to file");
             }
         };
-        pre_translate_pass().await;
+        if run_pass_with_cancellation("pre-translate", pre_translate_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
+        }
         /* ════════════════════════════════════════════════════════════════════════════════ */
         /* PASS 2: Inference Raw                                                            */
         /* ════════════════════════════════════════════════════════════════════════════════ */
@@ -416,7 +447,9 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 .expect("Failed to sort and write inference raw results");
             }
         };
-        inference_raw_pass().await;
+        if run_pass_with_cancellation("inference raw", inference_raw_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
+        }
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 3: Inference JSON                                                  */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -424,46 +457,55 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* Input: tool/result/inference_raw/{model}/{filename}.json                */
         /* Output: tool/result/inference_json/{model}/{filename}.json              */
         /* ═══════════════════════════════════════════════════════════════════════ */
-        let inference_json_inputs = load_json_lines(&inference_json_input_path)
-            .expect("Failed to load inference raw outputs for JSON conversion");
-        let inference_raw_entries = deserialize_inference_raw_entries(inference_json_inputs);
-        let main_interface = get_model_interface(config.model);
-        let mut inference_json_outputs = Vec::new();
-        // populate the name mapper with function names in the preprocessed dataset
-        let preprocessed_test_cases = load_json_lines(&inference_raw_input_path)
-            .expect("Failed to load pre-translation test cases for inference");
-        let preprocessed_test_cases = deserialize_test_cases(preprocessed_test_cases);
-        let mut all_functions: Vec<BfclFunctionDef> = Vec::new();
-        for case in preprocessed_test_cases.iter() {
-            for function in case.function.iter() {
-                all_functions.push(function.clone());
+        let inference_json_pass = async || {
+            let inference_json_inputs = load_json_lines(&inference_json_input_path)
+                .expect("Failed to load inference raw outputs for JSON conversion");
+            let inference_raw_entries = deserialize_inference_raw_entries(inference_json_inputs);
+            let main_interface = get_model_interface(config.model);
+            let mut inference_json_outputs = Vec::new();
+            // populate the name mapper with function names in the preprocessed dataset
+            let preprocessed_test_cases = load_json_lines(&inference_raw_input_path)
+                .expect("Failed to load pre-translation test cases for inference");
+            let preprocessed_test_cases = deserialize_test_cases(preprocessed_test_cases);
+            let mut all_functions: Vec<BfclFunctionDef> = Vec::new();
+            for case in preprocessed_test_cases.iter() {
+                for function in case.function.iter() {
+                    all_functions.push(function.clone());
+                }
             }
+            {
+                let mut fn_mapper = function_name_mapper.borrow_mut();
+                fn_mapper.populate_from_functions(&all_functions);
+            }
+            let total_entries = inference_raw_entries.len();
+            for (idx, entry) in inference_raw_entries.iter().enumerate() {
+                let id = entry.id.clone();
+                let raw_output = &entry.raw_output;
+                let result =
+                    main_interface.postprocess_tool_calls(raw_output, function_name_mapper.clone());
+                let valid = match &result {
+                    Ok(_) => true,
+                    Err(_) => false,
+                };
+                let output_entry = InferenceJsonEntry { id, valid, result };
+                inference_json_outputs.push(output_entry);
+
+                // Periodically yield to allow cancellation
+                yield_periodically(idx, total_entries, "Processed inference JSON entries").await;
+            }
+            // Final sort and write
+            inference_json_outputs.sort_by(|a, b| compare_id(&a.id, &b.id));
+            let inference_json_outputs_serialized =
+                serialize_inference_json_entries(&inference_json_outputs);
+            write_json_lines_to_file(
+                &inference_json_output_path,
+                &inference_json_outputs_serialized,
+            )
+            .expect("Failed to sort and write inference JSON results");
+        };
+        if run_pass_with_cancellation("inference JSON", inference_json_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
         }
-        {
-            let mut fn_mapper = function_name_mapper.borrow_mut();
-            fn_mapper.populate_from_functions(&all_functions);
-        }
-        for entry in inference_raw_entries.iter() {
-            let id = entry.id.clone();
-            let raw_output = &entry.raw_output;
-            let result =
-                main_interface.postprocess_tool_calls(raw_output, function_name_mapper.clone());
-            let valid = match &result {
-                Ok(_) => true,
-                Err(_) => false,
-            };
-            let output_entry = InferenceJsonEntry { id, valid, result };
-            inference_json_outputs.push(output_entry);
-        }
-        // Final sort and write
-        inference_json_outputs.sort_by(|a, b| compare_id(&a.id, &b.id));
-        let inference_json_outputs_serialized =
-            serialize_inference_json_entries(&inference_json_outputs);
-        write_json_lines_to_file(
-            &inference_json_output_path,
-            &inference_json_outputs_serialized,
-        )
-        .expect("Failed to sort and write inference JSON results");
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 4: Post-Translation                                                */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -592,7 +634,9 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 .expect("Failed to write translated answers to file");
             }
         };
-        post_translate_pass().await;
+        if run_pass_with_cancellation("post-translate", post_translate_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
+        }
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 5: Evaluation                                                      */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -601,51 +645,58 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* Input: tool/result/post_translate if post-translate enabled, else inference_json */
         /* Output: tool/result/evaluation/{model}/{filename}.json                  */
         /* ═══════════════════════════════════════════════════════════════════════ */
-        let inference_results = load_json_lines(&evaluation_input_path)
-            .expect("Failed to load inference results for evaluation");
-        let inference_results = deserialize_inference_json_entries(inference_results);
-        let inference_results: HashMap<String, InferenceJsonEntry> = inference_results
-            .into_iter()
-            .map(|entry| (entry.id.clone(), entry))
-            .collect();
-        let test_cases = load_json_lines(&inference_raw_input_path)
-            .expect("Failed to load test cases for evaluation");
-        let test_cases = deserialize_test_cases(test_cases);
-        let test_cases: HashMap<String, BfclDatasetEntry> = test_cases
-            .into_iter()
-            .map(|case| (case.id.clone(), case))
-            .collect();
-        let ground_truths = load_json_lines(ground_truth_path)
-            .expect("Failed to load ground truths for evaluation");
-        let ground_truths = deserialize_ground_truth_entries(ground_truths);
-        let ground_truths: HashMap<String, BfclGroundTruthEntry> = ground_truths
-            .into_iter()
-            .map(|entry| (entry.id.clone(), entry))
-            .collect();
-        let mut evaluation_results: Vec<EvaluationResultEntry> = Vec::new();
-        let ids: Vec<String> = inference_results.keys().cloned().collect();
-        let total_cases = ids.len();
-        println!("Evaluating {} cases...", total_cases);
-        for (i, id) in ids.iter().enumerate() {
-            let inference_result = inference_results
-                .get(id)
-                .expect("Inference result should exist");
-            let test_case = test_cases.get(id).expect("Test case should exist");
-            let ground_truth = ground_truths.get(id).expect("Ground truth should exist");
-            let evaluation_result =
-                evaluate_entry(id.into(), inference_result, test_case, ground_truth);
+        let evaluation_pass = async || {
+            let inference_results = load_json_lines(&evaluation_input_path)
+                .expect("Failed to load inference results for evaluation");
+            let inference_results = deserialize_inference_json_entries(inference_results);
+            let inference_results: HashMap<String, InferenceJsonEntry> = inference_results
+                .into_iter()
+                .map(|entry| (entry.id.clone(), entry))
+                .collect();
+            let test_cases = load_json_lines(&inference_raw_input_path)
+                .expect("Failed to load test cases for evaluation");
+            let test_cases = deserialize_test_cases(test_cases);
+            let test_cases: HashMap<String, BfclDatasetEntry> = test_cases
+                .into_iter()
+                .map(|case| (case.id.clone(), case))
+                .collect();
+            let ground_truths = load_json_lines(ground_truth_path)
+                .expect("Failed to load ground truths for evaluation");
+            let ground_truths = deserialize_ground_truth_entries(ground_truths);
+            let ground_truths: HashMap<String, BfclGroundTruthEntry> = ground_truths
+                .into_iter()
+                .map(|entry| (entry.id.clone(), entry))
+                .collect();
+            let mut evaluation_results: Vec<EvaluationResultEntry> = Vec::new();
+            let ids: Vec<String> = inference_results.keys().cloned().collect();
+            let total_cases = ids.len();
+            println!("Evaluating {} cases...", total_cases);
+            for (i, id) in ids.iter().enumerate() {
+                let inference_result = inference_results
+                    .get(id)
+                    .expect("Inference result should exist");
+                let test_case = test_cases.get(id).expect("Test case should exist");
+                let ground_truth = ground_truths.get(id).expect("Ground truth should exist");
+                let evaluation_result =
+                    evaluate_entry(id.into(), inference_result, test_case, ground_truth);
 
-            evaluation_results.push(evaluation_result);
-            println!("[{}/{}] Evaluated case {}", i + 1, total_cases, id);
+                evaluation_results.push(evaluation_result);
+
+                // Periodically yield to allow cancellation
+                yield_periodically(i, total_cases, "Evaluated cases").await;
+            }
+            // Final sort and write
+            println!("Sorting evaluation results.");
+            evaluation_results.sort_by(|a, b| compare_id(&a.id, &b.id));
+            println!("Sorted evaluation results. Writing to file.");
+            let evaluation_results_serialized =
+                serialize_evaluation_result_entries(&evaluation_results);
+            write_json_lines_to_file(&evaluation_output_path, &evaluation_results_serialized)
+                .expect("Failed to sort and write evaluation results");
+        };
+        if run_pass_with_cancellation("evaluation", evaluation_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
         }
-        // Final sort and write
-        println!("Sorting evaluation results.");
-        evaluation_results.sort_by(|a, b| compare_id(&a.id, &b.id));
-        println!("Sorted evaluation results. Writing to file.");
-        let evaluation_results_serialized =
-            serialize_evaluation_result_entries(&evaluation_results);
-        write_json_lines_to_file(&evaluation_output_path, &evaluation_results_serialized)
-            .expect("Failed to sort and write evaluation results");
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 6: Score                                                          */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -653,41 +704,46 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* Input: tool/result/evaluation/{model}/{filename}.json                 */
         /* Output: tool/result/score/{model}/{filename}.json                     */
         /* ═══════════════════════════════════════════════════════════════════════ */
-        println!("Scoring evaluation results...");
-        let evaluation_entries = load_json_lines(&score_input_path)
-            .expect("Failed to load evaluation results for scoring");
-        let evaluation_entries = deserialize_evaluation_result_entries(evaluation_entries);
-        let mut total_cases = 0;
-        let mut correct_cases = 0;
-        let mut wrong_cases: Vec<EvaluationResultEntry> = Vec::new();
-        for entry in evaluation_entries.iter() {
-            total_cases += 1;
-            if entry.valid {
-                correct_cases += 1;
-            } else {
-                wrong_cases.push(entry.clone());
+        let score_pass = async || {
+            println!("Scoring evaluation results...");
+            let evaluation_entries = load_json_lines(&score_input_path)
+                .expect("Failed to load evaluation results for scoring");
+            let evaluation_entries = deserialize_evaluation_result_entries(evaluation_entries);
+            let mut total_cases = 0;
+            let mut correct_cases = 0;
+            let mut wrong_cases: Vec<EvaluationResultEntry> = Vec::new();
+            for entry in evaluation_entries.iter() {
+                total_cases += 1;
+                if entry.valid {
+                    correct_cases += 1;
+                } else {
+                    wrong_cases.push(entry.clone());
+                }
             }
+            let accuracy = if total_cases > 0 {
+                correct_cases as f32 / total_cases as f32
+            } else {
+                0.0
+            };
+            let evaluation_summary = EvaluationSummary {
+                accuracy,
+                total_cases,
+                correct_cases,
+            };
+            let evaluation_summary_json = serde_json::to_value(&evaluation_summary)
+                .expect("Failed to serialize evaluation summary");
+            let mut output_json_lines = serialize_evaluation_result_entries(&wrong_cases);
+            output_json_lines.insert(0, evaluation_summary_json);
+            write_json_lines_to_file(&score_output_path, &output_json_lines)
+                .expect("Failed to write score results to file");
+            println!(
+                "Score result written to {}: {:?}",
+                score_output_path, evaluation_summary
+            );
+        };
+        if run_pass_with_cancellation("score", score_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
         }
-        let accuracy = if total_cases > 0 {
-            correct_cases as f32 / total_cases as f32
-        } else {
-            0.0
-        };
-        let evaluation_summary = EvaluationSummary {
-            accuracy,
-            total_cases,
-            correct_cases,
-        };
-        let evaluation_summary_json = serde_json::to_value(&evaluation_summary)
-            .expect("Failed to serialize evaluation summary");
-        let mut output_json_lines = serialize_evaluation_result_entries(&wrong_cases);
-        output_json_lines.insert(0, evaluation_summary_json);
-        write_json_lines_to_file(&score_output_path, &output_json_lines)
-            .expect("Failed to write score results to file");
-        println!(
-            "Score result written to {}: {:?}",
-            score_output_path, evaluation_summary
-        );
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 7: Categorize                                                    */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -779,7 +835,9 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             lock_file.unlock().expect("Failed to unlock the lock file");
             println!("Released lock for category cache file.");
         };
-        categorize_pass().await;
+        if run_pass_with_cancellation("categorize", categorize_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
+        }
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 8: Categorize Score                                              */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -788,35 +846,40 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
         /* Input: tool/result/categorize/{model}/{filename}.json                */
         /* Output: tool/result/categorize_score/{model}/{filename}.json        */
         /* ═══════════════════════════════════════════════════════════════════════ */
-        let categorize_score_inputs = load_json_lines(&categorize_score_input_path)
-            .expect("Failed to load categorize results for categorize scoring");
-        let categorize_score_entries = deserialize_categorized_entries(categorize_score_inputs);
-        // no need to skip because even if there is no categorized samples, we still want to write an empty summary
-        let mut category_counts: HashMap<String, usize> = HashMap::new();
-        let mut category_samples: HashMap<String, Vec<String>> = HashMap::new();
-        for entry in categorize_score_entries.iter() {
-            let category = entry.error_category.to_string();
-            *category_counts.entry(category.clone()).or_insert(0) += 1;
-            category_samples
-                .entry(category.clone())
-                .or_insert_with(Vec::new)
-                .push(entry.id.clone());
+        let categorize_score_pass = async || {
+            let categorize_score_inputs = load_json_lines(&categorize_score_input_path)
+                .expect("Failed to load categorize results for categorize scoring");
+            let categorize_score_entries = deserialize_categorized_entries(categorize_score_inputs);
+            // no need to skip because even if there is no categorized samples, we still want to write an empty summary
+            let mut category_counts: HashMap<String, usize> = HashMap::new();
+            let mut category_samples: HashMap<String, Vec<String>> = HashMap::new();
+            for entry in categorize_score_entries.iter() {
+                let category = entry.error_category.to_string();
+                *category_counts.entry(category.clone()).or_insert(0) += 1;
+                category_samples
+                    .entry(category.clone())
+                    .or_insert_with(Vec::new)
+                    .push(entry.id.clone());
+            }
+            let final_output = serde_json::json!({
+                "summary": category_counts,
+                "samples": category_samples
+            });
+            let final_output_serialized = serde_json::to_string_pretty(&final_output)
+                .expect("Failed to serialize categorize score output");
+            // write the json object to file manually
+            fs::create_dir_all(
+                std::path::Path::new(&categorize_score_output_path)
+                    .parent()
+                    .expect("Failed to get parent directory for categorize score output path"),
+            )
+            .expect("Failed to create directories for categorize score output path");
+            fs::write(categorize_score_output_path, final_output_serialized)
+                .expect("Failed to write categorize score results to file");
+        };
+        if run_pass_with_cancellation("categorize score", categorize_score_pass, shutdown_tx.subscribe()).await.is_err() {
+            break;
         }
-        let final_output = serde_json::json!({
-            "summary": category_counts,
-            "samples": category_samples
-        });
-        let final_output_serialized = serde_json::to_string_pretty(&final_output)
-            .expect("Failed to serialize categorize score output");
-        // write the json object to file manually
-        fs::create_dir_all(
-            std::path::Path::new(&categorize_score_output_path)
-                .parent()
-                .expect("Failed to get parent directory for categorize score output path"),
-        )
-        .expect("Failed to create directories for categorize score output path");
-        fs::write(categorize_score_output_path, final_output_serialized)
-            .expect("Failed to write categorize score results to file");
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* All passes completed                                                    */
         /* ═══════════════════════════════════════════════════════════════════════ */
