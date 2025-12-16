@@ -4,7 +4,8 @@ import subprocess
 import time
 
 from load_configs_from_file import load_configs_from_file
-
+from dotenv import load_dotenv
+load_dotenv(".env")
 
 
 # Parse command-line arguments

@@ -1,5 +1,13 @@
 🔗 Found pyo3 bindings
 🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+    Blocking waiting for file lock on build directory
+   Compiling pyo3-build-config v0.27.2
+   Compiling pyo3-ffi v0.27.2
+   Compiling pyo3-macros-backend v0.27.2
+   Compiling pyo3 v0.27.2
+   Compiling pyo3-macros v0.27.2
+   Compiling pyo3-async-runtimes v0.27.0
+   Compiling codebase_rs v0.1.0 (/projects/bfdz/zluo8/tool_and_judge2)
 warning: unused imports: `Value` and `value`
  --> src/tool_category_cache.rs:3:18
   |
@@ -45,6 +53,30 @@ warning: unused imports: `Model` and `models::backend::ModelBackend`
   |                          ^^^^^
 5 |     models::backend::ModelBackend,
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `BfclGroundTruthFunctionCall`
+  --> src/models/deepseek_interface.rs:11:26
+   |
+11 |         BfclFunctionDef, BfclGroundTruthFunctionCall, BfclOutputFunctionCall, BfclParameter,
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `PyAny` and `Py`
+  --> src/models/deepseek_interface.rs:17:12
+   |
+17 | use pyo3::{Py, PyAny, Python, types::PyAnyMethods};
+   |            ^^  ^^^^^
+
+warning: unused import: `serde_json::Value`
+  --> src/models/deepseek_interface.rs:21:5
+   |
+21 | use serde_json::Value;
+   |     ^^^^^^^^^^^^^^^^^
+
+warning: unused import: `serde_json::json`
+  --> src/models/deepseek_interface.rs:22:5
+   |
+22 | use serde_json::json;
+   |     ^^^^^^^^^^^^^^^^
 
 warning: unused import: `collections::HashMap`
  --> src/models/gpt5_interface.rs:1:21
@@ -151,6 +183,12 @@ warning: unused variable: `backend`
    |     ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backend`
 
 warning: unused import: `prelude`
+  --> src/models/deepseek_interface.rs:18:12
+   |
+18 | use pyo3::{prelude::*, types::PyList};
+   |            ^^^^^^^
+
+warning: unused import: `prelude`
   --> src/models/gpt5_interface.rs:18:12
    |
 18 | use pyo3::{prelude::*, types::PyList};
@@ -162,17 +200,27 @@ warning: unused import: `prelude`
 17 | use pyo3::{prelude::*, types::PyList};
    |            ^^^^^^^
 
-warning: `codebase_rs` (lib) generated 26 warnings (run `cargo fix --lib -p codebase_rs` to apply 21 suggestions)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.68s
+warning: `codebase_rs` (lib) generated 31 warnings (run `cargo fix --lib -p codebase_rs` to apply 25 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 22.32s
 📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmpn1no8b/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+📦 Built wheel for CPython 3.13 to /tmp/.tmpvQYv5m/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
 🛠 Installed codebase_rs-0.1.0
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:01<00:03,  1.31s/it]
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:04<00:05,  2.57s/it]
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:08<00:03,  3.04s/it]
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:11<00:00,  3.22s/it]
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:11<00:00,  2.96s/it]
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m 
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▊         | 3/35 [00:00<00:01, 22.10it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 6/35 [00:00<00:01, 23.52it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  26%|██▌       | 9/35 [00:00<00:01, 24.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 12/35 [00:00<00:00, 24.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 15/35 [00:00<00:00, 20.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████▏    | 18/35 [00:00<00:00, 22.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|██████    | 21/35 [00:00<00:00, 23.28it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 24/35 [00:01<00:00, 24.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  77%|███████▋  | 27/35 [00:01<00:00, 24.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▌ | 30/35 [00:01<00:00, 25.59it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 33/35 [00:01<00:00, 26.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:01<00:00, 24.10it/s]
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   5%|▌         | 1/19 [00:01<00:21,  1.20s/it]Capturing CUDA graphs (decode, FULL):  21%|██        | 4/19 [00:01<00:03,  3.90it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 7/19 [00:01<00:01,  7.26it/s]Capturing CUDA graphs (decode, FULL):  53%|█████▎    | 10/19 [00:01<00:00, 10.79it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▎  | 14/19 [00:01<00:00, 15.29it/s]Capturing CUDA graphs (decode, FULL):  95%|█████████▍| 18/19 [00:01<00:00, 19.18it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 19/19 [00:01<00:00, 10.52it/s]
 
-thread '<unnamed>' panicked at src/models/vllm_backend.rs:27:18:
-Failed to call create_vllm_backend: PyErr { type: <class 'OSError'>, value: OSError('You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct.\n401 Client Error. (Request ID: Root=1-6940ec05-221c9cca7d6d2a3853baca14;9f265ac7-b1b0-423f-8f76-53140e319450)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct/resolve/main/config.json.\nAccess to model meta-llama/Llama-3.1-8B-Instruct is restricted. You must have access to it and be authenticated to access it. Please log in.'), traceback: Some("Traceback (most recent call last):\n  File \"/projects/bfdz/zluo8/tool_and_judge2/src_py/vllm_backend.py\", line 19, in create_vllm_backend\n    tokenizer = AutoTokenizer.from_pretrained(model_name)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py\", line 1109, in from_pretrained\n    config = AutoConfig.from_pretrained(\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/configuration_auto.py\", line 1332, in from_pretrained\n    config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/configuration_utils.py\", line 662, in get_config_dict\n    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/configuration_utils.py\", line 721, in _get_config_dict\n    resolved_config_file = cached_file(\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/utils/hub.py\", line 322, in cached_file\n    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/utils/hub.py\", line 543, in cached_files\n    raise OSError(\n") }
+thread '<unnamed>' panicked at src/models/llama3_1_interface.rs:207:38:
+Llama 3.1 tool call generation failed: PyErr { type: <class 'KeyError'>, value: KeyError('arguments'), traceback: Some("Traceback (most recent call last):\n  File \"/projects/bfdz/zluo8/tool_and_judge2/src_py/llama3_1_backend.py\", line 104, in generate_tool_call_async\n    \"arguments\": json.dumps(tool_call[\"arguments\"])\n") }
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 Traceback (most recent call last):
-  File "/projects/bfdz/zluo8/tool_and_judge2/tool.py", line 47, in <module>
+  File "/projects/bfdz/zluo8/tool_and_judge2/tool.py", line 48, in <module>
     asyncio.run(codebase_rs.tool_run_async(configs, args.num_gpus))
     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/runners.py", line 195, in run
@@ -184,4 +232,4 @@ Traceback (most recent call last):
   File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
     return future.result()
            ~~~~~~~~~~~~~^^
-pyo3_runtime.PanicException: Failed to call create_vllm_backend: PyErr { type: <class 'OSError'>, value: OSError('You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct.\n401 Client Error. (Request ID: Root=1-6940ec05-221c9cca7d6d2a3853baca14;9f265ac7-b1b0-423f-8f76-53140e319450)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct/resolve/main/config.json.\nAccess to model meta-llama/Llama-3.1-8B-Instruct is restricted. You must have access to it and be authenticated to access it. Please log in.'), traceback: Some("Traceback (most recent call last):\n  File \"/projects/bfdz/zluo8/tool_and_judge2/src_py/vllm_backend.py\", line 19, in create_vllm_backend\n    tokenizer = AutoTokenizer.from_pretrained(model_name)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py\", line 1109, in from_pretrained\n    config = AutoConfig.from_pretrained(\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/configuration_auto.py\", line 1332, in from_pretrained\n    config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/configuration_utils.py\", line 662, in get_config_dict\n    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/configuration_utils.py\", line 721, in _get_config_dict\n    resolved_config_file = cached_file(\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/utils/hub.py\", line 322, in cached_file\n    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)\n  File \"/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/utils/hub.py\", line 543, in cached_files\n    raise OSError(\n") }
+pyo3_runtime.PanicException: Llama 3.1 tool call generation failed: PyErr { type: <class 'KeyError'>, value: KeyError('arguments'), traceback: Some("Traceback (most recent call last):\n  File \"/projects/bfdz/zluo8/tool_and_judge2/src_py/llama3_1_backend.py\", line 104, in generate_tool_call_async\n    \"arguments\": json.dumps(tool_call[\"arguments\"])\n") }

@@ -7,3 +7,4 @@ target/
 .venv/
 
 .env
+__pycache__/

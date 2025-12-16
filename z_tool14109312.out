@@ -1,0 +1,35 @@
+✏️ Setting installed package as editable
+Running tool from Rust!
+
+Tool run implementation called with 1 configs and  1 GPUs.
+Loaded environment variables from .env file.
+Starting tool run with 1 configs.
+Processing config: ToolConfig { model: Local(meta-llama/Llama-3.1-8B-Instruct), translate_mode: NotTranslated, add_noise_mode: NoNoise }
+Skipping question translation (pre-translate not enabled)
+File tool/result/inference_raw/meta-llama-Llama-3.1-8B-Instruct/_en_na_nopretrans_nonoise_noprompt.jsonl does not exist, it will be created.
+Generating functions for 200 cases...
+Global backend not available, or model mismatch. Creating new backend for model Local(meta-llama/Llama-3.1-8B-Instruct)...
+Building Rust extension with maturin develop...
+Loading configs from: tool_config_slurm.py
+Creating vLLM backend for model meta-llama/Llama-3.1-8B-Instruct with 1 GPUs...
+INFO 12-16 00:17:02 [model.py:637] Resolved architecture: LlamaForCausalLM
+INFO 12-16 00:17:02 [model.py:1750] Using max model len 131072
+INFO 12-16 00:17:03 [scheduler.py:228] Chunked prefill is enabled with max_num_batched_tokens=2048.
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:04 [core.py:93] Initializing a V1 LLM engine (v0.12.0) with config: model='meta-llama/Llama-3.1-8B-Instruct', speculative_config=None, tokenizer='meta-llama/Llama-3.1-8B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01), seed=0, served_model_name=meta-llama/Llama-3.1-8B-Instruct, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'eliminate_noops': True, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 256, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>}, 'local_cache_dir': None}
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:08 [parallel_state.py:1200] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://141.142.254.45:56125 backend=nccl
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:08 [parallel_state.py:1408] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:08 [gpu_model_runner.py:3467] Starting to load model meta-llama/Llama-3.1-8B-Instruct...
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:10 [cuda.py:411] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:22 [default_loader.py:308] Loading weights took 12.05 seconds
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:23 [gpu_model_runner.py:3549] Model loading took 14.9889 GiB memory and 13.805469 seconds
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:34 [backends.py:655] Using cache directory: /u/zluo8/.cache/vllm/torch_compile_cache/ebb0ac8eeb/rank_0_0/backbone for vLLM's torch.compile
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:34 [backends.py:715] Dynamo bytecode transform time: 10.50 s
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:38 [backends.py:216] Directly load the compiled graph(s) for dynamic shape from the cache, took 3.244 s
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:40 [monitor.py:34] torch.compile takes 13.75 s in total
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:41 [gpu_worker.py:359] Available KV cache memory: 19.91 GiB
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:41 [kv_cache_utils.py:1286] GPU KV cache size: 163,104 tokens
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:41 [kv_cache_utils.py:1291] Maximum concurrency for 131,072 tokens per request: 1.24x
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:45 [gpu_model_runner.py:4466] Graph capturing finished in 4 secs, took 0.37 GiB
+[0;36m(EngineCore_DP0 pid=3646027)[0;0m INFO 12-16 00:17:45 [core.py:254] init engine (profile, create kv cache, warmup model) took 22.22 seconds
+vLLM backend created successfully for meta-llama/Llama-3.1-8B-Instruct
+ERROR 12-16 00:17:50 [core_client.py:600] Engine core proc EngineCore_DP0 died unexpectedly, shutting down client.

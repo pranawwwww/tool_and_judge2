@@ -97,11 +97,18 @@ async def generate_tool_call_async(
     # Convert to the expected output format
     response_dicts = []
     for tool_call in tool_calls:
+        # Check if the tool call has required fields
+        if "name" not in tool_call:
+            continue  # Skip malformed tool calls without a name
+
+        # Get arguments, default to empty dict if not present
+        arguments = tool_call.get("arguments", {})
+
         response_dicts.append({
             "type": "function",
             "function": {
                 "name": tool_call["name"],
-                "arguments": json.dumps(tool_call["arguments"])
+                "arguments": json.dumps(arguments)
             }
         })
 
@@ -247,9 +254,21 @@ def parse_llama3_1_tool_calls(generated_text: str) -> List[dict]:
     try:
         parsed = json.loads(generated_text)
         if isinstance(parsed, list):
-            return parsed
-        elif isinstance(parsed, dict):
-            return [parsed]
+            # Validate and normalize each item
+            normalized = []
+            for item in parsed:
+                if isinstance(item, dict) and "name" in item:
+                    normalized.append({
+                        "name": item["name"],
+                        "arguments": item.get("arguments", {})
+                    })
+            if normalized:
+                return normalized
+        elif isinstance(parsed, dict) and "name" in parsed:
+            return [{
+                "name": parsed["name"],
+                "arguments": parsed.get("arguments", {})
+            }]
     except json.JSONDecodeError:
         pass
 
@@ -284,12 +303,12 @@ def parse_llama3_1_tool_calls(generated_text: str) -> List[dict]:
             arguments_str = match.group(2)
             try:
                 arguments = json.loads(arguments_str)
-                tool_calls.append({
-                    "name": function_name,
-                    "arguments": arguments
-                })
             except json.JSONDecodeError:
-                continue
+                arguments = {}
+            tool_calls.append({
+                "name": function_name,
+                "arguments": arguments
+            })
 
     # If still no tool calls found, try to extract any JSON-like structure
     if not tool_calls:
@@ -300,11 +319,23 @@ def parse_llama3_1_tool_calls(generated_text: str) -> List[dict]:
             for match in re.finditer(json_pattern, generated_text):
                 try:
                     obj = json.loads(match.group(0))
-                    if "name" in obj and "arguments" in obj:
-                        tool_calls.append(obj)
+                    if "name" in obj:
+                        tool_calls.append({
+                            "name": obj["name"],
+                            "arguments": obj.get("arguments", {})
+                        })
                 except json.JSONDecodeError:
                     continue
         except Exception:
             pass
 
-    return tool_calls
+    # Ensure all tool calls have the required structure
+    normalized_tool_calls = []
+    for tool_call in tool_calls:
+        if isinstance(tool_call, dict) and "name" in tool_call:
+            normalized_tool_calls.append({
+                "name": tool_call["name"],
+                "arguments": tool_call.get("arguments", {})
+            })
+
+    return normalized_tool_calls

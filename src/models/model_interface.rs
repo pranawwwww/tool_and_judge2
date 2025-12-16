@@ -7,7 +7,8 @@ use crate::{
     config::{ApiModel, LocalModel, Model},
     models::{
         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
-        gpt5_interface::Gpt5Interface, llama3_1_interface::Llama3_1Interface,
+        deepseek_interface::DeepSeekInterface, gpt5_interface::Gpt5Interface,
+        llama3_1_interface::Llama3_1Interface,
     },
     tool_bfcl_formats::{BfclFunctionDef, BfclOutputFunctionCall},
     tool_error_analysis::EvaluationError,
@@ -47,8 +48,9 @@ pub fn get_model_interface(model: Model) -> Arc<dyn ModelInterface> {
     match model {
         Model::Api(api_model) => match api_model {
             ApiModel::Gpt5 | ApiModel::Gpt5Mini | ApiModel::Gpt5Nano => Arc::new(Gpt5Interface),
+            ApiModel::DeepSeek => Arc::new(DeepSeekInterface),
             _ => {
-                unimplemented!("API model interfaces other than GPT-5 are not implemented yet.")
+                unimplemented!("API model interfaces other than GPT-5 and DeepSeek are not implemented yet.")
             }
         },
         Model::Local(local_model) => match local_model {
