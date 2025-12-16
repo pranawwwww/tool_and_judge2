@@ -36,7 +36,7 @@
 {"id":"multiple_35","valid":true,"error":null}
 {"id":"multiple_36","valid":true,"error":null}
 {"id":"multiple_37","valid":true,"error":null}
-{"id":"multiple_38","valid":true,"error":null}
+{"id":"multiple_38","valid":false,"error":{"InvalidParamValue":{"param":"availability","actual_value":true,"expected_values":["",false],"decoded_output":"[{\"library.search_book\":{\"book_name\":\"The Alchemist\",\"city\":\"New York City\",\"availability\":true,\"genre\":\"\"}}]"}}}
 {"id":"multiple_39","valid":true,"error":null}
 {"id":"multiple_40","valid":false,"error":{"WrongFuncName":{"expected_name":"electromagnetism.biot_savart_law","actual_name":"electromagnetism.ampere_law","decoded_output":"[{\"electromagnetism.ampere_law\":{\"enclosed_current\":12,\"radius\":8}}]"}}}
 {"id":"multiple_41","valid":true,"error":null}
@@ -66,33 +66,33 @@
 {"id":"multiple_65","valid":true,"error":null}
 {"id":"multiple_66","valid":true,"error":null}
 {"id":"multiple_67","valid":true,"error":null}
-{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"location\":\"New York Public Library\",\"genre\":\"Historical Fiction\",\"title\":\"\"}}]"}}}
+{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"location\":\"New York Public Library\",\"genre\":\"historical fiction\",\"title\":\"\"}}]"}}}
 {"id":"multiple_69","valid":true,"error":null}
 {"id":"multiple_70","valid":true,"error":null}
 {"id":"multiple_71","valid":true,"error":null}
 {"id":"multiple_72","valid":true,"error":null}
 {"id":"multiple_73","valid":true,"error":null}
 {"id":"multiple_74","valid":false,"error":{"InvalidParamValue":{"param":"artist","actual_value":"Vincent van Gogh","expected_values":["Van Gogh"],"decoded_output":"[{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\",\"platform\":\"all\"}}]"}}}
-{"id":"multiple_75","valid":false,"error":{"InvalidParamValue":{"param":"period","actual_value":"Weekly","expected_values":["","Daily"],"decoded_output":"[{\"paint_color.trends\":{\"room\":\"Living room\",\"period\":\"Weekly\"}}]"}}}
+{"id":"multiple_75","valid":true,"error":null}
 {"id":"multiple_76","valid":true,"error":null}
 {"id":"multiple_77","valid":true,"error":null}
 {"id":"multiple_78","valid":true,"error":null}
 {"id":"multiple_79","valid":true,"error":null}
-{"id":"multiple_80","valid":false,"error":{"InvalidParamValue":{"param":"services","actual_value":["Guitar Lessons","Violin Lessons"],"expected_values":[["Violin Lessons"]],"decoded_output":"[{\"music_shop.find_nearby\":{\"location\":\"Nashville, TN\",\"services\":[\"Guitar Lessons\",\"Violin Lessons\"],\"instruments\":[\"Guitars\",\"Violins\"]}}]"}}}
+{"id":"multiple_80","valid":false,"error":{"InvalidParamValue":{"param":"services","actual_value":["Guitar Lessons","Violin Lessons"],"expected_values":[["Violin Lessons"]],"decoded_output":"[{\"music_shop.find_nearby\":{\"location\":\"Nashville, TN\",\"services\":[\"Guitar Lessons\",\"Violin Lessons\"],\"instruments\":[\"Guitars\"]}}]"}}}
 {"id":"multiple_81","valid":true,"error":null}
 {"id":"multiple_82","valid":true,"error":null}
 {"id":"multiple_83","valid":true,"error":null}
 {"id":"multiple_84","valid":true,"error":null}
 {"id":"multiple_85","valid":true,"error":null}
-{"id":"multiple_86","valid":true,"error":null}
+{"id":"multiple_86","valid":false,"error":{"InvalidParamValue":{"param":"difficulty","actual_value":"intermediate","expected_values":["","beginner"],"decoded_output":"[{\"BoardGameGeek.recommend\":{\"numPlayers\":2,\"category\":\"strategy\",\"difficulty\":\"intermediate\"}}]"}}}
 {"id":"multiple_87","valid":true,"error":null}
 {"id":"multiple_88","valid":true,"error":null}
-{"id":"multiple_89","valid":true,"error":null}
+{"id":"multiple_89","valid":false,"error":{"InvalidParamValue":{"param":"ingredients","actual_value":["chicken","mushroom"],"expected_values":[["chicken","mushrooms"],["mushrooms","chicken"]],"decoded_output":"[{\"recipe_search\":{\"ingredients\":[\"chicken\",\"mushroom\"],\"calories\":500,\"meal\":\"lunch\"}}]"}}}
 {"id":"multiple_90","valid":true,"error":null}
 {"id":"multiple_91","valid":true,"error":null}
 {"id":"multiple_92","valid":true,"error":null}
-{"id":"multiple_93","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York - Marriott","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"hotel.book\":{\"location\":\"New York - Marriott\",\"roomType\":\"Deluxe room\",\"nights\":2,\"additional_services\":[\"breakfast\"]}}]"}}}
-{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"Suite with Queen Bed","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"hotelName\":\"Hilton New York\",\"roomType\":\"Suite with Queen Bed\",\"nights\":3}}]"}}}
+{"id":"multiple_93","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Marriott Hotel, New York","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"hotel.book\":{\"location\":\"Marriott Hotel, New York\",\"roomType\":\"deluxe room\",\"nights\":2,\"additional_services\":[\"breakfast\"]}}]"}}}
+{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"Suite with queen bed","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"hotelName\":\"Hilton New York\",\"roomType\":\"Suite with queen bed\",\"nights\":3}}]"}}}
 {"id":"multiple_95","valid":true,"error":null}
 {"id":"multiple_96","valid":true,"error":null}
 {"id":"multiple_97","valid":true,"error":null}
@@ -102,7 +102,7 @@
 {"id":"multiple_101","valid":true,"error":null}
 {"id":"multiple_102","valid":true,"error":null}
 {"id":"multiple_103","valid":true,"error":null}
-{"id":"multiple_104","valid":true,"error":null}
+{"id":"multiple_104","valid":false,"error":{"InvalidParamValue":{"param":"unit","actual_value":"miles","expected_values":["","kilometers"],"decoded_output":"[{\"get_shortest_driving_distance\":{\"origin\":\"New York City\",\"destination\":\"Washington D.C.\",\"unit\":\"miles\"}}]"}}}
 {"id":"multiple_105","valid":true,"error":null}
 {"id":"multiple_106","valid":true,"error":null}
 {"id":"multiple_107","valid":false,"error":{"InvalidParamValue":{"param":"unit","actual_value":"kg/m^3","expected_values":["kg/m³",""],"decoded_output":"[{\"calculate_density\":{\"mass\":45,\"volume\":15,\"unit\":\"kg/m^3\"}}]"}}}
@@ -113,7 +113,7 @@
 {"id":"multiple_112","valid":true,"error":null}
 {"id":"multiple_113","valid":true,"error":null}
 {"id":"multiple_114","valid":true,"error":null}
-{"id":"multiple_115","valid":true,"error":null}
+{"id":"multiple_115","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Manhattan, NY","expected_values":["Manhattan"],"decoded_output":"[{\"find_restaurants\":{\"location\":\"Manhattan, NY\",\"food_type\":\"Thai\",\"number\":5,\"dietary_requirements\":[\"vegan\"]}}]"}}}
 {"id":"multiple_116","valid":true,"error":null}
 {"id":"multiple_117","valid":true,"error":null}
 {"id":"multiple_118","valid":true,"error":null}
@@ -147,7 +147,7 @@
 {"id":"multiple_146","valid":true,"error":null}
 {"id":"multiple_147","valid":true,"error":null}
 {"id":"multiple_148","valid":true,"error":null}
-{"id":"multiple_149","valid":false,"error":{"InvalidParamValue":{"param":"language","actual_value":"en","expected_values":["english","English"],"decoded_output":"[{\"sentiment_analysis\":{\"text\":\"I love the food here! It's always fresh and delicious.\",\"language\":\"en\"}}]"}}}
+{"id":"multiple_149","valid":true,"error":null}
 {"id":"multiple_150","valid":true,"error":null}
 {"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"sub_topics","actual_value":["behavior","group dynamics","social psychology"],"expected_values":[["behaviour","group dynamics"],["group dynamics","behaviour"]],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"topic\":\"psychology\",\"sub_topics\":[\"behavior\",\"group dynamics\",\"social psychology\"],\"region\":\"global\"}}]"}}}
 {"id":"multiple_152","valid":true,"error":null}
@@ -163,9 +163,9 @@
 {"id":"multiple_162","valid":true,"error":null}
 {"id":"multiple_163","valid":true,"error":null}
 {"id":"multiple_164","valid":true,"error":null}
-{"id":"multiple_165","valid":true,"error":null}
+{"id":"multiple_165","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Chicago, IL","expected_values":["Chicago","Chicago area"],"decoded_output":"[{\"guitar_price.find\":{\"model\":\"Gibson Les Paul\",\"condition\":\"Excellent\",\"location\":\"Chicago, IL\"}}]"}}}
 {"id":"multiple_166","valid":true,"error":null}
-{"id":"multiple_167","valid":false,"error":{"InvalidParamValue":{"param":"key","actual_value":"C major","expected_values":["C"],"decoded_output":"[{\"music_generator.generate_melody\":{\"key\":\"C major\",\"start_note\":\"C4\",\"length\":16,\"tempo\":120}}]"}}}
+{"id":"multiple_167","valid":true,"error":null}
 {"id":"multiple_168","valid":true,"error":null}
 {"id":"multiple_169","valid":true,"error":null}
 {"id":"multiple_170","valid":true,"error":null}
@@ -174,7 +174,7 @@
 {"id":"multiple_173","valid":true,"error":null}
 {"id":"multiple_174","valid":true,"error":null}
 {"id":"multiple_175","valid":true,"error":null}
-{"id":"multiple_176","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":" ","expected_values":[""],"decoded_output":"[{\"sports_team.get_schedule\":{\"team_name\":\"Manchester United\",\"num_of_games\":6,\"league\":\"Premier League\",\"location\":\" \"}}]"}}}
+{"id":"multiple_176","valid":true,"error":null}
 {"id":"multiple_177","valid":true,"error":null}
 {"id":"multiple_178","valid":true,"error":null}
 {"id":"multiple_179","valid":true,"error":null}
@@ -182,16 +182,16 @@
 {"id":"multiple_181","valid":true,"error":null}
 {"id":"multiple_182","valid":false,"error":{"InvalidParamValue":{"param":"rating","actual_value":4.6,"expected_values":[4.5],"decoded_output":"[{\"multiplayer_game_finder\":{\"platform\":\"Windows 10\",\"rating\":4.6,\"genre\":\"Action\"}}]"}}}
 {"id":"multiple_183","valid":true,"error":null}
-{"id":"multiple_184","valid":true,"error":null}
+{"id":"multiple_184","valid":false,"error":{"InvalidParamValue":{"param":"ingredients","actual_value":["pasta","parmesan cheese","mozzarella cheese","garlic","olive oil","cherry tomatoes","spinach","basil","salt","pepper"],"expected_values":[["pasta","cheese"],["cheese","pasta"]],"decoded_output":"[{\"recipe_search\":{\"dietary_restriction\":\"Vegetarian\",\"ingredients\":[\"pasta\",\"parmesan cheese\",\"mozzarella cheese\",\"garlic\",\"olive oil\",\"cherry tomatoes\",\"spinach\",\"basil\",\"salt\",\"pepper\"],\"servings\":2}}]"}}}
 {"id":"multiple_185","valid":true,"error":null}
-{"id":"multiple_186","valid":false,"error":{"InvalidParamValue":{"param":"recipe_type","actual_value":"brownies","expected_values":["dessert"],"decoded_output":"[{\"find_recipe\":{\"dietary_restrictions\":\"vegan\",\"recipe_type\":\"brownies\",\"time\":30}}]"}}}
-{"id":"multiple_187","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Los Angeles, CA","expected_values":["Los Angeles","LA"],"decoded_output":"[{\"whole_foods.check_price\":{\"location\":\"Los Angeles, CA\",\"items\":[\"tomatoes\",\"lettuce\"]}}]"}}}
+{"id":"multiple_186","valid":false,"error":{"InvalidParamValue":{"param":"time","actual_value":29,"expected_values":[30],"decoded_output":"[{\"find_recipe\":{\"dietary_restrictions\":\"vegan\",\"recipe_type\":\"dessert\",\"time\":29}}]"}}}
+{"id":"multiple_187","valid":true,"error":null}
 {"id":"multiple_188","valid":true,"error":null}
 {"id":"multiple_189","valid":true,"error":null}
-{"id":"multiple_190","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"Hilton Chicago","expected_values":["Hilton Hotel","Hilton"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hilton Chicago\",\"location\":\"Chicago\",\"room_type\":\"Single\",\"start_date\":\"2022-12-10\",\"nights\":2}}]"}}}
-{"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"view","actual_value":"City view","expected_values":["city","city view"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hotel Paradise\",\"location\":\"Las Vegas\",\"room_type\":\"Luxury\",\"start_date\":\"05-12-2022\",\"stay_duration\":3,\"view\":\"City view\"}}]"}}}
+{"id":"multiple_190","valid":true,"error":null}
+{"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"room_type","actual_value":"luxury room","expected_values":["luxury","Luxury"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hotel Paradise\",\"location\":\"Las Vegas\",\"room_type\":\"luxury room\",\"start_date\":\"05-12-2022\",\"stay_duration\":3,\"view\":\"city view\"}}]"}}}
 {"id":"multiple_192","valid":true,"error":null}
-{"id":"multiple_193","valid":true,"error":null}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"start_location","actual_value":"Eiffel Tower, Paris","expected_values":["Eiffel Tower"],"decoded_output":"[{\"maps.get_distance_duration\":{\"start_location\":\"Eiffel Tower, Paris\",\"end_location\":\"Louvre Museum, Paris\",\"traffic\":false}}]"}}}
 {"id":"multiple_194","valid":true,"error":null}
 {"id":"multiple_195","valid":true,"error":null}
 {"id":"multiple_196","valid":true,"error":null}

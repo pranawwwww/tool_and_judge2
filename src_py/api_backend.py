@@ -1,8 +1,3 @@
-
-
-
-
-
 def create_api_backend(
     model_name: str,
     api_key: str,

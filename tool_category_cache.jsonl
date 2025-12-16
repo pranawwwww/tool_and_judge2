@@ -1,424 +1,640 @@
-{"query":"\"suite with king bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"\"historical_texts\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Copper\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Historical documents\"","ground_truths":["\"historical records\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pet-friendly\",\"accessible facilities\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
-{"query":"10","ground_truths":["1","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Deluxe Room\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"Backstage pass\"]","ground_truths":["[\"Backstage Pass\"]"],"category":"\"exactly same meaning\""}
-{"query":"1.2566370614359173e-06","ground_truths":["\"\"","0.01"],"category":"\"wrong value\""}
-{"query":"5","ground_truths":["\"\"","1"],"category":"\"relevant but incorrect\""}
-{"query":"\"historical\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
-{"query":"\"城市景观\"","ground_truths":["\"city\"","\"city view\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"30","ground_truths":["1","\"\""],"category":"\"wrong value\""}
-{"query":"\"Suite with queen size bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"camping\",\"scenic views\",\"open now\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"New York Public Library\"","ground_truths":["\"New York\"","\"New York, NY\"","\"New York City\"","\"New York City, NY\"","\"NYC\"","\"New York public library\""],"category":"\"exactly same meaning\""}
-{"query":"\"Washington, DC\"","ground_truths":["\"Washington D.C.\"","\"D.C.\"","\"DC\""],"category":"\"exactly same meaning\""}
-{"query":"\"en\"","ground_truths":["\"English\"","\"\""],"category":"\"exactly same meaning\""}
-{"query":"\"3:00 PM\"","ground_truths":["\"3pm\""],"category":"\"exactly same meaning\""}
-{"query":"\"Bronze (copper alloy); other options: Brass, Stainless steel, Aluminum, Iron, Stone, Marble, Wood, Resin, Ceramic\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Single room\"","ground_truths":["\"single\"","\"Single\""],"category":"\"exactly same meaning\""}
-{"query":"\"good\"","ground_truths":["\"Excellent\""],"category":"\"relevant but incorrect\""}
-{"query":"\"cityscape\"","ground_truths":["\"city\"","\"city view\""],"category":"\"exactly same meaning\""}
-{"query":"\"Suite with a double bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"cheddar cheese\",\"milk\",\"butter\",\"all-purpose flour\",\"garlic (optional)\",\"salt\",\"black pepper\",\"parmesan cheese (optional)\",\"nutmeg (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"km\"","ground_truths":["\"miles\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"5","ground_truths":["0.05"],"category":"\"relevant but incorrect\""}
-{"query":"\"Rosewood veneer\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
-{"query":"\"brownies\"","ground_truths":["\"dessert\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Queen Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
-{"query":"[\"camping\",\"scenic views\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese\",\"olive oil\",\"garlic\",\"tomato\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"刑法\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"All\"","ground_truths":["\"\"","\"all\""],"category":"\"exactly same meaning\""}
-{"query":"\"Lisbon Treaty\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese (parmesan or cheddar)\",\"milk\",\"butter\",\"flour\",\"garlic\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"suite with a queen size bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
-{"query":"[\"age\",\"income\",\"Educational attainment\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"bronzeypotentialforbronze instrument?\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"西红柿\",\"生菜\"]","ground_truths":["[\"tomatoes\",\"lettuce\"]","[\"lettuce\",\"tomatoes\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Marriott hotel in New York\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"war\",\"battle\",\"conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"salt\",\"black pepper\",\"parmesan\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Panthera tigris\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"魔兽世界\"","ground_truths":["\"World of Warcraft\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Philadelphia, PA\"","ground_truths":["\"Philadelphia\""],"category":"\"exactly same meaning\""}
-{"query":"4","ground_truths":["\"\"","0"],"category":"\"wrong value\""}
-{"query":"5","ground_truths":["5.0"],"category":"\"exactly same meaning\""}
-{"query":"\"Louvre Museum, Paris\"","ground_truths":["\"Louvre Museum\""],"category":"\"exactly same meaning\""}
-{"query":"[\"violin\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Paradise Hotel Las Vegas\"","ground_truths":["\"Hotel Paradise\""],"category":"\"relevant but incorrect\""}
-{"query":"8","ground_truths":["0.08"],"category":"\"relevant but incorrect\""}
-{"query":"\"R_v_Adams\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"exactly same meaning\""}
-{"query":"\"employee\"","ground_truths":["\"employees\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"tomato\",\"Pet food\"]","ground_truths":["[\"tomatoes\",\"pet food\"]","[\"pet food\",\"tomatoes\"]","[\"Tomatoes\",\"Pet food\"]","[\"Pet food\",\"Tomatoes\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"highways\",\"toll_roads\"]","ground_truths":["[\"highways\",\"tolls\"]","[\"tolls\",\"highways\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"butter\",\"garlic\",\"all-purpose flour\",\"milk\",\"cream\",\"cheese (parmesan and mozzarella or cheddar)\",\"salt\",\"black pepper\",\"parsley for garnish\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"criminal defense\",\"criminal law\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"camping\",\"scenic view\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"历史小说\"","ground_truths":["\"Historical Fiction\"","\"historical fiction\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"chicken meat\",\"mushroom\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"points per game\",\"assists per game\",\"minutes per game\"]","ground_truths":["[\"points per game\",\"assists\",\"minutes per game\"]","[\"points per game\",\"minutes per game\",\"assists\"]","[\"assists\",\"points per game\",\"minutes per game\"]","[\"assists\",\"minutes per game\",\"points per game\"]","[\"minutes per game\",\"points per game\",\"assists\"]","[\"minutes per game\",\"assists\",\"points per game\"]","[\"points\",\"assists\",\"minutes\"]","[\"points\",\"minutes\",\"assists\"]","[\"assists\",\"points\",\"minutes\"]","[\"assists\",\"minutes\",\"points\"]","[\"minutes\",\"points\",\"assists\"]","[\"minutes\",\"assists\",\"points\"]","[\"points_per_game\",\"assists\",\"minutes_per_game\"]","[\"points_per_game\",\"minutes_per_game\",\"assists\"]","[\"assists\",\"points_per_game\",\"minutes_per_game\"]","[\"assists\",\"minutes_per_game\",\"points_per_game\"]","[\"minutes_per_game\",\"points_per_game\",\"assists\"]","[\"minutes_per_game\",\"assists\",\"points_per_game\"]"],"category":"\"relevant but incorrect\""}
-{"query":"null","ground_truths":["\"\"","2024"],"category":"\"wrong value\""}
-{"query":"\"2x^2\"","ground_truths":["\"2x**2\"","\"lambda x: 2x**2\""],"category":"\"relevant but incorrect\""}
-{"query":"\"芝加哥希尔顿旅馆\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"language mismatch relevant but incorrect\""}
-{"query":"\"豪华客房\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Manhattan, NY\"","ground_truths":["\"Manhattan\""],"category":"\"exactly same meaning\""}
-{"query":"[\"camping\",\"scenic views\",\"recently opened\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"opening hours\",\"exhibitions\",\"amenities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"contemporary sculpture\"","ground_truths":["\"sculpture\"","\"modern sculpture\""],"category":"\"relevant but incorrect\""}
-{"query":"\"luxury chamber\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Violent crime\"","ground_truths":["\"violent\"","\"Violent\""],"category":"\"exactly same meaning\""}
-{"query":"\"kg/m^3\"","ground_truths":["\"kg/m³\"","\"\""],"category":"\"exactly same meaning\""}
-{"query":"[\"Age\",\"income\",\"Level of education\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"The Shepherd Boy's Magical Journey\"","ground_truths":["\"The Alchemist\""],"category":"\"relevant but incorrect\""}
-{"query":"\"housing_price\"","ground_truths":["\"house_price\"","\"house price\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Small-space garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
-{"query":"\" \"","ground_truths":["\"\""],"category":"\"wrong value\""}
-{"query":"\"discovery of the neutron\"","ground_truths":["\"neutron\""],"category":"\"relevant but incorrect\""}
-{"query":"\"伯克利\"","ground_truths":["\"Berkeley\"","\"Berkeley,California\"","\"Berkeley,CA\"","\"Berkeley, CA\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"2019-2020}\"","ground_truths":["\"2019-2020\""],"category":"\"exactly same meaning\""}
-{"query":"\"Jaume Plensa\"","ground_truths":["\"James Plensa\""],"category":"\"exactly same meaning\""}
-{"query":"[\"gluten-free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"3","ground_truths":["\"\"","0"],"category":"\"relevant but incorrect\""}
-{"query":"\"small space gardens\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"seafood\"]","ground_truths":["[\"Seafood\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"Gluten-Free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"opening hours\",\"current exhibitions\",\"accessibility options\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"highest\"","ground_truths":["\"high\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"29","ground_truths":["30"],"category":"\"wrong value\""}
-{"query":"true","ground_truths":["false","\"\""],"category":"\"wrong value\""}
-{"query":"\"rosewood-decorated\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
-{"query":"null","ground_truths":["\"\"","\"all\""],"category":"\"wrong value\""}
-{"query":"[\"Opening hours\",\"Exhibits\",\"Accessibility service\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"casualty\"","ground_truths":["\"victim\""],"category":"\"relevant but incorrect\""}
-{"query":"[46.603354,1.8883340]","ground_truths":["[46.603354,1.888334]"],"category":"\"exactly same meaning\""}
-{"query":"\"square units\"","ground_truths":["\"\"","\"square meters\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"behaviour\",\"group dynamics\",\"behavior\",\"psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"利率\",\"失业率\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Behavioral psychology\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"highways\",\"toll roads\"]","ground_truths":["[\"highways\",\"tolls\"]","[\"tolls\",\"highways\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"纽约现代艺术博物馆\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"黄石国家公园\"","ground_truths":["\"Yellowstone National Park\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Alphabet Inc.\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"exactly same meaning\""}
-{"query":"\"shortest\"","ground_truths":["\"fastest\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Behavioral psychology and social dynamics\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"gluten-free\",\"vegetarian\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"The Legend of Zelda\"","ground_truths":["\"Zelda\""],"category":"\"exactly same meaning\""}
-{"query":"\"Alphabet Inc. (Google)\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pet-friendly\",\"disabled access\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Weekly\"","ground_truths":["\"\"","\"Daily\""],"category":"\"relevant but incorrect\""}
-{"query":"\"产品A\"","ground_truths":["\"A\"","\"Product A\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"foodnetwork.com\"","ground_truths":["\"Foodnetwork.com\""],"category":"\"exactly same meaning\""}
-{"query":"\"Yellowstone National Park\"","ground_truths":["\"Yellowstone\"","\"yellowstone\""],"category":"\"exactly same meaning\""}
-{"query":"[\"鸡胸肉\",\"蘑菇\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"en\"","ground_truths":["\"english\"","\"English\""],"category":"\"exactly same meaning\""}
-{"query":"\"Suite with double bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"\"基督教\"","ground_truths":["\"Christianity\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"backstage access\"]","ground_truths":["[\"Backstage Pass\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"The Museum of Modern Art (MoMA), New York\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"exactly same meaning\""}
-{"query":"\"all\"","ground_truths":["\"Patent\""],"category":"\"wrong value\""}
-{"query":"\"non-biblical_sources\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
-{"query":"\"New York Marriott Hotel\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Apple\"","ground_truths":["\"Apple Inc.\""],"category":"\"exactly same meaning\""}
-{"query":"\"annual\"","ground_truths":["\"\"","\"annually\""],"category":"\"exactly same meaning\""}
-{"query":"\"3x^2\"","ground_truths":["\"3x**2\"","\"lambda x: 3x**2\""],"category":"\"exactly same meaning\""}
-{"query":"\"Treaty of Lisbon signing\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
-{"query":"\"LeBron James\"","ground_truths":["\"Lebron James\""],"category":"\"exactly same meaning\""}
-{"query":"5","ground_truths":["4"],"category":"\"relevant but incorrect\""}
-{"query":"\"under $20\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"backstage pass\"]","ground_truths":["[\"Backstage Pass\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"pet-friendly\",\"disabled access\",\"facilities for people with disabilities\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Purchase Amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
-{"query":"\"human\"","ground_truths":["\"Homo Sapiens\"","\"Homo sapiens\""],"category":"\"exactly same meaning\""}
-{"query":"\"The Museum of Modern Art, New York\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"cream\",\"parmesan\",\"salt\",\"pepper\",\"butter\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"age\",\"Income\",\"Education level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"3*x^2\"","ground_truths":["\"3x**2\"","\"lambda x: 3x**2\""],"category":"\"relevant but incorrect\""}
-{"query":"\"New York Hilton Hotel\"","ground_truths":["\"Hilton New York\""],"category":"\"exactly same meaning\""}
-{"query":"\"青铜 Bronze、铜 Copper、黄铜 Brass、不锈钢 Stainless Steel、铝 Aluminum、树脂 Resin、大理石 Marble、花岗岩 Granite、铜铝合金 Bronze Alloy\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"language mismatch relevant but incorrect\""}
-{"query":"\"Marriott Hotel, New York\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"\"basketball\"","ground_truths":["\"Basketball\""],"category":"\"exactly same meaning\""}
-{"query":"\"Los Angeles, CA\"","ground_truths":["\"Los Angeles\""],"category":"\"exactly same meaning\""}
-{"query":"[\"Violin Classes\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"popularity_desc\"","ground_truths":["\"popularity\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pet-friendly\",\"disabled access facilities\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"2026-01\"","ground_truths":["\"upcoming\"","\"next month\"","\"upcoming month\"","\"next\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Classical\"","ground_truths":["\"classical\""],"category":"\"exactly same meaning\""}
-{"query":"\"AAPL\"","ground_truths":["\"Apple\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York City\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"tomatoes\",\"basil\",\"parmesan\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"vegetarian\",\"gluten-free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"铜、青铜、黄铜及其它铜合金材料；也可结合镀层/表面处理如氧化、抛光、Patina（铜绿）等。最终材料以工坊提供为准\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"language mismatch relevant but incorrect\""}
-{"query":"\"exceptional\"","ground_truths":["\"Excellent\""],"category":"\"exactly same meaning\""}
-{"query":"\"single room\"","ground_truths":["\"single\"","\"Single\""],"category":"\"exactly same meaning\""}
-{"query":"\"06-02-2023\"","ground_truths":["\"06-01-2023\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"vegetarian\"]","ground_truths":["[\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Las Vegas, NV\"","ground_truths":["\"Las Vegas\""],"category":"\"exactly same meaning\""}
-{"query":"\"2x+3\"","ground_truths":["\"2x + 3\"","\"lambda x: 2x + 3\""],"category":"\"exactly same meaning\""}
-{"query":"\"Chicago Hilton Hotel\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Divorce Law\"","ground_truths":["\"Divorce\""],"category":"\"exactly same meaning\""}
-{"query":"\"小空间花园设计\"","ground_truths":["\"small space garden design\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Zitan wood trim\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
-{"query":"\"residence_costs\"","ground_truths":["\"house_price\"","\"house price\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"war\",\"military\",\"conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"Pet-friendly\",\"Disabled access\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"豪华客房\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"鸡肉\",\"蘑菇\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"tomato\",\"pet food\"]","ground_truths":["[\"tomatoes\",\"pet food\"]","[\"pet food\",\"tomatoes\"]","[\"Tomatoes\",\"Pet food\"]","[\"Pet food\",\"Tomatoes\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Los Angeles, CA\"","ground_truths":["\"Los Angeles\"","\"LA\""],"category":"\"exactly same meaning\""}
-{"query":"5","ground_truths":["1","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Current\"","ground_truths":["\"\"","\"Daily\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Lisbon Treaty signing\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese\",\"cream\",\"garlic\",\"olive oil\",\"salt\",\"black pepper\",\"parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"Interest rate\",\"unemployment rate\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"chicken breast\",\"mushroom\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"极佳\"","ground_truths":["\"Excellent\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Apple Inc\"","ground_truths":["\"Apple Inc.\"","\"Apple\""],"category":"\"exactly same meaning\""}
-{"query":"[\"war\",\"conflict\",\"military\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Washington, D.C.\"","ground_truths":["\"Washington D.C.\"","\"D.C.\"","\"DC\""],"category":"\"exactly same meaning\""}
-{"query":"[\"Vegetarian\",\"Gluten-Free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"James Prensa\"","ground_truths":["\"James Plensa\""],"category":"\"relevant but incorrect\""}
-{"query":"\"affordable\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
-{"query":"\"kilometers\"","ground_truths":["\"miles\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"points_per_game\",\"assists_per_game\",\"minutes_per_game\"]","ground_truths":["[\"points per game\",\"assists\",\"minutes per game\"]","[\"points per game\",\"minutes per game\",\"assists\"]","[\"assists\",\"points per game\",\"minutes per game\"]","[\"assists\",\"minutes per game\",\"points per game\"]","[\"minutes per game\",\"points per game\",\"assists\"]","[\"minutes per game\",\"assists\",\"points per game\"]","[\"points\",\"assists\",\"minutes\"]","[\"points\",\"minutes\",\"assists\"]","[\"assists\",\"points\",\"minutes\"]","[\"assists\",\"minutes\",\"points\"]","[\"minutes\",\"points\",\"assists\"]","[\"minutes\",\"assists\",\"points\"]","[\"points_per_game\",\"assists\",\"minutes_per_game\"]","[\"points_per_game\",\"minutes_per_game\",\"assists\"]","[\"assists\",\"points_per_game\",\"minutes_per_game\"]","[\"assists\",\"minutes_per_game\",\"points_per_game\"]","[\"minutes_per_game\",\"points_per_game\",\"assists\"]","[\"minutes_per_game\",\"assists\",\"points_per_game\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Ice Age\"","ground_truths":["\"Ice age\""],"category":"\"exactly same meaning\""}
-{"query":"2301","ground_truths":["2300"],"category":"\"relevant but incorrect\""}
-{"query":"\"English Premier League\"","ground_truths":["\"Premier League\"","\"PL\""],"category":"\"exactly same meaning\""}
-{"query":"\"野生老虎\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"military\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"chicken\",\"mushroom\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"small-scale garden design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Rosewood Finish\"","ground_truths":["\"Rosewood\""],"category":"\"exactly same meaning\""}
-{"query":"\"tiger (Panthera tigris) - wild\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"butter\",\"garlic\",\"flour\",\"Milk\",\"Cheddar cheese or Parmesan cheese\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Physics\"","ground_truths":["\"\"","\"all\""],"category":"\"wrong value\""}
-{"query":"\"bronze, brass, stainless steel, aluminum, marble, resin\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"番茄\",\"宠物食品\"]","ground_truths":["[\"tomatoes\",\"pet food\"]","[\"pet food\",\"tomatoes\"]","[\"Tomatoes\",\"Pet food\"]","[\"Pet food\",\"Tomatoes\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"suite with king-size bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"\"California, USA\"","ground_truths":["\"California\"","\"CA\""],"category":"\"exactly same meaning\""}
-{"query":"\"historical writings\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"salt\",\"pepper\",\"cream (optional)\",\"spinach (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"James Prunza\"","ground_truths":["\"James Plensa\""],"category":"\"relevant but incorrect\""}
-{"query":"\"homozygous dominant\"","ground_truths":["\"AA\""],"category":"\"exactly same meaning\""}
-{"query":"[\"behavior\",\"group dynamics\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"Guitar\"]","ground_truths":["[\"Guitars\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Optional materials include: copper, bronze, steel, stainless steel, aluminum, brass, cast iron, etc.; if needed, coating treatments (copper plating, gold plating, silver plating, etc.) may also be considered.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"30","ground_truths":["12"],"category":"\"wrong value\""}
-{"query":"\"Purchase amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
-{"query":"\"2*x^2\"","ground_truths":["\"2x**2\"","\"lambda x: 2x**2\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"parmesan\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"humans\"","ground_truths":["\"Homo Sapiens\"","\"Homo sapiens\""],"category":"\"exactly same meaning\""}
-{"query":"[\"vegetarian\",\"vegan\"]","ground_truths":["[\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"0","ground_truths":["\"\"","0.0"],"category":"\"exactly same meaning\""}
-{"query":"1.25663706e-6","ground_truths":["\"\"","0.01"],"category":"\"wrong value\""}
-{"query":"\"Alameda County Superior Court\"","ground_truths":["\"California\"","\"CA\""],"category":"\"relevant but incorrect\""}
-{"query":"\"佛教\"","ground_truths":["\"Buddhism\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"inexpensive\"","ground_truths":["\"cheap\""],"category":"\"exactly same meaning\""}
-{"query":"4.6","ground_truths":["4.5"],"category":"\"relevant but incorrect\""}
-{"query":"[\"camping\",\"scenic views\",\"recently began camping\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"aggressive crime\"","ground_truths":["\"violent\"","\"Violent\""],"category":"\"relevant but incorrect\""}
-{"query":"\"3 PM\"","ground_truths":["\"3pm\""],"category":"\"exactly same meaning\""}
-{"query":"\"historical_records\"","ground_truths":["\"historical records\""],"category":"\"exactly same meaning\""}
-{"query":"\"Company XYZ\"","ground_truths":["\"XYZ\""],"category":"\"exactly same meaning\""}
-{"query":"\"Rosewood decorative\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Multiplayer\"","ground_truths":["\"\""],"category":"\"wrong value\""}
-{"query":"\"Chicago, IL\"","ground_truths":["\"Chicago\"","\"Chicago area\""],"category":"\"exactly same meaning\""}
-{"query":"\"Optional materials include copper, bronze, steel, stainless steel, aluminum, brass, cast iron, etc.; if needed, coating treatment (such as copper plating, gold plating, silver plating, etc.) can also be considered.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"[40.7128,-74.0060]","ground_truths":["[40.7128,-74.006]"],"category":"\"exactly same meaning\""}
-{"query":"\"various materials (e.g., bronze, brass, iron, steel, marble, resin)\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"\"0-50\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
-{"query":"\"City view\"","ground_truths":["\"city\"","\"city view\""],"category":"\"exactly same meaning\""}
-{"query":"\"pending\"","ground_truths":["\"ongoing\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"0","ground_truths":["\"\"","2"],"category":"\"relevant but incorrect\""}
-{"query":"\"purchase_amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
-{"query":"[\"age\",\"income\",\"education level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"詹姆斯·普伦萨\"","ground_truths":["\"James Plensa\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"California State Court\"","ground_truths":["\"California\"","\"CA\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Washington, DC}\"","ground_truths":["\"Washington D.C.\"","\"D.C.\"","\"DC\""],"category":"\"exactly same meaning\""}
-{"query":"\"Los Angeles Lakers\"","ground_truths":["\"\""],"category":"\"wrong value\""}
-{"query":"[\"age\",\"income\",\"Level of education\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"kilograms per cubic meter\"","ground_truths":["\"kg/m³\"","\"\""],"category":"\"exactly same meaning\""}
-{"query":"[\"Opening hours\",\"Exhibition contents\",\"Accessible facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Manhattan, New York, NY\"","ground_truths":["\"Manhattan\""],"category":"\"exactly same meaning\""}
-{"query":"[\"Patio\",\"Terrace\"]","ground_truths":["[\"Patio\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Liverpool FC\"","ground_truths":["\"Liverpool F.C.\"","\"Liverpool\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"\"historical_sources\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"opening hours\",\"exhibitions\",\"accessibility features\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"New York City, NY, USA\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York City, NY\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
-{"query":"\"copper\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"\"FC Barcelona\"","ground_truths":["\"Barcelona\""],"category":"\"exactly same meaning\""}
-{"query":"\"The Museum of Modern Art\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"exactly same meaning\""}
-{"query":"\"The Shepherd Boy's Fantastical Journey\"","ground_truths":["\"The Alchemist\""],"category":"\"relevant but incorrect\""}
-{"query":"\"purchase amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York, NY\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York metropolitan area\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NY\"","\"New York City\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"6","ground_truths":["\"\"","0"],"category":"\"relevant but incorrect\""}
-{"query":"\"R v Adams\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"exactly same meaning\""}
-{"query":"\"2021-01-02\"","ground_truths":["\"2021-01-01\"","\"01/01/2021\"","\"Jan.1,2021\"","\"January 1, 2021\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"camping\",\"picturesque vista\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"小型区域园艺设计\"","ground_truths":["\"small space garden design\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"6","ground_truths":["\"\"","2"],"category":"\"relevant but incorrect\""}
-{"query":"\"斯大林格勒战役\"","ground_truths":["\"Battle of Stalingrad\"","\"Stalingrad\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"Guitar Lessons\",\"Violin Lessons\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"洛杉矶\"","ground_truths":["\"Los Angeles\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"camping\",\"scenic views\",\"recently allowed camping\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"平方米\"","ground_truths":["\"\"","\"square meters\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"violin lessons\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Rosewood accents\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"cheese\",\"olive oil\",\"garlic\",\"tomatoes\",\"basil\",\"parmesan\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"small-scale residential garden design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
-{"query":"\"January 2026\"","ground_truths":["\"upcoming\"","\"next month\"","\"upcoming month\"","\"next\"","\"\""],"category":"\"exactly same meaning\""}
-{"query":"[\"age\",\"income\",\"Education level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"behavioral psychology\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"behavior\",\"behavioral psychology\",\"group dynamics\",\"social psychology\",\"group behavior\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
-{"query":"true","ground_truths":["\"\"","false"],"category":"\"relevant but incorrect\""}
-{"query":"[\"hours\",\"expositions\",\"accessibility\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"hours\",\"exhibitions\",\"accessibility\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"2","ground_truths":["\"\"","0"],"category":"\"wrong value\""}
-{"query":"\"公司XYZ\"","ground_truths":["\"XYZ\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"tomato\",\"lettuce\"]","ground_truths":["[\"tomatoes\",\"lettuce\"]","[\"lettuce\",\"tomatoes\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Las Vegas Paradise Hotel\"","ground_truths":["\"Hotel Paradise\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"war\"]","ground_truths":["[\"War\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"Terrace\"]","ground_truths":["[\"Patio\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"historical novel\"","ground_truths":["\"Historical Fiction\"","\"historical fiction\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Deluxe room\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Suite with Queen Bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
-{"query":"[\"Los Angeles Lakers\",\"Los Angeles Clippers\"]","ground_truths":["[\"Lakers\",\"Clippers\"]","[\"Clippers\",\"Lakers\"]"],"category":"\"exactly same meaning\""}
-{"query":"4","ground_truths":["\"\"","2"],"category":"\"relevant but incorrect\""}
-{"query":"\"female\"","ground_truths":["\"women\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"cheese\",\"olive oil\",\"garlic\",\"tomato sauce\",\"salt\",\"pepper\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Historical fiction\"","ground_truths":["\"Historical Fiction\"","\"historical fiction\""],"category":"\"exactly same meaning\""}
-{"query":"\"Marriott, New York\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Copper, bronze, brass and other copper alloy materials; coatings/surface treatments such as oxidation, polishing, patina (verdigris), etc. can also be used. The final material will be provided by the workshop.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"\"FoodNetwork.com\"","ground_truths":["\"Foodnetwork.com\""],"category":"\"exactly same meaning\""}
-{"query":"\"James Pulunsa\"","ground_truths":["\"James Plensa\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Eiffel Tower, Paris\"","ground_truths":["\"Eiffel Tower\""],"category":"\"exactly same meaning\""}
-{"query":"[\"patio\"]","ground_truths":["[\"Patio\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"I adore the cuisine here! It's consistently fresh and tasty.\"","ground_truths":["\"I love the food here! It's always fresh and delicious.\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York, Marriott\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"false","ground_truths":["true"],"category":"\"relevant but incorrect\""}
-{"query":"null","ground_truths":["\"\"","0.01"],"category":"\"wrong value\""}
-{"query":"\"拉斯维加斯天堂酒店\"","ground_truths":["\"Hotel Paradise\""],"category":"\"language mismatch relevant but incorrect\""}
-{"query":"[\"guitar\"]","ground_truths":["[\"Guitars\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"赛博朋克2077\"","ground_truths":["\"Cyberpunk 2077\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"noodles\",\"cheese\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"small-scale landscape design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
-{"query":"\"纽约万豪酒店\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"language mismatch relevant but incorrect\""}
-{"query":"\"Deluxe Room\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"exactly same meaning\""}
-{"query":"\"quarterly\"","ground_truths":["\"\"","\"annually\""],"category":"\"relevant but incorrect\""}
-{"query":"\"modern\"","ground_truths":["\"contemporary\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"\"All fields\"","ground_truths":["\"\"","\"all\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Deluxe room\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"exactly same meaning\""}
-{"query":"\"Luxury chamber\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"exactly same meaning\""}
-{"query":"[\"gluten-free\",\"meatless\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"pet-friendly\",\"disabled access\",\"wheelchair accessible\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
 {"query":"\"Suite with Double Bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"parmesan cheese\",\"garlic\",\"cream\",\"butter\",\"olive oil\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"意大利面\",\"黄油\",\"蒜\",\"面粉\",\"牛奶\",\"切达奶酪或帕玛森奶酪\",\"盐\",\"黑胡椒\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"language mismatch relevant but incorrect\""}
-{"query":"\"product A\"","ground_truths":["\"A\"","\"Product A\""],"category":"\"exactly same meaning\""}
-{"query":"[\"criminal defense\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"behaviour\",\"group dynamics\",\"social psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"opening hours\",\"exhibitions\",\"accessibility facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Hilton Hotel in New York\"","ground_truths":["\"Hilton New York\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York - Marriott\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"Vegan\",\"Gluten-free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Suite with Queen Size Bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
-{"query":"\"Optional materials include copper, bronze, steel, stainless steel, aluminum, brass, cast iron, etc. If needed, coating treatments (copper plating, gold plating, silver plating, etc.) can also be considered.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"\"European Union\"","ground_truths":["\"\"","\"global\"","\"Lisbon\"","\"Lisbon, Portugal\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"开放时间\",\"展览内容\",\"无障碍设施\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"compact space garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
-{"query":"\"endorsement of the Treaty of Lisbon\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"fettuccine pasta\",\"butter\",\"garlic\",\"heavy cream\",\"vegetarian-friendly parmesan-style cheese\",\"salt\",\"black pepper\",\"parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Beef Lasagna Formula\"","ground_truths":["\"Beef Lasagna\"","\"Beef Lasagna Recipe\""],"category":"\"exactly same meaning\""}
-{"query":"[\"camping permitted\",\"scenic views\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Apple Inc.\"","ground_truths":["\"Apple\""],"category":"\"exactly same meaning\""}
-{"query":"[\"war\",\"battle\",\"military_conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"sitting room\"","ground_truths":["\"living room\"","\"Living room\""],"category":"\"exactly same meaning\""}
-{"query":"null","ground_truths":["\"upcoming\"","\"next month\"","\"upcoming month\"","\"next\"","\"\""],"category":"\"wrong value\""}
-{"query":"\"Double-bed Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"\"3x+2\"","ground_truths":["\"3x + 2\"","\"lambda x: 3x + 2\""],"category":"\"exactly same meaning\""}
-{"query":"[\"email\",\"ssn\",\"social_security_number\"]","ground_truths":["[\"email\",\"ssn\"]","[\"ssn\",\"email\"]","[\"email\",\"social_security_number\"]","[\"social_security_number\",\"email\"]","[\"email\",\"social security number\"]","[\"social security number\",\"email\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"non_biblical_sources\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"早餐\"]","ground_truths":["[\"breakfast\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"Louvre Museum, Paris, France\"","ground_truths":["\"Louvre Museum\""],"category":"\"exactly same meaning\""}
-{"query":"\"excellent\"","ground_truths":["\"Excellent\""],"category":"\"exactly same meaning\""}
-{"query":"[\"pet-friendly\",\"accessible\",\"disabled access\",\"wheelchair accessible\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Vincent van Gogh\"","ground_truths":["\"Van Gogh\""],"category":"\"exactly same meaning\""}
-{"query":"\"scriptures\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Single Room\"","ground_truths":["\"single\"","\"Single\""],"category":"\"exactly same meaning\""}
-{"query":"[\"opening hours\",\"exhibits\",\"facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"small-scale regional garden design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"behavior\",\"group dynamics\",\"social psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"牧羊少年奇幻之旅\"","ground_truths":["\"The Alchemist\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"parmesan cheese\",\"cream or milk\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"cheddar cheese\",\"mozzarella cheese\",\"garlic\",\"butter\",\"milk\",\"olive oil\",\"black pepper\",\"salt\",\"fresh basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"behavior\",\"behaviour\",\"group dynamics\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Available materials: copper, bronze, brass, stainless steel, aluminum, resin (copper-colored finish)\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
-{"query":"\"King Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"Camping permitted\",\"Picturesque vistas\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Food Network\"","ground_truths":["\"Foodnetwork.com\""],"category":"\"relevant but incorrect\""}
-{"query":"\"vegetarian\"","ground_truths":["\"vegan\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Lisbon Treaty signed\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
-{"query":"\"low\"","ground_truths":["\"cheap\""],"category":"\"exactly same meaning\""}
-{"query":"[\"behavior\",\"behaviour\",\"group dynamics\",\"social psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"Alphabet (GOOGL)\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Hi, how are you?\"","ground_truths":["\"Hello, how are you?\""],"category":"\"exactly same meaning\""}
-{"query":"\"miles\"","ground_truths":["\"\"","\"kilometers\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"guitar lessons\",\"violin lessons\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"The Metropolitan Museum of Art\"","ground_truths":["\"Metropolitan Museum of Art\"","\"The Met\"","\"Met Museum\""],"category":"\"exactly same meaning\""}
-{"query":"\"fiction\"","ground_truths":["\"\""],"category":"\"wrong value\""}
 {"query":"[\"opening hours\",\"exhibitions\",\"facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Zitan wood trim\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Suite with Queen Size Bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"olive oil\",\"garlic\",\"onion\",\"tomato\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"cream\",\"garlic\",\"olive oil\",\"salt\",\"black pepper\",\"parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Behavioral psychology\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Available materials: copper, bronze, brass, stainless steel, aluminum, resin (copper-colored finish)\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Suite (double bed)\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"\"homozygous dominant\"","ground_truths":["\"AA\""],"category":"\"exactly same meaning\""}
+{"query":"\"New York, NY, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"0","ground_truths":["100"],"category":"\"wrong value\""}
+{"query":"\"New York City, NY, USA\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"\"The Metropolitan Museum of Art\"","ground_truths":["\"Metropolitan Museum of Art\"","\"The Met\"","\"Met Museum\""],"category":"\"exactly same meaning\""}
+{"query":"null","ground_truths":["\"\"","2024"],"category":"\"wrong value\""}
+{"query":"[\"pet-friendly\",\"disabled access facilities\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"极佳\"","ground_truths":["\"Excellent\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Multiplayer\"","ground_truths":["\"\""],"category":"\"wrong value\""}
 {"query":"\"Suite with King Bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Hilton Chicago\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"relevant but incorrect\""}
-{"query":"\"Paradise Hotel\"","ground_truths":["\"Hotel Paradise\""],"category":"\"exactly same meaning\""}
+{"query":"[\"behavior\",\"behaviour\",\"group dynamics\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"parmesan\",\"cream\",\"spinach\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"cityscape\"","ground_truths":["\"city\"","\"city view\""],"category":"\"exactly same meaning\""}
+{"query":"\"white-tailed deer\"","ground_truths":["\"deer\"","\"Deer\""],"category":"\"relevant but incorrect\""}
+{"query":"\"km\"","ground_truths":["\"miles\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"\"non-biblical_sources\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"interest_levels\",\"jobless_rates\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"2019-2020}\"","ground_truths":["\"2019-2020\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pet-friendly\",\"disabled access\",\"wheelchair accessible\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Santiago County\"","ground_truths":["\"San Diego\"","\"San Diego County\""],"category":"\"relevant but incorrect\""}
+{"query":"5","ground_truths":["4"],"category":"\"relevant but incorrect\""}
 {"query":"[\"opening hours\",\"exhibitions\",\"accessibility services\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"[\"pet-friendly\",\"disabled access\",\"amenities for disabled individuals\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"Alphabet Inc. (GOOGL)\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Luxury room\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"cream\",\"parmesan\",\"salt\",\"pepper\",\"butter\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Date of signature of the Treaty of Lisbon\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Panthera tigris\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"New York City, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"onion\",\"olive oil\",\"salt\",\"black pepper\",\"Parmesan cheese (optional, vegetarian version)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"pending\"","ground_truths":["\"ongoing\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"camping\",\"picturesque vista\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Endorsement of the Treaty of Lisbon\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"relevant but incorrect\""}
+{"query":"\"under $20\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
+{"query":"\"James Pulunsa\"","ground_truths":["\"James Plensa\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Behavioral psychology and social dynamics\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"behaviour\",\"group dynamics\",\"social psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheddar cheese\",\"parmesan cheese\",\"butter\",\"milk\",\"garlic\",\"olive oil\",\"flour\",\"salt\",\"black pepper\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Physics\"","ground_truths":["\"\"","\"all\""],"category":"\"wrong value\""}
+{"query":"\"deer (white-tailed deer and mule deer)\"","ground_truths":["\"deer\"","\"Deer\""],"category":"\"exactly same meaning\""}
+{"query":"\"Apple Inc.\"","ground_truths":["\"Apple\""],"category":"\"exactly same meaning\""}
+{"query":"\"R_v_Adams\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"exactly same meaning\""}
+{"query":"5","ground_truths":["0.05"],"category":"\"relevant but incorrect\""}
+{"query":"\"LeBron James\"","ground_truths":["\"Lebron James\""],"category":"\"exactly same meaning\""}
+{"query":"[\"camping\",\"scenic views\",\"recently allowed camping\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"exceptional\"","ground_truths":["\"Excellent\""],"category":"\"exactly same meaning\""}
+{"query":"\"aggressive crime\"","ground_truths":["\"violent\"","\"Violent\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Assassin's Creed: Valhalla\"","ground_truths":["\"Assassins Creed Valhalla\""],"category":"\"exactly same meaning\""}
+{"query":"[\"camping\",\"scenic views\",\"recently opened\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"天堂酒店\"","ground_truths":["\"Hotel Paradise\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Deluxe Room\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"exactly same meaning\""}
+{"query":"\"The Starry Night\"","ground_truths":["\"Starry Night\""],"category":"\"exactly same meaning\""}
+{"query":"\"January 2026\"","ground_truths":["\"upcoming\"","\"next month\"","\"upcoming month\"","\"next\"","\"\""],"category":"\"exactly same meaning\""}
+{"query":"2301","ground_truths":["2300"],"category":"\"relevant but incorrect\""}
+{"query":"\"Single room\"","ground_truths":["\"single\"","\"Single\""],"category":"\"exactly same meaning\""}
+{"query":"\"bronzeypotentialforbronze instrument?\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Boston area\"","ground_truths":["\"Boston\"","\"Boston, MA\""],"category":"\"relevant but incorrect\""}
+{"query":"\"拉斯维加斯天堂酒店\"","ground_truths":["\"Hotel Paradise\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"Treaty of Lisbon signing\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
+{"query":"\"human\"","ground_truths":["\"Homo Sapiens\"","\"Homo sapiens\""],"category":"\"exactly same meaning\""}
+{"query":"\"Suite with a double bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"war\",\"military\",\"conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"Guitar\"]","ground_truths":["[\"Guitars\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"excellent\"","ground_truths":["\"Excellent\""],"category":"\"exactly same meaning\""}
+{"query":"\"casualty\"","ground_truths":["\"victim\""],"category":"\"relevant but incorrect\""}
+{"query":"\"豪华客房\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"discovery of the neutron\"","ground_truths":["\"neutron\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta (penne or spaghetti)\",\"butter\",\"all-purpose flour\",\"milk\",\"shredded cheddar cheese\",\"grated vegetarian Parmesan\",\"garlic\",\"olive oil\",\"salt\",\"black pepper\",\"fresh basil or parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"parmesan cheese\",\"garlic\",\"olive oil\",\"salt\",\"black pepper\",\"parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"gluten-free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"豪华房\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"kilograms per cubic meter\"","ground_truths":["\"kg/m³\"","\"\""],"category":"\"exactly same meaning\""}
+{"query":"\"C# major\"","ground_truths":["\"C#\"","\"C sharp\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Purchase Amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
+{"query":"\"Los Angeles Lakers\"","ground_truths":["\"\""],"category":"\"wrong value\""}
+{"query":"\"詹姆斯·普伦萨\"","ground_truths":["\"James Plensa\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"housing_prices\"","ground_truths":["\"house_price\"","\"house price\""],"category":"\"relevant but incorrect\""}
+{"query":"\"James Prunza\"","ground_truths":["\"James Plensa\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"parmesan cheese\",\"cream or milk\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"2*x^2\"","ground_truths":["\"2x**2\"","\"lambda x: 2x**2\""],"category":"\"exactly same meaning\""}
 {"query":"\"January\"","ground_truths":["\"upcoming\"","\"next month\"","\"upcoming month\"","\"next\"","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"Breakfast included\"]","ground_truths":["[\"breakfast\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"violent crime\"","ground_truths":["\"violent\"","\"Violent\""],"category":"\"exactly same meaning\""}
-{"query":"\"Beef lasagna\"","ground_truths":["\"Beef Lasagna\"","\"Beef Lasagna Recipe\""],"category":"\"exactly same meaning\""}
-{"query":"[\"all\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"under $50\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
-{"query":"[]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"wrong value\""}
-{"query":"[\"年龄\",\"收入\",\"教育程度\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"Breakfast\"]","ground_truths":["[\"breakfast\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"King Bed Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
-{"query":"\"R-v-Adams\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"exactly same meaning\""}
-{"query":"\"luxury room\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"exactly same meaning\""}
-{"query":"\"C major\"","ground_truths":["\"C\""],"category":"\"exactly same meaning\""}
-{"query":"\"Small-area garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
-{"query":"\"Google LLC\"","ground_truths":["\"Google\""],"category":"\"exactly same meaning\""}
-{"query":"\"黄石国家公园\"","ground_truths":["\"Yellowstone\"","\"yellowstone\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"购买金额\"","ground_truths":["\"Purchase_Amount\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"\"巴西\"","ground_truths":["\"Brazil\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"opening hours\",\"exhibitions\",\"accessibility\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
-{"query":"\"客厅\"","ground_truths":["\"living room\"","\"Living room\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"[\"开放时间\",\"展出项目\",\"无障碍服务\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"language mismatch exactly same meaning\""}
-{"query":"499","ground_truths":["500"],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"parmesan cheese\",\"mozzarella cheese\",\"garlic\",\"olive oil\",\"cream\",\"salt\",\"black pepper\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
 {"query":"\"实际材料选项：青铜 Bronze、铜合金 Brass、 不锈钢 Stainless steel、 铝 Aluminum、 铁 Iron、 树脂 Resin（铜色表面效果）\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"language mismatch relevant but incorrect\""}
-{"query":"2800000","ground_truths":["2800","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"woman\"","ground_truths":["\"women\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"onion\",\"flour\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"rosewood veneer\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
-{"query":"\"deluxe chamber\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"relevant but incorrect\""}
-{"query":"\"拉斯维加斯\"","ground_truths":["\"Las Vegas\"","\"Las Vegas, NV\"","\"LV\""],"category":"\"language mismatch exactly same meaning\""}
-{"query":"9.81","ground_truths":["9.8","\"\""],"category":"\"relevant but incorrect\""}
-{"query":"[\"terrace\"]","ground_truths":["[\"Patio\"]"],"category":"\"relevant but incorrect\""}
-{"query":"[\"pet-friendly\",\"disabled access\",\"wheelchair accessible\",\"ADA compliant\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
-{"query":"null","ground_truths":["\"\""],"category":"\"wrong value\""}
+{"query":"[\"violin lessons\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"纽约市\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"true","ground_truths":["false","\"\""],"category":"\"wrong value\""}
+{"query":"\"en\"","ground_truths":["\"English\"","\"\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pet-friendly\",\"disabled access\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
+{"query":"5","ground_truths":["5.0"],"category":"\"exactly same meaning\""}
+{"query":"\"Small-space garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
+{"query":"[\"behavior\",\"group dynamics\",\"social psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"里斯本条约\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"butter\",\"milk\",\"parmesan\",\"salt\",\"pepper\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Louvre Museum, Paris, France\"","ground_truths":["\"Louvre Museum\""],"category":"\"exactly same meaning\""}
+{"query":"\"free\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
+{"query":"\"quarterly\"","ground_truths":["\"\"","\"annually\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Museum of Modern Art (MoMA), New York\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"exactly same meaning\""}
+{"query":"\"FC Barcelona\"","ground_truths":["\"Barcelona\""],"category":"\"exactly same meaning\""}
+{"query":"[\"opening hours\",\"exhibitions\",\"accessibility features\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"意大利面\",\"黄油\",\"蒜\",\"面粉\",\"牛奶\",\"切达奶酪或帕玛森奶酪\",\"盐\",\"黑胡椒\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"玫瑰木饰面\"","ground_truths":["\"Rosewood\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"纽约万豪酒店\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"seven\"","ground_truths":["7"],"category":"\"exactly same meaning\""}
+{"query":"6","ground_truths":["\"\"","0"],"category":"\"relevant but incorrect\""}
 {"query":"[\"behavioral psychology\",\"group dynamics\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"small area garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
+{"query":"\"平方米\"","ground_truths":["\"\"","\"square meters\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"心理学\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"housing_price\"","ground_truths":["\"house_price\"","\"house price\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Tiger (Panthera tigris)\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"exactly same meaning\""}
+{"query":"[\"Camping permitted\",\"Picturesque vistas\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
+{"query":"4.6","ground_truths":["4.5"],"category":"\"relevant but incorrect\""}
+{"query":"\"behavioral psychology\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheddar cheese\",\"parmesan cheese\",\"cream\",\"garlic\",\"butter\",\"olive oil\",\"salt\",\"pepper\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"single room\"","ground_truths":["\"single\"","\"Single\""],"category":"\"exactly same meaning\""}
+{"query":"[\"camping\",\"scenic views\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"military\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"C♯\"","ground_truths":["\"C#\"","\"C sharp\""],"category":"\"exactly same meaning\""}
+{"query":"\"Divorce Law\"","ground_truths":["\"Divorce\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"milk\",\"Cheese (hard cheeses such as Parmesan or Cheddar)\",\"butter\",\"minced garlic\",\"flour\",\"salt\",\"black pepper\",\"Spinach (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"English Premier League\"","ground_truths":["\"Premier League\"","\"PL\""],"category":"\"exactly same meaning\""}
+{"query":"[\"age\",\"Income\",\"Education level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"3x^2\"","ground_truths":["\"3x**2\"","\"lambda x: 3x**2\""],"category":"\"exactly same meaning\""}
+{"query":"[\"意大利面\",\"奶酪\",\"牛奶\",\"黄油\",\"蒜\",\"洋葱\",\"橄榄油\",\"盐\",\"黑胡椒\",\"帕玛森奶酪（可选，素食版）\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"[\"behaviour\",\"group dynamics\",\"behavior\",\"psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"contemporary sculpture\"","ground_truths":["\"sculpture\"","\"modern sculpture\""],"category":"\"relevant but incorrect\""}
+{"query":"\"purchase amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
+{"query":"[\"chicken meat\",\"mushroom\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Food Network\"","ground_truths":["\"Foodnetwork.com\""],"category":"\"relevant but incorrect\""}
+{"query":"\"血浆膜\"","ground_truths":["\"plasma membrane\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"[{\"field\":\"age\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"occupation\",\"operation\":\"=\",\"value\":\"工程师\"}]","ground_truths":["[{\"field\":[\"age\"],\"operation\":[\">\"],\"value\":[\"25\"]},{\"field\":[\"job\"],\"operation\":[\"=\"],\"value\":[\"engineer\"]}]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Rosewood finish\"","ground_truths":["\"Rosewood\""],"category":"\"exactly same meaning\""}
+{"query":"\"User table\"","ground_truths":["\"user\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"war\"]","ground_truths":["[\"War\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Las Vegas, NV\"","ground_truths":["\"Las Vegas\""],"category":"\"exactly same meaning\""}
+{"query":"\"The Museum of Modern Art\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"exactly same meaning\""}
+{"query":"\"Human\"","ground_truths":["\"Homo Sapiens\"","\"Homo sapiens\""],"category":"\"exactly same meaning\""}
+{"query":"\"伯克利\"","ground_truths":["\"Berkeley\"","\"Berkeley,California\"","\"Berkeley,CA\"","\"Berkeley, CA\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"war\",\"battle\",\"military_conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"499","ground_truths":["500"],"category":"\"relevant but incorrect\""}
+{"query":"\"Liverpool Football Club\"","ground_truths":["\"Liverpool F.C.\"","\"Liverpool\""],"category":"\"exactly same meaning\""}
+{"query":"\"3*x^2\"","ground_truths":["\"3x**2\"","\"lambda x: 3x**2\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Rosewood decorative edition\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"埃菲尔铁塔, 巴黎, France\"","ground_truths":["\"Eiffel Tower\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"3*x**2\"","ground_truths":["\"3x**2\"","\"lambda x: 3x**2\""],"category":"\"exactly same meaning\""}
+{"query":"[\"criminal defense\",\"criminal law\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"Vegetarian\",\"Gluten-Free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"I adore the cuisine here! It's consistently fresh and tasty.\"","ground_truths":["\"I love the food here! It's always fresh and delicious.\""],"category":"\"exactly same meaning\""}
+{"query":"\"All\"","ground_truths":["\"\"","\"all\""],"category":"\"exactly same meaning\""}
+{"query":"[\"Breakfast included\"]","ground_truths":["[\"breakfast\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"rosewood\"","ground_truths":["\"Rosewood\""],"category":"\"exactly same meaning\""}
+{"query":"\"employee\"","ground_truths":["\"employees\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta (e.g., spaghetti or penne)\",\"olive oil\",\"butter\",\"garlic\",\"heavy cream or milk\",\"Parmesan cheese\",\"Mozzarella (optional)\",\"salt\",\"black pepper\",\"fresh basil or parsley\",\"red pepper flakes (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"2026-01\"","ground_truths":["\"upcoming\"","\"next month\"","\"upcoming month\"","\"next\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"\"铜、青铜、黄铜及其它铜合金材料；也可结合镀层/表面处理如氧化、抛光、Patina（铜绿）等。最终材料以工坊提供为准\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"[\"Opening hours\",\"Exhibits\",\"Accessibility service\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Panthera tigris (wild tiger)\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"exactly same meaning\""}
+{"query":"null","ground_truths":["\"upcoming\"","\"next month\"","\"upcoming month\"","\"next\"","\"\""],"category":"\"wrong value\""}
+{"query":"\"small-scale residential landscape/garden design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"behaviour\",\"behavior\",\"group dynamics\",\"social psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Suite with queen bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
+{"query":"[\"Patio\",\"Terrace\"]","ground_truths":["[\"Patio\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Hilton Chicago\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"age\",\"income\",\"Educational attainment\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"R诉亚当斯\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"butter\",\"garlic\",\"flour\",\"Milk\",\"Cheddar cheese or Parmesan cheese\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"New York Marriott Marquis\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"olive oil\",\"garlic\",\"tomato sauce\",\"salt\",\"pepper\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"3","ground_truths":["\"\"","1"],"category":"\"relevant but incorrect\""}
+{"query":"\"纽约市\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"gluten-free\",\"vegetarian\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Vincent van Gogh\"","ground_truths":["\"Van Gogh\""],"category":"\"exactly same meaning\""}
+{"query":"\"芝加哥希尔顿酒店\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"勒布朗·詹姆斯\"","ground_truths":["\"LeBron James\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"tomatoes\",\"basil\",\"parmesan\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"纽约现代艺术博物馆 (Museum of Modern Art, New York)\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"square unit\"","ground_truths":["\"\"","\"square meters\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Liverpool FC\"","ground_truths":["\"Liverpool F.C.\"","\"Liverpool\""],"category":"\"exactly same meaning\""}
+{"query":"[\"interest rate\",\"Unemployment rate\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"brownie\"","ground_truths":["\"dessert\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"Opening hours\",\"Exhibition contents\",\"Accessible facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"Criminal law\",\"Criminal defense\",\"Criminal law\",\"Criminal defense\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"relevant but incorrect\""}
+{"query":"true","ground_truths":["\"\"","false"],"category":"\"relevant but incorrect\""}
+{"query":"\"Monthly\"","ground_truths":["\"\"","\"Daily\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Paradise Hotel\"","ground_truths":["\"Hotel Paradise\""],"category":"\"exactly same meaning\""}
+{"query":"[\"age\",\"income\",\"Level of education\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"California State Court\"","ground_truths":["\"California\"","\"CA\""],"category":"\"relevant but incorrect\""}
+{"query":"\"non_biblical_sources\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Hilton Hotel in New York\"","ground_truths":["\"Hilton New York\""],"category":"\"exactly same meaning\""}
+{"query":"1.2566370614359173e-06","ground_truths":["\"\"","0.01"],"category":"\"wrong value\""}
+{"query":"\"deer (mule deer, black-tailed deer, white-tailed deer)\"","ground_truths":["\"deer\"","\"Deer\""],"category":"\"exactly same meaning\""}
+{"query":"\"brownies\"","ground_truths":["\"dessert\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"fettuccine pasta\",\"butter\",\"garlic\",\"heavy cream\",\"vegetarian-friendly parmesan-style cheese\",\"salt\",\"black pepper\",\"parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Marriott Hotel in New York\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"Criminal law\",\"Criminal defense\",\"刑法\",\"刑事辩护\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"[\"Guitar Lessons\",\"Violin Lessons\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"relevant but incorrect\""}
 {"query":"\"Assassin's Creed Valhalla\"","ground_truths":["\"Assassins Creed Valhalla\""],"category":"\"exactly same meaning\""}
-{"query":"[\"opening hours\",\"exhibition schedule\",\"accessible facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
-{"query":"\"small-space garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
-{"query":"\"New York Marriott\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"vegetarian\",\"vegan\"]","ground_truths":["[\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"onion\",\"flour\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"Behavior\",\"Behavioral Science\",\"Social Psychology\",\"Group Dynamics\",\"Collective Behavior\",\"Group Behaviour\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Miami, Florida, USA\"","ground_truths":["\"Miami\"","\"Miami, Florida\"","\"FL\""],"category":"\"exactly same meaning\""}
+{"query":"1.2566370614e-6","ground_truths":["\"\"","0.01"],"category":"\"relevant but incorrect\""}
+{"query":"\"野生老虎\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Louvre Museum, Paris\"","ground_truths":["\"Louvre Museum\""],"category":"\"exactly same meaning\""}
+{"query":"\"PlayStation\"","ground_truths":["\"Playstation\"","\"PS\""],"category":"\"exactly same meaning\""}
+{"query":"[\"war\",\"conflict\",\"military\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"guitar lessons\",\"violin lessons\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Yellowstone National Park\"","ground_truths":["\"Yellowstone\"","\"yellowstone\""],"category":"\"exactly same meaning\""}
+{"query":"\"刺客信条：英灵殿\"","ground_truths":["\"Assassins Creed Valhalla\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"Breakfast\"]","ground_truths":["[\"breakfast\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"2021-01-02\"","ground_truths":["\"2021-01-01\"","\"01/01/2021\"","\"Jan.1,2021\"","\"January 1, 2021\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Rosewood Lacquer\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Washington, DC\"","ground_truths":["\"Washington D.C.\"","\"D.C.\"","\"DC\""],"category":"\"exactly same meaning\""}
+{"query":"null","ground_truths":["\"\"","\"all\""],"category":"\"wrong value\""}
+{"query":"\"Los Angeles, CA\"","ground_truths":["\"Los Angeles\"","\"LA\""],"category":"\"exactly same meaning\""}
+{"query":"\"玫瑰木漆面款\"","ground_truths":["\"Rosewood\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"chicken breast\",\"mushroom\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"2x^2\"","ground_truths":["\"2x**2\"","\"lambda x: 2x**2\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Alphabet Inc. (Google)\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"Gluten-Free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"woman\"","ground_truths":["\"women\""],"category":"\"relevant but incorrect\""}
+{"query":"\"small area garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
+{"query":"\"Queen Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
+{"query":"[\"spaghetti\",\"olive oil\",\"garlic\",\"butter\",\"heavy cream\",\"Parmesan cheese\",\"mozzarella\",\"salt\",\"black pepper\",\"red pepper flakes\",\"fresh basil\",\"spinach\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Sitting room\"","ground_truths":["\"living room\"","\"Living room\""],"category":"\"exactly same meaning\""}
+{"query":"\"endorsement of the Treaty of Lisbon\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"relevant but incorrect\""}
+{"query":"\"苹果\"","ground_truths":["\"apple pie\"","\"apple\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"0","ground_truths":["\"\"","0.0"],"category":"\"exactly same meaning\""}
+{"query":"\"黄石国家公园\"","ground_truths":["\"Yellowstone National Park\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"California Superior Court\"","ground_truths":["\"California\"","\"CA\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"onion\",\"olive oil\",\"tomato sauce\",\"spinach\",\"milk\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"War\",\"Revolutions\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"3x+2\"","ground_truths":["\"3x + 2\"","\"lambda x: 3x + 2\""],"category":"\"exactly same meaning\""}
+{"query":"\"勒布朗·詹姆斯\"","ground_truths":["\"Lebron James\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"Vegetarian\"]","ground_truths":["[\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"beef lasagna\"","ground_truths":["\"Beef Lasagna\"","\"Beef Lasagna Recipe\""],"category":"\"exactly same meaning\""}
+{"query":"\"Horse sculpture\"","ground_truths":["\"horse\"","\"Horse\""],"category":"\"relevant but incorrect\""}
+{"query":"\"dessert - brownie\"","ground_truths":["\"dessert\""],"category":"\"relevant but incorrect\""}
+{"query":"\"King-bed suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"0.0000012566370614359172","ground_truths":["\"\"","0.01"],"category":"\"relevant but incorrect\""}
+{"query":"[\"noodles\",\"cheese\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Ice Age\"","ground_truths":["\"Ice age\""],"category":"\"exactly same meaning\""}
+{"query":"\"AAPL\"","ground_truths":["\"Apple\""],"category":"\"exactly same meaning\""}
+{"query":"\"埃菲尔铁塔\"","ground_truths":["\"Eiffel Tower\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"war\",\"battle\",\"conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"copper\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Paradise Hotel Las Vegas\"","ground_truths":["\"Hotel Paradise\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Yellowstone National Park, USA\"","ground_truths":["\"Yellowstone\"","\"yellowstone\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"salt\",\"pepper\",\"cream (optional)\",\"spinach (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"2x+3\"","ground_truths":["\"2x + 3\"","\"lambda x: 2x + 3\""],"category":"\"exactly same meaning\""}
+{"query":"\"Jaume Plensa\"","ground_truths":["\"James Plensa\""],"category":"\"exactly same meaning\""}
+{"query":"\"客厅\"","ground_truths":["\"living room\"","\"Living room\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"老虎 (Panthera tigris)\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"small-scale residential landscape design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"conflict\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"Age\",\"income\",\"Level of education\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"魔兽世界\"","ground_truths":["\"World of Warcraft\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"1.25663706e-6","ground_truths":["\"\"","0.01"],"category":"\"wrong value\""}
+{"query":"{\"my\":300000,\"max\":400000}","ground_truths":["{\"min\":[300000],\"max\":[400000]}"],"category":"\"relevant but incorrect\""}
+{"query":"[\"behavior\",\"group dynamics\",\"social psychology\",\"group behavior\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"guitar\"]","ground_truths":["[\"Guitars\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Lisbon Treaty\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
+{"query":"\"Purchase amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
+{"query":"[46.603354,1.8883340]","ground_truths":["[46.603354,1.888334]"],"category":"\"exactly same meaning\""}
+{"query":"\"inexpensive\"","ground_truths":["\"cheap\""],"category":"\"exactly same meaning\""}
+{"query":"\"Lisbon Treaty signed\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
+{"query":"1.2566370614359173e-6","ground_truths":["\"\"","0.01"],"category":"\"relevant but incorrect\""}
+{"query":"\"popularity_desc\"","ground_truths":["\"popularity\""],"category":"\"relevant but incorrect\""}
+{"query":"\"New York\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"\"C\"","ground_truths":["\"C#\"","\"C sharp\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Manhattan, New York\"","ground_truths":["\"Manhattan\""],"category":"\"exactly same meaning\""}
+{"query":"\"Serie A\"","ground_truths":["\"all\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"email\",\"ssn\",\"social_security_number\"]","ground_truths":["[\"email\",\"ssn\"]","[\"ssn\",\"email\"]","[\"email\",\"social_security_number\"]","[\"social_security_number\",\"email\"]","[\"email\",\"social security number\"]","[\"social security number\",\"email\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"residence_costs\"","ground_truths":["\"house_price\"","\"house price\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Washington, DC}\"","ground_truths":["\"Washington D.C.\"","\"D.C.\"","\"DC\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta (any short pasta like penne or fusilli)\",\"cheddar or mozzarella cheese\",\"parmesan cheese\",\"garlic\",\"olive oil\",\"butter\",\"heavy cream or milk\",\"salt\",\"black pepper\",\"fresh basil or parsley\",\"optional: red pepper flakes, lemon zest\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"null","ground_truths":["\"Patent\""],"category":"\"wrong value\""}
+{"query":"8","ground_truths":["0.08"],"category":"\"relevant but incorrect\""}
+{"query":"\"New York City, NY\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"\"historical_sources\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"Vegan\",\"Gluten-free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Tokyo, Japan\"","ground_truths":["\"Tokyo\""],"category":"\"exactly same meaning\""}
+{"query":"\"马\"","ground_truths":["\"horse\"","\"Horse\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Action\"","ground_truths":["\"\""],"category":"\"wrong value\""}
+{"query":"\"various materials (e.g., bronze, brass, iron, steel, marble, resin)\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"鸡胸肉\",\"蘑菇\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Los Angeles, CA\"","ground_truths":["\"Los Angeles\""],"category":"\"exactly same meaning\""}
+{"query":"\"small-scale garden design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Small-area garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
+{"query":"\"users\"","ground_truths":["\"user\""],"category":"\"relevant but incorrect\""}
+{"query":"\"deer (white-tailed and mule deer)\"","ground_truths":["\"deer\"","\"Deer\""],"category":"\"exactly same meaning\""}
+{"query":"\"Suite with Queen Bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
+{"query":"\"Copper, bronze, brass and other copper alloy materials; coatings/surface treatments such as oxidation, polishing, patina (verdigris), etc. can also be used. The final material will be provided by the workshop.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pet-friendly\",\"disabled access\",\"wheelchair accessible\",\"ADA compliant\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"克里斯蒂亚诺·罗纳尔多\"","ground_truths":["\"Cristiano Ronaldo\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Queen Bed Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
+{"query":"\"Google (Alphabet Inc.)\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"exactly same meaning\""}
+{"query":"\"City view\"","ground_truths":["\"city\"","\"city view\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pet-friendly\",\"accessible facilities\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Deluxe Room\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"relevant but incorrect\""}
+{"query":"\"User\"","ground_truths":["\"user\""],"category":"\"exactly same meaning\""}
+{"query":"[\"SqFt\",\"Bedrooms\",\"Bathrooms\",\"Location\"]","ground_truths":["[]","\"\""],"category":"\"wrong value\""}
+{"query":"null","ground_truths":["\"\"","0.01"],"category":"\"wrong value\""}
+{"query":"\"Beef lasagna\"","ground_truths":["\"Beef Lasagna\"","\"Beef Lasagna Recipe\""],"category":"\"exactly same meaning\""}
+{"query":"\"Rosewood Finish\"","ground_truths":["\"Rosewood\""],"category":"\"exactly same meaning\""}
+{"query":"\"产品A\"","ground_truths":["\"A\"","\"Product A\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"拉斯维加斯\"","ground_truths":["\"Las Vegas\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"6","ground_truths":["\"\"","2"],"category":"\"relevant but incorrect\""}
+{"query":"[\"camping\",\"scenic view\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Marriott Hotel, New York\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"parmesan cheese\",\"mozzarella cheese\",\"garlic\",\"olive oil\",\"cream\",\"salt\",\"black pepper\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"Interest rate\",\"unemployment rate\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"New York City, NY, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"\"城市景观\"","ground_truths":["\"city\"","\"city view\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheddar cheese\",\"milk\",\"butter\",\"all-purpose flour\",\"garlic (optional)\",\"salt\",\"black pepper\",\"parmesan cheese (optional)\",\"nutmeg (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"I love the food here! It's always fresh and delicious\"","ground_truths":["\"I love the food here! It's always fresh and delicious.\""],"category":"\"exactly same meaning\""}
+{"query":"\"Manhattan, New York, NY\"","ground_truths":["\"Manhattan\""],"category":"\"exactly same meaning\""}
+{"query":"\"用户\"","ground_truths":["\"user\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"LaLiga\"","ground_truths":["\"La Liga\""],"category":"\"exactly same meaning\""}
+{"query":"\"Bronze (copper alloy); other options: Brass, Stainless steel, Aluminum, Iron, Stone, Marble, Wood, Resin, Ceramic\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"黄石国家公园\"","ground_truths":["\"Yellowstone\"","\"yellowstone\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"Terrace\"]","ground_truths":["[\"Patio\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Double-bed Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"terrace\"]","ground_truths":["[\"Patio\"]"],"category":"\"relevant but incorrect\""}
+{"query":"2025","ground_truths":["\"\"","2024"],"category":"\"relevant but incorrect\""}
+{"query":"\"luxury room\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"exactly same meaning\""}
+{"query":"\"里斯本条约签署日期\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"5","ground_truths":["1","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"\"伦敦\"","ground_truths":["\"London\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Suite with queen size bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
+{"query":"\"General Relativity\"","ground_truths":["\"\"","\"all\""],"category":"\"relevant but incorrect\""}
+{"query":"\"suite with double bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"gluten-free\",\"meatless\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"highways\",\"toll_roads\"]","ground_truths":["[\"highways\",\"tolls\"]","[\"tolls\",\"highways\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Columbian black-tailed deer\"","ground_truths":["\"deer\"","\"Deer\""],"category":"\"relevant but incorrect\""}
+{"query":"\"人类\"","ground_truths":["\"Homo Sapiens\"","\"Homo sapiens\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"冰河时代\"","ground_truths":["\"Ice age\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"3","ground_truths":["\"\"","0"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"olive oil\",\"garlic\",\"tomatoes\",\"basil\",\"parmesan\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Deluxe room\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"exactly same meaning\""}
+{"query":"\"highest\"","ground_truths":["\"high\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Rosewood edition\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Apple Inc\"","ground_truths":["\"Apple Inc.\"","\"Apple\""],"category":"\"exactly same meaning\""}
+{"query":"\"glucose (C6H12O6)\"","ground_truths":["\"C6H12O6\""],"category":"\"relevant but incorrect\""}
+{"query":"\"星夜\"","ground_truths":["\"Starry Night\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"small space gardens\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"\"R v. Adams\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"exactly same meaning\""}
+{"query":"\"Alphabet (GOOGL)\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"relevant but incorrect\""}
+{"query":"\"historical_texts\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"points_per_game\",\"assists_per_game\",\"minutes_per_game\"]","ground_truths":["[\"points per game\",\"assists\",\"minutes per game\"]","[\"points per game\",\"minutes per game\",\"assists\"]","[\"assists\",\"points per game\",\"minutes per game\"]","[\"assists\",\"minutes per game\",\"points per game\"]","[\"minutes per game\",\"points per game\",\"assists\"]","[\"minutes per game\",\"assists\",\"points per game\"]","[\"points\",\"assists\",\"minutes\"]","[\"points\",\"minutes\",\"assists\"]","[\"assists\",\"points\",\"minutes\"]","[\"assists\",\"minutes\",\"points\"]","[\"minutes\",\"points\",\"assists\"]","[\"minutes\",\"assists\",\"points\"]","[\"points_per_game\",\"assists\",\"minutes_per_game\"]","[\"points_per_game\",\"minutes_per_game\",\"assists\"]","[\"assists\",\"points_per_game\",\"minutes_per_game\"]","[\"assists\",\"minutes_per_game\",\"points_per_game\"]","[\"minutes_per_game\",\"points_per_game\",\"assists\"]","[\"minutes_per_game\",\"assists\",\"points_per_game\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Chicago Hilton\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Rosewood accents\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"豪华客房\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"olive oil\",\"garlic\",\"tomato\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"2","ground_truths":["\"\"","0"],"category":"\"wrong value\""}
+{"query":"\"scriptures\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Optional materials include copper, bronze, steel, stainless steel, aluminum, brass, cast iron, etc. If needed, coating treatments (copper plating, gold plating, silver plating, etc.) can also be considered.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"拉斯维加斯\"","ground_truths":["\"Las Vegas\"","\"Las Vegas, NV\"","\"LV\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"New York City\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"\"Wild tiger\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"exactly same meaning\""}
+{"query":"\"牧羊少年奇幻之旅\"","ground_truths":["\"The Alchemist\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese (parmesan or cheddar)\",\"milk\",\"butter\",\"flour\",\"garlic\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"seafood\"]","ground_truths":["[\"Seafood\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"English Premier League\"","ground_truths":["\"Premier League\""],"category":"\"exactly same meaning\""}
+{"query":"\"King Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"garlic\",\"olive oil\",\"cream\",\"butter\",\"black pepper\",\"salt\",\"parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"洛杉矶湖人队\",\"洛杉矶快船队\"]","ground_truths":["[\"Lakers\",\"Clippers\"]","[\"Clippers\",\"Lakers\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"英诺森三世\"","ground_truths":["\"Innocent III\"","\"Pope Innocent III\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"4","ground_truths":["\"\"","2"],"category":"\"relevant but incorrect\""}
+{"query":"\"The Shepherd Boy's Magical Journey\"","ground_truths":["\"The Alchemist\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"backstage access\"]","ground_truths":["[\"Backstage Pass\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"R v Adams\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pet-friendly\",\"disabled access\",\"amenities for disabled individuals\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"tomato\",\"Pet food\"]","ground_truths":["[\"tomatoes\",\"pet food\"]","[\"pet food\",\"tomatoes\"]","[\"Tomatoes\",\"Pet food\"]","[\"Pet food\",\"Tomatoes\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"Los Angeles Lakers\",\"Los Angeles Clippers\"]","ground_truths":["[\"Lakers\",\"Clippers\"]","[\"Clippers\",\"Lakers\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"New York metropolitan area\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NY\"","\"New York City\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"\"0-50\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
+{"query":"null","ground_truths":["\"\""],"category":"\"wrong value\""}
+{"query":"\"shortest\"","ground_truths":["\"fastest\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"opening hours\",\"exhibitions\",\"accessibility facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"butter\",\"garlic\",\"flour\",\"milk\",\"cheddar cheese\",\"parmesan cheese\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"opening hours\",\"current exhibitions\",\"accessibility options\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"square units\"","ground_truths":["\"\"","\"square meters\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Hi, how are you?\"","ground_truths":["\"Hello, how are you?\""],"category":"\"exactly same meaning\""}
+{"query":"\"Philadelphia, PA\"","ground_truths":["\"Philadelphia\""],"category":"\"exactly same meaning\""}
+{"query":"\"rosewood veneer\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Las Vegas Paradise Hotel\"","ground_truths":["\"Hotel Paradise\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"butter\",\"garlic\",\"all-purpose flour\",\"milk\",\"cream\",\"cheese (parmesan and mozzarella or cheddar)\",\"salt\",\"black pepper\",\"parsley for garnish\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"New York Marriott Marquis, New York, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"\"巴西\"","ground_truths":["\"Brazil\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"historical novel\"","ground_truths":["\"Historical Fiction\"","\"historical fiction\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"tomato\",\"pet food\"]","ground_truths":["[\"tomatoes\",\"pet food\"]","[\"pet food\",\"tomatoes\"]","[\"Tomatoes\",\"Pet food\"]","[\"Pet food\",\"Tomatoes\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"耶稣基督\"","ground_truths":["\"Jesus Christ\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Alphabet Inc. (GOOGL)\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"relevant but incorrect\""}
+{"query":"\"06-02-2023\"","ground_truths":["\"06-01-2023\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"violin\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"salt\",\"black pepper\",\"parmesan\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"historical writings\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
+{"query":"\"tiger (Panthera tigris) - wild\"","ground_truths":["\"wild tiger\"","\"tiger\""],"category":"\"exactly same meaning\""}
+{"query":"\"黄石公园 (Yellowstone National Park)\"","ground_truths":["\"Yellowstone\"","\"yellowstone\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"London, UK\"","ground_truths":["\"London\""],"category":"\"exactly same meaning\""}
+{"query":"[\"早餐\"]","ground_truths":["[\"breakfast\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"10","ground_truths":["1","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"\"house\"","ground_truths":["\"villa\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Historical documents\"","ground_truths":["\"historical records\""],"category":"\"exactly same meaning\""}
+{"query":"\"平方单位\"","ground_truths":["\"\"","\"square meters\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"历史小说\"","ground_truths":["\"Historical Fiction\"","\"historical fiction\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"Criminal Law\",\"Criminal Defense\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Rosewood veneer\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"product A\"","ground_truths":["\"A\"","\"Product A\""],"category":"\"exactly same meaning\""}
+{"query":"[\"刑法\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"西红柿\",\"生菜\"]","ground_truths":["[\"tomatoes\",\"lettuce\"]","[\"lettuce\",\"tomatoes\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Rosewood decorative\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Company XYZ\"","ground_truths":["\"XYZ\""],"category":"\"exactly same meaning\""}
+{"query":"\"C major\"","ground_truths":["\"C\""],"category":"\"exactly same meaning\""}
+{"query":"\"single-family home\"","ground_truths":["\"villa\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Apple\"","ground_truths":["\"Apple Inc.\""],"category":"\"exactly same meaning\""}
+{"query":"\"The Museum of Modern Art (MoMA), New York\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"exactly same meaning\""}
+{"query":"\"New York City, NY, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"\"glucose\"","ground_truths":["\"C6H12O6\""],"category":"\"relevant but incorrect\""}
+{"query":"\"historical_records\"","ground_truths":["\"historical records\""],"category":"\"exactly same meaning\""}
+{"query":"2800000","ground_truths":["2800","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"\"humans\"","ground_truths":["\"Homo Sapiens\"","\"Homo sapiens\""],"category":"\"exactly same meaning\""}
+{"query":"[\"开放时间\",\"展出项目\",\"无障碍服务\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"芝加哥希尔顿旅馆\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"莱昂纳多·迪卡普里奥\"","ground_truths":["\"Leonardo DiCaprio\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"New York, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"[\"意大利面\",\"牛奶\",\"奶酪（帕玛森或切达等硬质奶酪）\",\"黄油\",\"蒜末\",\"面粉\",\"盐\",\"黑胡椒\",\"菠菜（可选）\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"[\"pet-friendly\",\"disabled access\",\"facilities for people with disabilities\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"highways\",\"toll roads\"]","ground_truths":["[\"highways\",\"tolls\"]","[\"tolls\",\"highways\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"interest_rates\",\"unemployment_rates\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"3 PM\"","ground_truths":["\"3pm\""],"category":"\"exactly same meaning\""}
+{"query":"\"modern\"","ground_truths":["\"contemporary\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta (200 g)\",\"olive oil (1 tbsp)\",\"garlic (2 cloves)\",\"butter (1 tbsp)\",\"parmesan cheese, grated (50 g)\",\"heavy cream or milk (60 ml)\",\"salt\",\"black pepper\",\"fresh basil (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Single Room\"","ground_truths":["\"single\"","\"Single\""],"category":"\"exactly same meaning\""}
+{"query":"\"New York, NY, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NY\"","\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"[\"camping\",\"scenic views\",\"open now\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"New York, NY, USA\"","ground_truths":["\"New York\"","\"New York, NY\"","\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"[\"Pasta (such as Italian macaroni or spaghetti)\",\"olive oil\",\"butter\",\"garlic\",\"Parmesan cheese (or other vegetarian-friendly cheese)\",\"light cream or milk\",\"salt\",\"black pepper\",\"Fresh basil (optional)\",\"Cherry tomatoes (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"1.2566370614359172e-6","ground_truths":["\"\"","0.01"],"category":"\"relevant but incorrect\""}
+{"query":"\"The Museum of Modern Art, New York\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"exactly same meaning\""}
+{"query":"[\"hours\",\"expositions\",\"accessibility\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"historical\"","ground_truths":["\"historical records\""],"category":"\"relevant but incorrect\""}
+{"query":"0","ground_truths":["\"\"","2"],"category":"\"relevant but incorrect\""}
+{"query":"\"vegetarian\"","ground_truths":["\"vegan\""],"category":"\"relevant but incorrect\""}
+{"query":"\"sitting room\"","ground_truths":["\"living room\"","\"Living room\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"parmesan\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
 {"query":"\"黄石公园\"","ground_truths":["\"Yellowstone\"","\"yellowstone\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Google LLC\"","ground_truths":["\"Google\""],"category":"\"exactly same meaning\""}
+{"query":"\"King Bed Suite\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"backstage pass\"]","ground_truths":["[\"Backstage Pass\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"opening hours\",\"exhibits\",\"facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"Camping\",\"Scenic View\",\"Trails\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"interest_rate\",\"joblessness_rate\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"铜马雕塑\"","ground_truths":["\"horse\"","\"Horse\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"Washington, D.C.\"","ground_truths":["\"Washington D.C.\"","\"D.C.\"","\"DC\""],"category":"\"exactly same meaning\""}
+{"query":"[\"Violin Classes\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"番茄\",\"宠物食品\"]","ground_truths":["[\"tomatoes\",\"pet food\"]","[\"pet food\",\"tomatoes\"]","[\"Tomatoes\",\"Pet food\"]","[\"Pet food\",\"Tomatoes\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Suite with Two Double Beds\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"patio\"]","ground_truths":["[\"Patio\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"parmesan cheese\",\"mozzarella cheese\",\"garlic\",\"olive oil\",\"cherry tomatoes\",\"spinach\",\"basil\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Marriott hotel in New York\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"意面（如意大利通心粉或细面）\",\"橄榄油\",\"黄油\",\"大蒜\",\"帕尔马奶酪（或其它素食可用奶酪）\",\"淡奶油或牛奶\",\"盐\",\"黑胡椒\",\"新鲜罗勒（可选）\",\"樱桃番茄（可选）\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"Lisbon Treaty signing\"","ground_truths":["\"Treaty of Lisbon\"","\"Signing of the Treaty of Lisbon\""],"category":"\"exactly same meaning\""}
+{"query":"\"suite with a queen size bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"exactly same meaning\""}
+{"query":"\"Classical\"","ground_truths":["\"classical\""],"category":"\"exactly same meaning\""}
+{"query":"[\"chicken\",\"mushroom\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Suite with double bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Bronze horse sculpture\"","ground_truths":["\"horse\"","\"Horse\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"opening hours\",\"exhibitions\",\"accessibility\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"New York Hilton Hotel\"","ground_truths":["\"Hilton New York\""],"category":"\"exactly same meaning\""}
+{"query":"\"New York Public Library\"","ground_truths":["\"New York\"","\"New York, NY\"","\"New York City\"","\"New York City, NY\"","\"NYC\"","\"New York public library\""],"category":"\"exactly same meaning\""}
+{"query":"\"Washington State, USA\"","ground_truths":["\"Washington state\"","\"WA\"","\"Washington\""],"category":"\"exactly same meaning\""}
+{"query":"\"行为心理学\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"FoodNetwork.com\"","ground_truths":["\"Foodnetwork.com\""],"category":"\"exactly same meaning\""}
+{"query":"\"佛教\"","ground_truths":["\"Buddhism\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Violent crime\"","ground_truths":["\"violent\"","\"Violent\""],"category":"\"exactly same meaning\""}
+{"query":"\"斯大林格勒战役\"","ground_truths":["\"Battle of Stalingrad\"","\"Stalingrad\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Marriott, New York\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"camping\",\"scenic views\",\"recently began camping\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Deluxe room\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"relevant but incorrect\""}
+{"query":"\"New York City area\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Alphabet\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"exactly same meaning\""}
+{"query":"\"Santiago, Chile\"","ground_truths":["\"SD\"","\"San Diego\"","\"San Diego, CA\"","\"CA\""],"category":"\"wrong value\""}
+{"query":"\"suite with king bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"\"All fields\"","ground_truths":["\"\"","\"all\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"points per game\",\"assists per game\",\"minutes per game\"]","ground_truths":["[\"points per game\",\"assists\",\"minutes per game\"]","[\"points per game\",\"minutes per game\",\"assists\"]","[\"assists\",\"points per game\",\"minutes per game\"]","[\"assists\",\"minutes per game\",\"points per game\"]","[\"minutes per game\",\"points per game\",\"assists\"]","[\"minutes per game\",\"assists\",\"points per game\"]","[\"points\",\"assists\",\"minutes\"]","[\"points\",\"minutes\",\"assists\"]","[\"assists\",\"points\",\"minutes\"]","[\"assists\",\"minutes\",\"points\"]","[\"minutes\",\"points\",\"assists\"]","[\"minutes\",\"assists\",\"points\"]","[\"points_per_game\",\"assists\",\"minutes_per_game\"]","[\"points_per_game\",\"minutes_per_game\",\"assists\"]","[\"assists\",\"points_per_game\",\"minutes_per_game\"]","[\"assists\",\"minutes_per_game\",\"points_per_game\"]","[\"minutes_per_game\",\"points_per_game\",\"assists\"]","[\"minutes_per_game\",\"assists\",\"points_per_game\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[{\"field\":\"age\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"job_title\",\"operation\":\"=\",\"value\":\"engineer\"}]","ground_truths":["[{\"field\":[\"age\"],\"operation\":[\">\"],\"value\":[\"25\"]},{\"field\":[\"job\"],\"operation\":[\"=\"],\"value\":[\"engineer\"]}]"],"category":"\"relevant but incorrect\""}
+{"query":"\"洛杉矶\"","ground_truths":["\"Los Angeles\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"New York City, NY\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\"","\"New York City\""],"category":"\"exactly same meaning\""}
+{"query":"\"Manhattan, NY\"","ground_truths":["\"Manhattan\""],"category":"\"exactly same meaning\""}
+{"query":"\"good\"","ground_truths":["\"Excellent\""],"category":"\"relevant but incorrect\""}
+{"query":"\"kilometers\"","ground_truths":["\"miles\"","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Chicago region\"","ground_truths":["\"Chicago\"","\"Chicago area\""],"category":"\"exactly same meaning\""}
+{"query":"[\"criminal defense\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"InterestRate\",\"UnemploymentRate\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"exactly same meaning\""}
 {"query":"[\"behavior\",\"group dynamics\",\"social psychology\",\"behavioral science\",\"group behavior\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"small-space garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
+{"query":"\"Luxury chamber\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"exactly same meaning\""}
+{"query":"\"all\"","ground_truths":["\"Patent\""],"category":"\"wrong value\""}
+{"query":"29","ground_truths":["30"],"category":"\"wrong value\""}
+{"query":"[\"behavior\",\"behavioral psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"vegetarian\",\"gluten-free\"]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"纽约现代艺术博物馆\"","ground_truths":["\"Museum of Modern Art\"","\"MOMA\"","\"Museum of Modern Art, New York\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"James Prensa\"","ground_truths":["\"James Plensa\""],"category":"\"relevant but incorrect\""}
+{"query":"\"C6H12O6 (glucose)\"","ground_truths":["\"C6H12O6\""],"category":"\"exactly same meaning\""}
+{"query":"\"Alphabet Inc.\"","ground_truths":["\"Google\"","\"GOOG\""],"category":"\"exactly same meaning\""}
+{"query":"\"Good\"","ground_truths":["\"Excellent\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Current\"","ground_truths":["\"\"","\"Daily\""],"category":"\"relevant but incorrect\""}
+{"query":"\"small-scale regional garden design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"\"annual\"","ground_truths":["\"\"","\"annually\""],"category":"\"exactly same meaning\""}
+{"query":"\"The Starry Night (星夜)\"","ground_truths":["\"Starry Night\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"behavior\",\"group dynamics\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"exactly same meaning\""}
+{"query":"30","ground_truths":["12"],"category":"\"wrong value\""}
+{"query":"[\"年龄\",\"收入\",\"教育程度\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"Violin Lessons\",\"Guitar Lessons\"]","ground_truths":["[\"Violin Lessons\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Suite with two beds\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"\"The Shepherd Boy's Fantastical Journey\"","ground_truths":["\"The Alchemist\""],"category":"\"relevant but incorrect\""}
+{"query":"\"deluxe room\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"exactly same meaning\""}
+{"query":"[\"age\",\"income\",\"education level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"Criminal law\",\"Criminal defense\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[{\"field\":\"age\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"occupation\",\"operation\":\"=\",\"value\":\"engineer\"}]","ground_truths":["[{\"field\":[\"age\"],\"operation\":[\">\"],\"value\":[\"25\"]},{\"field\":[\"job\"],\"operation\":[\"=\"],\"value\":[\"engineer\"]}]"],"category":"\"exactly same meaning\""}
+{"query":"[\"behavior\",\"behavioral psychology\",\"group dynamics\",\"social psychology\",\"group behavior\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"All missions\"","ground_truths":["\"\""],"category":"\"wrong value\""}
+{"query":"[\"behavior\",\"Group dynamics\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheddar cheese\",\"mozzarella cheese\",\"garlic\",\"butter\",\"milk\",\"olive oil\",\"black pepper\",\"salt\",\"fresh basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\" \"","ground_truths":["\"\""],"category":"\"wrong value\""}
+{"query":"\"purchase_amount\"","ground_truths":["\"Purchase_Amount\""],"category":"\"exactly same meaning\""}
+{"query":"[\"hours\",\"exhibitions\",\"accessibility\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"rosewood trim\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"female\"","ground_truths":["\"women\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Historical fiction\"","ground_truths":["\"Historical Fiction\"","\"historical fiction\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"parmesan\",\"salt\",\"black pepper\",\"olive oil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"small-area garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
+{"query":"[\"behaviour\",\"behavior\",\"group dynamics\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"luxury chamber\"","ground_truths":["\"luxury\"","\"Luxury\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"tomato\",\"garlic\",\"olive oil\",\"basil\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"tomato\",\"lettuce\"]","ground_truths":["[\"tomatoes\",\"lettuce\"]","[\"lettuce\",\"tomatoes\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"olive oil\",\"parmesan\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"behavior\",\"behaviour\",\"group dynamics\",\"social psychology\"]","ground_truths":["[\"behaviour\",\"group dynamics\"]","[\"group dynamics\",\"behaviour\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Weekly\"","ground_truths":["\"\"","\"Daily\""],"category":"\"relevant but incorrect\""}
+{"query":"\"small-scale landscape design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Washington State\"","ground_truths":["\"Washington state\"","\"WA\"","\"Washington\""],"category":"\"exactly same meaning\""}
+{"query":"\"马雕塑\"","ground_truths":["\"horse\"","\"Horse\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"The Starry Night (Starry Night)\"","ground_truths":["\"Starry Night\""],"category":"\"exactly same meaning\""}
+{"query":"\"购买金额\"","ground_truths":["\"Purchase_Amount\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"affordable\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
+{"query":"\"埃菲尔铁塔, 巴黎\"","ground_truths":["\"Eiffel Tower\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Chicago, IL\"","ground_truths":["\"Chicago\"","\"Chicago area\""],"category":"\"exactly same meaning\""}
+{"query":"[\"camping permitted\",\"scenic views\"]","ground_truths":["[\"Camping\",\"Scenic View\"]","[\"Scenic View\",\"Camping\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"bronze, brass, stainless steel, aluminum, marble, resin\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Living Room\"","ground_truths":["\"living room\"","\"Living room\""],"category":"\"exactly same meaning\""}
+{"query":"\"California, USA\"","ground_truths":["\"California\"","\"CA\""],"category":"\"exactly same meaning\""}
+{"query":"9.81","ground_truths":["9.8","\"\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"opening hours\",\"exhibition schedule\",\"accessible facilities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"小型区域园艺设计\"","ground_truths":["\"small space garden design\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Suite with a king bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"opening hours\",\"exhibitions\",\"amenities\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"New York Marriott Hotel\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Psychology related to behavior and group dynamics\"","ground_truths":["\"psychology\"","\"Psychology\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"开放时间\",\"展览内容\",\"无障碍设施\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"大都会艺术博物馆\"","ground_truths":["\"Metropolitan Museum of Art\"","\"The Met\"","\"Met Museum\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"parmesan\",\"garlic\",\"cream\",\"butter\",\"olive oil\",\"salt\",\"black pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"纽约\"","ground_truths":["\"New York\"","\"New York, NY\"","\"New York City\"","\"NYC\"","\"NY\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"Eiffel Tower, Paris\"","ground_truths":["\"Eiffel Tower\""],"category":"\"exactly same meaning\""}
+{"query":"\"3:00 PM\"","ground_truths":["\"3pm\""],"category":"\"exactly same meaning\""}
+{"query":"\"Eiffel Tower, Paris, France\"","ground_truths":["\"Eiffel Tower\""],"category":"\"exactly same meaning\""}
+{"query":"\"小空间花园设计\"","ground_truths":["\"small space garden design\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"butter\",\"garlic\",\"flour\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"timings\",\"exhibitions\",\"accessibility\",\"events\",\"history\"]","ground_truths":["[\"timings\",\"exhibitions\",\"accessibility\"]","[\"exhibitions\",\"timings\",\"accessibility\"]","[\"exhibitions\",\"accessibility\",\"timings\"]","[\"accessibility\",\"timings\",\"exhibitions\"]","[\"accessibility\",\"exhibitions\",\"timings\"]","[\"timings\",\"accessibility\",\"exhibitions\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"compact space garden design\"","ground_truths":["\"small space garden design\""],"category":"\"exactly same meaning\""}
+{"query":"4","ground_truths":["\"\"","0"],"category":"\"wrong value\""}
+{"query":"\"miles\"","ground_truths":["\"\"","\"kilometers\""],"category":"\"relevant but incorrect\""}
+{"query":"\"foodnetwork.com\"","ground_truths":["\"Foodnetwork.com\""],"category":"\"exactly same meaning\""}
+{"query":"\"New York Marriott\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"\"European Union\"","ground_truths":["\"\"","\"global\"","\"Lisbon\"","\"Lisbon, Portugal\""],"category":"\"relevant but incorrect\""}
+{"query":"5","ground_truths":["\"\"","1"],"category":"\"relevant but incorrect\""}
+{"query":"\"用户表\"","ground_truths":["\"user\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"violent crime\"","ground_truths":["\"violent\"","\"Violent\""],"category":"\"exactly same meaning\""}
+{"query":"[\"age\",\"income\",\"education_level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Rosewood fingerboard\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"公司XYZ\"","ground_truths":["\"XYZ\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta (penne or spaghetti)\",\"olive oil\",\"garlic\",\"onion\",\"butter\",\"heavy cream or milk\",\"parmesan cheese\",\"mozzarella cheese\",\"salt\",\"black pepper\",\"fresh basil or parsley\",\"red pepper flakes (optional)\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"利率\",\"失业率\"]","ground_truths":["[\"interest rates\",\"unemployment rates\"]","[\"interest_rate\",\"unemployment_rate\"]","[\"interest rate\",\"unemployment rate\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"cheddar cheese\",\"parmesan cheese\",\"milk\",\"butter\",\"all-purpose flour\",\"garlic\",\"salt\",\"black pepper\",\"parsley\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[40.7128,-74.0060]","ground_truths":["[40.7128,-74.006]"],"category":"\"exactly same meaning\""}
+{"query":"\"fiction\"","ground_truths":["\"\""],"category":"\"wrong value\""}
+{"query":"\"intermediate\"","ground_truths":["\"\"","\"beginner\""],"category":"\"relevant but incorrect\""}
+{"query":"\"圣地亚哥县\"","ground_truths":["\"San Diego\"","\"San Diego County\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"deluxe chamber\"","ground_truths":["\"deluxe\"","\"Deluxe\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Copper\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"small-space gardens\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"all\"]","ground_truths":["[\"War\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"criminal law\",\"criminal defense\"]","ground_truths":["[\"Criminal Law\"]","[\"criminal law\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"基督教\"","ground_truths":["\"Christianity\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"pasta\",\"parmesan cheese\",\"garlic\",\"cream\",\"butter\",\"olive oil\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"Humanity\"","ground_truths":["\"Homo Sapiens\"","\"Homo sapiens\""],"category":"\"relevant but incorrect\""}
+{"query":"\"under $50\"","ground_truths":["\"cheap\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"Pet-friendly\",\"Disabled access\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Alameda County Superior Court\"","ground_truths":["\"California\"","\"CA\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Chicago Hilton Hotel\"","ground_truths":["\"Hilton Hotel\"","\"Hilton\""],"category":"\"relevant but incorrect\""}
+{"query":"\"New York, Marriott\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"1.256637061e-6","ground_truths":["\"\"","0.01"],"category":"\"wrong value\""}
+{"query":"\"basketball\"","ground_truths":["\"Basketball\""],"category":"\"exactly same meaning\""}
+{"query":"\"Beef Lasagna Formula\"","ground_truths":["\"Beef Lasagna\"","\"Beef Lasagna Recipe\""],"category":"\"exactly same meaning\""}
+{"query":"\"rosewood-decorated\"","ground_truths":["\"Rosewood\""],"category":"\"relevant but incorrect\""}
+{"query":"\"Optional materials include copper, bronze, steel, stainless steel, aluminum, brass, cast iron, etc.; if needed, coating treatment (such as copper plating, gold plating, silver plating, etc.) can also be considered.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"low\"","ground_truths":["\"cheap\""],"category":"\"exactly same meaning\""}
+{"query":"\"苹果公司\"","ground_truths":["\"Apple Inc.\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"鸡肉\",\"蘑菇\"]","ground_truths":["[\"chicken\",\"mushrooms\"]","[\"mushrooms\",\"chicken\"]"],"category":"\"language mismatch exactly same meaning\""}
+{"query":"[\"Backstage pass\"]","ground_truths":["[\"Backstage Pass\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"en\"","ground_truths":["\"english\"","\"English\""],"category":"\"exactly same meaning\""}
+{"query":"\"青铜 Bronze、铜 Copper、黄铜 Brass、不锈钢 Stainless Steel、铝 Aluminum、树脂 Resin、大理石 Marble、花岗岩 Granite、铜铝合金 Bronze Alloy\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"language mismatch relevant but incorrect\""}
+{"query":"\"New York, NY\"","ground_truths":["\"New York City\"","\"NYC\""],"category":"\"exactly same meaning\""}
+{"query":"false","ground_truths":["true"],"category":"\"relevant but incorrect\""}
+{"query":"[\"vegetarian\"]","ground_truths":["[\"vegan\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[\"pet-friendly\",\"accessible\",\"disabled access\",\"wheelchair accessible\"]","ground_truths":["[\"Pet-friendly\",\"Disabled Access\"]","[\"Disabled Access\",\"Pet-friendly\"]"],"category":"\"relevant but incorrect\""}
+{"query":"30","ground_truths":["1","\"\""],"category":"\"wrong value\""}
+{"query":"[{\"field\":\"age\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"profession\",\"operation\":\"=\",\"value\":\"engineer\"}]","ground_truths":["[{\"field\":[\"age\"],\"operation\":[\">\"],\"value\":[\"25\"]},{\"field\":[\"job\"],\"operation\":[\"=\"],\"value\":[\"engineer\"]}]"],"category":"\"relevant but incorrect\""}
+{"query":"\"R-v-Adams\"","ground_truths":["\"R vs Adams\"","\"R_vs_Adams\""],"category":"\"exactly same meaning\""}
+{"query":"\"kg/m^3\"","ground_truths":["\"kg/m³\"","\"\""],"category":"\"exactly same meaning\""}
+{"query":"\"Optional materials include: copper, bronze, steel, stainless steel, aluminum, brass, cast iron, etc.; if needed, coating treatments (copper plating, gold plating, silver plating, etc.) may also be considered.\"","ground_truths":["\"Bronze\"","\"bronze\""],"category":"\"relevant but incorrect\""}
+{"query":"\"New York - Marriott\"","ground_truths":["\"New York\"","\"New York, NY\"","\"NYC\""],"category":"\"relevant but incorrect\""}
+{"query":"\"The Legend of Zelda\"","ground_truths":["\"Zelda\""],"category":"\"exactly same meaning\""}
+{"query":"[\"pasta\",\"cheese\",\"milk\",\"garlic\",\"butter\",\"salt\",\"pepper\"]","ground_truths":["[\"pasta\",\"cheese\"]","[\"cheese\",\"pasta\"]"],"category":"\"relevant but incorrect\""}
+{"query":"\"small-scale residential garden design\"","ground_truths":["\"small space garden design\""],"category":"\"relevant but incorrect\""}
+{"query":"[\"Age\",\"Income\",\"Education level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"relevant but incorrect\""}
+{"query":"[]","ground_truths":["[\"vegan\",\"gluten-free\"]","[\"gluten-free\",\"vegan\"]"],"category":"\"wrong value\""}
+{"query":"\"the Louvre\"","ground_truths":["\"Louvre Museum\""],"category":"\"exactly same meaning\""}
+{"query":"[\"age\",\"income\",\"Education level\"]","ground_truths":["[\"Age\",\"Income\",\"Education\"]","[\"Age\",\"Education\",\"Income\"]","[\"Income\",\"Age\",\"Education\"]","[\"Income\",\"Education\",\"Age\"]","[\"Education\",\"Age\",\"Income\"]","[\"Education\",\"Income\",\"Age\"]"],"category":"\"exactly same meaning\""}
+{"query":"\"Suite - Double Bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}
+{"query":"\"赛博朋克2077\"","ground_truths":["\"Cyberpunk 2077\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"皇家马德里\"","ground_truths":["\"Real Madrid\""],"category":"\"language mismatch exactly same meaning\""}
+{"query":"\"suite with king-size bed\"","ground_truths":["\"suite with queen size bed\""],"category":"\"relevant but incorrect\""}

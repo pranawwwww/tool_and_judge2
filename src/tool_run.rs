@@ -9,10 +9,9 @@ use std::{
     fs::{self, File},
     sync::{
         Arc,
-        atomic::{AtomicBool, AtomicUsize, Ordering},
+        atomic::{AtomicUsize, Ordering},
     },
 };
-use tokio::sync::broadcast;
 
 use crate::{
     config::{Language, ToolConfig, TranslateMode, TranslateOption},
@@ -54,30 +53,11 @@ const CATEGORY_CACHE_LOCK_PATH: &str = "tool_category_cache.lock";
 const MAX_CONCURRENT_REQUESTS: usize = 200;
 
 // Number of loop iterations before yielding to allow Ctrl+C cancellation
+// Yielding allows the async runtime to check for signals like SIGINT (Ctrl+C)
 const YIELD_EVERY_N_ITERATIONS: usize = 5;
 
-/// Runs a pass with Ctrl+C cancellation support using a shared shutdown receiver.
-/// Returns Ok(()) if the pass completed successfully, Err(()) if cancelled.
-async fn run_pass_with_cancellation<F, Fut>(
-    pass_name: &str,
-    pass_fn: F,
-    mut shutdown_rx: broadcast::Receiver<()>,
-) -> Result<(), ()>
-where
-    F: FnOnce() -> Fut,
-    Fut: std::future::Future<Output = ()>,
-{
-    tokio::select! {
-        _ = pass_fn() => { Ok(()) }
-        _ = shutdown_rx.recv() => {
-            println!("⚠️  Ctrl+C during {} pass. Skipping remaining passes.", pass_name);
-            Err(())
-        }
-    }
-}
-
-/// Helper to periodically yield control in synchronous loops for cancellation.
-/// Call this in loops to allow Ctrl+C to be detected.
+/// Helper to periodically yield control in loops to allow signal handling.
+/// This enables Ctrl+C to be detected during CPU-bound synchronous work.
 async fn yield_periodically(iteration: usize, total: usize, context: &str) {
     if iteration % YIELD_EVERY_N_ITERATIONS == 0 && iteration > 0 {
         tokio::task::yield_now().await;
@@ -109,17 +89,6 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
     dotenvy::dotenv().ok();
     println!("Loaded environment variables from .env file.");
     println!("Starting tool run with {} configs.", config_len);
-
-    // Set up Ctrl+C handler using a broadcast channel
-    let (shutdown_tx, _) = broadcast::channel::<()>(1);
-    let shutdown_tx_clone = shutdown_tx.clone();
-
-    // Spawn a task to listen for Ctrl+C and broadcast shutdown signal
-    tokio::spawn(async move {
-        tokio::signal::ctrl_c().await.expect("Failed to listen for Ctrl+C");
-        println!("\n⚠️  Ctrl+C detected! Finishing current operation and shutting down...");
-        let _ = shutdown_tx_clone.send(());
-    });
 
     let function_name_mapper = Arc::new(AtomicRefCell::new(FunctionNameMapper::new()));
     for config in extracted_configs {
@@ -345,9 +314,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                     .expect("Failed to write pre-translation results to file");
             }
         };
-        if run_pass_with_cancellation("pre-translate", pre_translate_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        pre_translate_pass().await;
         /* ════════════════════════════════════════════════════════════════════════════════ */
         /* PASS 2: Inference Raw                                                            */
         /* ════════════════════════════════════════════════════════════════════════════════ */
@@ -447,9 +414,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 .expect("Failed to sort and write inference raw results");
             }
         };
-        if run_pass_with_cancellation("inference raw", inference_raw_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        inference_raw_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 3: Inference JSON                                                  */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -503,9 +468,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             )
             .expect("Failed to sort and write inference JSON results");
         };
-        if run_pass_with_cancellation("inference JSON", inference_json_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        inference_json_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 4: Post-Translation                                                */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -634,9 +597,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 .expect("Failed to write translated answers to file");
             }
         };
-        if run_pass_with_cancellation("post-translate", post_translate_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        post_translate_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 5: Evaluation                                                      */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -694,9 +655,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             write_json_lines_to_file(&evaluation_output_path, &evaluation_results_serialized)
                 .expect("Failed to sort and write evaluation results");
         };
-        if run_pass_with_cancellation("evaluation", evaluation_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        evaluation_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 6: Score                                                          */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -741,9 +700,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
                 score_output_path, evaluation_summary
             );
         };
-        if run_pass_with_cancellation("score", score_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        score_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 7: Categorize                                                    */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -835,9 +792,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             lock_file.unlock().expect("Failed to unlock the lock file");
             println!("Released lock for category cache file.");
         };
-        if run_pass_with_cancellation("categorize", categorize_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        categorize_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* PASS 8: Categorize Score                                              */
         /* ═══════════════════════════════════════════════════════════════════════ */
@@ -877,9 +832,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             fs::write(categorize_score_output_path, final_output_serialized)
                 .expect("Failed to write categorize score results to file");
         };
-        if run_pass_with_cancellation("categorize score", categorize_score_pass, shutdown_tx.subscribe()).await.is_err() {
-            break;
-        }
+        categorize_score_pass().await;
         /* ═══════════════════════════════════════════════════════════════════════ */
         /* All passes completed                                                    */
         /* ═══════════════════════════════════════════════════════════════════════ */

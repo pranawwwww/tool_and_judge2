@@ -8,7 +8,7 @@ configs = [
 ]
 
 
-for model in [Model.Api(ApiModel.Gpt5),]:
+for model in [Model.Api(ApiModel.Gpt5Nano), Model.Api(ApiModel.Gpt5Mini), Model.Api(ApiModel.Gpt5)]:
     for noise in [AddNoiseMode.NoNoise, AddNoiseMode.Synonym, AddNoiseMode.Paraphrase]:
         for translate in [
             TranslateMode.NotTranslated(),
