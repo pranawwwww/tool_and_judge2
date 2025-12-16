@@ -72,6 +72,7 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         result_dir: Directory containing the categorize_score files (default: "tool/result/categorize_score")
         selected_translate_mode: If specified, only show bars for this translate mode across noise modes
         selected_noise_mode: If specified, only show bars for this noise mode across translate modes
+        max_height: Maximum height of the vertical axis (default: 0.5, range: 0.0-1.0)
     """
 
     # Initialize data structure: dict[translate_mode][noise_mode][category] = count
@@ -240,10 +241,8 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
             ax.text(i, total, f'{total:.3f}',
                    ha='center', va='bottom', fontsize=9, fontweight='bold')
 
-    # Set y-axis range to be slightly higher than the largest bar
-    max_total = totals.max()
-    if max_total > 0:
-        ax.set_ylim(0, max_total * 1.1)  # 10% higher than max
+    # Set y-axis range to the specified max_height
+    ax.set_ylim(0, max_height)
 
     # Customize plot
     ax.set_xlabel('Configuration', fontsize=12)
@@ -302,6 +301,12 @@ if __name__ == "__main__":
         choices=noise_modes,
         help="Only show bars for this noise mode across translate modes"
     )
+    parser.add_argument(
+        "--max-height",
+        type=float,
+        default=0.5,
+        help="Maximum height of the vertical axis (default: 0.5, range: 0.0-1.0)"
+    )
 
     args = parser.parse_args()
 
@@ -317,7 +322,8 @@ if __name__ == "__main__":
                 args.output_dir,
                 args.result_dir,
                 selected_translate_mode=args.translate_mode,
-                selected_noise_mode=args.noise_mode
+                selected_noise_mode=args.noise_mode,
+                max_height=args.max_height
             )
         else:
             # Generate chart for NO_NOISE across all translate modes
@@ -325,7 +331,8 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
-                selected_noise_mode="NO_NOISE"
+                selected_noise_mode="NO_NOISE",
+                max_height=args.max_height
             )
 
             # Generate chart for PARAPHRASE across all translate modes
@@ -333,7 +340,8 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
-                selected_noise_mode="PARAPHRASE"
+                selected_noise_mode="PARAPHRASE",
+                max_height=args.max_height
             )
 
             # Generate chart for SYNONYM across all translate modes
@@ -341,5 +349,6 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
-                selected_noise_mode="SYNONYM"
+                selected_noise_mode="SYNONYM",
+                max_height=args.max_height
             )
