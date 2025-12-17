@@ -1,7 +1,7 @@
-use std::{fs::File, path::Path};
+use std::{path::Path};
 
 use indexmap::IndexMap;
-use pyo3::{Python, pyfunction, types::PyAnyMethods};
+use pyo3::{Python, types::PyAnyMethods};
 use serde::{Deserialize, Serialize};
 
 use crate::util::{load_json_lines, write_json_lines_to_file};
@@ -28,7 +28,7 @@ pub struct MmmluDatasetEntryChinese {
     #[serde(rename = "D")]
     pub choice_d: String,
     #[serde(rename = "Answer")]
-    pub answer: usize,
+    pub answer: String,
     #[serde(rename = "Subject")]
     pub subject: String,
 }
@@ -411,9 +411,16 @@ fn parse_and_normalize(raw_entry: &serde_json::Value, lang: &str) -> MmmluDatase
     match lang {
         "en" => serde_json::from_value(raw_entry.clone())
             .expect("Failed to parse MMMLU dataset entry in English"),
-        "zh" => {
+        "zh_cn" => {
             let entry_chinese: MmmluDatasetEntryChinese = serde_json::from_value(raw_entry.clone())
                 .expect("Failed to parse MMMLU dataset entry in Chinese");
+            let answer = match entry_chinese.answer.as_str() {
+                "A" => 0,
+                "B" => 1,
+                "C" => 2,
+                "D" => 3,
+                _ => panic!("Invalid answer choice: {}", entry_chinese.answer),
+            };
             MmmluDatasetEntryNormalized {
                 original_index: entry_chinese.original_index,
                 question: entry_chinese.question,
@@ -423,7 +430,7 @@ fn parse_and_normalize(raw_entry: &serde_json::Value, lang: &str) -> MmmluDatase
                     entry_chinese.choice_c,
                     entry_chinese.choice_d,
                 ],
-                answer: entry_chinese.answer,
+                answer,
                 subject: entry_chinese.subject,
             }
         }
@@ -432,34 +439,35 @@ fn parse_and_normalize(raw_entry: &serde_json::Value, lang: &str) -> MmmluDatase
 }
 
 
-pub fn generate_perplexity_dataset(lang: &str) {
-    let output_path = format!("judge/datasets/perplexity/{}.jsonl", lang);
-    if Path::new(&output_path).exists() {
-        println!(
-            "Perplexity dataset for language {} already exists. Skipping generation.",
-            lang
-        );
-        return;
-    }
-    let input_dataset_path = format!("judge/datasets/one_answer/{}_correct.jsonl", lang);
-    if !Path::new(&input_dataset_path).exists() {
-        println!(
-            "One answer dataset for language {} not found. Generating...",
-            lang
-        );
-        generate_one_answer_dataset(lang);
-    }
-    let entries =
-        load_json_lines(&input_dataset_path).expect("Failed to load one answer dataset");
-    let parsed_entries: Vec<SingleAnswerEntry> = entries
-        .into_iter()
-        .map(|entry| serde_json::from_value(entry).expect("Failed to parse one answer entry"))
-        .collect();
+// pub fn generate_perplexity_dataset(lang: &str) {
+//     let output_path = format!("judge/datasets/perplexity/{}.jsonl", lang);
+//     if Path::new(&output_path).exists() {
+//         println!(
+//             "Perplexity dataset for language {} already exists. Skipping generation.",
+//             lang
+//         );
+//         return;
+//     }
+//     let input_dataset_path = format!("judge/datasets/one_answer/{}_correct.jsonl", lang);
+//     if !Path::new(&input_dataset_path).exists() {
+//         println!(
+//             "One answer dataset for language {} not found. Generating...",
+//             lang
+//         );
+//         generate_one_answer_dataset(lang);
+//     }
+//     let entries =
+//         load_json_lines(&input_dataset_path).expect("Failed to load one answer dataset");
+//     let parsed_entries: Vec<SingleAnswerEntry> = entries
+//         .into_iter()
+//         .map(|entry| serde_json::from_value(entry).expect("Failed to parse one answer entry"))
+//         .collect();
 
-}
+// }
 
 
 #[test]
-fn test_generate_single_answer_dataset() {
+fn test_generate_normalized_dataset() {
     generate_normalized_datasets("en");
+    generate_normalized_datasets("zh_cn");
 }

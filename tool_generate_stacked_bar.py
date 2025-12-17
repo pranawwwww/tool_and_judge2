@@ -283,7 +283,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--output-dir",
-        default=".",
+        default="tool/stacked_bars",
         help="Directory to save chart images (default: current directory)"
     )
     parser.add_argument(

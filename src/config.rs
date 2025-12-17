@@ -174,16 +174,18 @@ impl ToolConfig {
 #[pyclass]
 #[derive(Clone)]
 pub enum JudgeExperiment {
-    PreferenceDirect,
-    // PreferenceCot,
-    Perplexity,
+    PreferenceDirect{
+        lang1: String,
+        lang2: String,
+    },
+    Perplexity{
+        lang: String,
+    }
 }
 
 #[pyclass]
 #[derive(Clone)]
 pub struct JudgeConfig {
     pub model: LocalModel,
-    pub lang1: String,
-    pub lang2: String,
     pub experiment: JudgeExperiment,
 }

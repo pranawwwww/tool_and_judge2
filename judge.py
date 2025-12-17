@@ -1,5 +1,7 @@
 
 import os
+
+from codebase_rs import *
 os.environ['HF_HOME'] = "/work/nvme/bfdz/zluo8/huggingface"
 from dotenv import load_dotenv
 from utils import load_config_from_file
@@ -43,7 +45,7 @@ time.sleep(2)  # Give some time for the build to complete
 
 
 print(f"Loading config from: {args.config}")
-config = load_config_from_file(args.config, "config")
+config: JudgeConfig = load_config_from_file(args.config, "config")
 
 # Start the first pass
 
@@ -54,47 +56,8 @@ sorted_langs = sorted([config.lang1, config.lang2])
 first_lang = sorted_langs[0]
 second_lang = sorted_langs[1]
 
-# Load individual entry datasets
-entries_lang1_correct = load_json_lines_from_file(f"judge/datasets/{first_lang}_correct.jsonl")
-entries_lang1_incorrect = load_json_lines_from_file(f"judge/datasets/{first_lang}_incorrect.jsonl")
-entries_lang2_correct = load_json_lines_from_file(f"judge/datasets/{second_lang}_correct.jsonl")
-entries_lang2_incorrect = load_json_lines_from_file(f"judge/datasets/{second_lang}_incorrect.jsonl")
 
-# temp: cap the number of entries for quick testing
-num_samples = 100
-entries_lang1_correct = entries_lang1_correct[0:num_samples]
-entries_lang1_incorrect = entries_lang1_incorrect[0:num_samples]
-entries_lang2_correct = entries_lang2_correct[0:num_samples]
-entries_lang2_incorrect = entries_lang2_incorrect[0:num_samples]
 
-print(f"Loaded {len(entries_lang1_correct)} entries from judge/datasets/{first_lang}_correct.jsonl")
-print(f"Loaded {len(entries_lang1_incorrect)} entries from judge/datasets/{first_lang}_incorrect.jsonl")
-print(f"Loaded {len(entries_lang2_correct)} entries from judge/datasets/{second_lang}_correct.jsonl")
-print(f"Loaded {len(entries_lang2_incorrect)} entries from judge/datasets/{second_lang}_incorrect.jsonl")
-
-# Combine entries into pairs for preference methods
-# 4 pair combinations:
-# 1. lang1 correct, lang2 incorrect
-# 2. lang1 incorrect, lang2 correct
-# 3. both correct
-# 4. both incorrect
-pairs_lang1_correct_lang2_incorrect = combine_entries_to_pairs(
-    entries_lang1_correct, entries_lang2_incorrect, first_lang, second_lang
-)
-pairs_lang1_incorrect_lang2_correct = combine_entries_to_pairs(
-    entries_lang1_incorrect, entries_lang2_correct, first_lang, second_lang
-)
-pairs_both_correct = combine_entries_to_pairs(
-    entries_lang1_correct, entries_lang2_correct, first_lang, second_lang
-)
-pairs_both_incorrect = combine_entries_to_pairs(
-    entries_lang1_incorrect, entries_lang2_incorrect, first_lang, second_lang
-)
-
-print(f"Created {len(pairs_lang1_correct_lang2_incorrect)} pairs for {first_lang}_correct_{second_lang}_incorrect")
-print(f"Created {len(pairs_lang1_incorrect_lang2_correct)} pairs for {first_lang}_incorrect_{second_lang}_correct")
-print(f"Created {len(pairs_both_correct)} pairs for {first_lang}_correct_{second_lang}_correct")
-print(f"Created {len(pairs_both_incorrect)} pairs for {first_lang}_incorrect_{second_lang}_incorrect")
 
 # Get or create backend with caching
 model_name = config.model.value
@@ -112,8 +75,11 @@ backend = get_or_create_backend(
 model_interface = create_interface(model_name)
 print(f"Using model interface: {model_interface.__class__.__name__}")
 
-match config.result_type:
-    case ResultType.PREFERENCE_DIRECT:
+match config.experiment:
+    case JudgeExperiment.PreferenceDirect(lang1=lang1, lang2=lang2):
+        # load the datasets
+        # load the model backend
+        # collect the results in parallel
         # Process pairs for preference_direct
         for pairs, dataset_suffix in [
             (pairs_lang1_correct_lang2_incorrect, f"{first_lang}_correct_{second_lang}_incorrect"),
@@ -133,31 +99,9 @@ match config.result_type:
 
             # Write and sort results
             if results:
-                append_and_rewrite_json_lines(output_file, results)
+                append_and_rewrite_json_lines(output_file, results)    
 
-    case ResultType.PREFERENCE_COT:
-        # Process pairs for preference_cot
-        for pairs, dataset_suffix in [
-            (pairs_lang1_correct_lang2_incorrect, f"{first_lang}_correct_{second_lang}_incorrect"),
-            (pairs_lang1_incorrect_lang2_correct, f"{first_lang}_incorrect_{second_lang}_correct"),
-            (pairs_both_correct, f"{first_lang}_correct_{second_lang}_correct"),
-            (pairs_both_incorrect, f"{first_lang}_incorrect_{second_lang}_incorrect")
-        ]:
-            output_file = f"judge/result/{display_model_name}/preferences_local_cot/{dataset_suffix}.jsonl"
-
-            # Run async collection
-            results = await collect_preference_local_cot_async(
-                pairs=pairs,
-                backend=backend,
-                model_interface=model_interface,
-                batch_size=1
-            )
-
-            # Write and sort results
-            if results:
-                append_and_rewrite_json_lines(output_file, results)
-
-    case ResultType.PERPLEXITY:
+    case JudgeExperiment.Perplexity(lang=lang):
         # Process individual entries for perplexity
         for entries, entry_suffix in [
             (entries_lang1_correct, f"{first_lang}_correct"),

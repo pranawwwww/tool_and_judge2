@@ -219,7 +219,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--output-dir",
-        default=".",
+        default="tool/heatmaps",
         help="Directory to save heatmap images (default: current directory)"
     )
     parser.add_argument(
