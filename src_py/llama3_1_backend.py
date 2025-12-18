@@ -345,6 +345,71 @@ def parse_llama3_1_tool_calls(generated_text: str) -> List[dict]:
     return normalized_tool_calls
 
 
+def collect_perplexity_batch(
+    entries: List[dict],
+    model: Any,
+    tokenizer: Any,
+) -> List[dict]:
+    """
+    Collect raw logits and input_ids for a batch of entries using HuggingFace backend.
+
+    Args:
+        entries: List of entries, each containing 'question' and 'answer' fields
+        model: HuggingFace model instance
+        tokenizer: Tokenizer instance
+
+    Returns:
+        List of dicts containing 'logits' and 'input_ids' for each entry
+    """
+    import torch
+
+    results = []
+
+    for entry in entries:
+        question = entry['question']
+        answer = entry['answer']
+
+        # Build messages for chat template
+        messages = [
+            {
+                "role": "user",
+                "content": question
+            },
+            {
+                "role": "assistant",
+                "content": answer
+            }
+        ]
+
+        # Apply chat template to get the full formatted prompt
+        formatted_prompt = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=False
+        )
+
+        # Tokenize the formatted prompt
+        inputs = tokenizer(formatted_prompt, return_tensors="pt", add_special_tokens=False)
+        input_ids = inputs.input_ids[0]
+
+        # Move input to model's device
+        input_ids_tensor = input_ids.unsqueeze(0).to(model.device)
+
+        # Get logits from model
+        with torch.no_grad():
+            outputs = model(input_ids_tensor)
+            logits = outputs.logits[0].cpu()  # [seq_len, vocab_size], move to CPU
+
+        # Store results with input_ids and logits
+        results.append({
+            'logits': logits,
+            'input_ids': input_ids.tolist(),
+            'answer': answer  # Keep answer for backward search
+        })
+
+    return results
+
+
 async def collect_preference_local_async(
     question: str,
     answer1: str,
