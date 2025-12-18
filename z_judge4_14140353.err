@@ -1,0 +1,28 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+warning: unused variable: `configs`
+  --> src/lib.rs:15:29
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_configs`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `num_gpus`
+  --> src/lib.rs:15:50
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                                                  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_num_gpus`
+
+warning: `codebase_rs` (lib) generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 0.72s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmpe5Fbwr/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+🛠 Installed codebase_rs-0.1.0
+/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py:1041: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py:492: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/30 [00:00<?, ?it/s]Loading checkpoint shards:   3%|▎         | 1/30 [00:03<01:41,  3.51s/it]Loading checkpoint shards:   7%|▋         | 2/30 [00:06<01:31,  3.27s/it]Loading checkpoint shards:  10%|█         | 3/30 [00:09<01:27,  3.25s/it]Loading checkpoint shards:  13%|█▎        | 4/30 [00:13<01:24,  3.23s/it]Loading checkpoint shards:  17%|█▋        | 5/30 [00:16<01:20,  3.21s/it]Loading checkpoint shards:  20%|██        | 6/30 [00:19<01:15,  3.13s/it]Loading checkpoint shards:  23%|██▎       | 7/30 [00:22<01:12,  3.15s/it]Loading checkpoint shards:  27%|██▋       | 8/30 [00:24<01:02,  2.84s/it]Loading checkpoint shards: 100%|██████████| 30/30 [00:24<00:00,  1.22it/s]
+Some parameters are on the meta device because they were offloaded to the disk.

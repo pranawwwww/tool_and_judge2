@@ -23,8 +23,6 @@ def collect_perplexity_batch(
     from src_py.utils import language_abbreviation_to_name
 
     # Prepare all prompts first
-    import sys
-    print(f"[qwen3_backend] Starting to prepare {len(entries)} prompts...", flush=True, file=sys.stderr)
     formatted_prompts = []
     answers = []
 
@@ -65,7 +63,6 @@ def collect_perplexity_batch(
         formatted_prompts.append(formatted_prompt)
         answers.append(answer)
 
-    print(f"[qwen3_backend] Prepared {len(formatted_prompts)} prompts, now tokenizing...", flush=True, file=sys.stderr)
     # Tokenize all prompts with padding for batching
     # Add truncation and max_length to prevent extremely long sequences
     inputs = tokenizer(
@@ -78,16 +75,13 @@ def collect_perplexity_batch(
     )
 
     # Move batch to model's device
-    print(f"[qwen3_backend] Tokenization complete. Batch shape: {inputs.input_ids.shape}. Moving to device...", flush=True, file=sys.stderr)
     input_ids_batch = inputs.input_ids.to(model.device)
     attention_mask = inputs.attention_mask.to(model.device)
 
-    print(f"[qwen3_backend] Running model forward pass...", flush=True, file=sys.stderr)
     # Get logits from model for the entire batch
     with torch.no_grad():
         outputs = model(input_ids_batch, attention_mask=attention_mask)
         logits_batch = outputs.logits.cpu()  # [batch_size, seq_len, vocab_size], move to CPU
-    print(f"[qwen3_backend] Forward pass complete. Processing results...", flush=True, file=sys.stderr)
 
     # Process each item in the batch
     results = []
