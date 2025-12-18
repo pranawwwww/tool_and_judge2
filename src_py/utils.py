@@ -96,3 +96,26 @@ def combine_entries_to_pairs(entries1, entries2, lang1, lang2):
 def get_model_directory_safe_name(model_name: str) -> str:
     """Convert model name to a filesystem-safe directory name."""
     return model_name.replace("/", "-").replace(":", "-")
+
+def language_abbreviation_to_name(abbreviation: str) -> str:
+    """
+    Map language abbreviation to full language name.
+
+    Args:
+        abbreviation: Language code (e.g., 'en', 'zh_cn', 'fr')
+
+    Returns:
+        Full language name (e.g., 'English', 'Chinese', 'French')
+    """
+    lang_map = {
+        'en': 'English',
+        'fr': 'French',
+        'de': 'German',
+        'es': 'Spanish',
+        'it': 'Italian',
+        'pt': 'Portuguese',
+        'zh_cn': 'Chinese',
+        'ja': 'Japanese',
+        'ko': 'Korean',
+    }
+    return lang_map.get(abbreviation.lower(), abbreviation)

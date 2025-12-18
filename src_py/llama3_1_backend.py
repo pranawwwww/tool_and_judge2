@@ -362,18 +362,32 @@ def collect_perplexity_batch(
         List of dicts containing 'logits' and 'input_ids' for each entry
     """
     import torch
+    from src_py.utils import language_abbreviation_to_name
 
     results = []
 
     for entry in entries:
         question = entry['question']
         answer = entry['answer']
+        lang = entry.get('lang', 'en')
+
+        # Map language abbreviation to full name
+        language_name = language_abbreviation_to_name(lang)
+
+        # Build language-specific instructions (following qwen3_interface.py format)
+        if lang.lower() == 'en' or language_name.lower() == 'english':
+            instruction = "Please answer the question in English with a concise phrase instead of a complete sentence. Start with an uncapitalized first word."
+        else:
+            instruction = f"Please answer the question in {language_name} with a concise phrase instead of a complete sentence."
+
+        # Combine question with instruction
+        user_content = f"{question}\n\n{instruction}"
 
         # Build messages for chat template
         messages = [
             {
                 "role": "user",
-                "content": question
+                "content": user_content
             },
             {
                 "role": "assistant",
