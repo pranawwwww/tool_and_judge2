@@ -1,11 +1,9 @@
 use std::{collections::HashSet, path::Path};
 
 use indexmap::IndexMap;
-use pyo3::{Python, pyfunction, types::PyAnyMethods};
-use serde::{Deserialize, Serialize};
+use pyo3::pyfunction;
 
 use crate::{
-    config::{JudgeConfig, JudgeExperiment},
     judge::{
         generate_dataset::{
             OneAnswerEntry, PerplexityDatasetMaskEntry, TwoAnswersEntry,
@@ -14,7 +12,7 @@ use crate::{
         },
         result_file_model::{PerplexityResultEntry, PreferenceResultEntry},
     },
-    utils::{get_model_directory_safe_name, load_json_lines, write_json_lines_to_file},
+    utils::{load_json_lines, write_json_lines_to_file},
 };
 
 // #[pyfunction]

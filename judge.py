@@ -2,7 +2,7 @@
 import json
 import os
 import uuid
-from codebase_rs import *
+
 os.environ['HF_HOME'] = "/work/nvme/bfdz/zluo8/huggingface"
 from dotenv import load_dotenv
 from src_py.utils import load_config_from_file
@@ -10,7 +10,7 @@ from src_py.utils import load_json_lines_from_file
 from src_py.utils import combine_entries_to_pairs
 from src_py.utils import get_model_directory_safe_name
 from src_py.vllm_backend import create_vllm_backend
-from codebase_rs import concatenate_preference_datasets, concatenate_perplexity_datasets, dispatch_preference_results, dispatch_perplexity_results
+
 import argparse
 import subprocess
 import time
@@ -47,6 +47,8 @@ result = subprocess.run(["maturin", "develop"], check=True)
 # Now import and use the module
 time.sleep(2)  # Give some time for the build to complete
 
+# from codebase_rs import concatenate_preference_datasets, concatenate_perplexity_datasets, dispatch_preference_results, dispatch_perplexity_results
+from codebase_rs import *
 
 print(f"Loading config from: {args.config}")
 config: JudgeConfig = load_config_from_file(args.config, "config")

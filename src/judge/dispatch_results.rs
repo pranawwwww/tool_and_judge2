@@ -141,6 +141,7 @@ pub fn dispatch_perplexity_results(model_safe_name: &str, lang: &str, input_file
     );
 }
 
+#[pyfunction]
 pub fn dispatch_preference_results(
     model_safe_name: &str,
     lang1: &str,

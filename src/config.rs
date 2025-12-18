@@ -63,6 +63,9 @@ pub enum LocalModel {
 }
 #[pymethods]
 impl LocalModel {
+    pub fn to_string(&self) -> String {
+        format!("{}", self)
+    }
     pub fn size_in_billion_parameters(&self) -> f32 {
         match self {
             LocalModel::Granite4_0HTiny => 0.3,
@@ -172,7 +175,9 @@ impl ToolExperiment {
 #[pyclass]
 #[derive(Clone, Debug)]
 pub struct ToolConfig {
+    #[pyo3(get)]
     pub model: Model,
+    #[pyo3(get)]
     pub experiment_configs: Vec<ToolExperiment>,
 }
 
@@ -215,7 +220,9 @@ impl JudgeExperiment {
 #[pyclass]
 #[derive(Clone, Debug)]
 pub struct JudgeConfig {
+    #[pyo3(get)]
     pub model: LocalModel,
+    #[pyo3(get)]
     pub experiment: JudgeExperiment,
 }
 

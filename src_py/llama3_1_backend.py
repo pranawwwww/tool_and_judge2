@@ -375,10 +375,7 @@ def collect_perplexity_batch(
         language_name = language_abbreviation_to_name(lang)
 
         # Build language-specific instructions (following qwen3_interface.py format)
-        if lang.lower() == 'en' or language_name.lower() == 'english':
-            instruction = "Please answer the question in English with a concise phrase instead of a complete sentence. Start with an uncapitalized first word."
-        else:
-            instruction = f"Please answer the question in {language_name} with a concise phrase instead of a complete sentence."
+        instruction = f"Please answer the question in {language_name} with a concise phrase instead of a complete sentence."
 
         # Combine question with instruction
         user_content = f"{question}\n\n{instruction}"

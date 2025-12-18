@@ -24,9 +24,11 @@ pub mod codebase_rs {
     #[pymodule_export]
     use super::{
         config::{
-            AddNoiseMode, ApiModel, Language, LocalModel, Model, ToolConfig, ToolExperiment,
+            AddNoiseMode, ApiModel, Language, LocalModel, Model, ToolConfig, ToolExperiment, JudgeConfig, JudgeExperiment, 
             TranslateMode, TranslateOption,
         },
         models::backend::GenerationResult,
+        judge::{concatenate_datasets::concatenate_perplexity_datasets, concatenate_datasets::concatenate_preference_datasets,},
+        judge::{dispatch_results::dispatch_perplexity_results, dispatch_results::dispatch_preference_results,},
     };
 }
