@@ -3,7 +3,7 @@ import asyncio
 import subprocess
 import time
 
-from utils import load_config_from_file
+from src_py.utils import load_config_from_file
 from dotenv import load_dotenv
 load_dotenv(".env")
 

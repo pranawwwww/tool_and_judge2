@@ -1,7 +1,9 @@
+from types import Any
+
 def create_api_backend(
     model_name: str,
     api_key: str,
-) -> any:
+) -> Any:
     try:
         from openai import AsyncOpenAI
         import httpx

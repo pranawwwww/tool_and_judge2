@@ -1,10 +1,14 @@
-use std::{path::Path};
+use std::{collections::HashSet, path::Path};
 
 use indexmap::IndexMap;
-use pyo3::{Python, types::PyAnyMethods};
+use pyo3::{Python, pyfunction, types::PyAnyMethods};
 use serde::{Deserialize, Serialize};
 
-use crate::util::{load_json_lines, write_json_lines_to_file};
+use crate::{
+    config::{JudgeConfig, JudgeExperiment},
+    judge::result_file_model::{PerplexityResultEntry, PreferenceResultEntry},
+    utils::{get_model_directory_safe_name, load_json_lines, write_json_lines_to_file},
+};
 
 #[derive(Serialize, Deserialize)]
 pub struct MmmluDatasetEntryNormalized {
@@ -34,7 +38,7 @@ pub struct MmmluDatasetEntryChinese {
 }
 
 #[derive(Deserialize, Serialize)]
-pub struct SingleAnswerEntry {
+pub struct OneAnswerEntry {
     pub index: usize,
     pub question: String,
     pub answer: String,
@@ -56,38 +60,8 @@ pub struct TwoAnswersEntry {
     pub subject: String,
 }
 
-// #[derive(Deserialize, Serialize)]
-// #[serde(tag = "type")]
-// pub enum PerplexityQAPair {
-//     InherentlyValid{
-//         original_question: String,
-//         original_answer: String,
-//     },
-//     ValidAfterModification{
-//         original_question: String,
-//         original_answer: String,
-//         modified_question: String,
-//         modified_answer: String,
-//     },
-//     Invalid{
-//         original_question: String,
-//         original_answer: String,
-//     },
-// }
-
-// #[derive(Deserialize, Serialize)]
-// pub struct PerplexityDatasetEntry{
-//     pub index: usize,
-//     pub valid_qa_pair: bool,
-//     pub question: String,
-//     pub answer: String,
-//     pub lang: String,
-//     pub is_correct: bool,
-//     pub subject: String,
-// }
-
 #[derive(Deserialize, Serialize)]
-pub struct PerplexityDatasetMaskEntry{
+pub struct PerplexityDatasetMaskEntry {
     pub index: usize,
     pub valid: bool,
     pub question: String,
@@ -164,12 +138,12 @@ pub fn generate_one_answer_dataset(lang: &str) {
         .into_iter()
         .map(|entry| serde_json::from_value(entry).expect("Failed to parse normalized MMMLU entry"))
         .collect();
-    let mut correct_single_answer_entries: Vec<SingleAnswerEntry> = Vec::new();
-    let mut incorrect_single_answer_entries: Vec<SingleAnswerEntry> = Vec::new();
+    let mut correct_one_answer_entries: Vec<OneAnswerEntry> = Vec::new();
+    let mut incorrect_one_answer_entries: Vec<OneAnswerEntry> = Vec::new();
     for entry in parsed_entries {
         let correct_answer_index = entry.answer;
         let incorrect_answer_index = (correct_answer_index + 1) % 4; // Just pick the next answer as incorrect
-        correct_single_answer_entries.push(SingleAnswerEntry {
+        correct_one_answer_entries.push(OneAnswerEntry {
             index: entry.original_index,
             question: entry.question.clone(),
             answer: entry.choices[correct_answer_index].clone(),
@@ -177,7 +151,7 @@ pub fn generate_one_answer_dataset(lang: &str) {
             is_correct: true,
             subject: entry.subject.clone(),
         });
-        incorrect_single_answer_entries.push(SingleAnswerEntry {
+        incorrect_one_answer_entries.push(OneAnswerEntry {
             index: entry.original_index,
             question: entry.question.clone(),
             answer: entry.choices[incorrect_answer_index].clone(),
@@ -186,22 +160,22 @@ pub fn generate_one_answer_dataset(lang: &str) {
             subject: entry.subject.clone(),
         });
     }
-    let correct_parsed: Vec<serde_json::Value> = correct_single_answer_entries
+    let correct_parsed: Vec<serde_json::Value> = correct_one_answer_entries
         .into_iter()
         .map(|entry| {
-            serde_json::to_value(entry).expect("Failed to serialize correct single answer entry")
+            serde_json::to_value(entry).expect("Failed to serialize correct one answer entry")
         })
         .collect();
-    let incorrect_parsed: Vec<serde_json::Value> = incorrect_single_answer_entries
+    let incorrect_parsed: Vec<serde_json::Value> = incorrect_one_answer_entries
         .into_iter()
         .map(|entry| {
-            serde_json::to_value(entry).expect("Failed to serialize incorrect single answer entry")
+            serde_json::to_value(entry).expect("Failed to serialize incorrect one answer entry")
         })
         .collect();
     write_json_lines_to_file(&output_correct_path, &correct_parsed)
-        .expect("Failed to write correct single answer dataset");
+        .expect("Failed to write correct one answer dataset");
     write_json_lines_to_file(&output_incorrect_path, &incorrect_parsed)
-        .expect("Failed to write incorrect single answer dataset");
+        .expect("Failed to write incorrect one answer dataset");
 }
 
 pub fn generate_two_answers_dataset(lang1: &str, lang2: &str) {
@@ -268,34 +242,34 @@ pub fn generate_two_answers_dataset(lang1: &str, lang2: &str) {
         load_json_lines(&input_path_lang2_correct).expect("Failed to load lang2 correct dataset");
     let lang2_incorrect_entries = load_json_lines(&input_path_lang2_incorrect)
         .expect("Failed to load lang2 incorrect dataset");
-    let lang1_correct_entries: IndexMap<usize, SingleAnswerEntry> = lang1_correct_entries
+    let lang1_correct_entries: IndexMap<usize, OneAnswerEntry> = lang1_correct_entries
         .into_iter()
         .map(|entry| {
-            let parsed: SingleAnswerEntry =
+            let parsed: OneAnswerEntry =
                 serde_json::from_value(entry).expect("Failed to parse lang1 correct entry");
             (parsed.index, parsed)
         })
         .collect();
-    let lang1_incorrect_entries: IndexMap<usize, SingleAnswerEntry> = lang1_incorrect_entries
+    let lang1_incorrect_entries: IndexMap<usize, OneAnswerEntry> = lang1_incorrect_entries
         .into_iter()
         .map(|entry| {
-            let parsed: SingleAnswerEntry =
+            let parsed: OneAnswerEntry =
                 serde_json::from_value(entry).expect("Failed to parse lang1 incorrect entry");
             (parsed.index, parsed)
         })
         .collect();
-    let lang2_correct_entries: IndexMap<usize, SingleAnswerEntry> = lang2_correct_entries
+    let lang2_correct_entries: IndexMap<usize, OneAnswerEntry> = lang2_correct_entries
         .into_iter()
         .map(|entry| {
-            let parsed: SingleAnswerEntry =
+            let parsed: OneAnswerEntry =
                 serde_json::from_value(entry).expect("Failed to parse lang2 correct entry");
             (parsed.index, parsed)
         })
         .collect();
-    let lang2_incorrect_entries: IndexMap<usize, SingleAnswerEntry> = lang2_incorrect_entries
+    let lang2_incorrect_entries: IndexMap<usize, OneAnswerEntry> = lang2_incorrect_entries
         .into_iter()
         .map(|entry| {
-            let parsed: SingleAnswerEntry =
+            let parsed: OneAnswerEntry =
                 serde_json::from_value(entry).expect("Failed to parse lang2 incorrect entry");
             (parsed.index, parsed)
         })
@@ -438,7 +412,6 @@ fn parse_and_normalize(raw_entry: &serde_json::Value, lang: &str) -> MmmluDatase
     }
 }
 
-
 // pub fn generate_perplexity_dataset(lang: &str) {
 //     let output_path = format!("judge/datasets/perplexity/{}.jsonl", lang);
 //     if Path::new(&output_path).exists() {
@@ -462,9 +435,98 @@ fn parse_and_normalize(raw_entry: &serde_json::Value, lang: &str) -> MmmluDatase
 //         .into_iter()
 //         .map(|entry| serde_json::from_value(entry).expect("Failed to parse one answer entry"))
 //         .collect();
-
 // }
 
+pub fn generate_perplexity_dataset_mask() {
+    Python::attach(|py| {
+        let generate_perplexity_mask_module = py
+            .import("src_py.judge.generate_perplexity_dataset_mask")
+            .expect("Failed to import src_py.judge.generate_perplexity_dataset_mask module");
+        let generate_perplexity_mask_func = generate_perplexity_mask_module
+            .getattr("generate_perplexity_dataset_mask")
+            .expect("Failed to get generate_perplexity_dataset_mask function");
+        generate_perplexity_mask_func
+            .call0()
+            .expect("Failed to call generate_perplexity_dataset_mask function");
+    });
+    println!("Generated perplexity dataset mask.");
+}
+
+pub fn get_valid_perplexity_indices() -> HashSet<usize> {
+    let perplexity_indices_path = "judge/datasets/valid_perplexity_indices.json";
+    if !Path::new(&perplexity_indices_path).exists() {
+        println!("Valid perplexity indices file not found. Generating...");
+        generate_valid_perplexity_indices();
+    }
+    let file_content = std::fs::read_to_string(&perplexity_indices_path)
+        .expect("Failed to read valid perplexity indices file");
+    let valid_indices: HashSet<usize> =
+        serde_json::from_str(&file_content).expect("Failed to parse valid perplexity indices");
+    valid_indices
+}
+
+pub fn generate_valid_perplexity_indices() {
+    let mask_dataset_path = "judge/datasets/perplexity_mask.jsonl";
+    let output_path = "judge/datasets/valid_perplexity_indices.json";
+    if !Path::new(&mask_dataset_path).exists() {
+        println!("Perplexity dataset mask not found. Generating...");
+        generate_perplexity_dataset_mask();
+    }
+    let mask_entries =
+        load_json_lines(&mask_dataset_path).expect("Failed to load perplexity dataset mask");
+    let valid_indices: Vec<usize> = mask_entries
+        .into_iter()
+        .filter_map(|entry| {
+            let parsed = serde_json::from_value::<PerplexityDatasetMaskEntry>(entry)
+                .expect("Failed to parse perplexity mask entry");
+            if parsed.valid {
+                Some(parsed.index)
+            } else {
+                None
+            }
+        })
+        .collect();
+    let serialized_indices =
+        serde_json::to_string_pretty(&valid_indices).expect("Failed to serialize valid indices");
+    std::fs::write(&output_path, &serialized_indices)
+        .expect("Failed to write valid perplexity indices");
+    println!("Generated valid perplexity indices.");
+}
+
+pub fn get_preference_indices() -> HashSet<usize> {
+    let preference_indices_path = "judge/datasets/preference_indices.json";
+    if !Path::new(&preference_indices_path).exists() {
+        println!("Preference indices file not found. Generating...");
+        generate_preference_indices();
+    }
+    let file_content = std::fs::read_to_string(&preference_indices_path)
+        .expect("Failed to read preference indices file");
+    let preference_indices: HashSet<usize> =
+        serde_json::from_str(&file_content).expect("Failed to parse preference indices");
+    preference_indices
+}
+
+pub fn generate_preference_indices() {
+    let dataset_path = "judge/datasets/mmmlu_normalized/en.jsonl";
+    let output_path = "judge/datasets/preference_indices.json";
+    if !Path::new(&dataset_path).exists() {
+        println!("Normalized MMMLU dataset for English not found. Generating...");
+        generate_normalized_datasets("en");
+    }
+    let entries = load_json_lines(&dataset_path).expect("Failed to load normalized MMMLU dataset");
+    let indices: Vec<usize> = entries
+        .into_iter()
+        .map(|entry| {
+            let parsed = serde_json::from_value::<MmmluDatasetEntryNormalized>(entry)
+                .expect("Failed to parse normalized MMMLU entry");
+            parsed.original_index
+        })
+        .collect();
+    let serialized_indices =
+        serde_json::to_string_pretty(&indices).expect("Failed to serialize preference indices");
+    std::fs::write(&output_path, &serialized_indices).expect("Failed to write preference indices");
+    println!("Generated preference indices.");
+}
 
 #[test]
 fn test_generate_normalized_dataset() {

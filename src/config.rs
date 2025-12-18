@@ -61,6 +61,23 @@ pub enum LocalModel {
     #[strum(serialize = "meta-llama/Llama-3.3-70B-Instruct")]
     Llama3_3_70B,
 }
+#[pymethods]
+impl LocalModel {
+    pub fn size_in_billion_parameters(&self) -> f32 {
+        match self {
+            LocalModel::Granite4_0HTiny => 0.3,
+            LocalModel::Granite4_0HSmall => 1.3,
+            LocalModel::Qwen3_8B => 8.0,
+            LocalModel::Qwen3_14B => 14.0,
+            LocalModel::Qwen3_30bA3b => 30.0,
+            LocalModel::Qwen3_32B => 32.0,
+            LocalModel::Qwen3Next80bA3b => 80.0,
+            LocalModel::Llama3_1_8B => 8.0,
+            LocalModel::Llama3_1_70B => 70.0,
+            LocalModel::Llama3_3_70B => 70.0,
+        }
+    }
+}
 
 impl std::fmt::Debug for LocalModel {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -75,6 +92,7 @@ pub enum Model {
     Local(LocalModel),
 }
 
+#[pymethods]
 impl Model {
     pub fn to_string(&self) -> String {
         match self {
@@ -174,7 +192,7 @@ impl ToolConfig {
 /* ---------------------------------------------------------------------------------------------------- */
 
 #[pyclass]
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub enum JudgeExperiment {
     PreferenceDirect{
         lang1: String,
@@ -184,10 +202,30 @@ pub enum JudgeExperiment {
         lang: String,
     }
 }
+#[pymethods]
+impl JudgeExperiment {
+    pub fn to_string(&self) -> String {
+        match self {
+            JudgeExperiment::PreferenceDirect{lang1, lang2} => format!("preference_{}_{}", lang1, lang2),
+            JudgeExperiment::Perplexity{lang} => format!("perplexity_{}", lang),
+        }
+    }
+}
 
 #[pyclass]
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct JudgeConfig {
     pub model: LocalModel,
     pub experiment: JudgeExperiment,
+}
+
+#[pymethods]
+impl JudgeConfig {
+    #[new]
+    fn new(model: LocalModel, experiment: JudgeExperiment) -> Self {
+        JudgeConfig {
+            model,
+            experiment,
+        }
+    }
 }

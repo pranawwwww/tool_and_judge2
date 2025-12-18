@@ -92,3 +92,7 @@ def combine_entries_to_pairs(entries1, entries2, lang1, lang2):
         pairs.append(pair)
 
     return pairs
+
+def get_model_directory_safe_name(model_name: str) -> str:
+    """Convert model name to a filesystem-safe directory name."""
+    return model_name.replace("/", "-").replace(":", "-")

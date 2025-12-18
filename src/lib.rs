@@ -7,7 +7,7 @@ pub mod models;
 pub mod one_entry_map;
 pub mod single_or_list;
 pub mod tool;
-pub mod util;
+pub mod utils;
 
 #[pymodule]
 pub mod codebase_rs {
