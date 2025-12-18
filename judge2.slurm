@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=judge2       # Job name
-#SBATCH --output=z_judge2%j.out        # Standard output log (%j = job ID)
-#SBATCH --error=z_judge2%j.err         # Error log
+#SBATCH --output=z_judge2_%j.out        # Standard output log (%j = job ID)
+#SBATCH --error=z_judge2_%j.err         # Error log
 #SBATCH --time=00:30:00                 # Max runtime (HH:MM:SS)
 # #SBATCH --partition=gpu                  # Partition/queue with GPU
 # #SBATCH --mail-type=BEGIN,END,FAIL
@@ -9,7 +9,7 @@
 # #SBATCH --partition=gpuH200x8
 #SBATCH --gres=gpu:1                     # Request 1 GPU
 #SBATCH --cpus-per-task=4                # CPU cores
-#SBATCH --mem=16G                        # RAM
+#SBATCH --mem=32G                        # RAM
 #SBATCH --account=bfdz-delta-gpu    # Your Slurm account/project
 
 # Load modules or activate your environment

@@ -1,4 +1,4 @@
-use pyo3::prelude::*;
+use pyo3::{basic::CompareOp, prelude::*};
 use strum_macros::{Display, EnumString};
 #[pyclass]
 #[derive(Clone, EnumString, Display, PartialEq, Eq, Copy)]
@@ -15,6 +15,22 @@ pub enum ApiModel {
     Llama3_1_8B,
     #[strum(serialize = "meta.llama3-1-70b-instruct-v1:0")]
     Llama3_1_70B,
+}
+
+#[pymethods]
+impl ApiModel {
+    pub fn to_string(&self) -> String {
+        format!("{}", self)
+    }
+    fn __richcmp__(&self, other: PyRef<ApiModel>, op: CompareOp) -> PyResult<bool> {
+        match op {
+            CompareOp::Eq => Ok(self == &*other),
+            CompareOp::Ne => Ok(self != &*other),
+            _ => Err(pyo3::exceptions::PyNotImplementedError::new_err(
+                "Only equality comparisons are supported",
+            )),
+        }
+    }
 }
 
 impl ApiModel {
@@ -78,6 +94,15 @@ impl LocalModel {
             LocalModel::Llama3_1_8B => 8.0,
             LocalModel::Llama3_1_70B => 70.0,
             LocalModel::Llama3_3_70B => 70.0,
+        }
+    }
+    fn __richcmp__(&self, other: PyRef<LocalModel>, op: CompareOp) -> PyResult<bool> {
+        match op {
+            CompareOp::Eq => Ok(self == &*other),
+            CompareOp::Ne => Ok(self != &*other),
+            _ => Err(pyo3::exceptions::PyNotImplementedError::new_err(
+                "Only equality comparisons are supported",
+            )),
         }
     }
 }

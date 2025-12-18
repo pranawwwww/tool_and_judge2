@@ -42,10 +42,13 @@ if not args.config:
 
 # Run maturin develop to build and install the Rust extension
 print("Building Rust extension with maturin develop...")
-result = subprocess.run(["maturin", "develop"], check=True)
+# result = subprocess.run(["maturin", "develop"], check=True)
+result = subprocess.run(["maturin", "develop", "--release"], check=True)
 
 # Now import and use the module
 time.sleep(2)  # Give some time for the build to complete
+
+print("Installed Rust extension successfully.")
 
 # from codebase_rs import concatenate_preference_datasets, concatenate_perplexity_datasets, dispatch_preference_results, dispatch_perplexity_results
 from codebase_rs import *
@@ -89,7 +92,9 @@ match config.experiment:
             print(f"All entries for experiment {experiment_str} have been processed. Exiting.")
             exit(0)
         # preference uses vllm backend
+        print(f"Creating backend for model {model_name} using {args.num_gpus} GPUs...")
         engine, tokenizer = create_vllm_backend(model_name, args.num_gpus)
+        print(f"Backend created for model {model_name}")
         semaphore = asyncio.Semaphore(200)
         async def collect_single_preference_async(entry: dict) -> dict:
             """
@@ -180,7 +185,9 @@ match config.experiment:
         from src_py.huggingface_backend import create_huggingface_backend
         model_size = config.model.size_in_billion_parameters()
         batch_size = int(120 * args.num_gpus / model_size)  # model_size * batch size = 120 * num_gpus
+        print(f"Creating backend for model {model_name} with batch size {batch_size}...")
         model, tokenizer = create_huggingface_backend(model_name, batch_size)
+        print(f"Backend created for model {model_name} with batch size {batch_size}")
         # combined_entries has type TwoAnswersEntry in src/judge/generate_dataset.rs
         # output entries have type PerplexityResultEntry in src/judge/result_file_model.rs
 
