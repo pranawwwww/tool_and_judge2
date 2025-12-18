@@ -1,0 +1,37 @@
+✏️ Setting installed package as editable
+File judge/result/Qwen-Qwen3-8B/perplexity/en_correct.jsonl does not exist, assuming no completed entries.
+File judge/result/Qwen-Qwen3-8B/perplexity/en_incorrect.jsonl does not exist, assuming no completed entries.
+Concatenated perplexity dataset for language en written to judge/result/Qwen-Qwen3-8B/perplexity_en_input.jsonl
+Acquiring build lock...
+Building Rust extension with maturin develop...
+Installed Rust extension successfully.
+Released build lock.
+Loading config from: judge_config_slurm3.py
+Processing configuration:  <builtins.JudgeConfig object at 0x7f1eacf72790>
+Creating backend for model Qwen/Qwen3-8B with batch size 15...
+Creating HuggingFace backend for model Qwen/Qwen3-8B with batch size 15...
+Dispatching perplexity results for model: Qwen-Qwen3-8B, lang: en, input file: judge/result/Qwen-Qwen3-8B/perplexity_en_output.jsonl
+Cannot open file: Unable to open file: No such file or directory (os error 2), assuming empty result file
+Cannot open file: Unable to open file: No such file or directory (os error 2), assuming empty result file
+Valid perplexity indices file not found. Generating...
+Generated valid perplexity indices.
+Warning: Missing 8486 correct entries for model: Qwen-Qwen3-8B, lang: en
+Warning: Missing 8486 incorrect entries for model: Qwen-Qwen3-8B, lang: en
+Dispatched perplexity results for model: Qwen-Qwen3-8B, lang: en
+HuggingFace backend created successfully for Qwen/Qwen3-8B
+Backend created for model Qwen/Qwen3-8B with batch size 15
+Processing 174 entries with batch size 15
+Processing batch 1/12
+Processing batch 2/12
+Processing batch 3/12
+Processing batch 4/12
+Processing batch 5/12
+Processing batch 6/12
+Processing batch 7/12
+Processing batch 8/12
+Processing batch 9/12
+Processing batch 10/12
+Processing batch 11/12
+Processing batch 12/12
+Wrote 174 results to judge/result/Qwen-Qwen3-8B/perplexity_en_output.jsonl
+Dispatched results and removed file: judge/result/Qwen-Qwen3-8B/perplexity_en_output.jsonl

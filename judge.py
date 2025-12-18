@@ -40,15 +40,23 @@ if not args.config:
     print("Error: Please specify a config file using --config argument. For example, --config config1.py")
     exit(1)
 
-# Run maturin develop to build and install the Rust extension
-print("Building Rust extension with maturin develop...")
-# result = subprocess.run(["maturin", "develop"], check=True)
-result = subprocess.run(["maturin", "develop", "--release"], check=True)
-
-# Now import and use the module
-time.sleep(2)  # Give some time for the build to complete
-
-print("Installed Rust extension successfully.")
+# Run maturin develop to build and install the Rust extension with file locking
+import fcntl
+lock_file_path = "/tmp/maturin_build_lock"
+print("Acquiring build lock...")
+with open(lock_file_path, "w") as lock_file:
+    # Acquire exclusive lock (blocks until available)
+    fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+    try:
+        print("Building Rust extension with maturin develop...")
+        # result = subprocess.run(["maturin", "develop"], check=True)
+        result = subprocess.run(["maturin", "develop", "--release"], check=True)
+        print("Installed Rust extension successfully.")
+        time.sleep(2)  # Give some time for the build to complete
+    finally:
+        # Release lock
+        fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+        print("Released build lock.")
 
 # from codebase_rs import concatenate_preference_datasets, concatenate_perplexity_datasets, dispatch_preference_results, dispatch_perplexity_results
 from codebase_rs import *

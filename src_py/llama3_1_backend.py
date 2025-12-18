@@ -475,8 +475,9 @@ async def collect_preference_local_async(
     )
 
     # vLLM async generation (returns an async generator)
+    request_id = f"llama31_preference_{id(question)}"
     final_output = None
-    async for output in engine.generate(prompt, sampling_params):
+    async for output in engine.generate(prompt, sampling_params, request_id):
         # We only need the final result
         final_output = output
 
