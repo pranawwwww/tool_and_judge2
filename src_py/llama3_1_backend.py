@@ -445,7 +445,7 @@ async def collect_preference_local_async(
                 'If Answer 1 is better, respond with "1". '
                 'If Answer 2 is better, respond with "2". '
                 "Even if the answers are identical in correctness, try your best to choose a more favorable one. "
-                "IMPORTANT: Language is not a factor in your judgment; focus solely on the content quality.\n"
+                "IMPORTANT: You SHOULD NOT judge an answer's quality based on its language.\n"
                 'Only respond with "1" or "2", without any explanation.'
             ),
         },

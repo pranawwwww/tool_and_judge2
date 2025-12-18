@@ -1,0 +1,33 @@
+✏️ Setting installed package as editable
+File judge/result/Qwen-Qwen3-8B/preference/en_correct_zh_cn_incorrect.jsonl does not exist, assuming no completed entries.
+File judge/result/Qwen-Qwen3-8B/preference/en_incorrect_zh_cn_correct.jsonl does not exist, assuming no completed entries.
+File judge/result/Qwen-Qwen3-8B/preference/en_correct_zh_cn_correct.jsonl does not exist, assuming no completed entries.
+File judge/result/Qwen-Qwen3-8B/preference/en_incorrect_zh_cn_incorrect.jsonl does not exist, assuming no completed entries.
+Concatenated preference direct dataset for languages en and zh_cn written to judge/result/Qwen-Qwen3-8B/preference_en_zh_cn_input.jsonl
+Acquiring build lock...
+Building Rust extension with maturin develop...
+Installed Rust extension successfully.
+Released build lock.
+Loading config from: judge_config_slurm2.py
+Processing configuration:  <builtins.JudgeConfig object at 0x7f6dfe2a5930>
+Creating backend for model Qwen/Qwen3-8B using 1 GPUs...
+Creating vLLM backend for model Qwen/Qwen3-8B with 1 GPUs...
+INFO 12-18 02:15:01 [model.py:637] Resolved architecture: Qwen3ForCausalLM
+INFO 12-18 02:15:01 [model.py:1750] Using max model len 5000
+INFO 12-18 02:15:02 [scheduler.py:228] Chunked prefill is enabled with max_num_batched_tokens=2048.
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:03 [core.py:93] Initializing a V1 LLM engine (v0.12.0) with config: model='Qwen/Qwen3-8B', speculative_config=None, tokenizer='Qwen/Qwen3-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=5000, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01), seed=0, served_model_name=Qwen/Qwen3-8B, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'eliminate_noops': True, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 256, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>}, 'local_cache_dir': None}
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:06 [parallel_state.py:1200] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://141.142.254.35:39281 backend=nccl
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:06 [parallel_state.py:1408] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:06 [gpu_model_runner.py:3467] Starting to load model Qwen/Qwen3-8B...
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:07 [cuda.py:411] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:16 [default_loader.py:308] Loading weights took 7.89 seconds
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:16 [gpu_model_runner.py:3549] Model loading took 15.2683 GiB memory and 9.259668 seconds
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:29 [backends.py:655] Using cache directory: /u/zluo8/.cache/vllm/torch_compile_cache/967cfb33b2/rank_0_0/backbone for vLLM's torch.compile
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:29 [backends.py:715] Dynamo bytecode transform time: 12.91 s
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:34 [backends.py:216] Directly load the compiled graph(s) for dynamic shape from the cache, took 3.694 s
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:36 [monitor.py:34] torch.compile takes 16.61 s in total
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:37 [gpu_worker.py:359] Available KV cache memory: 19.53 GiB
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:37 [kv_cache_utils.py:1286] GPU KV cache size: 142,176 tokens
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:37 [kv_cache_utils.py:1291] Maximum concurrency for 5,000 tokens per request: 28.39x
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:40 [gpu_model_runner.py:4466] Graph capturing finished in 3 secs, took 0.41 GiB
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m INFO 12-18 02:15:40 [core.py:254] init engine (profile, create kv cache, warmup model) took 23.75 seconds

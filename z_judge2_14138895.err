@@ -1,0 +1,34 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+warning: unused variable: `configs`
+  --> src/lib.rs:15:29
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_configs`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `num_gpus`
+  --> src/lib.rs:15:50
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                                                  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_num_gpus`
+
+warning: `codebase_rs` (lib) generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 0.58s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmpysjc0x/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+🛠 Installed codebase_rs-0.1.0
+/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py:1041: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:00<00:02,  1.80it/s]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Loading safetensors checkpoint shards:  40% Completed | 2/5 [00:02<00:03,  1.09s/it]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:03<00:02,  1.46s/it]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Loading safetensors checkpoint shards:  80% Completed | 4/5 [00:05<00:01,  1.64s/it]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:07<00:00,  1.74s/it]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:07<00:00,  1.55s/it]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m 
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▊         | 3/35 [00:00<00:01, 21.63it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 6/35 [00:00<00:01, 21.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  26%|██▌       | 9/35 [00:00<00:01, 22.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 12/35 [00:00<00:01, 22.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 15/35 [00:00<00:00, 22.75it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████▏    | 18/35 [00:00<00:00, 23.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|██████    | 21/35 [00:00<00:00, 23.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 24/35 [00:01<00:00, 24.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  77%|███████▋  | 27/35 [00:01<00:00, 24.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▌ | 30/35 [00:01<00:00, 25.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 33/35 [00:01<00:00, 25.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:01<00:00, 23.98it/s]
+[0;36m(EngineCore_DP0 pid=1111349)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):  16%|█▌        | 3/19 [00:00<00:00, 21.49it/s]Capturing CUDA graphs (decode, FULL):  32%|███▏      | 6/19 [00:00<00:00, 23.77it/s]Capturing CUDA graphs (decode, FULL):  47%|████▋     | 9/19 [00:00<00:00, 24.66it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 12/19 [00:00<00:00, 25.30it/s]Capturing CUDA graphs (decode, FULL):  79%|███████▉  | 15/19 [00:00<00:00, 25.63it/s]Capturing CUDA graphs (decode, FULL):  95%|█████████▍| 18/19 [00:00<00:00, 25.96it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 19/19 [00:00<00:00, 25.29it/s]

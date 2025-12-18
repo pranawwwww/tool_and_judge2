@@ -2,7 +2,6 @@ use pyo3::prelude::*;
 
 pub mod config;
 pub mod judge;
-pub mod judge_file_models;
 pub mod models;
 pub mod one_entry_map;
 pub mod single_or_list;

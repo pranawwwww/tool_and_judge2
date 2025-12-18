@@ -54,7 +54,8 @@ def collect_perplexity_batch(
         formatted_prompt = tokenizer.apply_chat_template(
             messages,
             tokenize=False,
-            add_generation_prompt=False
+            add_generation_prompt=False,
+            enable_thinking=False,
         )
 
         # Tokenize the formatted prompt
@@ -103,7 +104,7 @@ async def collect_preference_local_async(
                 'If Answer 1 is better, respond with "1". '
                 'If Answer 2 is better, respond with "2". '
                 "Even if the answers are identical in correctness, try your best to choose a more favorable one. "
-                "IMPORTANT: Language is not a factor in your judgment; focus solely on the content quality.\n"
+                "IMPORTANT: You SHOULD NOT judge an answer's quality based on its language.\n"
                 'Only respond with "1" or "2", without any explanation.'
             ),
         },
@@ -123,11 +124,12 @@ async def collect_preference_local_async(
         messages,
         tokenize=False,
         add_generation_prompt=True,
+        enable_thinking=False,
     )
 
     sampling_params = SamplingParams(
         temperature=1.0,      # sampling at temperature 1.0
-        max_tokens=4,         # only need one token
+        max_tokens=100,         # only need one token
         stop=None,
         logprobs=10,          # get top 10 token log probabilities
     )
@@ -142,15 +144,25 @@ async def collect_preference_local_async(
     if final_output is None:
         raise RuntimeError("vLLM generation returned no output")
 
+    # Get the generated text for debugging
+    generated_text = final_output.outputs[0].text if final_output.outputs[0].text else ""
+
     # Get the first token's logprobs
     if not final_output.outputs[0].logprobs or len(final_output.outputs[0].logprobs) == 0:
-        raise RuntimeError("No logprobs returned from vLLM")
+        raise RuntimeError(f"No logprobs returned from vLLM. Generated text: {repr(generated_text)}")
 
     first_token_logprobs = final_output.outputs[0].logprobs[0]
 
     # Get token IDs for "1" and "2"
     token_1_id = tokenizer.encode("1", add_special_tokens=False)[0]
     token_2_id = tokenizer.encode("2", add_special_tokens=False)[0]
+
+    # Get the top tokens in the first position for debugging
+    top_tokens_info = []
+    for token_id, logprob_obj in sorted(first_token_logprobs.items(), key=lambda x: x[1].logprob, reverse=True)[:5]:
+        token_text = tokenizer.decode([token_id])
+        top_tokens_info.append(f"ID {token_id} ({repr(token_text)}): {logprob_obj.logprob:.4f}")
+    top_tokens_str = ", ".join(top_tokens_info)
 
     # Extract log probabilities for tokens "1" and "2"
     logprob_1 = None
@@ -164,8 +176,16 @@ async def collect_preference_local_async(
 
     # Check if both tokens are in the top k
     if logprob_1 is None:
-        raise ValueError(f"Token '1' (ID: {token_1_id}) not found in top-k logprobs")
+        raise ValueError(
+            f"Token '1' (ID: {token_1_id}) not found in top-k logprobs. "
+            f"Generated text: {repr(generated_text)}. "
+            f"Top-5 first tokens: {top_tokens_str}"
+        )
     if logprob_2 is None:
-        raise ValueError(f"Token '2' (ID: {token_2_id}) not found in top-k logprobs")
+        raise ValueError(
+            f"Token '2' (ID: {token_2_id}) not found in top-k logprobs. "
+            f"Generated text: {repr(generated_text)}. "
+            f"Top-5 first tokens: {top_tokens_str}"
+        )
 
     return logprob_1, logprob_2

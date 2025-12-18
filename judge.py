@@ -33,6 +33,13 @@ parser.add_argument(
     default=1,
     help="Number of GPUs to use for local inference (default: 1)"
 )
+parser.add_argument(
+    "--debug-limit",
+    type=int,
+    default=None,
+    help="Limit the number of entries to process for debugging (default: None)"
+)
+
 args = parser.parse_args()
 
 # Load config from specified file
@@ -94,7 +101,7 @@ match config.experiment:
             print(f"Dispatched results from existing file: {combined_output_path}")
         
         # call rust function to concatenate two datasets
-        concatenate_preference_datasets(model_safe_name, first_lang, second_lang, combined_input_path, debug_limit=100)
+        concatenate_preference_datasets(model_safe_name, first_lang, second_lang, combined_input_path, debug_limit=args.debug_limit)
         combined_entries = load_json_lines_from_file(combined_input_path)
         if len(combined_entries) == 0:
             print(f"All entries for experiment {experiment_str} have been processed. Exiting.")
@@ -172,7 +179,7 @@ match config.experiment:
                     print(f"Written {completed_count}/{len(combined_entries)} entries to file")
         asyncio.run(collect_all_preference_entries())
         # dispatch results
-        dispatch_preference_results(model_safe_name, config.lang1, config.lang2, combined_output_path)
+        dispatch_preference_results(model_safe_name, lang1, lang2, combined_output_path)
         # delete this file
         os.remove(combined_output_path)
         print(f"Dispatched results and removed file: {combined_output_path}")     
@@ -184,7 +191,7 @@ match config.experiment:
             print(f"Dispatched results from existing file: {combined_output_path}")
 
         # call rust function to concatenate two datasets
-        concatenate_perplexity_datasets(model_safe_name, lang, combined_input_path, debug_limit=100)
+        concatenate_perplexity_datasets(model_safe_name, lang, combined_input_path, debug_limit=args.debug_limit)
         combined_entries = load_json_lines_from_file(combined_input_path)
         if len(combined_entries) == 0:
             print(f"All entries for experiment {experiment_str} have been processed. Exiting.")

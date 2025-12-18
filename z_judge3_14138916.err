@@ -1,0 +1,21 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+warning: unused variable: `configs`
+  --> src/lib.rs:15:29
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_configs`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `num_gpus`
+  --> src/lib.rs:15:50
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                                                  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_num_gpus`
+
+warning: `codebase_rs` (lib) generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 0.75s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmpwsoExB/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+🛠 Installed codebase_rs-0.1.0

@@ -145,7 +145,7 @@ pub fn concatenate_perplexity_datasets(
             }
             count += 1;
         }
-        let mask_entry = &perplexity_mask_entries_parsed[*index];
+    let mask_entry = &perplexity_mask_entries_parsed.get(index).expect("Missing mask entry");
         // only push valid entries
         if mask_entry.valid {
             if !correct_result_ids.contains(index) {
