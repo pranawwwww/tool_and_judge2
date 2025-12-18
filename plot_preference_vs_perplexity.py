@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy import stats
 
 
 def load_jsonl(file_path: str) -> List[dict]:
@@ -120,6 +121,60 @@ def load_preference_data(model_name: str, lang1: str, lang2: str) -> Dict[Tuple[
     return preference_map
 
 
+def filter_outliers_percentile(
+    perplexity_diffs: List[float],
+    preference_values: List[float],
+    keep_percentage: float = 0.90
+) -> Tuple[List[float], List[float], int]:
+    """
+    Filter outliers by removing extreme values based on percentiles.
+
+    For both perplexity differences and preference values, keep only the middle
+    keep_percentage of values (e.g., 90% means remove top 5% and bottom 5%).
+
+    Args:
+        perplexity_diffs: List of perplexity difference values
+        preference_values: List of preference values
+        keep_percentage: Percentage of data to keep (default 0.90 for 90%)
+
+    Returns:
+        Tuple of (filtered_perplexity_diffs, filtered_preference_values, num_outliers_removed)
+    """
+    if len(perplexity_diffs) == 0:
+        return [], [], 0
+
+    perp_arr = np.array(perplexity_diffs)
+    pref_arr = np.array(preference_values)
+
+    # Calculate percentiles for trimming
+    # E.g., for 90%, keep between 5th and 95th percentile
+    lower_percentile = (1 - keep_percentage) / 2 * 100
+    upper_percentile = (1 + keep_percentage) / 2 * 100
+
+    # Calculate bounds for perplexity differences
+    perp_lower = np.percentile(perp_arr, lower_percentile)
+    perp_upper = np.percentile(perp_arr, upper_percentile)
+
+    # Calculate bounds for preference values
+    pref_lower = np.percentile(pref_arr, lower_percentile)
+    pref_upper = np.percentile(pref_arr, upper_percentile)
+
+    # Create masks for points within bounds
+    perp_mask = (perp_arr >= perp_lower) & (perp_arr <= perp_upper)
+    pref_mask = (pref_arr >= pref_lower) & (pref_arr <= pref_upper)
+
+    # Keep points that are within bounds in BOTH dimensions
+    combined_mask = perp_mask & pref_mask
+
+    # Filter the data
+    filtered_perp = perp_arr[combined_mask].tolist()
+    filtered_pref = pref_arr[combined_mask].tolist()
+
+    num_removed = len(perplexity_diffs) - len(filtered_perp)
+
+    return filtered_perp, filtered_pref, num_removed
+
+
 def create_scatter_plot(
     perplexity_diffs: List[float],
     preference_values: List[float],
@@ -127,7 +182,9 @@ def create_scatter_plot(
     lang2: str,
     is_correct1: bool,
     is_correct2: bool,
-    output_path: str
+    output_path: str,
+    num_outliers_removed: int = 0,
+    total_points: int = None
 ):
     """Create and save a scatter plot."""
     plt.figure(figsize=(10, 8))
@@ -145,7 +202,11 @@ def create_scatter_plot(
 
     correct1_str = "correct" if is_correct1 else "incorrect"
     correct2_str = "correct" if is_correct2 else "incorrect"
-    title = f'{lang1} {correct1_str} vs {lang2} {correct2_str}\n(n={len(perplexity_diffs)})'
+
+    if total_points is not None and num_outliers_removed > 0:
+        title = f'{lang1} {correct1_str} vs {lang2} {correct2_str}\n(n={len(perplexity_diffs)} after filtering, {num_outliers_removed} outliers removed from {total_points})'
+    else:
+        title = f'{lang1} {correct1_str} vs {lang2} {correct2_str}\n(n={len(perplexity_diffs)})'
     plt.title(title, fontsize=14)
 
     # Add grid
@@ -177,6 +238,10 @@ def main():
                        help='Second language code (e.g., zh_cn)')
     parser.add_argument('--output-dir', type=str, default='plots',
                        help='Output directory for plots (default: plots)')
+    parser.add_argument('--filter-outliers', action='store_true',
+                       help='Filter outliers using percentile-based approach')
+    parser.add_argument('--keep-percentage', type=float, default=0.90,
+                       help='Percentage of data to keep after filtering outliers (default: 0.90 for 90%%)')
 
     args = parser.parse_args()
 
@@ -186,6 +251,8 @@ def main():
 
     print(f"Loading data for model: {args.model_name}")
     print(f"Languages: {args.lang1} vs {args.lang2}")
+    if args.filter_outliers:
+        print(f"Outlier filtering enabled: keeping {args.keep_percentage * 100:.0f}% of data")
 
     # Load perplexity data for both languages
     print(f"Loading perplexity data for {args.lang1}...")
@@ -236,10 +303,26 @@ def main():
         print(f"  Valid data points: {len(perplexity_diffs)}")
 
         if len(perplexity_diffs) > 0:
+            # Apply outlier filtering if requested
+            num_outliers_removed = 0
+            total_points = len(perplexity_diffs)
+
+            if args.filter_outliers:
+                original_count = len(perplexity_diffs)
+                perplexity_diffs, preference_values, num_outliers_removed = filter_outliers_percentile(
+                    perplexity_diffs,
+                    preference_values,
+                    keep_percentage=args.keep_percentage
+                )
+                print(f"  After outlier filtering: {len(perplexity_diffs)} points "
+                      f"({num_outliers_removed} outliers removed, "
+                      f"{100 * num_outliers_removed / original_count:.1f}%)")
+
             # Create output filename
             correct1_str = "correct" if is_correct1 else "incorrect"
             correct2_str = "correct" if is_correct2 else "incorrect"
-            output_filename = f"{args.model_name}_{args.lang1}_{correct1_str}_vs_{args.lang2}_{correct2_str}.png"
+            filename_suffix = "_filtered" if args.filter_outliers else ""
+            output_filename = f"{args.model_name}_{args.lang1}_{correct1_str}_vs_{args.lang2}_{correct2_str}{filename_suffix}.png"
             output_path = output_dir / output_filename
 
             # Create plot
@@ -250,7 +333,9 @@ def main():
                 args.lang2,
                 is_correct1,
                 is_correct2,
-                str(output_path)
+                str(output_path),
+                num_outliers_removed=num_outliers_removed,
+                total_points=total_points if args.filter_outliers else None
             )
         else:
             print(f"  Warning: No valid data points found for this category")
