@@ -1,0 +1,27 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+warning: unused variable: `configs`
+  --> src/lib.rs:15:29
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_configs`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `num_gpus`
+  --> src/lib.rs:15:50
+   |
+15 |     async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+   |                                                  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_num_gpus`
+
+warning: `codebase_rs` (lib) generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 3.63s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmpGIA214/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+🛠 Installed codebase_rs-0.1.0
+/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py:1041: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py:492: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/30 [00:00<?, ?it/s]Loading checkpoint shards:   3%|▎         | 1/30 [00:02<01:19,  2.73s/it]Loading checkpoint shards:   7%|▋         | 2/30 [00:04<01:01,  2.20s/it]Loading checkpoint shards:  10%|█         | 3/30 [00:06<00:57,  2.12s/it]Loading checkpoint shards:  13%|█▎        | 4/30 [00:08<00:53,  2.07s/it]Loading checkpoint shards:  17%|█▋        | 5/30 [00:10<00:49,  2.00s/it]Loading checkpoint shards:  20%|██        | 6/30 [00:12<00:47,  1.96s/it]Loading checkpoint shards:  23%|██▎       | 7/30 [00:14<00:44,  1.95s/it]Loading checkpoint shards:  27%|██▋       | 8/30 [00:16<00:44,  2.00s/it]Loading checkpoint shards:  30%|███       | 9/30 [00:18<00:41,  1.98s/it]Loading checkpoint shards:  33%|███▎      | 10/30 [00:20<00:39,  1.97s/it]Loading checkpoint shards:  37%|███▋      | 11/30 [00:22<00:36,  1.94s/it]Loading checkpoint shards:  40%|████      | 12/30 [00:24<00:35,  1.97s/it]Loading checkpoint shards:  43%|████▎     | 13/30 [00:26<00:33,  1.96s/it]Loading checkpoint shards:  47%|████▋     | 14/30 [00:28<00:31,  1.97s/it]Loading checkpoint shards:  50%|█████     | 15/30 [00:29<00:29,  1.94s/it]Loading checkpoint shards:  53%|█████▎    | 16/30 [00:31<00:26,  1.91s/it]Loading checkpoint shards:  57%|█████▋    | 17/30 [00:33<00:24,  1.90s/it]Loading checkpoint shards:  60%|██████    | 18/30 [00:35<00:23,  1.98s/it]Loading checkpoint shards:  63%|██████▎   | 19/30 [00:37<00:21,  1.97s/it]Loading checkpoint shards:  67%|██████▋   | 20/30 [00:40<00:20,  2.06s/it]Loading checkpoint shards:  70%|███████   | 21/30 [00:41<00:18,  2.01s/it]Loading checkpoint shards:  73%|███████▎  | 22/30 [00:43<00:15,  1.99s/it]Loading checkpoint shards:  77%|███████▋  | 23/30 [00:45<00:13,  1.98s/it]Loading checkpoint shards:  80%|████████  | 24/30 [00:47<00:11,  2.00s/it]Loading checkpoint shards:  83%|████████▎ | 25/30 [00:49<00:09,  1.97s/it]Loading checkpoint shards:  87%|████████▋ | 26/30 [00:51<00:07,  1.95s/it]Loading checkpoint shards:  90%|█████████ | 27/30 [00:53<00:05,  1.93s/it]Loading checkpoint shards:  93%|█████████▎| 28/30 [00:55<00:03,  1.94s/it]Loading checkpoint shards:  97%|█████████▋| 29/30 [00:57<00:01,  1.96s/it]Loading checkpoint shards: 100%|██████████| 30/30 [00:58<00:00,  1.63s/it]Loading checkpoint shards: 100%|██████████| 30/30 [00:58<00:00,  1.95s/it]

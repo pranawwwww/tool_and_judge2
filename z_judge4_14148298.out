@@ -1,0 +1,5742 @@
+✏️ Setting installed package as editable
+File judge/result/meta-llama-Llama-3.3-70B-Instruct/perplexity/zh_cn_correct.jsonl does not exist, assuming no completed entries.
+File judge/result/meta-llama-Llama-3.3-70B-Instruct/perplexity/zh_cn_incorrect.jsonl does not exist, assuming no completed entries.
+Concatenated perplexity dataset for language zh_cn written to judge/result/meta-llama-Llama-3.3-70B-Instruct/perplexity_zh_cn_input.jsonl
+Acquiring build lock...
+Building Rust extension with maturin develop...
+Installed Rust extension successfully.
+Released build lock.
+Loading config from: judge_config_slurm4.py
+Processing configuration:  <builtins.JudgeConfig object at 0x7f32e6208da0>
+Creating backend for model meta-llama/Llama-3.3-70B-Instruct with batch size 6...
+Creating HuggingFace backend for model meta-llama/Llama-3.3-70B-Instruct with batch size 6...
+Loading model from HuggingFace...
+Found 8 GPUs
+GPU 0: 139.81 GB available, using 125 GB
+GPU 1: 139.81 GB available, using 125 GB
+GPU 2: 139.81 GB available, using 125 GB
+GPU 3: 139.81 GB available, using 125 GB
+GPU 4: 139.81 GB available, using 125 GB
+GPU 5: 139.81 GB available, using 125 GB
+GPU 6: 139.81 GB available, using 125 GB
+GPU 7: 139.81 GB available, using 125 GB
+Model loaded, setting to eval mode...
+Model in eval mode
+Model device map: {'model.embed_tokens': 0, 'model.layers.0': 0, 'model.layers.1': 0, 'model.layers.2': 0, 'model.layers.3': 0, 'model.layers.4': 0, 'model.layers.5': 0, 'model.layers.6': 0, 'model.layers.7': 0, 'model.layers.8': 0, 'model.layers.9': 1, 'model.layers.10': 1, 'model.layers.11': 1, 'model.layers.12': 1, 'model.layers.13': 1, 'model.layers.14': 1, 'model.layers.15': 1, 'model.layers.16': 1, 'model.layers.17': 1, 'model.layers.18': 1, 'model.layers.19': 1, 'model.layers.20': 2, 'model.layers.21': 2, 'model.layers.22': 2, 'model.layers.23': 2, 'model.layers.24': 2, 'model.layers.25': 2, 'model.layers.26': 2, 'model.layers.27': 2, 'model.layers.28': 2, 'model.layers.29': 2, 'model.layers.30': 2, 'model.layers.31': 3, 'model.layers.32': 3, 'model.layers.33': 3, 'model.layers.34': 3, 'model.layers.35': 3, 'model.layers.36': 3, 'model.layers.37': 3, 'model.layers.38': 3, 'model.layers.39': 3, 'model.layers.40': 3, 'model.layers.41': 3, 'model.layers.42': 4, 'model.layers.43': 4, 'model.layers.44': 4, 'model.layers.45': 4, 'model.layers.46': 4, 'model.layers.47': 4, 'model.layers.48': 4, 'model.layers.49': 4, 'model.layers.50': 4, 'model.layers.51': 4, 'model.layers.52': 4, 'model.layers.53': 5, 'model.layers.54': 5, 'model.layers.55': 5, 'model.layers.56': 5, 'model.layers.57': 5, 'model.layers.58': 5, 'model.layers.59': 5, 'model.layers.60': 5, 'model.layers.61': 5, 'model.layers.62': 5, 'model.layers.63': 5, 'model.layers.64': 6, 'model.layers.65': 6, 'model.layers.66': 6, 'model.layers.67': 6, 'model.layers.68': 6, 'model.layers.69': 6, 'model.layers.70': 6, 'model.layers.71': 6, 'model.layers.72': 6, 'model.layers.73': 6, 'model.layers.74': 6, 'model.layers.75': 7, 'model.layers.76': 7, 'model.layers.77': 7, 'model.layers.78': 7, 'model.layers.79': 7, 'model.norm': 7, 'model.rotary_emb': 7, 'lm_head': 7}
+HuggingFace backend created successfully for meta-llama/Llama-3.3-70B-Instruct
+Backend created for model meta-llama/Llama-3.3-70B-Instruct with batch size 6
+Processing 17122 entries with batch size 6
+Processing batch 1/2854
+Written 6/17122 entries to file
+Processing batch 2/2854
+Written 12/17122 entries to file
+Processing batch 3/2854
+Written 18/17122 entries to file
+Processing batch 4/2854
+Written 24/17122 entries to file
+Processing batch 5/2854
+Written 30/17122 entries to file
+Processing batch 6/2854
+Written 36/17122 entries to file
+Processing batch 7/2854
+Written 42/17122 entries to file
+Processing batch 8/2854
+Written 48/17122 entries to file
+Processing batch 9/2854
+Written 54/17122 entries to file
+Processing batch 10/2854
+Written 60/17122 entries to file
+Processing batch 11/2854
+Written 66/17122 entries to file
+Processing batch 12/2854
+Written 72/17122 entries to file
+Processing batch 13/2854
+Written 78/17122 entries to file
+Processing batch 14/2854
+Written 84/17122 entries to file
+Processing batch 15/2854
+Written 90/17122 entries to file
+Processing batch 16/2854
+Written 96/17122 entries to file
+Processing batch 17/2854
+Written 102/17122 entries to file
+Processing batch 18/2854
+Written 108/17122 entries to file
+Processing batch 19/2854
+Written 114/17122 entries to file
+Processing batch 20/2854
+Written 120/17122 entries to file
+Processing batch 21/2854
+Written 126/17122 entries to file
+Processing batch 22/2854
+Written 132/17122 entries to file
+Processing batch 23/2854
+Written 138/17122 entries to file
+Processing batch 24/2854
+Written 144/17122 entries to file
+Processing batch 25/2854
+Written 150/17122 entries to file
+Processing batch 26/2854
+Written 156/17122 entries to file
+Processing batch 27/2854
+Written 162/17122 entries to file
+Processing batch 28/2854
+Written 168/17122 entries to file
+Processing batch 29/2854
+Written 174/17122 entries to file
+Processing batch 30/2854
+Written 180/17122 entries to file
+Processing batch 31/2854
+Written 186/17122 entries to file
+Processing batch 32/2854
+Written 192/17122 entries to file
+Processing batch 33/2854
+Written 198/17122 entries to file
+Processing batch 34/2854
+Written 204/17122 entries to file
+Processing batch 35/2854
+Written 210/17122 entries to file
+Processing batch 36/2854
+Written 216/17122 entries to file
+Processing batch 37/2854
+Written 222/17122 entries to file
+Processing batch 38/2854
+Written 228/17122 entries to file
+Processing batch 39/2854
+Written 234/17122 entries to file
+Processing batch 40/2854
+Written 240/17122 entries to file
+Processing batch 41/2854
+Written 246/17122 entries to file
+Processing batch 42/2854
+Written 252/17122 entries to file
+Processing batch 43/2854
+Written 258/17122 entries to file
+Processing batch 44/2854
+Written 264/17122 entries to file
+Processing batch 45/2854
+Written 270/17122 entries to file
+Processing batch 46/2854
+Written 276/17122 entries to file
+Processing batch 47/2854
+Written 282/17122 entries to file
+Processing batch 48/2854
+Written 288/17122 entries to file
+Processing batch 49/2854
+Written 294/17122 entries to file
+Processing batch 50/2854
+Written 300/17122 entries to file
+Processing batch 51/2854
+Written 306/17122 entries to file
+Processing batch 52/2854
+Written 312/17122 entries to file
+Processing batch 53/2854
+Written 318/17122 entries to file
+Processing batch 54/2854
+Written 324/17122 entries to file
+Processing batch 55/2854
+Written 330/17122 entries to file
+Processing batch 56/2854
+Written 336/17122 entries to file
+Processing batch 57/2854
+Written 342/17122 entries to file
+Processing batch 58/2854
+Written 348/17122 entries to file
+Processing batch 59/2854
+Written 354/17122 entries to file
+Processing batch 60/2854
+Written 360/17122 entries to file
+Processing batch 61/2854
+Written 366/17122 entries to file
+Processing batch 62/2854
+Written 372/17122 entries to file
+Processing batch 63/2854
+Written 378/17122 entries to file
+Processing batch 64/2854
+Written 384/17122 entries to file
+Processing batch 65/2854
+Written 390/17122 entries to file
+Processing batch 66/2854
+Written 396/17122 entries to file
+Processing batch 67/2854
+Written 402/17122 entries to file
+Processing batch 68/2854
+Written 408/17122 entries to file
+Processing batch 69/2854
+Written 414/17122 entries to file
+Processing batch 70/2854
+Written 420/17122 entries to file
+Processing batch 71/2854
+Written 426/17122 entries to file
+Processing batch 72/2854
+Written 432/17122 entries to file
+Processing batch 73/2854
+Written 438/17122 entries to file
+Processing batch 74/2854
+Written 444/17122 entries to file
+Processing batch 75/2854
+Written 450/17122 entries to file
+Processing batch 76/2854
+Written 456/17122 entries to file
+Processing batch 77/2854
+Written 462/17122 entries to file
+Processing batch 78/2854
+Written 468/17122 entries to file
+Processing batch 79/2854
+Written 474/17122 entries to file
+Processing batch 80/2854
+Written 480/17122 entries to file
+Processing batch 81/2854
+Written 486/17122 entries to file
+Processing batch 82/2854
+Written 492/17122 entries to file
+Processing batch 83/2854
+Written 498/17122 entries to file
+Processing batch 84/2854
+Written 504/17122 entries to file
+Processing batch 85/2854
+Written 510/17122 entries to file
+Processing batch 86/2854
+Written 516/17122 entries to file
+Processing batch 87/2854
+Written 522/17122 entries to file
+Processing batch 88/2854
+Written 528/17122 entries to file
+Processing batch 89/2854
+Written 534/17122 entries to file
+Processing batch 90/2854
+Written 540/17122 entries to file
+Processing batch 91/2854
+Written 546/17122 entries to file
+Processing batch 92/2854
+Written 552/17122 entries to file
+Processing batch 93/2854
+Written 558/17122 entries to file
+Processing batch 94/2854
+Written 564/17122 entries to file
+Processing batch 95/2854
+Written 570/17122 entries to file
+Processing batch 96/2854
+Written 576/17122 entries to file
+Processing batch 97/2854
+Written 582/17122 entries to file
+Processing batch 98/2854
+Written 588/17122 entries to file
+Processing batch 99/2854
+Written 594/17122 entries to file
+Processing batch 100/2854
+Written 600/17122 entries to file
+Processing batch 101/2854
+Written 606/17122 entries to file
+Processing batch 102/2854
+Written 612/17122 entries to file
+Processing batch 103/2854
+Written 618/17122 entries to file
+Processing batch 104/2854
+Written 624/17122 entries to file
+Processing batch 105/2854
+Written 630/17122 entries to file
+Processing batch 106/2854
+Written 636/17122 entries to file
+Processing batch 107/2854
+Written 642/17122 entries to file
+Processing batch 108/2854
+Written 648/17122 entries to file
+Processing batch 109/2854
+Written 654/17122 entries to file
+Processing batch 110/2854
+Written 660/17122 entries to file
+Processing batch 111/2854
+Written 666/17122 entries to file
+Processing batch 112/2854
+Written 672/17122 entries to file
+Processing batch 113/2854
+Written 678/17122 entries to file
+Processing batch 114/2854
+Written 684/17122 entries to file
+Processing batch 115/2854
+Written 690/17122 entries to file
+Processing batch 116/2854
+Written 696/17122 entries to file
+Processing batch 117/2854
+Written 702/17122 entries to file
+Processing batch 118/2854
+Written 708/17122 entries to file
+Processing batch 119/2854
+Written 714/17122 entries to file
+Processing batch 120/2854
+Written 720/17122 entries to file
+Processing batch 121/2854
+Written 726/17122 entries to file
+Processing batch 122/2854
+Written 732/17122 entries to file
+Processing batch 123/2854
+Written 738/17122 entries to file
+Processing batch 124/2854
+Written 744/17122 entries to file
+Processing batch 125/2854
+Written 750/17122 entries to file
+Processing batch 126/2854
+Written 756/17122 entries to file
+Processing batch 127/2854
+Written 762/17122 entries to file
+Processing batch 128/2854
+Written 768/17122 entries to file
+Processing batch 129/2854
+Written 774/17122 entries to file
+Processing batch 130/2854
+Written 780/17122 entries to file
+Processing batch 131/2854
+Written 786/17122 entries to file
+Processing batch 132/2854
+Written 792/17122 entries to file
+Processing batch 133/2854
+Written 798/17122 entries to file
+Processing batch 134/2854
+Written 804/17122 entries to file
+Processing batch 135/2854
+Written 810/17122 entries to file
+Processing batch 136/2854
+Written 816/17122 entries to file
+Processing batch 137/2854
+Written 822/17122 entries to file
+Processing batch 138/2854
+Written 828/17122 entries to file
+Processing batch 139/2854
+Written 834/17122 entries to file
+Processing batch 140/2854
+Written 840/17122 entries to file
+Processing batch 141/2854
+Written 846/17122 entries to file
+Processing batch 142/2854
+Written 852/17122 entries to file
+Processing batch 143/2854
+Written 858/17122 entries to file
+Processing batch 144/2854
+Written 864/17122 entries to file
+Processing batch 145/2854
+Written 870/17122 entries to file
+Processing batch 146/2854
+Written 876/17122 entries to file
+Processing batch 147/2854
+Written 882/17122 entries to file
+Processing batch 148/2854
+Written 888/17122 entries to file
+Processing batch 149/2854
+Written 894/17122 entries to file
+Processing batch 150/2854
+Written 900/17122 entries to file
+Processing batch 151/2854
+Written 906/17122 entries to file
+Processing batch 152/2854
+Written 912/17122 entries to file
+Processing batch 153/2854
+Written 918/17122 entries to file
+Processing batch 154/2854
+Written 924/17122 entries to file
+Processing batch 155/2854
+Written 930/17122 entries to file
+Processing batch 156/2854
+Written 936/17122 entries to file
+Processing batch 157/2854
+Written 942/17122 entries to file
+Processing batch 158/2854
+Written 948/17122 entries to file
+Processing batch 159/2854
+Written 954/17122 entries to file
+Processing batch 160/2854
+Written 960/17122 entries to file
+Processing batch 161/2854
+Written 966/17122 entries to file
+Processing batch 162/2854
+Written 972/17122 entries to file
+Processing batch 163/2854
+Written 978/17122 entries to file
+Processing batch 164/2854
+Written 984/17122 entries to file
+Processing batch 165/2854
+Written 990/17122 entries to file
+Processing batch 166/2854
+Written 996/17122 entries to file
+Processing batch 167/2854
+Written 1002/17122 entries to file
+Processing batch 168/2854
+Written 1008/17122 entries to file
+Processing batch 169/2854
+Written 1014/17122 entries to file
+Processing batch 170/2854
+Written 1020/17122 entries to file
+Processing batch 171/2854
+Written 1026/17122 entries to file
+Processing batch 172/2854
+Written 1032/17122 entries to file
+Processing batch 173/2854
+Written 1038/17122 entries to file
+Processing batch 174/2854
+Written 1044/17122 entries to file
+Processing batch 175/2854
+Written 1050/17122 entries to file
+Processing batch 176/2854
+Written 1056/17122 entries to file
+Processing batch 177/2854
+Written 1062/17122 entries to file
+Processing batch 178/2854
+Written 1068/17122 entries to file
+Processing batch 179/2854
+Written 1074/17122 entries to file
+Processing batch 180/2854
+Written 1080/17122 entries to file
+Processing batch 181/2854
+Written 1086/17122 entries to file
+Processing batch 182/2854
+Written 1092/17122 entries to file
+Processing batch 183/2854
+Written 1098/17122 entries to file
+Processing batch 184/2854
+Written 1104/17122 entries to file
+Processing batch 185/2854
+Written 1110/17122 entries to file
+Processing batch 186/2854
+Written 1116/17122 entries to file
+Processing batch 187/2854
+Written 1122/17122 entries to file
+Processing batch 188/2854
+Written 1128/17122 entries to file
+Processing batch 189/2854
+Written 1134/17122 entries to file
+Processing batch 190/2854
+Written 1140/17122 entries to file
+Processing batch 191/2854
+Written 1146/17122 entries to file
+Processing batch 192/2854
+Written 1152/17122 entries to file
+Processing batch 193/2854
+Written 1158/17122 entries to file
+Processing batch 194/2854
+Written 1164/17122 entries to file
+Processing batch 195/2854
+Written 1170/17122 entries to file
+Processing batch 196/2854
+Written 1176/17122 entries to file
+Processing batch 197/2854
+Written 1182/17122 entries to file
+Processing batch 198/2854
+Written 1188/17122 entries to file
+Processing batch 199/2854
+Written 1194/17122 entries to file
+Processing batch 200/2854
+Written 1200/17122 entries to file
+Processing batch 201/2854
+Written 1206/17122 entries to file
+Processing batch 202/2854
+Written 1212/17122 entries to file
+Processing batch 203/2854
+Written 1218/17122 entries to file
+Processing batch 204/2854
+Written 1224/17122 entries to file
+Processing batch 205/2854
+Written 1230/17122 entries to file
+Processing batch 206/2854
+Written 1236/17122 entries to file
+Processing batch 207/2854
+Written 1242/17122 entries to file
+Processing batch 208/2854
+Written 1248/17122 entries to file
+Processing batch 209/2854
+Written 1254/17122 entries to file
+Processing batch 210/2854
+Written 1260/17122 entries to file
+Processing batch 211/2854
+Written 1266/17122 entries to file
+Processing batch 212/2854
+Written 1272/17122 entries to file
+Processing batch 213/2854
+Written 1278/17122 entries to file
+Processing batch 214/2854
+Written 1284/17122 entries to file
+Processing batch 215/2854
+Written 1290/17122 entries to file
+Processing batch 216/2854
+Written 1296/17122 entries to file
+Processing batch 217/2854
+Written 1302/17122 entries to file
+Processing batch 218/2854
+Written 1308/17122 entries to file
+Processing batch 219/2854
+Written 1314/17122 entries to file
+Processing batch 220/2854
+Written 1320/17122 entries to file
+Processing batch 221/2854
+Written 1326/17122 entries to file
+Processing batch 222/2854
+Written 1332/17122 entries to file
+Processing batch 223/2854
+Written 1338/17122 entries to file
+Processing batch 224/2854
+Written 1344/17122 entries to file
+Processing batch 225/2854
+Written 1350/17122 entries to file
+Processing batch 226/2854
+Written 1356/17122 entries to file
+Processing batch 227/2854
+Written 1362/17122 entries to file
+Processing batch 228/2854
+Written 1368/17122 entries to file
+Processing batch 229/2854
+Written 1374/17122 entries to file
+Processing batch 230/2854
+Written 1380/17122 entries to file
+Processing batch 231/2854
+Written 1386/17122 entries to file
+Processing batch 232/2854
+Written 1392/17122 entries to file
+Processing batch 233/2854
+Written 1398/17122 entries to file
+Processing batch 234/2854
+Written 1404/17122 entries to file
+Processing batch 235/2854
+Written 1410/17122 entries to file
+Processing batch 236/2854
+Written 1416/17122 entries to file
+Processing batch 237/2854
+Written 1422/17122 entries to file
+Processing batch 238/2854
+Written 1428/17122 entries to file
+Processing batch 239/2854
+Written 1434/17122 entries to file
+Processing batch 240/2854
+Written 1440/17122 entries to file
+Processing batch 241/2854
+Written 1446/17122 entries to file
+Processing batch 242/2854
+Written 1452/17122 entries to file
+Processing batch 243/2854
+Written 1458/17122 entries to file
+Processing batch 244/2854
+Written 1464/17122 entries to file
+Processing batch 245/2854
+Written 1470/17122 entries to file
+Processing batch 246/2854
+Written 1476/17122 entries to file
+Processing batch 247/2854
+Written 1482/17122 entries to file
+Processing batch 248/2854
+Written 1488/17122 entries to file
+Processing batch 249/2854
+Written 1494/17122 entries to file
+Processing batch 250/2854
+Written 1500/17122 entries to file
+Processing batch 251/2854
+Written 1506/17122 entries to file
+Processing batch 252/2854
+Written 1512/17122 entries to file
+Processing batch 253/2854
+Written 1518/17122 entries to file
+Processing batch 254/2854
+Written 1524/17122 entries to file
+Processing batch 255/2854
+Written 1530/17122 entries to file
+Processing batch 256/2854
+Written 1536/17122 entries to file
+Processing batch 257/2854
+Written 1542/17122 entries to file
+Processing batch 258/2854
+Written 1548/17122 entries to file
+Processing batch 259/2854
+Written 1554/17122 entries to file
+Processing batch 260/2854
+Written 1560/17122 entries to file
+Processing batch 261/2854
+Written 1566/17122 entries to file
+Processing batch 262/2854
+Written 1572/17122 entries to file
+Processing batch 263/2854
+Written 1578/17122 entries to file
+Processing batch 264/2854
+Written 1584/17122 entries to file
+Processing batch 265/2854
+Written 1590/17122 entries to file
+Processing batch 266/2854
+Written 1596/17122 entries to file
+Processing batch 267/2854
+Written 1602/17122 entries to file
+Processing batch 268/2854
+Written 1608/17122 entries to file
+Processing batch 269/2854
+Written 1614/17122 entries to file
+Processing batch 270/2854
+Written 1620/17122 entries to file
+Processing batch 271/2854
+Written 1626/17122 entries to file
+Processing batch 272/2854
+Written 1632/17122 entries to file
+Processing batch 273/2854
+Written 1638/17122 entries to file
+Processing batch 274/2854
+Written 1644/17122 entries to file
+Processing batch 275/2854
+Written 1650/17122 entries to file
+Processing batch 276/2854
+Written 1656/17122 entries to file
+Processing batch 277/2854
+Written 1662/17122 entries to file
+Processing batch 278/2854
+Written 1668/17122 entries to file
+Processing batch 279/2854
+Written 1674/17122 entries to file
+Processing batch 280/2854
+Written 1680/17122 entries to file
+Processing batch 281/2854
+Written 1686/17122 entries to file
+Processing batch 282/2854
+Written 1692/17122 entries to file
+Processing batch 283/2854
+Written 1698/17122 entries to file
+Processing batch 284/2854
+Written 1704/17122 entries to file
+Processing batch 285/2854
+Written 1710/17122 entries to file
+Processing batch 286/2854
+Written 1716/17122 entries to file
+Processing batch 287/2854
+Written 1722/17122 entries to file
+Processing batch 288/2854
+Written 1728/17122 entries to file
+Processing batch 289/2854
+Written 1734/17122 entries to file
+Processing batch 290/2854
+Written 1740/17122 entries to file
+Processing batch 291/2854
+Written 1746/17122 entries to file
+Processing batch 292/2854
+Written 1752/17122 entries to file
+Processing batch 293/2854
+Written 1758/17122 entries to file
+Processing batch 294/2854
+Written 1764/17122 entries to file
+Processing batch 295/2854
+Written 1770/17122 entries to file
+Processing batch 296/2854
+Written 1776/17122 entries to file
+Processing batch 297/2854
+Written 1782/17122 entries to file
+Processing batch 298/2854
+Written 1788/17122 entries to file
+Processing batch 299/2854
+Written 1794/17122 entries to file
+Processing batch 300/2854
+Written 1800/17122 entries to file
+Processing batch 301/2854
+Written 1806/17122 entries to file
+Processing batch 302/2854
+Written 1812/17122 entries to file
+Processing batch 303/2854
+Written 1818/17122 entries to file
+Processing batch 304/2854
+Written 1824/17122 entries to file
+Processing batch 305/2854
+Written 1830/17122 entries to file
+Processing batch 306/2854
+Written 1836/17122 entries to file
+Processing batch 307/2854
+Written 1842/17122 entries to file
+Processing batch 308/2854
+Written 1848/17122 entries to file
+Processing batch 309/2854
+Written 1854/17122 entries to file
+Processing batch 310/2854
+Written 1860/17122 entries to file
+Processing batch 311/2854
+Written 1866/17122 entries to file
+Processing batch 312/2854
+Written 1872/17122 entries to file
+Processing batch 313/2854
+Written 1878/17122 entries to file
+Processing batch 314/2854
+Written 1884/17122 entries to file
+Processing batch 315/2854
+Written 1890/17122 entries to file
+Processing batch 316/2854
+Written 1896/17122 entries to file
+Processing batch 317/2854
+Written 1902/17122 entries to file
+Processing batch 318/2854
+Written 1908/17122 entries to file
+Processing batch 319/2854
+Written 1914/17122 entries to file
+Processing batch 320/2854
+Written 1920/17122 entries to file
+Processing batch 321/2854
+Written 1926/17122 entries to file
+Processing batch 322/2854
+Written 1932/17122 entries to file
+Processing batch 323/2854
+Written 1938/17122 entries to file
+Processing batch 324/2854
+Written 1944/17122 entries to file
+Processing batch 325/2854
+Written 1950/17122 entries to file
+Processing batch 326/2854
+Written 1956/17122 entries to file
+Processing batch 327/2854
+Written 1962/17122 entries to file
+Processing batch 328/2854
+Written 1968/17122 entries to file
+Processing batch 329/2854
+Written 1974/17122 entries to file
+Processing batch 330/2854
+Written 1980/17122 entries to file
+Processing batch 331/2854
+Written 1986/17122 entries to file
+Processing batch 332/2854
+Written 1992/17122 entries to file
+Processing batch 333/2854
+Written 1998/17122 entries to file
+Processing batch 334/2854
+Written 2004/17122 entries to file
+Processing batch 335/2854
+Written 2010/17122 entries to file
+Processing batch 336/2854
+Written 2016/17122 entries to file
+Processing batch 337/2854
+Written 2022/17122 entries to file
+Processing batch 338/2854
+Written 2028/17122 entries to file
+Processing batch 339/2854
+Written 2034/17122 entries to file
+Processing batch 340/2854
+Written 2040/17122 entries to file
+Processing batch 341/2854
+Written 2046/17122 entries to file
+Processing batch 342/2854
+Written 2052/17122 entries to file
+Processing batch 343/2854
+Written 2058/17122 entries to file
+Processing batch 344/2854
+Written 2064/17122 entries to file
+Processing batch 345/2854
+Written 2070/17122 entries to file
+Processing batch 346/2854
+Written 2076/17122 entries to file
+Processing batch 347/2854
+Written 2082/17122 entries to file
+Processing batch 348/2854
+Written 2088/17122 entries to file
+Processing batch 349/2854
+Written 2094/17122 entries to file
+Processing batch 350/2854
+Written 2100/17122 entries to file
+Processing batch 351/2854
+Written 2106/17122 entries to file
+Processing batch 352/2854
+Written 2112/17122 entries to file
+Processing batch 353/2854
+Written 2118/17122 entries to file
+Processing batch 354/2854
+Written 2124/17122 entries to file
+Processing batch 355/2854
+Written 2130/17122 entries to file
+Processing batch 356/2854
+Written 2136/17122 entries to file
+Processing batch 357/2854
+Written 2142/17122 entries to file
+Processing batch 358/2854
+Written 2148/17122 entries to file
+Processing batch 359/2854
+Written 2154/17122 entries to file
+Processing batch 360/2854
+Written 2160/17122 entries to file
+Processing batch 361/2854
+Written 2166/17122 entries to file
+Processing batch 362/2854
+Written 2172/17122 entries to file
+Processing batch 363/2854
+Written 2178/17122 entries to file
+Processing batch 364/2854
+Written 2184/17122 entries to file
+Processing batch 365/2854
+Written 2190/17122 entries to file
+Processing batch 366/2854
+Written 2196/17122 entries to file
+Processing batch 367/2854
+Written 2202/17122 entries to file
+Processing batch 368/2854
+Written 2208/17122 entries to file
+Processing batch 369/2854
+Written 2214/17122 entries to file
+Processing batch 370/2854
+Written 2220/17122 entries to file
+Processing batch 371/2854
+Written 2226/17122 entries to file
+Processing batch 372/2854
+Written 2232/17122 entries to file
+Processing batch 373/2854
+Written 2238/17122 entries to file
+Processing batch 374/2854
+Written 2244/17122 entries to file
+Processing batch 375/2854
+Written 2250/17122 entries to file
+Processing batch 376/2854
+Written 2256/17122 entries to file
+Processing batch 377/2854
+Written 2262/17122 entries to file
+Processing batch 378/2854
+Written 2268/17122 entries to file
+Processing batch 379/2854
+Written 2274/17122 entries to file
+Processing batch 380/2854
+Written 2280/17122 entries to file
+Processing batch 381/2854
+Written 2286/17122 entries to file
+Processing batch 382/2854
+Written 2292/17122 entries to file
+Processing batch 383/2854
+Written 2298/17122 entries to file
+Processing batch 384/2854
+Written 2304/17122 entries to file
+Processing batch 385/2854
+Written 2310/17122 entries to file
+Processing batch 386/2854
+Written 2316/17122 entries to file
+Processing batch 387/2854
+Written 2322/17122 entries to file
+Processing batch 388/2854
+Written 2328/17122 entries to file
+Processing batch 389/2854
+Written 2334/17122 entries to file
+Processing batch 390/2854
+Written 2340/17122 entries to file
+Processing batch 391/2854
+Written 2346/17122 entries to file
+Processing batch 392/2854
+Written 2352/17122 entries to file
+Processing batch 393/2854
+Written 2358/17122 entries to file
+Processing batch 394/2854
+Written 2364/17122 entries to file
+Processing batch 395/2854
+Written 2370/17122 entries to file
+Processing batch 396/2854
+Written 2376/17122 entries to file
+Processing batch 397/2854
+Written 2382/17122 entries to file
+Processing batch 398/2854
+Written 2388/17122 entries to file
+Processing batch 399/2854
+Written 2394/17122 entries to file
+Processing batch 400/2854
+Written 2400/17122 entries to file
+Processing batch 401/2854
+Written 2406/17122 entries to file
+Processing batch 402/2854
+Written 2412/17122 entries to file
+Processing batch 403/2854
+Written 2418/17122 entries to file
+Processing batch 404/2854
+Written 2424/17122 entries to file
+Processing batch 405/2854
+Written 2430/17122 entries to file
+Processing batch 406/2854
+Written 2436/17122 entries to file
+Processing batch 407/2854
+Written 2442/17122 entries to file
+Processing batch 408/2854
+Written 2448/17122 entries to file
+Processing batch 409/2854
+Written 2454/17122 entries to file
+Processing batch 410/2854
+Written 2460/17122 entries to file
+Processing batch 411/2854
+Written 2466/17122 entries to file
+Processing batch 412/2854
+Written 2472/17122 entries to file
+Processing batch 413/2854
+Written 2478/17122 entries to file
+Processing batch 414/2854
+Written 2484/17122 entries to file
+Processing batch 415/2854
+Written 2490/17122 entries to file
+Processing batch 416/2854
+Written 2496/17122 entries to file
+Processing batch 417/2854
+Written 2502/17122 entries to file
+Processing batch 418/2854
+Written 2508/17122 entries to file
+Processing batch 419/2854
+Written 2514/17122 entries to file
+Processing batch 420/2854
+Written 2520/17122 entries to file
+Processing batch 421/2854
+Written 2526/17122 entries to file
+Processing batch 422/2854
+Written 2532/17122 entries to file
+Processing batch 423/2854
+Written 2538/17122 entries to file
+Processing batch 424/2854
+Written 2544/17122 entries to file
+Processing batch 425/2854
+Written 2550/17122 entries to file
+Processing batch 426/2854
+Written 2556/17122 entries to file
+Processing batch 427/2854
+Written 2562/17122 entries to file
+Processing batch 428/2854
+Written 2568/17122 entries to file
+Processing batch 429/2854
+Written 2574/17122 entries to file
+Processing batch 430/2854
+Written 2580/17122 entries to file
+Processing batch 431/2854
+Written 2586/17122 entries to file
+Processing batch 432/2854
+Written 2592/17122 entries to file
+Processing batch 433/2854
+Written 2598/17122 entries to file
+Processing batch 434/2854
+Written 2604/17122 entries to file
+Processing batch 435/2854
+Written 2610/17122 entries to file
+Processing batch 436/2854
+Written 2616/17122 entries to file
+Processing batch 437/2854
+Written 2622/17122 entries to file
+Processing batch 438/2854
+Written 2628/17122 entries to file
+Processing batch 439/2854
+Written 2634/17122 entries to file
+Processing batch 440/2854
+Written 2640/17122 entries to file
+Processing batch 441/2854
+Written 2646/17122 entries to file
+Processing batch 442/2854
+Written 2652/17122 entries to file
+Processing batch 443/2854
+Written 2658/17122 entries to file
+Processing batch 444/2854
+Written 2664/17122 entries to file
+Processing batch 445/2854
+Written 2670/17122 entries to file
+Processing batch 446/2854
+Written 2676/17122 entries to file
+Processing batch 447/2854
+Written 2682/17122 entries to file
+Processing batch 448/2854
+Written 2688/17122 entries to file
+Processing batch 449/2854
+Written 2694/17122 entries to file
+Processing batch 450/2854
+Written 2700/17122 entries to file
+Processing batch 451/2854
+Written 2706/17122 entries to file
+Processing batch 452/2854
+Written 2712/17122 entries to file
+Processing batch 453/2854
+Written 2718/17122 entries to file
+Processing batch 454/2854
+Written 2724/17122 entries to file
+Processing batch 455/2854
+Written 2730/17122 entries to file
+Processing batch 456/2854
+Written 2736/17122 entries to file
+Processing batch 457/2854
+Written 2742/17122 entries to file
+Processing batch 458/2854
+Written 2748/17122 entries to file
+Processing batch 459/2854
+Written 2754/17122 entries to file
+Processing batch 460/2854
+Written 2760/17122 entries to file
+Processing batch 461/2854
+Written 2766/17122 entries to file
+Processing batch 462/2854
+Written 2772/17122 entries to file
+Processing batch 463/2854
+Written 2778/17122 entries to file
+Processing batch 464/2854
+Written 2784/17122 entries to file
+Processing batch 465/2854
+Written 2790/17122 entries to file
+Processing batch 466/2854
+Written 2796/17122 entries to file
+Processing batch 467/2854
+Written 2802/17122 entries to file
+Processing batch 468/2854
+Written 2808/17122 entries to file
+Processing batch 469/2854
+Written 2814/17122 entries to file
+Processing batch 470/2854
+Written 2820/17122 entries to file
+Processing batch 471/2854
+Written 2826/17122 entries to file
+Processing batch 472/2854
+Written 2832/17122 entries to file
+Processing batch 473/2854
+Written 2838/17122 entries to file
+Processing batch 474/2854
+Written 2844/17122 entries to file
+Processing batch 475/2854
+Written 2850/17122 entries to file
+Processing batch 476/2854
+Written 2856/17122 entries to file
+Processing batch 477/2854
+Written 2862/17122 entries to file
+Processing batch 478/2854
+Written 2868/17122 entries to file
+Processing batch 479/2854
+Written 2874/17122 entries to file
+Processing batch 480/2854
+Written 2880/17122 entries to file
+Processing batch 481/2854
+Written 2886/17122 entries to file
+Processing batch 482/2854
+Written 2892/17122 entries to file
+Processing batch 483/2854
+Written 2898/17122 entries to file
+Processing batch 484/2854
+Written 2904/17122 entries to file
+Processing batch 485/2854
+Written 2910/17122 entries to file
+Processing batch 486/2854
+Written 2916/17122 entries to file
+Processing batch 487/2854
+Written 2922/17122 entries to file
+Processing batch 488/2854
+Written 2928/17122 entries to file
+Processing batch 489/2854
+Written 2934/17122 entries to file
+Processing batch 490/2854
+Written 2940/17122 entries to file
+Processing batch 491/2854
+Written 2946/17122 entries to file
+Processing batch 492/2854
+Written 2952/17122 entries to file
+Processing batch 493/2854
+Written 2958/17122 entries to file
+Processing batch 494/2854
+Written 2964/17122 entries to file
+Processing batch 495/2854
+Written 2970/17122 entries to file
+Processing batch 496/2854
+Written 2976/17122 entries to file
+Processing batch 497/2854
+Written 2982/17122 entries to file
+Processing batch 498/2854
+Written 2988/17122 entries to file
+Processing batch 499/2854
+Written 2994/17122 entries to file
+Processing batch 500/2854
+Written 3000/17122 entries to file
+Processing batch 501/2854
+Written 3006/17122 entries to file
+Processing batch 502/2854
+Written 3012/17122 entries to file
+Processing batch 503/2854
+Written 3018/17122 entries to file
+Processing batch 504/2854
+Written 3024/17122 entries to file
+Processing batch 505/2854
+Written 3030/17122 entries to file
+Processing batch 506/2854
+Written 3036/17122 entries to file
+Processing batch 507/2854
+Written 3042/17122 entries to file
+Processing batch 508/2854
+Written 3048/17122 entries to file
+Processing batch 509/2854
+Written 3054/17122 entries to file
+Processing batch 510/2854
+Written 3060/17122 entries to file
+Processing batch 511/2854
+Written 3066/17122 entries to file
+Processing batch 512/2854
+Written 3072/17122 entries to file
+Processing batch 513/2854
+Written 3078/17122 entries to file
+Processing batch 514/2854
+Written 3084/17122 entries to file
+Processing batch 515/2854
+Written 3090/17122 entries to file
+Processing batch 516/2854
+Written 3096/17122 entries to file
+Processing batch 517/2854
+Written 3102/17122 entries to file
+Processing batch 518/2854
+Written 3108/17122 entries to file
+Processing batch 519/2854
+Written 3114/17122 entries to file
+Processing batch 520/2854
+Written 3120/17122 entries to file
+Processing batch 521/2854
+Written 3126/17122 entries to file
+Processing batch 522/2854
+Written 3132/17122 entries to file
+Processing batch 523/2854
+Written 3138/17122 entries to file
+Processing batch 524/2854
+Written 3144/17122 entries to file
+Processing batch 525/2854
+Written 3150/17122 entries to file
+Processing batch 526/2854
+Written 3156/17122 entries to file
+Processing batch 527/2854
+Written 3162/17122 entries to file
+Processing batch 528/2854
+Written 3168/17122 entries to file
+Processing batch 529/2854
+Written 3174/17122 entries to file
+Processing batch 530/2854
+Written 3180/17122 entries to file
+Processing batch 531/2854
+Written 3186/17122 entries to file
+Processing batch 532/2854
+Written 3192/17122 entries to file
+Processing batch 533/2854
+Written 3198/17122 entries to file
+Processing batch 534/2854
+Written 3204/17122 entries to file
+Processing batch 535/2854
+Written 3210/17122 entries to file
+Processing batch 536/2854
+Written 3216/17122 entries to file
+Processing batch 537/2854
+Written 3222/17122 entries to file
+Processing batch 538/2854
+Written 3228/17122 entries to file
+Processing batch 539/2854
+Written 3234/17122 entries to file
+Processing batch 540/2854
+Written 3240/17122 entries to file
+Processing batch 541/2854
+Written 3246/17122 entries to file
+Processing batch 542/2854
+Written 3252/17122 entries to file
+Processing batch 543/2854
+Written 3258/17122 entries to file
+Processing batch 544/2854
+Written 3264/17122 entries to file
+Processing batch 545/2854
+Written 3270/17122 entries to file
+Processing batch 546/2854
+Written 3276/17122 entries to file
+Processing batch 547/2854
+Written 3282/17122 entries to file
+Processing batch 548/2854
+Written 3288/17122 entries to file
+Processing batch 549/2854
+Written 3294/17122 entries to file
+Processing batch 550/2854
+Written 3300/17122 entries to file
+Processing batch 551/2854
+Written 3306/17122 entries to file
+Processing batch 552/2854
+Written 3312/17122 entries to file
+Processing batch 553/2854
+Written 3318/17122 entries to file
+Processing batch 554/2854
+Written 3324/17122 entries to file
+Processing batch 555/2854
+Written 3330/17122 entries to file
+Processing batch 556/2854
+Written 3336/17122 entries to file
+Processing batch 557/2854
+Written 3342/17122 entries to file
+Processing batch 558/2854
+Written 3348/17122 entries to file
+Processing batch 559/2854
+Written 3354/17122 entries to file
+Processing batch 560/2854
+Written 3360/17122 entries to file
+Processing batch 561/2854
+Written 3366/17122 entries to file
+Processing batch 562/2854
+Written 3372/17122 entries to file
+Processing batch 563/2854
+Written 3378/17122 entries to file
+Processing batch 564/2854
+Written 3384/17122 entries to file
+Processing batch 565/2854
+Written 3390/17122 entries to file
+Processing batch 566/2854
+Written 3396/17122 entries to file
+Processing batch 567/2854
+Written 3402/17122 entries to file
+Processing batch 568/2854
+Written 3408/17122 entries to file
+Processing batch 569/2854
+Written 3414/17122 entries to file
+Processing batch 570/2854
+Written 3420/17122 entries to file
+Processing batch 571/2854
+Written 3426/17122 entries to file
+Processing batch 572/2854
+Written 3432/17122 entries to file
+Processing batch 573/2854
+Written 3438/17122 entries to file
+Processing batch 574/2854
+Written 3444/17122 entries to file
+Processing batch 575/2854
+Written 3450/17122 entries to file
+Processing batch 576/2854
+Written 3456/17122 entries to file
+Processing batch 577/2854
+Written 3462/17122 entries to file
+Processing batch 578/2854
+Written 3468/17122 entries to file
+Processing batch 579/2854
+Written 3474/17122 entries to file
+Processing batch 580/2854
+Written 3480/17122 entries to file
+Processing batch 581/2854
+Written 3486/17122 entries to file
+Processing batch 582/2854
+Written 3492/17122 entries to file
+Processing batch 583/2854
+Written 3498/17122 entries to file
+Processing batch 584/2854
+Written 3504/17122 entries to file
+Processing batch 585/2854
+Written 3510/17122 entries to file
+Processing batch 586/2854
+Written 3516/17122 entries to file
+Processing batch 587/2854
+Written 3522/17122 entries to file
+Processing batch 588/2854
+Written 3528/17122 entries to file
+Processing batch 589/2854
+Written 3534/17122 entries to file
+Processing batch 590/2854
+Written 3540/17122 entries to file
+Processing batch 591/2854
+Written 3546/17122 entries to file
+Processing batch 592/2854
+Written 3552/17122 entries to file
+Processing batch 593/2854
+Written 3558/17122 entries to file
+Processing batch 594/2854
+Written 3564/17122 entries to file
+Processing batch 595/2854
+Written 3570/17122 entries to file
+Processing batch 596/2854
+Written 3576/17122 entries to file
+Processing batch 597/2854
+Written 3582/17122 entries to file
+Processing batch 598/2854
+Written 3588/17122 entries to file
+Processing batch 599/2854
+Written 3594/17122 entries to file
+Processing batch 600/2854
+Written 3600/17122 entries to file
+Processing batch 601/2854
+Written 3606/17122 entries to file
+Processing batch 602/2854
+Written 3612/17122 entries to file
+Processing batch 603/2854
+Written 3618/17122 entries to file
+Processing batch 604/2854
+Written 3624/17122 entries to file
+Processing batch 605/2854
+Written 3630/17122 entries to file
+Processing batch 606/2854
+Written 3636/17122 entries to file
+Processing batch 607/2854
+Written 3642/17122 entries to file
+Processing batch 608/2854
+Written 3648/17122 entries to file
+Processing batch 609/2854
+Written 3654/17122 entries to file
+Processing batch 610/2854
+Written 3660/17122 entries to file
+Processing batch 611/2854
+Written 3666/17122 entries to file
+Processing batch 612/2854
+Written 3672/17122 entries to file
+Processing batch 613/2854
+Written 3678/17122 entries to file
+Processing batch 614/2854
+Written 3684/17122 entries to file
+Processing batch 615/2854
+Written 3690/17122 entries to file
+Processing batch 616/2854
+Written 3696/17122 entries to file
+Processing batch 617/2854
+Written 3702/17122 entries to file
+Processing batch 618/2854
+Written 3708/17122 entries to file
+Processing batch 619/2854
+Written 3714/17122 entries to file
+Processing batch 620/2854
+Written 3720/17122 entries to file
+Processing batch 621/2854
+Written 3726/17122 entries to file
+Processing batch 622/2854
+Written 3732/17122 entries to file
+Processing batch 623/2854
+Written 3738/17122 entries to file
+Processing batch 624/2854
+Written 3744/17122 entries to file
+Processing batch 625/2854
+Written 3750/17122 entries to file
+Processing batch 626/2854
+Written 3756/17122 entries to file
+Processing batch 627/2854
+Written 3762/17122 entries to file
+Processing batch 628/2854
+Written 3768/17122 entries to file
+Processing batch 629/2854
+Written 3774/17122 entries to file
+Processing batch 630/2854
+Written 3780/17122 entries to file
+Processing batch 631/2854
+Written 3786/17122 entries to file
+Processing batch 632/2854
+Written 3792/17122 entries to file
+Processing batch 633/2854
+Written 3798/17122 entries to file
+Processing batch 634/2854
+Written 3804/17122 entries to file
+Processing batch 635/2854
+Written 3810/17122 entries to file
+Processing batch 636/2854
+Written 3816/17122 entries to file
+Processing batch 637/2854
+Written 3822/17122 entries to file
+Processing batch 638/2854
+Written 3828/17122 entries to file
+Processing batch 639/2854
+Written 3834/17122 entries to file
+Processing batch 640/2854
+Written 3840/17122 entries to file
+Processing batch 641/2854
+Written 3846/17122 entries to file
+Processing batch 642/2854
+Written 3852/17122 entries to file
+Processing batch 643/2854
+Written 3858/17122 entries to file
+Processing batch 644/2854
+Written 3864/17122 entries to file
+Processing batch 645/2854
+Written 3870/17122 entries to file
+Processing batch 646/2854
+Written 3876/17122 entries to file
+Processing batch 647/2854
+Written 3882/17122 entries to file
+Processing batch 648/2854
+Written 3888/17122 entries to file
+Processing batch 649/2854
+Written 3894/17122 entries to file
+Processing batch 650/2854
+Written 3900/17122 entries to file
+Processing batch 651/2854
+Written 3906/17122 entries to file
+Processing batch 652/2854
+Written 3912/17122 entries to file
+Processing batch 653/2854
+Written 3918/17122 entries to file
+Processing batch 654/2854
+Written 3924/17122 entries to file
+Processing batch 655/2854
+Written 3930/17122 entries to file
+Processing batch 656/2854
+Written 3936/17122 entries to file
+Processing batch 657/2854
+Written 3942/17122 entries to file
+Processing batch 658/2854
+Written 3948/17122 entries to file
+Processing batch 659/2854
+Written 3954/17122 entries to file
+Processing batch 660/2854
+Written 3960/17122 entries to file
+Processing batch 661/2854
+Written 3966/17122 entries to file
+Processing batch 662/2854
+Written 3972/17122 entries to file
+Processing batch 663/2854
+Written 3978/17122 entries to file
+Processing batch 664/2854
+Written 3984/17122 entries to file
+Processing batch 665/2854
+Written 3990/17122 entries to file
+Processing batch 666/2854
+Written 3996/17122 entries to file
+Processing batch 667/2854
+Written 4002/17122 entries to file
+Processing batch 668/2854
+Written 4008/17122 entries to file
+Processing batch 669/2854
+Written 4014/17122 entries to file
+Processing batch 670/2854
+Written 4020/17122 entries to file
+Processing batch 671/2854
+Written 4026/17122 entries to file
+Processing batch 672/2854
+Written 4032/17122 entries to file
+Processing batch 673/2854
+Written 4038/17122 entries to file
+Processing batch 674/2854
+Written 4044/17122 entries to file
+Processing batch 675/2854
+Written 4050/17122 entries to file
+Processing batch 676/2854
+Written 4056/17122 entries to file
+Processing batch 677/2854
+Written 4062/17122 entries to file
+Processing batch 678/2854
+Written 4068/17122 entries to file
+Processing batch 679/2854
+Written 4074/17122 entries to file
+Processing batch 680/2854
+Written 4080/17122 entries to file
+Processing batch 681/2854
+Written 4086/17122 entries to file
+Processing batch 682/2854
+Written 4092/17122 entries to file
+Processing batch 683/2854
+Written 4098/17122 entries to file
+Processing batch 684/2854
+Written 4104/17122 entries to file
+Processing batch 685/2854
+Written 4110/17122 entries to file
+Processing batch 686/2854
+Written 4116/17122 entries to file
+Processing batch 687/2854
+Written 4122/17122 entries to file
+Processing batch 688/2854
+Written 4128/17122 entries to file
+Processing batch 689/2854
+Written 4134/17122 entries to file
+Processing batch 690/2854
+Written 4140/17122 entries to file
+Processing batch 691/2854
+Written 4146/17122 entries to file
+Processing batch 692/2854
+Written 4152/17122 entries to file
+Processing batch 693/2854
+Written 4158/17122 entries to file
+Processing batch 694/2854
+Written 4164/17122 entries to file
+Processing batch 695/2854
+Written 4170/17122 entries to file
+Processing batch 696/2854
+Written 4176/17122 entries to file
+Processing batch 697/2854
+Written 4182/17122 entries to file
+Processing batch 698/2854
+Written 4188/17122 entries to file
+Processing batch 699/2854
+Written 4194/17122 entries to file
+Processing batch 700/2854
+Written 4200/17122 entries to file
+Processing batch 701/2854
+Written 4206/17122 entries to file
+Processing batch 702/2854
+Written 4212/17122 entries to file
+Processing batch 703/2854
+Written 4218/17122 entries to file
+Processing batch 704/2854
+Written 4224/17122 entries to file
+Processing batch 705/2854
+Written 4230/17122 entries to file
+Processing batch 706/2854
+Written 4236/17122 entries to file
+Processing batch 707/2854
+Written 4242/17122 entries to file
+Processing batch 708/2854
+Written 4248/17122 entries to file
+Processing batch 709/2854
+Written 4254/17122 entries to file
+Processing batch 710/2854
+Written 4260/17122 entries to file
+Processing batch 711/2854
+Written 4266/17122 entries to file
+Processing batch 712/2854
+Written 4272/17122 entries to file
+Processing batch 713/2854
+Written 4278/17122 entries to file
+Processing batch 714/2854
+Written 4284/17122 entries to file
+Processing batch 715/2854
+Written 4290/17122 entries to file
+Processing batch 716/2854
+Written 4296/17122 entries to file
+Processing batch 717/2854
+Written 4302/17122 entries to file
+Processing batch 718/2854
+Written 4308/17122 entries to file
+Processing batch 719/2854
+Written 4314/17122 entries to file
+Processing batch 720/2854
+Written 4320/17122 entries to file
+Processing batch 721/2854
+Written 4326/17122 entries to file
+Processing batch 722/2854
+Written 4332/17122 entries to file
+Processing batch 723/2854
+Written 4338/17122 entries to file
+Processing batch 724/2854
+Written 4344/17122 entries to file
+Processing batch 725/2854
+Written 4350/17122 entries to file
+Processing batch 726/2854
+Written 4356/17122 entries to file
+Processing batch 727/2854
+Written 4362/17122 entries to file
+Processing batch 728/2854
+Written 4368/17122 entries to file
+Processing batch 729/2854
+Written 4374/17122 entries to file
+Processing batch 730/2854
+Written 4380/17122 entries to file
+Processing batch 731/2854
+Written 4386/17122 entries to file
+Processing batch 732/2854
+Written 4392/17122 entries to file
+Processing batch 733/2854
+Written 4398/17122 entries to file
+Processing batch 734/2854
+Written 4404/17122 entries to file
+Processing batch 735/2854
+Written 4410/17122 entries to file
+Processing batch 736/2854
+Written 4416/17122 entries to file
+Processing batch 737/2854
+Written 4422/17122 entries to file
+Processing batch 738/2854
+Written 4428/17122 entries to file
+Processing batch 739/2854
+Written 4434/17122 entries to file
+Processing batch 740/2854
+Written 4440/17122 entries to file
+Processing batch 741/2854
+Written 4446/17122 entries to file
+Processing batch 742/2854
+Written 4452/17122 entries to file
+Processing batch 743/2854
+Written 4458/17122 entries to file
+Processing batch 744/2854
+Written 4464/17122 entries to file
+Processing batch 745/2854
+Written 4470/17122 entries to file
+Processing batch 746/2854
+Written 4476/17122 entries to file
+Processing batch 747/2854
+Written 4482/17122 entries to file
+Processing batch 748/2854
+Written 4488/17122 entries to file
+Processing batch 749/2854
+Written 4494/17122 entries to file
+Processing batch 750/2854
+Written 4500/17122 entries to file
+Processing batch 751/2854
+Written 4506/17122 entries to file
+Processing batch 752/2854
+Written 4512/17122 entries to file
+Processing batch 753/2854
+Written 4518/17122 entries to file
+Processing batch 754/2854
+Written 4524/17122 entries to file
+Processing batch 755/2854
+Written 4530/17122 entries to file
+Processing batch 756/2854
+Written 4536/17122 entries to file
+Processing batch 757/2854
+Written 4542/17122 entries to file
+Processing batch 758/2854
+Written 4548/17122 entries to file
+Processing batch 759/2854
+Written 4554/17122 entries to file
+Processing batch 760/2854
+Written 4560/17122 entries to file
+Processing batch 761/2854
+Written 4566/17122 entries to file
+Processing batch 762/2854
+Written 4572/17122 entries to file
+Processing batch 763/2854
+Written 4578/17122 entries to file
+Processing batch 764/2854
+Written 4584/17122 entries to file
+Processing batch 765/2854
+Written 4590/17122 entries to file
+Processing batch 766/2854
+Written 4596/17122 entries to file
+Processing batch 767/2854
+Written 4602/17122 entries to file
+Processing batch 768/2854
+Written 4608/17122 entries to file
+Processing batch 769/2854
+Written 4614/17122 entries to file
+Processing batch 770/2854
+Written 4620/17122 entries to file
+Processing batch 771/2854
+Written 4626/17122 entries to file
+Processing batch 772/2854
+Written 4632/17122 entries to file
+Processing batch 773/2854
+Written 4638/17122 entries to file
+Processing batch 774/2854
+Written 4644/17122 entries to file
+Processing batch 775/2854
+Written 4650/17122 entries to file
+Processing batch 776/2854
+Written 4656/17122 entries to file
+Processing batch 777/2854
+Written 4662/17122 entries to file
+Processing batch 778/2854
+Written 4668/17122 entries to file
+Processing batch 779/2854
+Written 4674/17122 entries to file
+Processing batch 780/2854
+Written 4680/17122 entries to file
+Processing batch 781/2854
+Written 4686/17122 entries to file
+Processing batch 782/2854
+Written 4692/17122 entries to file
+Processing batch 783/2854
+Written 4698/17122 entries to file
+Processing batch 784/2854
+Written 4704/17122 entries to file
+Processing batch 785/2854
+Written 4710/17122 entries to file
+Processing batch 786/2854
+Written 4716/17122 entries to file
+Processing batch 787/2854
+Written 4722/17122 entries to file
+Processing batch 788/2854
+Written 4728/17122 entries to file
+Processing batch 789/2854
+Written 4734/17122 entries to file
+Processing batch 790/2854
+Written 4740/17122 entries to file
+Processing batch 791/2854
+Written 4746/17122 entries to file
+Processing batch 792/2854
+Written 4752/17122 entries to file
+Processing batch 793/2854
+Written 4758/17122 entries to file
+Processing batch 794/2854
+Written 4764/17122 entries to file
+Processing batch 795/2854
+Written 4770/17122 entries to file
+Processing batch 796/2854
+Written 4776/17122 entries to file
+Processing batch 797/2854
+Written 4782/17122 entries to file
+Processing batch 798/2854
+Written 4788/17122 entries to file
+Processing batch 799/2854
+Written 4794/17122 entries to file
+Processing batch 800/2854
+Written 4800/17122 entries to file
+Processing batch 801/2854
+Written 4806/17122 entries to file
+Processing batch 802/2854
+Written 4812/17122 entries to file
+Processing batch 803/2854
+Written 4818/17122 entries to file
+Processing batch 804/2854
+Written 4824/17122 entries to file
+Processing batch 805/2854
+Written 4830/17122 entries to file
+Processing batch 806/2854
+Written 4836/17122 entries to file
+Processing batch 807/2854
+Written 4842/17122 entries to file
+Processing batch 808/2854
+Written 4848/17122 entries to file
+Processing batch 809/2854
+Written 4854/17122 entries to file
+Processing batch 810/2854
+Written 4860/17122 entries to file
+Processing batch 811/2854
+Written 4866/17122 entries to file
+Processing batch 812/2854
+Written 4872/17122 entries to file
+Processing batch 813/2854
+Written 4878/17122 entries to file
+Processing batch 814/2854
+Written 4884/17122 entries to file
+Processing batch 815/2854
+Written 4890/17122 entries to file
+Processing batch 816/2854
+Written 4896/17122 entries to file
+Processing batch 817/2854
+Written 4902/17122 entries to file
+Processing batch 818/2854
+Written 4908/17122 entries to file
+Processing batch 819/2854
+Written 4914/17122 entries to file
+Processing batch 820/2854
+Written 4920/17122 entries to file
+Processing batch 821/2854
+Written 4926/17122 entries to file
+Processing batch 822/2854
+Written 4932/17122 entries to file
+Processing batch 823/2854
+Written 4938/17122 entries to file
+Processing batch 824/2854
+Written 4944/17122 entries to file
+Processing batch 825/2854
+Written 4950/17122 entries to file
+Processing batch 826/2854
+Written 4956/17122 entries to file
+Processing batch 827/2854
+Written 4962/17122 entries to file
+Processing batch 828/2854
+Written 4968/17122 entries to file
+Processing batch 829/2854
+Written 4974/17122 entries to file
+Processing batch 830/2854
+Written 4980/17122 entries to file
+Processing batch 831/2854
+Written 4986/17122 entries to file
+Processing batch 832/2854
+Written 4992/17122 entries to file
+Processing batch 833/2854
+Written 4998/17122 entries to file
+Processing batch 834/2854
+Written 5004/17122 entries to file
+Processing batch 835/2854
+Written 5010/17122 entries to file
+Processing batch 836/2854
+Written 5016/17122 entries to file
+Processing batch 837/2854
+Written 5022/17122 entries to file
+Processing batch 838/2854
+Written 5028/17122 entries to file
+Processing batch 839/2854
+Written 5034/17122 entries to file
+Processing batch 840/2854
+Written 5040/17122 entries to file
+Processing batch 841/2854
+Written 5046/17122 entries to file
+Processing batch 842/2854
+Written 5052/17122 entries to file
+Processing batch 843/2854
+Written 5058/17122 entries to file
+Processing batch 844/2854
+Written 5064/17122 entries to file
+Processing batch 845/2854
+Written 5070/17122 entries to file
+Processing batch 846/2854
+Written 5076/17122 entries to file
+Processing batch 847/2854
+Written 5082/17122 entries to file
+Processing batch 848/2854
+Written 5088/17122 entries to file
+Processing batch 849/2854
+Written 5094/17122 entries to file
+Processing batch 850/2854
+Written 5100/17122 entries to file
+Processing batch 851/2854
+Written 5106/17122 entries to file
+Processing batch 852/2854
+Written 5112/17122 entries to file
+Processing batch 853/2854
+Written 5118/17122 entries to file
+Processing batch 854/2854
+Written 5124/17122 entries to file
+Processing batch 855/2854
+Written 5130/17122 entries to file
+Processing batch 856/2854
+Written 5136/17122 entries to file
+Processing batch 857/2854
+Written 5142/17122 entries to file
+Processing batch 858/2854
+Written 5148/17122 entries to file
+Processing batch 859/2854
+Written 5154/17122 entries to file
+Processing batch 860/2854
+Written 5160/17122 entries to file
+Processing batch 861/2854
+Written 5166/17122 entries to file
+Processing batch 862/2854
+Written 5172/17122 entries to file
+Processing batch 863/2854
+Written 5178/17122 entries to file
+Processing batch 864/2854
+Written 5184/17122 entries to file
+Processing batch 865/2854
+Written 5190/17122 entries to file
+Processing batch 866/2854
+Written 5196/17122 entries to file
+Processing batch 867/2854
+Written 5202/17122 entries to file
+Processing batch 868/2854
+Written 5208/17122 entries to file
+Processing batch 869/2854
+Written 5214/17122 entries to file
+Processing batch 870/2854
+Written 5220/17122 entries to file
+Processing batch 871/2854
+Written 5226/17122 entries to file
+Processing batch 872/2854
+Written 5232/17122 entries to file
+Processing batch 873/2854
+Written 5238/17122 entries to file
+Processing batch 874/2854
+Written 5244/17122 entries to file
+Processing batch 875/2854
+Written 5250/17122 entries to file
+Processing batch 876/2854
+Written 5256/17122 entries to file
+Processing batch 877/2854
+Written 5262/17122 entries to file
+Processing batch 878/2854
+Written 5268/17122 entries to file
+Processing batch 879/2854
+Written 5274/17122 entries to file
+Processing batch 880/2854
+Written 5280/17122 entries to file
+Processing batch 881/2854
+Written 5286/17122 entries to file
+Processing batch 882/2854
+Written 5292/17122 entries to file
+Processing batch 883/2854
+Written 5298/17122 entries to file
+Processing batch 884/2854
+Written 5304/17122 entries to file
+Processing batch 885/2854
+Written 5310/17122 entries to file
+Processing batch 886/2854
+Written 5316/17122 entries to file
+Processing batch 887/2854
+Written 5322/17122 entries to file
+Processing batch 888/2854
+Written 5328/17122 entries to file
+Processing batch 889/2854
+Written 5334/17122 entries to file
+Processing batch 890/2854
+Written 5340/17122 entries to file
+Processing batch 891/2854
+Written 5346/17122 entries to file
+Processing batch 892/2854
+Written 5352/17122 entries to file
+Processing batch 893/2854
+Written 5358/17122 entries to file
+Processing batch 894/2854
+Written 5364/17122 entries to file
+Processing batch 895/2854
+Written 5370/17122 entries to file
+Processing batch 896/2854
+Written 5376/17122 entries to file
+Processing batch 897/2854
+Written 5382/17122 entries to file
+Processing batch 898/2854
+Written 5388/17122 entries to file
+Processing batch 899/2854
+Written 5394/17122 entries to file
+Processing batch 900/2854
+Written 5400/17122 entries to file
+Processing batch 901/2854
+Written 5406/17122 entries to file
+Processing batch 902/2854
+Written 5412/17122 entries to file
+Processing batch 903/2854
+Written 5418/17122 entries to file
+Processing batch 904/2854
+Written 5424/17122 entries to file
+Processing batch 905/2854
+Written 5430/17122 entries to file
+Processing batch 906/2854
+Written 5436/17122 entries to file
+Processing batch 907/2854
+Written 5442/17122 entries to file
+Processing batch 908/2854
+Written 5448/17122 entries to file
+Processing batch 909/2854
+Written 5454/17122 entries to file
+Processing batch 910/2854
+Written 5460/17122 entries to file
+Processing batch 911/2854
+Written 5466/17122 entries to file
+Processing batch 912/2854
+Written 5472/17122 entries to file
+Processing batch 913/2854
+Written 5478/17122 entries to file
+Processing batch 914/2854
+Written 5484/17122 entries to file
+Processing batch 915/2854
+Written 5490/17122 entries to file
+Processing batch 916/2854
+Written 5496/17122 entries to file
+Processing batch 917/2854
+Written 5502/17122 entries to file
+Processing batch 918/2854
+Written 5508/17122 entries to file
+Processing batch 919/2854
+Written 5514/17122 entries to file
+Processing batch 920/2854
+Written 5520/17122 entries to file
+Processing batch 921/2854
+Written 5526/17122 entries to file
+Processing batch 922/2854
+Written 5532/17122 entries to file
+Processing batch 923/2854
+Written 5538/17122 entries to file
+Processing batch 924/2854
+Written 5544/17122 entries to file
+Processing batch 925/2854
+Written 5550/17122 entries to file
+Processing batch 926/2854
+Written 5556/17122 entries to file
+Processing batch 927/2854
+Written 5562/17122 entries to file
+Processing batch 928/2854
+Written 5568/17122 entries to file
+Processing batch 929/2854
+Written 5574/17122 entries to file
+Processing batch 930/2854
+Written 5580/17122 entries to file
+Processing batch 931/2854
+Written 5586/17122 entries to file
+Processing batch 932/2854
+Written 5592/17122 entries to file
+Processing batch 933/2854
+Written 5598/17122 entries to file
+Processing batch 934/2854
+Written 5604/17122 entries to file
+Processing batch 935/2854
+Written 5610/17122 entries to file
+Processing batch 936/2854
+Written 5616/17122 entries to file
+Processing batch 937/2854
+Written 5622/17122 entries to file
+Processing batch 938/2854
+Written 5628/17122 entries to file
+Processing batch 939/2854
+Written 5634/17122 entries to file
+Processing batch 940/2854
+Written 5640/17122 entries to file
+Processing batch 941/2854
+Written 5646/17122 entries to file
+Processing batch 942/2854
+Written 5652/17122 entries to file
+Processing batch 943/2854
+Written 5658/17122 entries to file
+Processing batch 944/2854
+Written 5664/17122 entries to file
+Processing batch 945/2854
+Written 5670/17122 entries to file
+Processing batch 946/2854
+Written 5676/17122 entries to file
+Processing batch 947/2854
+Written 5682/17122 entries to file
+Processing batch 948/2854
+Written 5688/17122 entries to file
+Processing batch 949/2854
+Written 5694/17122 entries to file
+Processing batch 950/2854
+Written 5700/17122 entries to file
+Processing batch 951/2854
+Written 5706/17122 entries to file
+Processing batch 952/2854
+Written 5712/17122 entries to file
+Processing batch 953/2854
+Written 5718/17122 entries to file
+Processing batch 954/2854
+Written 5724/17122 entries to file
+Processing batch 955/2854
+Written 5730/17122 entries to file
+Processing batch 956/2854
+Written 5736/17122 entries to file
+Processing batch 957/2854
+Written 5742/17122 entries to file
+Processing batch 958/2854
+Written 5748/17122 entries to file
+Processing batch 959/2854
+Written 5754/17122 entries to file
+Processing batch 960/2854
+Written 5760/17122 entries to file
+Processing batch 961/2854
+Written 5766/17122 entries to file
+Processing batch 962/2854
+Written 5772/17122 entries to file
+Processing batch 963/2854
+Written 5778/17122 entries to file
+Processing batch 964/2854
+Written 5784/17122 entries to file
+Processing batch 965/2854
+Written 5790/17122 entries to file
+Processing batch 966/2854
+Written 5796/17122 entries to file
+Processing batch 967/2854
+Written 5802/17122 entries to file
+Processing batch 968/2854
+Written 5808/17122 entries to file
+Processing batch 969/2854
+Written 5814/17122 entries to file
+Processing batch 970/2854
+Written 5820/17122 entries to file
+Processing batch 971/2854
+Written 5826/17122 entries to file
+Processing batch 972/2854
+Written 5832/17122 entries to file
+Processing batch 973/2854
+Written 5838/17122 entries to file
+Processing batch 974/2854
+Written 5844/17122 entries to file
+Processing batch 975/2854
+Written 5850/17122 entries to file
+Processing batch 976/2854
+Written 5856/17122 entries to file
+Processing batch 977/2854
+Written 5862/17122 entries to file
+Processing batch 978/2854
+Written 5868/17122 entries to file
+Processing batch 979/2854
+Written 5874/17122 entries to file
+Processing batch 980/2854
+Written 5880/17122 entries to file
+Processing batch 981/2854
+Written 5886/17122 entries to file
+Processing batch 982/2854
+Written 5892/17122 entries to file
+Processing batch 983/2854
+Written 5898/17122 entries to file
+Processing batch 984/2854
+Written 5904/17122 entries to file
+Processing batch 985/2854
+Written 5910/17122 entries to file
+Processing batch 986/2854
+Written 5916/17122 entries to file
+Processing batch 987/2854
+Written 5922/17122 entries to file
+Processing batch 988/2854
+Written 5928/17122 entries to file
+Processing batch 989/2854
+Written 5934/17122 entries to file
+Processing batch 990/2854
+Written 5940/17122 entries to file
+Processing batch 991/2854
+Written 5946/17122 entries to file
+Processing batch 992/2854
+Written 5952/17122 entries to file
+Processing batch 993/2854
+Written 5958/17122 entries to file
+Processing batch 994/2854
+Written 5964/17122 entries to file
+Processing batch 995/2854
+Written 5970/17122 entries to file
+Processing batch 996/2854
+Written 5976/17122 entries to file
+Processing batch 997/2854
+Written 5982/17122 entries to file
+Processing batch 998/2854
+Written 5988/17122 entries to file
+Processing batch 999/2854
+Written 5994/17122 entries to file
+Processing batch 1000/2854
+Written 6000/17122 entries to file
+Processing batch 1001/2854
+Written 6006/17122 entries to file
+Processing batch 1002/2854
+Written 6012/17122 entries to file
+Processing batch 1003/2854
+Written 6018/17122 entries to file
+Processing batch 1004/2854
+Written 6024/17122 entries to file
+Processing batch 1005/2854
+Written 6030/17122 entries to file
+Processing batch 1006/2854
+Written 6036/17122 entries to file
+Processing batch 1007/2854
+Written 6042/17122 entries to file
+Processing batch 1008/2854
+Written 6048/17122 entries to file
+Processing batch 1009/2854
+Written 6054/17122 entries to file
+Processing batch 1010/2854
+Written 6060/17122 entries to file
+Processing batch 1011/2854
+Written 6066/17122 entries to file
+Processing batch 1012/2854
+Written 6072/17122 entries to file
+Processing batch 1013/2854
+Written 6078/17122 entries to file
+Processing batch 1014/2854
+Written 6084/17122 entries to file
+Processing batch 1015/2854
+Written 6090/17122 entries to file
+Processing batch 1016/2854
+Written 6096/17122 entries to file
+Processing batch 1017/2854
+Written 6102/17122 entries to file
+Processing batch 1018/2854
+Written 6108/17122 entries to file
+Processing batch 1019/2854
+Written 6114/17122 entries to file
+Processing batch 1020/2854
+Written 6120/17122 entries to file
+Processing batch 1021/2854
+Written 6126/17122 entries to file
+Processing batch 1022/2854
+Written 6132/17122 entries to file
+Processing batch 1023/2854
+Written 6138/17122 entries to file
+Processing batch 1024/2854
+Written 6144/17122 entries to file
+Processing batch 1025/2854
+Written 6150/17122 entries to file
+Processing batch 1026/2854
+Written 6156/17122 entries to file
+Processing batch 1027/2854
+Written 6162/17122 entries to file
+Processing batch 1028/2854
+Written 6168/17122 entries to file
+Processing batch 1029/2854
+Written 6174/17122 entries to file
+Processing batch 1030/2854
+Written 6180/17122 entries to file
+Processing batch 1031/2854
+Written 6186/17122 entries to file
+Processing batch 1032/2854
+Written 6192/17122 entries to file
+Processing batch 1033/2854
+Written 6198/17122 entries to file
+Processing batch 1034/2854
+Written 6204/17122 entries to file
+Processing batch 1035/2854
+Written 6210/17122 entries to file
+Processing batch 1036/2854
+Written 6216/17122 entries to file
+Processing batch 1037/2854
+Written 6222/17122 entries to file
+Processing batch 1038/2854
+Written 6228/17122 entries to file
+Processing batch 1039/2854
+Written 6234/17122 entries to file
+Processing batch 1040/2854
+Written 6240/17122 entries to file
+Processing batch 1041/2854
+Written 6246/17122 entries to file
+Processing batch 1042/2854
+Written 6252/17122 entries to file
+Processing batch 1043/2854
+Written 6258/17122 entries to file
+Processing batch 1044/2854
+Written 6264/17122 entries to file
+Processing batch 1045/2854
+Written 6270/17122 entries to file
+Processing batch 1046/2854
+Written 6276/17122 entries to file
+Processing batch 1047/2854
+Written 6282/17122 entries to file
+Processing batch 1048/2854
+Written 6288/17122 entries to file
+Processing batch 1049/2854
+Written 6294/17122 entries to file
+Processing batch 1050/2854
+Written 6300/17122 entries to file
+Processing batch 1051/2854
+Written 6306/17122 entries to file
+Processing batch 1052/2854
+Written 6312/17122 entries to file
+Processing batch 1053/2854
+Written 6318/17122 entries to file
+Processing batch 1054/2854
+Written 6324/17122 entries to file
+Processing batch 1055/2854
+Written 6330/17122 entries to file
+Processing batch 1056/2854
+Written 6336/17122 entries to file
+Processing batch 1057/2854
+Written 6342/17122 entries to file
+Processing batch 1058/2854
+Written 6348/17122 entries to file
+Processing batch 1059/2854
+Written 6354/17122 entries to file
+Processing batch 1060/2854
+Written 6360/17122 entries to file
+Processing batch 1061/2854
+Written 6366/17122 entries to file
+Processing batch 1062/2854
+Written 6372/17122 entries to file
+Processing batch 1063/2854
+Written 6378/17122 entries to file
+Processing batch 1064/2854
+Written 6384/17122 entries to file
+Processing batch 1065/2854
+Written 6390/17122 entries to file
+Processing batch 1066/2854
+Written 6396/17122 entries to file
+Processing batch 1067/2854
+Written 6402/17122 entries to file
+Processing batch 1068/2854
+Written 6408/17122 entries to file
+Processing batch 1069/2854
+Written 6414/17122 entries to file
+Processing batch 1070/2854
+Written 6420/17122 entries to file
+Processing batch 1071/2854
+Written 6426/17122 entries to file
+Processing batch 1072/2854
+Written 6432/17122 entries to file
+Processing batch 1073/2854
+Written 6438/17122 entries to file
+Processing batch 1074/2854
+Written 6444/17122 entries to file
+Processing batch 1075/2854
+Written 6450/17122 entries to file
+Processing batch 1076/2854
+Written 6456/17122 entries to file
+Processing batch 1077/2854
+Written 6462/17122 entries to file
+Processing batch 1078/2854
+Written 6468/17122 entries to file
+Processing batch 1079/2854
+Written 6474/17122 entries to file
+Processing batch 1080/2854
+Written 6480/17122 entries to file
+Processing batch 1081/2854
+Written 6486/17122 entries to file
+Processing batch 1082/2854
+Written 6492/17122 entries to file
+Processing batch 1083/2854
+Written 6498/17122 entries to file
+Processing batch 1084/2854
+Written 6504/17122 entries to file
+Processing batch 1085/2854
+Written 6510/17122 entries to file
+Processing batch 1086/2854
+Written 6516/17122 entries to file
+Processing batch 1087/2854
+Written 6522/17122 entries to file
+Processing batch 1088/2854
+Written 6528/17122 entries to file
+Processing batch 1089/2854
+Written 6534/17122 entries to file
+Processing batch 1090/2854
+Written 6540/17122 entries to file
+Processing batch 1091/2854
+Written 6546/17122 entries to file
+Processing batch 1092/2854
+Written 6552/17122 entries to file
+Processing batch 1093/2854
+Written 6558/17122 entries to file
+Processing batch 1094/2854
+Written 6564/17122 entries to file
+Processing batch 1095/2854
+Written 6570/17122 entries to file
+Processing batch 1096/2854
+Written 6576/17122 entries to file
+Processing batch 1097/2854
+Written 6582/17122 entries to file
+Processing batch 1098/2854
+Written 6588/17122 entries to file
+Processing batch 1099/2854
+Written 6594/17122 entries to file
+Processing batch 1100/2854
+Written 6600/17122 entries to file
+Processing batch 1101/2854
+Written 6606/17122 entries to file
+Processing batch 1102/2854
+Written 6612/17122 entries to file
+Processing batch 1103/2854
+Written 6618/17122 entries to file
+Processing batch 1104/2854
+Written 6624/17122 entries to file
+Processing batch 1105/2854
+Written 6630/17122 entries to file
+Processing batch 1106/2854
+Written 6636/17122 entries to file
+Processing batch 1107/2854
+Written 6642/17122 entries to file
+Processing batch 1108/2854
+Written 6648/17122 entries to file
+Processing batch 1109/2854
+Written 6654/17122 entries to file
+Processing batch 1110/2854
+Written 6660/17122 entries to file
+Processing batch 1111/2854
+Written 6666/17122 entries to file
+Processing batch 1112/2854
+Written 6672/17122 entries to file
+Processing batch 1113/2854
+Written 6678/17122 entries to file
+Processing batch 1114/2854
+Written 6684/17122 entries to file
+Processing batch 1115/2854
+Written 6690/17122 entries to file
+Processing batch 1116/2854
+Written 6696/17122 entries to file
+Processing batch 1117/2854
+Written 6702/17122 entries to file
+Processing batch 1118/2854
+Written 6708/17122 entries to file
+Processing batch 1119/2854
+Written 6714/17122 entries to file
+Processing batch 1120/2854
+Written 6720/17122 entries to file
+Processing batch 1121/2854
+Written 6726/17122 entries to file
+Processing batch 1122/2854
+Written 6732/17122 entries to file
+Processing batch 1123/2854
+Written 6738/17122 entries to file
+Processing batch 1124/2854
+Written 6744/17122 entries to file
+Processing batch 1125/2854
+Written 6750/17122 entries to file
+Processing batch 1126/2854
+Written 6756/17122 entries to file
+Processing batch 1127/2854
+Written 6762/17122 entries to file
+Processing batch 1128/2854
+Written 6768/17122 entries to file
+Processing batch 1129/2854
+Written 6774/17122 entries to file
+Processing batch 1130/2854
+Written 6780/17122 entries to file
+Processing batch 1131/2854
+Written 6786/17122 entries to file
+Processing batch 1132/2854
+Written 6792/17122 entries to file
+Processing batch 1133/2854
+Written 6798/17122 entries to file
+Processing batch 1134/2854
+Written 6804/17122 entries to file
+Processing batch 1135/2854
+Written 6810/17122 entries to file
+Processing batch 1136/2854
+Written 6816/17122 entries to file
+Processing batch 1137/2854
+Written 6822/17122 entries to file
+Processing batch 1138/2854
+Written 6828/17122 entries to file
+Processing batch 1139/2854
+Written 6834/17122 entries to file
+Processing batch 1140/2854
+Written 6840/17122 entries to file
+Processing batch 1141/2854
+Written 6846/17122 entries to file
+Processing batch 1142/2854
+Written 6852/17122 entries to file
+Processing batch 1143/2854
+Written 6858/17122 entries to file
+Processing batch 1144/2854
+Written 6864/17122 entries to file
+Processing batch 1145/2854
+Written 6870/17122 entries to file
+Processing batch 1146/2854
+Written 6876/17122 entries to file
+Processing batch 1147/2854
+Written 6882/17122 entries to file
+Processing batch 1148/2854
+Written 6888/17122 entries to file
+Processing batch 1149/2854
+Written 6894/17122 entries to file
+Processing batch 1150/2854
+Written 6900/17122 entries to file
+Processing batch 1151/2854
+Written 6906/17122 entries to file
+Processing batch 1152/2854
+Written 6912/17122 entries to file
+Processing batch 1153/2854
+Written 6918/17122 entries to file
+Processing batch 1154/2854
+Written 6924/17122 entries to file
+Processing batch 1155/2854
+Written 6930/17122 entries to file
+Processing batch 1156/2854
+Written 6936/17122 entries to file
+Processing batch 1157/2854
+Written 6942/17122 entries to file
+Processing batch 1158/2854
+Written 6948/17122 entries to file
+Processing batch 1159/2854
+Written 6954/17122 entries to file
+Processing batch 1160/2854
+Written 6960/17122 entries to file
+Processing batch 1161/2854
+Written 6966/17122 entries to file
+Processing batch 1162/2854
+Written 6972/17122 entries to file
+Processing batch 1163/2854
+Written 6978/17122 entries to file
+Processing batch 1164/2854
+Written 6984/17122 entries to file
+Processing batch 1165/2854
+Written 6990/17122 entries to file
+Processing batch 1166/2854
+Written 6996/17122 entries to file
+Processing batch 1167/2854
+Written 7002/17122 entries to file
+Processing batch 1168/2854
+Written 7008/17122 entries to file
+Processing batch 1169/2854
+Written 7014/17122 entries to file
+Processing batch 1170/2854
+Written 7020/17122 entries to file
+Processing batch 1171/2854
+Written 7026/17122 entries to file
+Processing batch 1172/2854
+Written 7032/17122 entries to file
+Processing batch 1173/2854
+Written 7038/17122 entries to file
+Processing batch 1174/2854
+Written 7044/17122 entries to file
+Processing batch 1175/2854
+Written 7050/17122 entries to file
+Processing batch 1176/2854
+Written 7056/17122 entries to file
+Processing batch 1177/2854
+Written 7062/17122 entries to file
+Processing batch 1178/2854
+Written 7068/17122 entries to file
+Processing batch 1179/2854
+Written 7074/17122 entries to file
+Processing batch 1180/2854
+Written 7080/17122 entries to file
+Processing batch 1181/2854
+Written 7086/17122 entries to file
+Processing batch 1182/2854
+Written 7092/17122 entries to file
+Processing batch 1183/2854
+Written 7098/17122 entries to file
+Processing batch 1184/2854
+Written 7104/17122 entries to file
+Processing batch 1185/2854
+Written 7110/17122 entries to file
+Processing batch 1186/2854
+Written 7116/17122 entries to file
+Processing batch 1187/2854
+Written 7122/17122 entries to file
+Processing batch 1188/2854
+Written 7128/17122 entries to file
+Processing batch 1189/2854
+Written 7134/17122 entries to file
+Processing batch 1190/2854
+Written 7140/17122 entries to file
+Processing batch 1191/2854
+Written 7146/17122 entries to file
+Processing batch 1192/2854
+Written 7152/17122 entries to file
+Processing batch 1193/2854
+Written 7158/17122 entries to file
+Processing batch 1194/2854
+Written 7164/17122 entries to file
+Processing batch 1195/2854
+Written 7170/17122 entries to file
+Processing batch 1196/2854
+Written 7176/17122 entries to file
+Processing batch 1197/2854
+Written 7182/17122 entries to file
+Processing batch 1198/2854
+Written 7188/17122 entries to file
+Processing batch 1199/2854
+Written 7194/17122 entries to file
+Processing batch 1200/2854
+Written 7200/17122 entries to file
+Processing batch 1201/2854
+Written 7206/17122 entries to file
+Processing batch 1202/2854
+Written 7212/17122 entries to file
+Processing batch 1203/2854
+Written 7218/17122 entries to file
+Processing batch 1204/2854
+Written 7224/17122 entries to file
+Processing batch 1205/2854
+Written 7230/17122 entries to file
+Processing batch 1206/2854
+Written 7236/17122 entries to file
+Processing batch 1207/2854
+Written 7242/17122 entries to file
+Processing batch 1208/2854
+Written 7248/17122 entries to file
+Processing batch 1209/2854
+Written 7254/17122 entries to file
+Processing batch 1210/2854
+Written 7260/17122 entries to file
+Processing batch 1211/2854
+Written 7266/17122 entries to file
+Processing batch 1212/2854
+Written 7272/17122 entries to file
+Processing batch 1213/2854
+Written 7278/17122 entries to file
+Processing batch 1214/2854
+Written 7284/17122 entries to file
+Processing batch 1215/2854
+Written 7290/17122 entries to file
+Processing batch 1216/2854
+Written 7296/17122 entries to file
+Processing batch 1217/2854
+Written 7302/17122 entries to file
+Processing batch 1218/2854
+Written 7308/17122 entries to file
+Processing batch 1219/2854
+Written 7314/17122 entries to file
+Processing batch 1220/2854
+Written 7320/17122 entries to file
+Processing batch 1221/2854
+Written 7326/17122 entries to file
+Processing batch 1222/2854
+Written 7332/17122 entries to file
+Processing batch 1223/2854
+Written 7338/17122 entries to file
+Processing batch 1224/2854
+Written 7344/17122 entries to file
+Processing batch 1225/2854
+Written 7350/17122 entries to file
+Processing batch 1226/2854
+Written 7356/17122 entries to file
+Processing batch 1227/2854
+Written 7362/17122 entries to file
+Processing batch 1228/2854
+Written 7368/17122 entries to file
+Processing batch 1229/2854
+Written 7374/17122 entries to file
+Processing batch 1230/2854
+Written 7380/17122 entries to file
+Processing batch 1231/2854
+Written 7386/17122 entries to file
+Processing batch 1232/2854
+Written 7392/17122 entries to file
+Processing batch 1233/2854
+Written 7398/17122 entries to file
+Processing batch 1234/2854
+Written 7404/17122 entries to file
+Processing batch 1235/2854
+Written 7410/17122 entries to file
+Processing batch 1236/2854
+Written 7416/17122 entries to file
+Processing batch 1237/2854
+Written 7422/17122 entries to file
+Processing batch 1238/2854
+Written 7428/17122 entries to file
+Processing batch 1239/2854
+Written 7434/17122 entries to file
+Processing batch 1240/2854
+Written 7440/17122 entries to file
+Processing batch 1241/2854
+Written 7446/17122 entries to file
+Processing batch 1242/2854
+Written 7452/17122 entries to file
+Processing batch 1243/2854
+Written 7458/17122 entries to file
+Processing batch 1244/2854
+Written 7464/17122 entries to file
+Processing batch 1245/2854
+Written 7470/17122 entries to file
+Processing batch 1246/2854
+Written 7476/17122 entries to file
+Processing batch 1247/2854
+Written 7482/17122 entries to file
+Processing batch 1248/2854
+Written 7488/17122 entries to file
+Processing batch 1249/2854
+Written 7494/17122 entries to file
+Processing batch 1250/2854
+Written 7500/17122 entries to file
+Processing batch 1251/2854
+Written 7506/17122 entries to file
+Processing batch 1252/2854
+Written 7512/17122 entries to file
+Processing batch 1253/2854
+Written 7518/17122 entries to file
+Processing batch 1254/2854
+Written 7524/17122 entries to file
+Processing batch 1255/2854
+Written 7530/17122 entries to file
+Processing batch 1256/2854
+Written 7536/17122 entries to file
+Processing batch 1257/2854
+Written 7542/17122 entries to file
+Processing batch 1258/2854
+Written 7548/17122 entries to file
+Processing batch 1259/2854
+Written 7554/17122 entries to file
+Processing batch 1260/2854
+Written 7560/17122 entries to file
+Processing batch 1261/2854
+Written 7566/17122 entries to file
+Processing batch 1262/2854
+Written 7572/17122 entries to file
+Processing batch 1263/2854
+Written 7578/17122 entries to file
+Processing batch 1264/2854
+Written 7584/17122 entries to file
+Processing batch 1265/2854
+Written 7590/17122 entries to file
+Processing batch 1266/2854
+Written 7596/17122 entries to file
+Processing batch 1267/2854
+Written 7602/17122 entries to file
+Processing batch 1268/2854
+Written 7608/17122 entries to file
+Processing batch 1269/2854
+Written 7614/17122 entries to file
+Processing batch 1270/2854
+Written 7620/17122 entries to file
+Processing batch 1271/2854
+Written 7626/17122 entries to file
+Processing batch 1272/2854
+Written 7632/17122 entries to file
+Processing batch 1273/2854
+Written 7638/17122 entries to file
+Processing batch 1274/2854
+Written 7644/17122 entries to file
+Processing batch 1275/2854
+Written 7650/17122 entries to file
+Processing batch 1276/2854
+Written 7656/17122 entries to file
+Processing batch 1277/2854
+Written 7662/17122 entries to file
+Processing batch 1278/2854
+Written 7668/17122 entries to file
+Processing batch 1279/2854
+Written 7674/17122 entries to file
+Processing batch 1280/2854
+Written 7680/17122 entries to file
+Processing batch 1281/2854
+Written 7686/17122 entries to file
+Processing batch 1282/2854
+Written 7692/17122 entries to file
+Processing batch 1283/2854
+Written 7698/17122 entries to file
+Processing batch 1284/2854
+Written 7704/17122 entries to file
+Processing batch 1285/2854
+Written 7710/17122 entries to file
+Processing batch 1286/2854
+Written 7716/17122 entries to file
+Processing batch 1287/2854
+Written 7722/17122 entries to file
+Processing batch 1288/2854
+Written 7728/17122 entries to file
+Processing batch 1289/2854
+Written 7734/17122 entries to file
+Processing batch 1290/2854
+Written 7740/17122 entries to file
+Processing batch 1291/2854
+Written 7746/17122 entries to file
+Processing batch 1292/2854
+Written 7752/17122 entries to file
+Processing batch 1293/2854
+Written 7758/17122 entries to file
+Processing batch 1294/2854
+Written 7764/17122 entries to file
+Processing batch 1295/2854
+Written 7770/17122 entries to file
+Processing batch 1296/2854
+Written 7776/17122 entries to file
+Processing batch 1297/2854
+Written 7782/17122 entries to file
+Processing batch 1298/2854
+Written 7788/17122 entries to file
+Processing batch 1299/2854
+Written 7794/17122 entries to file
+Processing batch 1300/2854
+Written 7800/17122 entries to file
+Processing batch 1301/2854
+Written 7806/17122 entries to file
+Processing batch 1302/2854
+Written 7812/17122 entries to file
+Processing batch 1303/2854
+Written 7818/17122 entries to file
+Processing batch 1304/2854
+Written 7824/17122 entries to file
+Processing batch 1305/2854
+Written 7830/17122 entries to file
+Processing batch 1306/2854
+Written 7836/17122 entries to file
+Processing batch 1307/2854
+Written 7842/17122 entries to file
+Processing batch 1308/2854
+Written 7848/17122 entries to file
+Processing batch 1309/2854
+Written 7854/17122 entries to file
+Processing batch 1310/2854
+Written 7860/17122 entries to file
+Processing batch 1311/2854
+Written 7866/17122 entries to file
+Processing batch 1312/2854
+Written 7872/17122 entries to file
+Processing batch 1313/2854
+Written 7878/17122 entries to file
+Processing batch 1314/2854
+Written 7884/17122 entries to file
+Processing batch 1315/2854
+Written 7890/17122 entries to file
+Processing batch 1316/2854
+Written 7896/17122 entries to file
+Processing batch 1317/2854
+Written 7902/17122 entries to file
+Processing batch 1318/2854
+Written 7908/17122 entries to file
+Processing batch 1319/2854
+Written 7914/17122 entries to file
+Processing batch 1320/2854
+Written 7920/17122 entries to file
+Processing batch 1321/2854
+Written 7926/17122 entries to file
+Processing batch 1322/2854
+Written 7932/17122 entries to file
+Processing batch 1323/2854
+Written 7938/17122 entries to file
+Processing batch 1324/2854
+Written 7944/17122 entries to file
+Processing batch 1325/2854
+Written 7950/17122 entries to file
+Processing batch 1326/2854
+Written 7956/17122 entries to file
+Processing batch 1327/2854
+Written 7962/17122 entries to file
+Processing batch 1328/2854
+Written 7968/17122 entries to file
+Processing batch 1329/2854
+Written 7974/17122 entries to file
+Processing batch 1330/2854
+Written 7980/17122 entries to file
+Processing batch 1331/2854
+Written 7986/17122 entries to file
+Processing batch 1332/2854
+Written 7992/17122 entries to file
+Processing batch 1333/2854
+Written 7998/17122 entries to file
+Processing batch 1334/2854
+Written 8004/17122 entries to file
+Processing batch 1335/2854
+Written 8010/17122 entries to file
+Processing batch 1336/2854
+Written 8016/17122 entries to file
+Processing batch 1337/2854
+Written 8022/17122 entries to file
+Processing batch 1338/2854
+Written 8028/17122 entries to file
+Processing batch 1339/2854
+Written 8034/17122 entries to file
+Processing batch 1340/2854
+Written 8040/17122 entries to file
+Processing batch 1341/2854
+Written 8046/17122 entries to file
+Processing batch 1342/2854
+Written 8052/17122 entries to file
+Processing batch 1343/2854
+Written 8058/17122 entries to file
+Processing batch 1344/2854
+Written 8064/17122 entries to file
+Processing batch 1345/2854
+Written 8070/17122 entries to file
+Processing batch 1346/2854
+Written 8076/17122 entries to file
+Processing batch 1347/2854
+Written 8082/17122 entries to file
+Processing batch 1348/2854
+Written 8088/17122 entries to file
+Processing batch 1349/2854
+Written 8094/17122 entries to file
+Processing batch 1350/2854
+Written 8100/17122 entries to file
+Processing batch 1351/2854
+Written 8106/17122 entries to file
+Processing batch 1352/2854
+Written 8112/17122 entries to file
+Processing batch 1353/2854
+Written 8118/17122 entries to file
+Processing batch 1354/2854
+Written 8124/17122 entries to file
+Processing batch 1355/2854
+Written 8130/17122 entries to file
+Processing batch 1356/2854
+Written 8136/17122 entries to file
+Processing batch 1357/2854
+Written 8142/17122 entries to file
+Processing batch 1358/2854
+Written 8148/17122 entries to file
+Processing batch 1359/2854
+Written 8154/17122 entries to file
+Processing batch 1360/2854
+Written 8160/17122 entries to file
+Processing batch 1361/2854
+Written 8166/17122 entries to file
+Processing batch 1362/2854
+Written 8172/17122 entries to file
+Processing batch 1363/2854
+Written 8178/17122 entries to file
+Processing batch 1364/2854
+Written 8184/17122 entries to file
+Processing batch 1365/2854
+Written 8190/17122 entries to file
+Processing batch 1366/2854
+Written 8196/17122 entries to file
+Processing batch 1367/2854
+Written 8202/17122 entries to file
+Processing batch 1368/2854
+Written 8208/17122 entries to file
+Processing batch 1369/2854
+Written 8214/17122 entries to file
+Processing batch 1370/2854
+Written 8220/17122 entries to file
+Processing batch 1371/2854
+Written 8226/17122 entries to file
+Processing batch 1372/2854
+Written 8232/17122 entries to file
+Processing batch 1373/2854
+Written 8238/17122 entries to file
+Processing batch 1374/2854
+Written 8244/17122 entries to file
+Processing batch 1375/2854
+Written 8250/17122 entries to file
+Processing batch 1376/2854
+Written 8256/17122 entries to file
+Processing batch 1377/2854
+Written 8262/17122 entries to file
+Processing batch 1378/2854
+Written 8268/17122 entries to file
+Processing batch 1379/2854
+Written 8274/17122 entries to file
+Processing batch 1380/2854
+Written 8280/17122 entries to file
+Processing batch 1381/2854
+Written 8286/17122 entries to file
+Processing batch 1382/2854
+Written 8292/17122 entries to file
+Processing batch 1383/2854
+Written 8298/17122 entries to file
+Processing batch 1384/2854
+Written 8304/17122 entries to file
+Processing batch 1385/2854
+Written 8310/17122 entries to file
+Processing batch 1386/2854
+Written 8316/17122 entries to file
+Processing batch 1387/2854
+Written 8322/17122 entries to file
+Processing batch 1388/2854
+Written 8328/17122 entries to file
+Processing batch 1389/2854
+Written 8334/17122 entries to file
+Processing batch 1390/2854
+Written 8340/17122 entries to file
+Processing batch 1391/2854
+Written 8346/17122 entries to file
+Processing batch 1392/2854
+Written 8352/17122 entries to file
+Processing batch 1393/2854
+Written 8358/17122 entries to file
+Processing batch 1394/2854
+Written 8364/17122 entries to file
+Processing batch 1395/2854
+Written 8370/17122 entries to file
+Processing batch 1396/2854
+Written 8376/17122 entries to file
+Processing batch 1397/2854
+Written 8382/17122 entries to file
+Processing batch 1398/2854
+Written 8388/17122 entries to file
+Processing batch 1399/2854
+Written 8394/17122 entries to file
+Processing batch 1400/2854
+Written 8400/17122 entries to file
+Processing batch 1401/2854
+Written 8406/17122 entries to file
+Processing batch 1402/2854
+Written 8412/17122 entries to file
+Processing batch 1403/2854
+Written 8418/17122 entries to file
+Processing batch 1404/2854
+Written 8424/17122 entries to file
+Processing batch 1405/2854
+Written 8430/17122 entries to file
+Processing batch 1406/2854
+Written 8436/17122 entries to file
+Processing batch 1407/2854
+Written 8442/17122 entries to file
+Processing batch 1408/2854
+Written 8448/17122 entries to file
+Processing batch 1409/2854
+Written 8454/17122 entries to file
+Processing batch 1410/2854
+Written 8460/17122 entries to file
+Processing batch 1411/2854
+Written 8466/17122 entries to file
+Processing batch 1412/2854
+Written 8472/17122 entries to file
+Processing batch 1413/2854
+Written 8478/17122 entries to file
+Processing batch 1414/2854
+Written 8484/17122 entries to file
+Processing batch 1415/2854
+Written 8490/17122 entries to file
+Processing batch 1416/2854
+Written 8496/17122 entries to file
+Processing batch 1417/2854
+Written 8502/17122 entries to file
+Processing batch 1418/2854
+Written 8508/17122 entries to file
+Processing batch 1419/2854
+Written 8514/17122 entries to file
+Processing batch 1420/2854
+Written 8520/17122 entries to file
+Processing batch 1421/2854
+Written 8526/17122 entries to file
+Processing batch 1422/2854
+Written 8532/17122 entries to file
+Processing batch 1423/2854
+Written 8538/17122 entries to file
+Processing batch 1424/2854
+Written 8544/17122 entries to file
+Processing batch 1425/2854
+Written 8550/17122 entries to file
+Processing batch 1426/2854
+Written 8556/17122 entries to file
+Processing batch 1427/2854
+Written 8562/17122 entries to file
+Processing batch 1428/2854
+Written 8568/17122 entries to file
+Processing batch 1429/2854
+Written 8574/17122 entries to file
+Processing batch 1430/2854
+Written 8580/17122 entries to file
+Processing batch 1431/2854
+Written 8586/17122 entries to file
+Processing batch 1432/2854
+Written 8592/17122 entries to file
+Processing batch 1433/2854
+Written 8598/17122 entries to file
+Processing batch 1434/2854
+Written 8604/17122 entries to file
+Processing batch 1435/2854
+Written 8610/17122 entries to file
+Processing batch 1436/2854
+Written 8616/17122 entries to file
+Processing batch 1437/2854
+Written 8622/17122 entries to file
+Processing batch 1438/2854
+Written 8628/17122 entries to file
+Processing batch 1439/2854
+Written 8634/17122 entries to file
+Processing batch 1440/2854
+Written 8640/17122 entries to file
+Processing batch 1441/2854
+Written 8646/17122 entries to file
+Processing batch 1442/2854
+Written 8652/17122 entries to file
+Processing batch 1443/2854
+Written 8658/17122 entries to file
+Processing batch 1444/2854
+Written 8664/17122 entries to file
+Processing batch 1445/2854
+Written 8670/17122 entries to file
+Processing batch 1446/2854
+Written 8676/17122 entries to file
+Processing batch 1447/2854
+Written 8682/17122 entries to file
+Processing batch 1448/2854
+Written 8688/17122 entries to file
+Processing batch 1449/2854
+Written 8694/17122 entries to file
+Processing batch 1450/2854
+Written 8700/17122 entries to file
+Processing batch 1451/2854
+Written 8706/17122 entries to file
+Processing batch 1452/2854
+Written 8712/17122 entries to file
+Processing batch 1453/2854
+Written 8718/17122 entries to file
+Processing batch 1454/2854
+Written 8724/17122 entries to file
+Processing batch 1455/2854
+Written 8730/17122 entries to file
+Processing batch 1456/2854
+Written 8736/17122 entries to file
+Processing batch 1457/2854
+Written 8742/17122 entries to file
+Processing batch 1458/2854
+Written 8748/17122 entries to file
+Processing batch 1459/2854
+Written 8754/17122 entries to file
+Processing batch 1460/2854
+Written 8760/17122 entries to file
+Processing batch 1461/2854
+Written 8766/17122 entries to file
+Processing batch 1462/2854
+Written 8772/17122 entries to file
+Processing batch 1463/2854
+Written 8778/17122 entries to file
+Processing batch 1464/2854
+Written 8784/17122 entries to file
+Processing batch 1465/2854
+Written 8790/17122 entries to file
+Processing batch 1466/2854
+Written 8796/17122 entries to file
+Processing batch 1467/2854
+Written 8802/17122 entries to file
+Processing batch 1468/2854
+Written 8808/17122 entries to file
+Processing batch 1469/2854
+Written 8814/17122 entries to file
+Processing batch 1470/2854
+Written 8820/17122 entries to file
+Processing batch 1471/2854
+Written 8826/17122 entries to file
+Processing batch 1472/2854
+Written 8832/17122 entries to file
+Processing batch 1473/2854
+Written 8838/17122 entries to file
+Processing batch 1474/2854
+Written 8844/17122 entries to file
+Processing batch 1475/2854
+Written 8850/17122 entries to file
+Processing batch 1476/2854
+Written 8856/17122 entries to file
+Processing batch 1477/2854
+Written 8862/17122 entries to file
+Processing batch 1478/2854
+Written 8868/17122 entries to file
+Processing batch 1479/2854
+Written 8874/17122 entries to file
+Processing batch 1480/2854
+Written 8880/17122 entries to file
+Processing batch 1481/2854
+Written 8886/17122 entries to file
+Processing batch 1482/2854
+Written 8892/17122 entries to file
+Processing batch 1483/2854
+Written 8898/17122 entries to file
+Processing batch 1484/2854
+Written 8904/17122 entries to file
+Processing batch 1485/2854
+Written 8910/17122 entries to file
+Processing batch 1486/2854
+Written 8916/17122 entries to file
+Processing batch 1487/2854
+Written 8922/17122 entries to file
+Processing batch 1488/2854
+Written 8928/17122 entries to file
+Processing batch 1489/2854
+Written 8934/17122 entries to file
+Processing batch 1490/2854
+Written 8940/17122 entries to file
+Processing batch 1491/2854
+Written 8946/17122 entries to file
+Processing batch 1492/2854
+Written 8952/17122 entries to file
+Processing batch 1493/2854
+Written 8958/17122 entries to file
+Processing batch 1494/2854
+Written 8964/17122 entries to file
+Processing batch 1495/2854
+Written 8970/17122 entries to file
+Processing batch 1496/2854
+Written 8976/17122 entries to file
+Processing batch 1497/2854
+Written 8982/17122 entries to file
+Processing batch 1498/2854
+Written 8988/17122 entries to file
+Processing batch 1499/2854
+Written 8994/17122 entries to file
+Processing batch 1500/2854
+Written 9000/17122 entries to file
+Processing batch 1501/2854
+Written 9006/17122 entries to file
+Processing batch 1502/2854
+Written 9012/17122 entries to file
+Processing batch 1503/2854
+Written 9018/17122 entries to file
+Processing batch 1504/2854
+Written 9024/17122 entries to file
+Processing batch 1505/2854
+Written 9030/17122 entries to file
+Processing batch 1506/2854
+Written 9036/17122 entries to file
+Processing batch 1507/2854
+Written 9042/17122 entries to file
+Processing batch 1508/2854
+Written 9048/17122 entries to file
+Processing batch 1509/2854
+Written 9054/17122 entries to file
+Processing batch 1510/2854
+Written 9060/17122 entries to file
+Processing batch 1511/2854
+Written 9066/17122 entries to file
+Processing batch 1512/2854
+Written 9072/17122 entries to file
+Processing batch 1513/2854
+Written 9078/17122 entries to file
+Processing batch 1514/2854
+Written 9084/17122 entries to file
+Processing batch 1515/2854
+Written 9090/17122 entries to file
+Processing batch 1516/2854
+Written 9096/17122 entries to file
+Processing batch 1517/2854
+Written 9102/17122 entries to file
+Processing batch 1518/2854
+Written 9108/17122 entries to file
+Processing batch 1519/2854
+Written 9114/17122 entries to file
+Processing batch 1520/2854
+Written 9120/17122 entries to file
+Processing batch 1521/2854
+Written 9126/17122 entries to file
+Processing batch 1522/2854
+Written 9132/17122 entries to file
+Processing batch 1523/2854
+Written 9138/17122 entries to file
+Processing batch 1524/2854
+Written 9144/17122 entries to file
+Processing batch 1525/2854
+Written 9150/17122 entries to file
+Processing batch 1526/2854
+Written 9156/17122 entries to file
+Processing batch 1527/2854
+Written 9162/17122 entries to file
+Processing batch 1528/2854
+Written 9168/17122 entries to file
+Processing batch 1529/2854
+Written 9174/17122 entries to file
+Processing batch 1530/2854
+Written 9180/17122 entries to file
+Processing batch 1531/2854
+Written 9186/17122 entries to file
+Processing batch 1532/2854
+Written 9192/17122 entries to file
+Processing batch 1533/2854
+Written 9198/17122 entries to file
+Processing batch 1534/2854
+Written 9204/17122 entries to file
+Processing batch 1535/2854
+Written 9210/17122 entries to file
+Processing batch 1536/2854
+Written 9216/17122 entries to file
+Processing batch 1537/2854
+Written 9222/17122 entries to file
+Processing batch 1538/2854
+Written 9228/17122 entries to file
+Processing batch 1539/2854
+Written 9234/17122 entries to file
+Processing batch 1540/2854
+Written 9240/17122 entries to file
+Processing batch 1541/2854
+Written 9246/17122 entries to file
+Processing batch 1542/2854
+Written 9252/17122 entries to file
+Processing batch 1543/2854
+Written 9258/17122 entries to file
+Processing batch 1544/2854
+Written 9264/17122 entries to file
+Processing batch 1545/2854
+Written 9270/17122 entries to file
+Processing batch 1546/2854
+Written 9276/17122 entries to file
+Processing batch 1547/2854
+Written 9282/17122 entries to file
+Processing batch 1548/2854
+Written 9288/17122 entries to file
+Processing batch 1549/2854
+Written 9294/17122 entries to file
+Processing batch 1550/2854
+Written 9300/17122 entries to file
+Processing batch 1551/2854
+Written 9306/17122 entries to file
+Processing batch 1552/2854
+Written 9312/17122 entries to file
+Processing batch 1553/2854
+Written 9318/17122 entries to file
+Processing batch 1554/2854
+Written 9324/17122 entries to file
+Processing batch 1555/2854
+Written 9330/17122 entries to file
+Processing batch 1556/2854
+Written 9336/17122 entries to file
+Processing batch 1557/2854
+Written 9342/17122 entries to file
+Processing batch 1558/2854
+Written 9348/17122 entries to file
+Processing batch 1559/2854
+Written 9354/17122 entries to file
+Processing batch 1560/2854
+Written 9360/17122 entries to file
+Processing batch 1561/2854
+Written 9366/17122 entries to file
+Processing batch 1562/2854
+Written 9372/17122 entries to file
+Processing batch 1563/2854
+Written 9378/17122 entries to file
+Processing batch 1564/2854
+Written 9384/17122 entries to file
+Processing batch 1565/2854
+Written 9390/17122 entries to file
+Processing batch 1566/2854
+Written 9396/17122 entries to file
+Processing batch 1567/2854
+Written 9402/17122 entries to file
+Processing batch 1568/2854
+Written 9408/17122 entries to file
+Processing batch 1569/2854
+Written 9414/17122 entries to file
+Processing batch 1570/2854
+Written 9420/17122 entries to file
+Processing batch 1571/2854
+Written 9426/17122 entries to file
+Processing batch 1572/2854
+Written 9432/17122 entries to file
+Processing batch 1573/2854
+Written 9438/17122 entries to file
+Processing batch 1574/2854
+Written 9444/17122 entries to file
+Processing batch 1575/2854
+Written 9450/17122 entries to file
+Processing batch 1576/2854
+Written 9456/17122 entries to file
+Processing batch 1577/2854
+Written 9462/17122 entries to file
+Processing batch 1578/2854
+Written 9468/17122 entries to file
+Processing batch 1579/2854
+Written 9474/17122 entries to file
+Processing batch 1580/2854
+Written 9480/17122 entries to file
+Processing batch 1581/2854
+Written 9486/17122 entries to file
+Processing batch 1582/2854
+Written 9492/17122 entries to file
+Processing batch 1583/2854
+Written 9498/17122 entries to file
+Processing batch 1584/2854
+Written 9504/17122 entries to file
+Processing batch 1585/2854
+Written 9510/17122 entries to file
+Processing batch 1586/2854
+Written 9516/17122 entries to file
+Processing batch 1587/2854
+Written 9522/17122 entries to file
+Processing batch 1588/2854
+Written 9528/17122 entries to file
+Processing batch 1589/2854
+Written 9534/17122 entries to file
+Processing batch 1590/2854
+Written 9540/17122 entries to file
+Processing batch 1591/2854
+Written 9546/17122 entries to file
+Processing batch 1592/2854
+Written 9552/17122 entries to file
+Processing batch 1593/2854
+Written 9558/17122 entries to file
+Processing batch 1594/2854
+Written 9564/17122 entries to file
+Processing batch 1595/2854
+Written 9570/17122 entries to file
+Processing batch 1596/2854
+Written 9576/17122 entries to file
+Processing batch 1597/2854
+Written 9582/17122 entries to file
+Processing batch 1598/2854
+Written 9588/17122 entries to file
+Processing batch 1599/2854
+Written 9594/17122 entries to file
+Processing batch 1600/2854
+Written 9600/17122 entries to file
+Processing batch 1601/2854
+Written 9606/17122 entries to file
+Processing batch 1602/2854
+Written 9612/17122 entries to file
+Processing batch 1603/2854
+Written 9618/17122 entries to file
+Processing batch 1604/2854
+Written 9624/17122 entries to file
+Processing batch 1605/2854
+Written 9630/17122 entries to file
+Processing batch 1606/2854
+Written 9636/17122 entries to file
+Processing batch 1607/2854
+Written 9642/17122 entries to file
+Processing batch 1608/2854
+Written 9648/17122 entries to file
+Processing batch 1609/2854
+Written 9654/17122 entries to file
+Processing batch 1610/2854
+Written 9660/17122 entries to file
+Processing batch 1611/2854
+Written 9666/17122 entries to file
+Processing batch 1612/2854
+Written 9672/17122 entries to file
+Processing batch 1613/2854
+Written 9678/17122 entries to file
+Processing batch 1614/2854
+Written 9684/17122 entries to file
+Processing batch 1615/2854
+Written 9690/17122 entries to file
+Processing batch 1616/2854
+Written 9696/17122 entries to file
+Processing batch 1617/2854
+Written 9702/17122 entries to file
+Processing batch 1618/2854
+Written 9708/17122 entries to file
+Processing batch 1619/2854
+Written 9714/17122 entries to file
+Processing batch 1620/2854
+Written 9720/17122 entries to file
+Processing batch 1621/2854
+Written 9726/17122 entries to file
+Processing batch 1622/2854
+Written 9732/17122 entries to file
+Processing batch 1623/2854
+Written 9738/17122 entries to file
+Processing batch 1624/2854
+Written 9744/17122 entries to file
+Processing batch 1625/2854
+Written 9750/17122 entries to file
+Processing batch 1626/2854
+Written 9756/17122 entries to file
+Processing batch 1627/2854
+Written 9762/17122 entries to file
+Processing batch 1628/2854
+Written 9768/17122 entries to file
+Processing batch 1629/2854
+Written 9774/17122 entries to file
+Processing batch 1630/2854
+Written 9780/17122 entries to file
+Processing batch 1631/2854
+Written 9786/17122 entries to file
+Processing batch 1632/2854
+Written 9792/17122 entries to file
+Processing batch 1633/2854
+Written 9798/17122 entries to file
+Processing batch 1634/2854
+Written 9804/17122 entries to file
+Processing batch 1635/2854
+Written 9810/17122 entries to file
+Processing batch 1636/2854
+Written 9816/17122 entries to file
+Processing batch 1637/2854
+Written 9822/17122 entries to file
+Processing batch 1638/2854
+Written 9828/17122 entries to file
+Processing batch 1639/2854
+Written 9834/17122 entries to file
+Processing batch 1640/2854
+Written 9840/17122 entries to file
+Processing batch 1641/2854
+Written 9846/17122 entries to file
+Processing batch 1642/2854
+Written 9852/17122 entries to file
+Processing batch 1643/2854
+Written 9858/17122 entries to file
+Processing batch 1644/2854
+Written 9864/17122 entries to file
+Processing batch 1645/2854
+Written 9870/17122 entries to file
+Processing batch 1646/2854
+Written 9876/17122 entries to file
+Processing batch 1647/2854
+Written 9882/17122 entries to file
+Processing batch 1648/2854
+Written 9888/17122 entries to file
+Processing batch 1649/2854
+Written 9894/17122 entries to file
+Processing batch 1650/2854
+Written 9900/17122 entries to file
+Processing batch 1651/2854
+Written 9906/17122 entries to file
+Processing batch 1652/2854
+Written 9912/17122 entries to file
+Processing batch 1653/2854
+Written 9918/17122 entries to file
+Processing batch 1654/2854
+Written 9924/17122 entries to file
+Processing batch 1655/2854
+Written 9930/17122 entries to file
+Processing batch 1656/2854
+Written 9936/17122 entries to file
+Processing batch 1657/2854
+Written 9942/17122 entries to file
+Processing batch 1658/2854
+Written 9948/17122 entries to file
+Processing batch 1659/2854
+Written 9954/17122 entries to file
+Processing batch 1660/2854
+Written 9960/17122 entries to file
+Processing batch 1661/2854
+Written 9966/17122 entries to file
+Processing batch 1662/2854
+Written 9972/17122 entries to file
+Processing batch 1663/2854
+Written 9978/17122 entries to file
+Processing batch 1664/2854
+Written 9984/17122 entries to file
+Processing batch 1665/2854
+Written 9990/17122 entries to file
+Processing batch 1666/2854
+Written 9996/17122 entries to file
+Processing batch 1667/2854
+Written 10002/17122 entries to file
+Processing batch 1668/2854
+Written 10008/17122 entries to file
+Processing batch 1669/2854
+Written 10014/17122 entries to file
+Processing batch 1670/2854
+Written 10020/17122 entries to file
+Processing batch 1671/2854
+Written 10026/17122 entries to file
+Processing batch 1672/2854
+Written 10032/17122 entries to file
+Processing batch 1673/2854
+Written 10038/17122 entries to file
+Processing batch 1674/2854
+Written 10044/17122 entries to file
+Processing batch 1675/2854
+Written 10050/17122 entries to file
+Processing batch 1676/2854
+Written 10056/17122 entries to file
+Processing batch 1677/2854
+Written 10062/17122 entries to file
+Processing batch 1678/2854
+Written 10068/17122 entries to file
+Processing batch 1679/2854
+Written 10074/17122 entries to file
+Processing batch 1680/2854
+Written 10080/17122 entries to file
+Processing batch 1681/2854
+Written 10086/17122 entries to file
+Processing batch 1682/2854
+Written 10092/17122 entries to file
+Processing batch 1683/2854
+Written 10098/17122 entries to file
+Processing batch 1684/2854
+Written 10104/17122 entries to file
+Processing batch 1685/2854
+Written 10110/17122 entries to file
+Processing batch 1686/2854
+Written 10116/17122 entries to file
+Processing batch 1687/2854
+Written 10122/17122 entries to file
+Processing batch 1688/2854
+Written 10128/17122 entries to file
+Processing batch 1689/2854
+Written 10134/17122 entries to file
+Processing batch 1690/2854
+Written 10140/17122 entries to file
+Processing batch 1691/2854
+Written 10146/17122 entries to file
+Processing batch 1692/2854
+Written 10152/17122 entries to file
+Processing batch 1693/2854
+Written 10158/17122 entries to file
+Processing batch 1694/2854
+Written 10164/17122 entries to file
+Processing batch 1695/2854
+Written 10170/17122 entries to file
+Processing batch 1696/2854
+Written 10176/17122 entries to file
+Processing batch 1697/2854
+Written 10182/17122 entries to file
+Processing batch 1698/2854
+Written 10188/17122 entries to file
+Processing batch 1699/2854
+Written 10194/17122 entries to file
+Processing batch 1700/2854
+Written 10200/17122 entries to file
+Processing batch 1701/2854
+Written 10206/17122 entries to file
+Processing batch 1702/2854
+Written 10212/17122 entries to file
+Processing batch 1703/2854
+Written 10218/17122 entries to file
+Processing batch 1704/2854
+Written 10224/17122 entries to file
+Processing batch 1705/2854
+Written 10230/17122 entries to file
+Processing batch 1706/2854
+Written 10236/17122 entries to file
+Processing batch 1707/2854
+Written 10242/17122 entries to file
+Processing batch 1708/2854
+Written 10248/17122 entries to file
+Processing batch 1709/2854
+Written 10254/17122 entries to file
+Processing batch 1710/2854
+Written 10260/17122 entries to file
+Processing batch 1711/2854
+Written 10266/17122 entries to file
+Processing batch 1712/2854
+Written 10272/17122 entries to file
+Processing batch 1713/2854
+Written 10278/17122 entries to file
+Processing batch 1714/2854
+Written 10284/17122 entries to file
+Processing batch 1715/2854
+Written 10290/17122 entries to file
+Processing batch 1716/2854
+Written 10296/17122 entries to file
+Processing batch 1717/2854
+Written 10302/17122 entries to file
+Processing batch 1718/2854
+Written 10308/17122 entries to file
+Processing batch 1719/2854
+Written 10314/17122 entries to file
+Processing batch 1720/2854
+Written 10320/17122 entries to file
+Processing batch 1721/2854
+Written 10326/17122 entries to file
+Processing batch 1722/2854
+Written 10332/17122 entries to file
+Processing batch 1723/2854
+Written 10338/17122 entries to file
+Processing batch 1724/2854
+Written 10344/17122 entries to file
+Processing batch 1725/2854
+Written 10350/17122 entries to file
+Processing batch 1726/2854
+Written 10356/17122 entries to file
+Processing batch 1727/2854
+Written 10362/17122 entries to file
+Processing batch 1728/2854
+Written 10368/17122 entries to file
+Processing batch 1729/2854
+Written 10374/17122 entries to file
+Processing batch 1730/2854
+Written 10380/17122 entries to file
+Processing batch 1731/2854
+Written 10386/17122 entries to file
+Processing batch 1732/2854
+Written 10392/17122 entries to file
+Processing batch 1733/2854
+Written 10398/17122 entries to file
+Processing batch 1734/2854
+Written 10404/17122 entries to file
+Processing batch 1735/2854
+Written 10410/17122 entries to file
+Processing batch 1736/2854
+Written 10416/17122 entries to file
+Processing batch 1737/2854
+Written 10422/17122 entries to file
+Processing batch 1738/2854
+Written 10428/17122 entries to file
+Processing batch 1739/2854
+Written 10434/17122 entries to file
+Processing batch 1740/2854
+Written 10440/17122 entries to file
+Processing batch 1741/2854
+Written 10446/17122 entries to file
+Processing batch 1742/2854
+Written 10452/17122 entries to file
+Processing batch 1743/2854
+Written 10458/17122 entries to file
+Processing batch 1744/2854
+Written 10464/17122 entries to file
+Processing batch 1745/2854
+Written 10470/17122 entries to file
+Processing batch 1746/2854
+Written 10476/17122 entries to file
+Processing batch 1747/2854
+Written 10482/17122 entries to file
+Processing batch 1748/2854
+Written 10488/17122 entries to file
+Processing batch 1749/2854
+Written 10494/17122 entries to file
+Processing batch 1750/2854
+Written 10500/17122 entries to file
+Processing batch 1751/2854
+Written 10506/17122 entries to file
+Processing batch 1752/2854
+Written 10512/17122 entries to file
+Processing batch 1753/2854
+Written 10518/17122 entries to file
+Processing batch 1754/2854
+Written 10524/17122 entries to file
+Processing batch 1755/2854
+Written 10530/17122 entries to file
+Processing batch 1756/2854
+Written 10536/17122 entries to file
+Processing batch 1757/2854
+Written 10542/17122 entries to file
+Processing batch 1758/2854
+Written 10548/17122 entries to file
+Processing batch 1759/2854
+Written 10554/17122 entries to file
+Processing batch 1760/2854
+Written 10560/17122 entries to file
+Processing batch 1761/2854
+Written 10566/17122 entries to file
+Processing batch 1762/2854
+Written 10572/17122 entries to file
+Processing batch 1763/2854
+Written 10578/17122 entries to file
+Processing batch 1764/2854
+Written 10584/17122 entries to file
+Processing batch 1765/2854
+Written 10590/17122 entries to file
+Processing batch 1766/2854
+Written 10596/17122 entries to file
+Processing batch 1767/2854
+Written 10602/17122 entries to file
+Processing batch 1768/2854
+Written 10608/17122 entries to file
+Processing batch 1769/2854
+Written 10614/17122 entries to file
+Processing batch 1770/2854
+Written 10620/17122 entries to file
+Processing batch 1771/2854
+Written 10626/17122 entries to file
+Processing batch 1772/2854
+Written 10632/17122 entries to file
+Processing batch 1773/2854
+Written 10638/17122 entries to file
+Processing batch 1774/2854
+Written 10644/17122 entries to file
+Processing batch 1775/2854
+Written 10650/17122 entries to file
+Processing batch 1776/2854
+Written 10656/17122 entries to file
+Processing batch 1777/2854
+Written 10662/17122 entries to file
+Processing batch 1778/2854
+Written 10668/17122 entries to file
+Processing batch 1779/2854
+Written 10674/17122 entries to file
+Processing batch 1780/2854
+Written 10680/17122 entries to file
+Processing batch 1781/2854
+Written 10686/17122 entries to file
+Processing batch 1782/2854
+Written 10692/17122 entries to file
+Processing batch 1783/2854
+Written 10698/17122 entries to file
+Processing batch 1784/2854
+Written 10704/17122 entries to file
+Processing batch 1785/2854
+Written 10710/17122 entries to file
+Processing batch 1786/2854
+Written 10716/17122 entries to file
+Processing batch 1787/2854
+Written 10722/17122 entries to file
+Processing batch 1788/2854
+Written 10728/17122 entries to file
+Processing batch 1789/2854
+Written 10734/17122 entries to file
+Processing batch 1790/2854
+Written 10740/17122 entries to file
+Processing batch 1791/2854
+Written 10746/17122 entries to file
+Processing batch 1792/2854
+Written 10752/17122 entries to file
+Processing batch 1793/2854
+Written 10758/17122 entries to file
+Processing batch 1794/2854
+Written 10764/17122 entries to file
+Processing batch 1795/2854
+Written 10770/17122 entries to file
+Processing batch 1796/2854
+Written 10776/17122 entries to file
+Processing batch 1797/2854
+Written 10782/17122 entries to file
+Processing batch 1798/2854
+Written 10788/17122 entries to file
+Processing batch 1799/2854
+Written 10794/17122 entries to file
+Processing batch 1800/2854
+Written 10800/17122 entries to file
+Processing batch 1801/2854
+Written 10806/17122 entries to file
+Processing batch 1802/2854
+Written 10812/17122 entries to file
+Processing batch 1803/2854
+Written 10818/17122 entries to file
+Processing batch 1804/2854
+Written 10824/17122 entries to file
+Processing batch 1805/2854
+Written 10830/17122 entries to file
+Processing batch 1806/2854
+Written 10836/17122 entries to file
+Processing batch 1807/2854
+Written 10842/17122 entries to file
+Processing batch 1808/2854
+Written 10848/17122 entries to file
+Processing batch 1809/2854
+Written 10854/17122 entries to file
+Processing batch 1810/2854
+Written 10860/17122 entries to file
+Processing batch 1811/2854
+Written 10866/17122 entries to file
+Processing batch 1812/2854
+Written 10872/17122 entries to file
+Processing batch 1813/2854
+Written 10878/17122 entries to file
+Processing batch 1814/2854
+Written 10884/17122 entries to file
+Processing batch 1815/2854
+Written 10890/17122 entries to file
+Processing batch 1816/2854
+Written 10896/17122 entries to file
+Processing batch 1817/2854
+Written 10902/17122 entries to file
+Processing batch 1818/2854
+Written 10908/17122 entries to file
+Processing batch 1819/2854
+Written 10914/17122 entries to file
+Processing batch 1820/2854
+Written 10920/17122 entries to file
+Processing batch 1821/2854
+Written 10926/17122 entries to file
+Processing batch 1822/2854
+Written 10932/17122 entries to file
+Processing batch 1823/2854
+Written 10938/17122 entries to file
+Processing batch 1824/2854
+Written 10944/17122 entries to file
+Processing batch 1825/2854
+Written 10950/17122 entries to file
+Processing batch 1826/2854
+Written 10956/17122 entries to file
+Processing batch 1827/2854
+Written 10962/17122 entries to file
+Processing batch 1828/2854
+Written 10968/17122 entries to file
+Processing batch 1829/2854
+Written 10974/17122 entries to file
+Processing batch 1830/2854
+Written 10980/17122 entries to file
+Processing batch 1831/2854
+Written 10986/17122 entries to file
+Processing batch 1832/2854
+Written 10992/17122 entries to file
+Processing batch 1833/2854
+Written 10998/17122 entries to file
+Processing batch 1834/2854
+Written 11004/17122 entries to file
+Processing batch 1835/2854
+Written 11010/17122 entries to file
+Processing batch 1836/2854
+Written 11016/17122 entries to file
+Processing batch 1837/2854
+Written 11022/17122 entries to file
+Processing batch 1838/2854
+Written 11028/17122 entries to file
+Processing batch 1839/2854
+Written 11034/17122 entries to file
+Processing batch 1840/2854
+Written 11040/17122 entries to file
+Processing batch 1841/2854
+Written 11046/17122 entries to file
+Processing batch 1842/2854
+Written 11052/17122 entries to file
+Processing batch 1843/2854
+Written 11058/17122 entries to file
+Processing batch 1844/2854
+Written 11064/17122 entries to file
+Processing batch 1845/2854
+Written 11070/17122 entries to file
+Processing batch 1846/2854
+Written 11076/17122 entries to file
+Processing batch 1847/2854
+Written 11082/17122 entries to file
+Processing batch 1848/2854
+Written 11088/17122 entries to file
+Processing batch 1849/2854
+Written 11094/17122 entries to file
+Processing batch 1850/2854
+Written 11100/17122 entries to file
+Processing batch 1851/2854
+Written 11106/17122 entries to file
+Processing batch 1852/2854
+Written 11112/17122 entries to file
+Processing batch 1853/2854
+Written 11118/17122 entries to file
+Processing batch 1854/2854
+Written 11124/17122 entries to file
+Processing batch 1855/2854
+Written 11130/17122 entries to file
+Processing batch 1856/2854
+Written 11136/17122 entries to file
+Processing batch 1857/2854
+Written 11142/17122 entries to file
+Processing batch 1858/2854
+Written 11148/17122 entries to file
+Processing batch 1859/2854
+Written 11154/17122 entries to file
+Processing batch 1860/2854
+Written 11160/17122 entries to file
+Processing batch 1861/2854
+Written 11166/17122 entries to file
+Processing batch 1862/2854
+Written 11172/17122 entries to file
+Processing batch 1863/2854
+Written 11178/17122 entries to file
+Processing batch 1864/2854
+Written 11184/17122 entries to file
+Processing batch 1865/2854
+Written 11190/17122 entries to file
+Processing batch 1866/2854
+Written 11196/17122 entries to file
+Processing batch 1867/2854
+Written 11202/17122 entries to file
+Processing batch 1868/2854
+Written 11208/17122 entries to file
+Processing batch 1869/2854
+Written 11214/17122 entries to file
+Processing batch 1870/2854
+Written 11220/17122 entries to file
+Processing batch 1871/2854
+Written 11226/17122 entries to file
+Processing batch 1872/2854
+Written 11232/17122 entries to file
+Processing batch 1873/2854
+Written 11238/17122 entries to file
+Processing batch 1874/2854
+Written 11244/17122 entries to file
+Processing batch 1875/2854
+Written 11250/17122 entries to file
+Processing batch 1876/2854
+Written 11256/17122 entries to file
+Processing batch 1877/2854
+Written 11262/17122 entries to file
+Processing batch 1878/2854
+Written 11268/17122 entries to file
+Processing batch 1879/2854
+Written 11274/17122 entries to file
+Processing batch 1880/2854
+Written 11280/17122 entries to file
+Processing batch 1881/2854
+Written 11286/17122 entries to file
+Processing batch 1882/2854
+Written 11292/17122 entries to file
+Processing batch 1883/2854
+Written 11298/17122 entries to file
+Processing batch 1884/2854
+Written 11304/17122 entries to file
+Processing batch 1885/2854
+Written 11310/17122 entries to file
+Processing batch 1886/2854
+Written 11316/17122 entries to file
+Processing batch 1887/2854
+Written 11322/17122 entries to file
+Processing batch 1888/2854
+Written 11328/17122 entries to file
+Processing batch 1889/2854
+Written 11334/17122 entries to file
+Processing batch 1890/2854
+Written 11340/17122 entries to file
+Processing batch 1891/2854
+Written 11346/17122 entries to file
+Processing batch 1892/2854
+Written 11352/17122 entries to file
+Processing batch 1893/2854
+Written 11358/17122 entries to file
+Processing batch 1894/2854
+Written 11364/17122 entries to file
+Processing batch 1895/2854
+Written 11370/17122 entries to file
+Processing batch 1896/2854
+Written 11376/17122 entries to file
+Processing batch 1897/2854
+Written 11382/17122 entries to file
+Processing batch 1898/2854
+Written 11388/17122 entries to file
+Processing batch 1899/2854
+Written 11394/17122 entries to file
+Processing batch 1900/2854
+Written 11400/17122 entries to file
+Processing batch 1901/2854
+Written 11406/17122 entries to file
+Processing batch 1902/2854
+Written 11412/17122 entries to file
+Processing batch 1903/2854
+Written 11418/17122 entries to file
+Processing batch 1904/2854
+Written 11424/17122 entries to file
+Processing batch 1905/2854
+Written 11430/17122 entries to file
+Processing batch 1906/2854
+Written 11436/17122 entries to file
+Processing batch 1907/2854
+Written 11442/17122 entries to file
+Processing batch 1908/2854
+Written 11448/17122 entries to file
+Processing batch 1909/2854
+Written 11454/17122 entries to file
+Processing batch 1910/2854
+Written 11460/17122 entries to file
+Processing batch 1911/2854
+Written 11466/17122 entries to file
+Processing batch 1912/2854
+Written 11472/17122 entries to file
+Processing batch 1913/2854
+Written 11478/17122 entries to file
+Processing batch 1914/2854
+Written 11484/17122 entries to file
+Processing batch 1915/2854
+Written 11490/17122 entries to file
+Processing batch 1916/2854
+Written 11496/17122 entries to file
+Processing batch 1917/2854
+Written 11502/17122 entries to file
+Processing batch 1918/2854
+Written 11508/17122 entries to file
+Processing batch 1919/2854
+Written 11514/17122 entries to file
+Processing batch 1920/2854
+Written 11520/17122 entries to file
+Processing batch 1921/2854
+Written 11526/17122 entries to file
+Processing batch 1922/2854
+Written 11532/17122 entries to file
+Processing batch 1923/2854
+Written 11538/17122 entries to file
+Processing batch 1924/2854
+Written 11544/17122 entries to file
+Processing batch 1925/2854
+Written 11550/17122 entries to file
+Processing batch 1926/2854
+Written 11556/17122 entries to file
+Processing batch 1927/2854
+Written 11562/17122 entries to file
+Processing batch 1928/2854
+Written 11568/17122 entries to file
+Processing batch 1929/2854
+Written 11574/17122 entries to file
+Processing batch 1930/2854
+Written 11580/17122 entries to file
+Processing batch 1931/2854
+Written 11586/17122 entries to file
+Processing batch 1932/2854
+Written 11592/17122 entries to file
+Processing batch 1933/2854
+Written 11598/17122 entries to file
+Processing batch 1934/2854
+Written 11604/17122 entries to file
+Processing batch 1935/2854
+Written 11610/17122 entries to file
+Processing batch 1936/2854
+Written 11616/17122 entries to file
+Processing batch 1937/2854
+Written 11622/17122 entries to file
+Processing batch 1938/2854
+Written 11628/17122 entries to file
+Processing batch 1939/2854
+Written 11634/17122 entries to file
+Processing batch 1940/2854
+Written 11640/17122 entries to file
+Processing batch 1941/2854
+Written 11646/17122 entries to file
+Processing batch 1942/2854
+Written 11652/17122 entries to file
+Processing batch 1943/2854
+Written 11658/17122 entries to file
+Processing batch 1944/2854
+Written 11664/17122 entries to file
+Processing batch 1945/2854
+Written 11670/17122 entries to file
+Processing batch 1946/2854
+Written 11676/17122 entries to file
+Processing batch 1947/2854
+Written 11682/17122 entries to file
+Processing batch 1948/2854
+Written 11688/17122 entries to file
+Processing batch 1949/2854
+Written 11694/17122 entries to file
+Processing batch 1950/2854
+Written 11700/17122 entries to file
+Processing batch 1951/2854
+Written 11706/17122 entries to file
+Processing batch 1952/2854
+Written 11712/17122 entries to file
+Processing batch 1953/2854
+Written 11718/17122 entries to file
+Processing batch 1954/2854
+Written 11724/17122 entries to file
+Processing batch 1955/2854
+Written 11730/17122 entries to file
+Processing batch 1956/2854
+Written 11736/17122 entries to file
+Processing batch 1957/2854
+Written 11742/17122 entries to file
+Processing batch 1958/2854
+Written 11748/17122 entries to file
+Processing batch 1959/2854
+Written 11754/17122 entries to file
+Processing batch 1960/2854
+Written 11760/17122 entries to file
+Processing batch 1961/2854
+Written 11766/17122 entries to file
+Processing batch 1962/2854
+Written 11772/17122 entries to file
+Processing batch 1963/2854
+Written 11778/17122 entries to file
+Processing batch 1964/2854
+Written 11784/17122 entries to file
+Processing batch 1965/2854
+Written 11790/17122 entries to file
+Processing batch 1966/2854
+Written 11796/17122 entries to file
+Processing batch 1967/2854
+Written 11802/17122 entries to file
+Processing batch 1968/2854
+Written 11808/17122 entries to file
+Processing batch 1969/2854
+Written 11814/17122 entries to file
+Processing batch 1970/2854
+Written 11820/17122 entries to file
+Processing batch 1971/2854
+Written 11826/17122 entries to file
+Processing batch 1972/2854
+Written 11832/17122 entries to file
+Processing batch 1973/2854
+Written 11838/17122 entries to file
+Processing batch 1974/2854
+Written 11844/17122 entries to file
+Processing batch 1975/2854
+Written 11850/17122 entries to file
+Processing batch 1976/2854
+Written 11856/17122 entries to file
+Processing batch 1977/2854
+Written 11862/17122 entries to file
+Processing batch 1978/2854
+Written 11868/17122 entries to file
+Processing batch 1979/2854
+Written 11874/17122 entries to file
+Processing batch 1980/2854
+Written 11880/17122 entries to file
+Processing batch 1981/2854
+Written 11886/17122 entries to file
+Processing batch 1982/2854
+Written 11892/17122 entries to file
+Processing batch 1983/2854
+Written 11898/17122 entries to file
+Processing batch 1984/2854
+Written 11904/17122 entries to file
+Processing batch 1985/2854
+Written 11910/17122 entries to file
+Processing batch 1986/2854
+Written 11916/17122 entries to file
+Processing batch 1987/2854
+Written 11922/17122 entries to file
+Processing batch 1988/2854
+Written 11928/17122 entries to file
+Processing batch 1989/2854
+Written 11934/17122 entries to file
+Processing batch 1990/2854
+Written 11940/17122 entries to file
+Processing batch 1991/2854
+Written 11946/17122 entries to file
+Processing batch 1992/2854
+Written 11952/17122 entries to file
+Processing batch 1993/2854
+Written 11958/17122 entries to file
+Processing batch 1994/2854
+Written 11964/17122 entries to file
+Processing batch 1995/2854
+Written 11970/17122 entries to file
+Processing batch 1996/2854
+Written 11976/17122 entries to file
+Processing batch 1997/2854
+Written 11982/17122 entries to file
+Processing batch 1998/2854
+Written 11988/17122 entries to file
+Processing batch 1999/2854
+Written 11994/17122 entries to file
+Processing batch 2000/2854
+Written 12000/17122 entries to file
+Processing batch 2001/2854
+Written 12006/17122 entries to file
+Processing batch 2002/2854
+Written 12012/17122 entries to file
+Processing batch 2003/2854
+Written 12018/17122 entries to file
+Processing batch 2004/2854
+Written 12024/17122 entries to file
+Processing batch 2005/2854
+Written 12030/17122 entries to file
+Processing batch 2006/2854
+Written 12036/17122 entries to file
+Processing batch 2007/2854
+Written 12042/17122 entries to file
+Processing batch 2008/2854
+Written 12048/17122 entries to file
+Processing batch 2009/2854
+Written 12054/17122 entries to file
+Processing batch 2010/2854
+Written 12060/17122 entries to file
+Processing batch 2011/2854
+Written 12066/17122 entries to file
+Processing batch 2012/2854
+Written 12072/17122 entries to file
+Processing batch 2013/2854
+Written 12078/17122 entries to file
+Processing batch 2014/2854
+Written 12084/17122 entries to file
+Processing batch 2015/2854
+Written 12090/17122 entries to file
+Processing batch 2016/2854
+Written 12096/17122 entries to file
+Processing batch 2017/2854
+Written 12102/17122 entries to file
+Processing batch 2018/2854
+Written 12108/17122 entries to file
+Processing batch 2019/2854
+Written 12114/17122 entries to file
+Processing batch 2020/2854
+Written 12120/17122 entries to file
+Processing batch 2021/2854
+Written 12126/17122 entries to file
+Processing batch 2022/2854
+Written 12132/17122 entries to file
+Processing batch 2023/2854
+Written 12138/17122 entries to file
+Processing batch 2024/2854
+Written 12144/17122 entries to file
+Processing batch 2025/2854
+Written 12150/17122 entries to file
+Processing batch 2026/2854
+Written 12156/17122 entries to file
+Processing batch 2027/2854
+Written 12162/17122 entries to file
+Processing batch 2028/2854
+Written 12168/17122 entries to file
+Processing batch 2029/2854
+Written 12174/17122 entries to file
+Processing batch 2030/2854
+Written 12180/17122 entries to file
+Processing batch 2031/2854
+Written 12186/17122 entries to file
+Processing batch 2032/2854
+Written 12192/17122 entries to file
+Processing batch 2033/2854
+Written 12198/17122 entries to file
+Processing batch 2034/2854
+Written 12204/17122 entries to file
+Processing batch 2035/2854
+Written 12210/17122 entries to file
+Processing batch 2036/2854
+Written 12216/17122 entries to file
+Processing batch 2037/2854
+Written 12222/17122 entries to file
+Processing batch 2038/2854
+Written 12228/17122 entries to file
+Processing batch 2039/2854
+Written 12234/17122 entries to file
+Processing batch 2040/2854
+Written 12240/17122 entries to file
+Processing batch 2041/2854
+Written 12246/17122 entries to file
+Processing batch 2042/2854
+Written 12252/17122 entries to file
+Processing batch 2043/2854
+Written 12258/17122 entries to file
+Processing batch 2044/2854
+Written 12264/17122 entries to file
+Processing batch 2045/2854
+Written 12270/17122 entries to file
+Processing batch 2046/2854
+Written 12276/17122 entries to file
+Processing batch 2047/2854
+Written 12282/17122 entries to file
+Processing batch 2048/2854
+Written 12288/17122 entries to file
+Processing batch 2049/2854
+Written 12294/17122 entries to file
+Processing batch 2050/2854
+Written 12300/17122 entries to file
+Processing batch 2051/2854
+Written 12306/17122 entries to file
+Processing batch 2052/2854
+Written 12312/17122 entries to file
+Processing batch 2053/2854
+Written 12318/17122 entries to file
+Processing batch 2054/2854
+Written 12324/17122 entries to file
+Processing batch 2055/2854
+Written 12330/17122 entries to file
+Processing batch 2056/2854
+Written 12336/17122 entries to file
+Processing batch 2057/2854
+Written 12342/17122 entries to file
+Processing batch 2058/2854
+Written 12348/17122 entries to file
+Processing batch 2059/2854
+Written 12354/17122 entries to file
+Processing batch 2060/2854
+Written 12360/17122 entries to file
+Processing batch 2061/2854
+Written 12366/17122 entries to file
+Processing batch 2062/2854
+Written 12372/17122 entries to file
+Processing batch 2063/2854
+Written 12378/17122 entries to file
+Processing batch 2064/2854
+Written 12384/17122 entries to file
+Processing batch 2065/2854
+Written 12390/17122 entries to file
+Processing batch 2066/2854
+Written 12396/17122 entries to file
+Processing batch 2067/2854
+Written 12402/17122 entries to file
+Processing batch 2068/2854
+Written 12408/17122 entries to file
+Processing batch 2069/2854
+Written 12414/17122 entries to file
+Processing batch 2070/2854
+Written 12420/17122 entries to file
+Processing batch 2071/2854
+Written 12426/17122 entries to file
+Processing batch 2072/2854
+Written 12432/17122 entries to file
+Processing batch 2073/2854
+Written 12438/17122 entries to file
+Processing batch 2074/2854
+Written 12444/17122 entries to file
+Processing batch 2075/2854
+Written 12450/17122 entries to file
+Processing batch 2076/2854
+Written 12456/17122 entries to file
+Processing batch 2077/2854
+Written 12462/17122 entries to file
+Processing batch 2078/2854
+Written 12468/17122 entries to file
+Processing batch 2079/2854
+Written 12474/17122 entries to file
+Processing batch 2080/2854
+Written 12480/17122 entries to file
+Processing batch 2081/2854
+Written 12486/17122 entries to file
+Processing batch 2082/2854
+Written 12492/17122 entries to file
+Processing batch 2083/2854
+Written 12498/17122 entries to file
+Processing batch 2084/2854
+Written 12504/17122 entries to file
+Processing batch 2085/2854
+Written 12510/17122 entries to file
+Processing batch 2086/2854
+Written 12516/17122 entries to file
+Processing batch 2087/2854
+Written 12522/17122 entries to file
+Processing batch 2088/2854
+Written 12528/17122 entries to file
+Processing batch 2089/2854
+Written 12534/17122 entries to file
+Processing batch 2090/2854
+Written 12540/17122 entries to file
+Processing batch 2091/2854
+Written 12546/17122 entries to file
+Processing batch 2092/2854
+Written 12552/17122 entries to file
+Processing batch 2093/2854
+Written 12558/17122 entries to file
+Processing batch 2094/2854
+Written 12564/17122 entries to file
+Processing batch 2095/2854
+Written 12570/17122 entries to file
+Processing batch 2096/2854
+Written 12576/17122 entries to file
+Processing batch 2097/2854
+Written 12582/17122 entries to file
+Processing batch 2098/2854
+Written 12588/17122 entries to file
+Processing batch 2099/2854
+Written 12594/17122 entries to file
+Processing batch 2100/2854
+Written 12600/17122 entries to file
+Processing batch 2101/2854
+Written 12606/17122 entries to file
+Processing batch 2102/2854
+Written 12612/17122 entries to file
+Processing batch 2103/2854
+Written 12618/17122 entries to file
+Processing batch 2104/2854
+Written 12624/17122 entries to file
+Processing batch 2105/2854
+Written 12630/17122 entries to file
+Processing batch 2106/2854
+Written 12636/17122 entries to file
+Processing batch 2107/2854
+Written 12642/17122 entries to file
+Processing batch 2108/2854
+Written 12648/17122 entries to file
+Processing batch 2109/2854
+Written 12654/17122 entries to file
+Processing batch 2110/2854
+Written 12660/17122 entries to file
+Processing batch 2111/2854
+Written 12666/17122 entries to file
+Processing batch 2112/2854
+Written 12672/17122 entries to file
+Processing batch 2113/2854
+Written 12678/17122 entries to file
+Processing batch 2114/2854
+Written 12684/17122 entries to file
+Processing batch 2115/2854
+Written 12690/17122 entries to file
+Processing batch 2116/2854
+Written 12696/17122 entries to file
+Processing batch 2117/2854
+Written 12702/17122 entries to file
+Processing batch 2118/2854
+Written 12708/17122 entries to file
+Processing batch 2119/2854
+Written 12714/17122 entries to file
+Processing batch 2120/2854
+Written 12720/17122 entries to file
+Processing batch 2121/2854
+Written 12726/17122 entries to file
+Processing batch 2122/2854
+Written 12732/17122 entries to file
+Processing batch 2123/2854
+Written 12738/17122 entries to file
+Processing batch 2124/2854
+Written 12744/17122 entries to file
+Processing batch 2125/2854
+Written 12750/17122 entries to file
+Processing batch 2126/2854
+Written 12756/17122 entries to file
+Processing batch 2127/2854
+Written 12762/17122 entries to file
+Processing batch 2128/2854
+Written 12768/17122 entries to file
+Processing batch 2129/2854
+Written 12774/17122 entries to file
+Processing batch 2130/2854
+Written 12780/17122 entries to file
+Processing batch 2131/2854
+Written 12786/17122 entries to file
+Processing batch 2132/2854
+Written 12792/17122 entries to file
+Processing batch 2133/2854
+Written 12798/17122 entries to file
+Processing batch 2134/2854
+Written 12804/17122 entries to file
+Processing batch 2135/2854
+Written 12810/17122 entries to file
+Processing batch 2136/2854
+Written 12816/17122 entries to file
+Processing batch 2137/2854
+Written 12822/17122 entries to file
+Processing batch 2138/2854
+Written 12828/17122 entries to file
+Processing batch 2139/2854
+Written 12834/17122 entries to file
+Processing batch 2140/2854
+Written 12840/17122 entries to file
+Processing batch 2141/2854
+Written 12846/17122 entries to file
+Processing batch 2142/2854
+Written 12852/17122 entries to file
+Processing batch 2143/2854
+Written 12858/17122 entries to file
+Processing batch 2144/2854
+Written 12864/17122 entries to file
+Processing batch 2145/2854
+Written 12870/17122 entries to file
+Processing batch 2146/2854
+Written 12876/17122 entries to file
+Processing batch 2147/2854
+Written 12882/17122 entries to file
+Processing batch 2148/2854
+Written 12888/17122 entries to file
+Processing batch 2149/2854
+Written 12894/17122 entries to file
+Processing batch 2150/2854
+Written 12900/17122 entries to file
+Processing batch 2151/2854
+Written 12906/17122 entries to file
+Processing batch 2152/2854
+Written 12912/17122 entries to file
+Processing batch 2153/2854
+Written 12918/17122 entries to file
+Processing batch 2154/2854
+Written 12924/17122 entries to file
+Processing batch 2155/2854
+Written 12930/17122 entries to file
+Processing batch 2156/2854
+Written 12936/17122 entries to file
+Processing batch 2157/2854
+Written 12942/17122 entries to file
+Processing batch 2158/2854
+Written 12948/17122 entries to file
+Processing batch 2159/2854
+Written 12954/17122 entries to file
+Processing batch 2160/2854
+Written 12960/17122 entries to file
+Processing batch 2161/2854
+Written 12966/17122 entries to file
+Processing batch 2162/2854
+Written 12972/17122 entries to file
+Processing batch 2163/2854
+Written 12978/17122 entries to file
+Processing batch 2164/2854
+Written 12984/17122 entries to file
+Processing batch 2165/2854
+Written 12990/17122 entries to file
+Processing batch 2166/2854
+Written 12996/17122 entries to file
+Processing batch 2167/2854
+Written 13002/17122 entries to file
+Processing batch 2168/2854
+Written 13008/17122 entries to file
+Processing batch 2169/2854
+Written 13014/17122 entries to file
+Processing batch 2170/2854
+Written 13020/17122 entries to file
+Processing batch 2171/2854
+Written 13026/17122 entries to file
+Processing batch 2172/2854
+Written 13032/17122 entries to file
+Processing batch 2173/2854
+Written 13038/17122 entries to file
+Processing batch 2174/2854
+Written 13044/17122 entries to file
+Processing batch 2175/2854
+Written 13050/17122 entries to file
+Processing batch 2176/2854
+Written 13056/17122 entries to file
+Processing batch 2177/2854
+Written 13062/17122 entries to file
+Processing batch 2178/2854
+Written 13068/17122 entries to file
+Processing batch 2179/2854
+Written 13074/17122 entries to file
+Processing batch 2180/2854
+Written 13080/17122 entries to file
+Processing batch 2181/2854
+Written 13086/17122 entries to file
+Processing batch 2182/2854
+Written 13092/17122 entries to file
+Processing batch 2183/2854
+Written 13098/17122 entries to file
+Processing batch 2184/2854
+Written 13104/17122 entries to file
+Processing batch 2185/2854
+Written 13110/17122 entries to file
+Processing batch 2186/2854
+Written 13116/17122 entries to file
+Processing batch 2187/2854
+Written 13122/17122 entries to file
+Processing batch 2188/2854
+Written 13128/17122 entries to file
+Processing batch 2189/2854
+Written 13134/17122 entries to file
+Processing batch 2190/2854
+Written 13140/17122 entries to file
+Processing batch 2191/2854
+Written 13146/17122 entries to file
+Processing batch 2192/2854
+Written 13152/17122 entries to file
+Processing batch 2193/2854
+Written 13158/17122 entries to file
+Processing batch 2194/2854
+Written 13164/17122 entries to file
+Processing batch 2195/2854
+Written 13170/17122 entries to file
+Processing batch 2196/2854
+Written 13176/17122 entries to file
+Processing batch 2197/2854
+Written 13182/17122 entries to file
+Processing batch 2198/2854
+Written 13188/17122 entries to file
+Processing batch 2199/2854
+Written 13194/17122 entries to file
+Processing batch 2200/2854
+Written 13200/17122 entries to file
+Processing batch 2201/2854
+Written 13206/17122 entries to file
+Processing batch 2202/2854
+Written 13212/17122 entries to file
+Processing batch 2203/2854
+Written 13218/17122 entries to file
+Processing batch 2204/2854
+Written 13224/17122 entries to file
+Processing batch 2205/2854
+Written 13230/17122 entries to file
+Processing batch 2206/2854
+Written 13236/17122 entries to file
+Processing batch 2207/2854
+Written 13242/17122 entries to file
+Processing batch 2208/2854
+Written 13248/17122 entries to file
+Processing batch 2209/2854
+Written 13254/17122 entries to file
+Processing batch 2210/2854
+Written 13260/17122 entries to file
+Processing batch 2211/2854
+Written 13266/17122 entries to file
+Processing batch 2212/2854
+Written 13272/17122 entries to file
+Processing batch 2213/2854
+Written 13278/17122 entries to file
+Processing batch 2214/2854
+Written 13284/17122 entries to file
+Processing batch 2215/2854
+Written 13290/17122 entries to file
+Processing batch 2216/2854
+Written 13296/17122 entries to file
+Processing batch 2217/2854
+Written 13302/17122 entries to file
+Processing batch 2218/2854
+Written 13308/17122 entries to file
+Processing batch 2219/2854
+Written 13314/17122 entries to file
+Processing batch 2220/2854
+Written 13320/17122 entries to file
+Processing batch 2221/2854
+Written 13326/17122 entries to file
+Processing batch 2222/2854
+Written 13332/17122 entries to file
+Processing batch 2223/2854
+Written 13338/17122 entries to file
+Processing batch 2224/2854
+Written 13344/17122 entries to file
+Processing batch 2225/2854
+Written 13350/17122 entries to file
+Processing batch 2226/2854
+Written 13356/17122 entries to file
+Processing batch 2227/2854
+Written 13362/17122 entries to file
+Processing batch 2228/2854
+Written 13368/17122 entries to file
+Processing batch 2229/2854
+Written 13374/17122 entries to file
+Processing batch 2230/2854
+Written 13380/17122 entries to file
+Processing batch 2231/2854
+Written 13386/17122 entries to file
+Processing batch 2232/2854
+Written 13392/17122 entries to file
+Processing batch 2233/2854
+Written 13398/17122 entries to file
+Processing batch 2234/2854
+Written 13404/17122 entries to file
+Processing batch 2235/2854
+Written 13410/17122 entries to file
+Processing batch 2236/2854
+Written 13416/17122 entries to file
+Processing batch 2237/2854
+Written 13422/17122 entries to file
+Processing batch 2238/2854
+Written 13428/17122 entries to file
+Processing batch 2239/2854
+Written 13434/17122 entries to file
+Processing batch 2240/2854
+Written 13440/17122 entries to file
+Processing batch 2241/2854
+Written 13446/17122 entries to file
+Processing batch 2242/2854
+Written 13452/17122 entries to file
+Processing batch 2243/2854
+Written 13458/17122 entries to file
+Processing batch 2244/2854
+Written 13464/17122 entries to file
+Processing batch 2245/2854
+Written 13470/17122 entries to file
+Processing batch 2246/2854
+Written 13476/17122 entries to file
+Processing batch 2247/2854
+Written 13482/17122 entries to file
+Processing batch 2248/2854
+Written 13488/17122 entries to file
+Processing batch 2249/2854
+Written 13494/17122 entries to file
+Processing batch 2250/2854
+Written 13500/17122 entries to file
+Processing batch 2251/2854
+Written 13506/17122 entries to file
+Processing batch 2252/2854
+Written 13512/17122 entries to file
+Processing batch 2253/2854
+Written 13518/17122 entries to file
+Processing batch 2254/2854
+Written 13524/17122 entries to file
+Processing batch 2255/2854
+Written 13530/17122 entries to file
+Processing batch 2256/2854
+Written 13536/17122 entries to file
+Processing batch 2257/2854
+Written 13542/17122 entries to file
+Processing batch 2258/2854
+Written 13548/17122 entries to file
+Processing batch 2259/2854
+Written 13554/17122 entries to file
+Processing batch 2260/2854
+Written 13560/17122 entries to file
+Processing batch 2261/2854
+Written 13566/17122 entries to file
+Processing batch 2262/2854
+Written 13572/17122 entries to file
+Processing batch 2263/2854
+Written 13578/17122 entries to file
+Processing batch 2264/2854
+Written 13584/17122 entries to file
+Processing batch 2265/2854
+Written 13590/17122 entries to file
+Processing batch 2266/2854
+Written 13596/17122 entries to file
+Processing batch 2267/2854
+Written 13602/17122 entries to file
+Processing batch 2268/2854
+Written 13608/17122 entries to file
+Processing batch 2269/2854
+Written 13614/17122 entries to file
+Processing batch 2270/2854
+Written 13620/17122 entries to file
+Processing batch 2271/2854
+Written 13626/17122 entries to file
+Processing batch 2272/2854
+Written 13632/17122 entries to file
+Processing batch 2273/2854
+Written 13638/17122 entries to file
+Processing batch 2274/2854
+Written 13644/17122 entries to file
+Processing batch 2275/2854
+Written 13650/17122 entries to file
+Processing batch 2276/2854
+Written 13656/17122 entries to file
+Processing batch 2277/2854
+Written 13662/17122 entries to file
+Processing batch 2278/2854
+Written 13668/17122 entries to file
+Processing batch 2279/2854
+Written 13674/17122 entries to file
+Processing batch 2280/2854
+Written 13680/17122 entries to file
+Processing batch 2281/2854
+Written 13686/17122 entries to file
+Processing batch 2282/2854
+Written 13692/17122 entries to file
+Processing batch 2283/2854
+Written 13698/17122 entries to file
+Processing batch 2284/2854
+Written 13704/17122 entries to file
+Processing batch 2285/2854
+Written 13710/17122 entries to file
+Processing batch 2286/2854
+Written 13716/17122 entries to file
+Processing batch 2287/2854
+Written 13722/17122 entries to file
+Processing batch 2288/2854
+Written 13728/17122 entries to file
+Processing batch 2289/2854
+Written 13734/17122 entries to file
+Processing batch 2290/2854
+Written 13740/17122 entries to file
+Processing batch 2291/2854
+Written 13746/17122 entries to file
+Processing batch 2292/2854
+Written 13752/17122 entries to file
+Processing batch 2293/2854
+Written 13758/17122 entries to file
+Processing batch 2294/2854
+Written 13764/17122 entries to file
+Processing batch 2295/2854
+Written 13770/17122 entries to file
+Processing batch 2296/2854
+Written 13776/17122 entries to file
+Processing batch 2297/2854
+Written 13782/17122 entries to file
+Processing batch 2298/2854
+Written 13788/17122 entries to file
+Processing batch 2299/2854
+Written 13794/17122 entries to file
+Processing batch 2300/2854
+Written 13800/17122 entries to file
+Processing batch 2301/2854
+Written 13806/17122 entries to file
+Processing batch 2302/2854
+Written 13812/17122 entries to file
+Processing batch 2303/2854
+Written 13818/17122 entries to file
+Processing batch 2304/2854
+Written 13824/17122 entries to file
+Processing batch 2305/2854
+Written 13830/17122 entries to file
+Processing batch 2306/2854
+Written 13836/17122 entries to file
+Processing batch 2307/2854
+Written 13842/17122 entries to file
+Processing batch 2308/2854
+Written 13848/17122 entries to file
+Processing batch 2309/2854
+Written 13854/17122 entries to file
+Processing batch 2310/2854
+Written 13860/17122 entries to file
+Processing batch 2311/2854
+Written 13866/17122 entries to file
+Processing batch 2312/2854
+Written 13872/17122 entries to file
+Processing batch 2313/2854
+Written 13878/17122 entries to file
+Processing batch 2314/2854
+Written 13884/17122 entries to file
+Processing batch 2315/2854
+Written 13890/17122 entries to file
+Processing batch 2316/2854
+Written 13896/17122 entries to file
+Processing batch 2317/2854
+Written 13902/17122 entries to file
+Processing batch 2318/2854
+Written 13908/17122 entries to file
+Processing batch 2319/2854
+Written 13914/17122 entries to file
+Processing batch 2320/2854
+Written 13920/17122 entries to file
+Processing batch 2321/2854
+Written 13926/17122 entries to file
+Processing batch 2322/2854
+Written 13932/17122 entries to file
+Processing batch 2323/2854
+Written 13938/17122 entries to file
+Processing batch 2324/2854
+Written 13944/17122 entries to file
+Processing batch 2325/2854
+Written 13950/17122 entries to file
+Processing batch 2326/2854
+Written 13956/17122 entries to file
+Processing batch 2327/2854
+Written 13962/17122 entries to file
+Processing batch 2328/2854
+Written 13968/17122 entries to file
+Processing batch 2329/2854
+Written 13974/17122 entries to file
+Processing batch 2330/2854
+Written 13980/17122 entries to file
+Processing batch 2331/2854
+Written 13986/17122 entries to file
+Processing batch 2332/2854
+Written 13992/17122 entries to file
+Processing batch 2333/2854
+Written 13998/17122 entries to file
+Processing batch 2334/2854
+Written 14004/17122 entries to file
+Processing batch 2335/2854
+Written 14010/17122 entries to file
+Processing batch 2336/2854
+Written 14016/17122 entries to file
+Processing batch 2337/2854
+Written 14022/17122 entries to file
+Processing batch 2338/2854
+Written 14028/17122 entries to file
+Processing batch 2339/2854
+Written 14034/17122 entries to file
+Processing batch 2340/2854
+Written 14040/17122 entries to file
+Processing batch 2341/2854
+Written 14046/17122 entries to file
+Processing batch 2342/2854
+Written 14052/17122 entries to file
+Processing batch 2343/2854
+Written 14058/17122 entries to file
+Processing batch 2344/2854
+Written 14064/17122 entries to file
+Processing batch 2345/2854
+Written 14070/17122 entries to file
+Processing batch 2346/2854
+Written 14076/17122 entries to file
+Processing batch 2347/2854
+Written 14082/17122 entries to file
+Processing batch 2348/2854
+Written 14088/17122 entries to file
+Processing batch 2349/2854
+Written 14094/17122 entries to file
+Processing batch 2350/2854
+Written 14100/17122 entries to file
+Processing batch 2351/2854
+Written 14106/17122 entries to file
+Processing batch 2352/2854
+Written 14112/17122 entries to file
+Processing batch 2353/2854
+Written 14118/17122 entries to file
+Processing batch 2354/2854
+Written 14124/17122 entries to file
+Processing batch 2355/2854
+Written 14130/17122 entries to file
+Processing batch 2356/2854
+Written 14136/17122 entries to file
+Processing batch 2357/2854
+Written 14142/17122 entries to file
+Processing batch 2358/2854
+Written 14148/17122 entries to file
+Processing batch 2359/2854
+Written 14154/17122 entries to file
+Processing batch 2360/2854
+Written 14160/17122 entries to file
+Processing batch 2361/2854
+Written 14166/17122 entries to file
+Processing batch 2362/2854
+Written 14172/17122 entries to file
+Processing batch 2363/2854
+Written 14178/17122 entries to file
+Processing batch 2364/2854
+Written 14184/17122 entries to file
+Processing batch 2365/2854
+Written 14190/17122 entries to file
+Processing batch 2366/2854
+Written 14196/17122 entries to file
+Processing batch 2367/2854
+Written 14202/17122 entries to file
+Processing batch 2368/2854
+Written 14208/17122 entries to file
+Processing batch 2369/2854
+Written 14214/17122 entries to file
+Processing batch 2370/2854
+Written 14220/17122 entries to file
+Processing batch 2371/2854
+Written 14226/17122 entries to file
+Processing batch 2372/2854
+Written 14232/17122 entries to file
+Processing batch 2373/2854
+Written 14238/17122 entries to file
+Processing batch 2374/2854
+Written 14244/17122 entries to file
+Processing batch 2375/2854
+Written 14250/17122 entries to file
+Processing batch 2376/2854
+Written 14256/17122 entries to file
+Processing batch 2377/2854
+Written 14262/17122 entries to file
+Processing batch 2378/2854
+Written 14268/17122 entries to file
+Processing batch 2379/2854
+Written 14274/17122 entries to file
+Processing batch 2380/2854
+Written 14280/17122 entries to file
+Processing batch 2381/2854
+Written 14286/17122 entries to file
+Processing batch 2382/2854
+Written 14292/17122 entries to file
+Processing batch 2383/2854
+Written 14298/17122 entries to file
+Processing batch 2384/2854
+Written 14304/17122 entries to file
+Processing batch 2385/2854
+Written 14310/17122 entries to file
+Processing batch 2386/2854
+Written 14316/17122 entries to file
+Processing batch 2387/2854
+Written 14322/17122 entries to file
+Processing batch 2388/2854
+Written 14328/17122 entries to file
+Processing batch 2389/2854
+Written 14334/17122 entries to file
+Processing batch 2390/2854
+Written 14340/17122 entries to file
+Processing batch 2391/2854
+Written 14346/17122 entries to file
+Processing batch 2392/2854
+Written 14352/17122 entries to file
+Processing batch 2393/2854
+Written 14358/17122 entries to file
+Processing batch 2394/2854
+Written 14364/17122 entries to file
+Processing batch 2395/2854
+Written 14370/17122 entries to file
+Processing batch 2396/2854
+Written 14376/17122 entries to file
+Processing batch 2397/2854
+Written 14382/17122 entries to file
+Processing batch 2398/2854
+Written 14388/17122 entries to file
+Processing batch 2399/2854
+Written 14394/17122 entries to file
+Processing batch 2400/2854
+Written 14400/17122 entries to file
+Processing batch 2401/2854
+Written 14406/17122 entries to file
+Processing batch 2402/2854
+Written 14412/17122 entries to file
+Processing batch 2403/2854
+Written 14418/17122 entries to file
+Processing batch 2404/2854
+Written 14424/17122 entries to file
+Processing batch 2405/2854
+Written 14430/17122 entries to file
+Processing batch 2406/2854
+Written 14436/17122 entries to file
+Processing batch 2407/2854
+Written 14442/17122 entries to file
+Processing batch 2408/2854
+Written 14448/17122 entries to file
+Processing batch 2409/2854
+Written 14454/17122 entries to file
+Processing batch 2410/2854
+Written 14460/17122 entries to file
+Processing batch 2411/2854
+Written 14466/17122 entries to file
+Processing batch 2412/2854
+Written 14472/17122 entries to file
+Processing batch 2413/2854
+Written 14478/17122 entries to file
+Processing batch 2414/2854
+Written 14484/17122 entries to file
+Processing batch 2415/2854
+Written 14490/17122 entries to file
+Processing batch 2416/2854
+Written 14496/17122 entries to file
+Processing batch 2417/2854
+Written 14502/17122 entries to file
+Processing batch 2418/2854
+Written 14508/17122 entries to file
+Processing batch 2419/2854
+Written 14514/17122 entries to file
+Processing batch 2420/2854
+Written 14520/17122 entries to file
+Processing batch 2421/2854
+Written 14526/17122 entries to file
+Processing batch 2422/2854
+Written 14532/17122 entries to file
+Processing batch 2423/2854
+Written 14538/17122 entries to file
+Processing batch 2424/2854
+Written 14544/17122 entries to file
+Processing batch 2425/2854
+Written 14550/17122 entries to file
+Processing batch 2426/2854
+Written 14556/17122 entries to file
+Processing batch 2427/2854
+Written 14562/17122 entries to file
+Processing batch 2428/2854
+Written 14568/17122 entries to file
+Processing batch 2429/2854
+Written 14574/17122 entries to file
+Processing batch 2430/2854
+Written 14580/17122 entries to file
+Processing batch 2431/2854
+Written 14586/17122 entries to file
+Processing batch 2432/2854
+Written 14592/17122 entries to file
+Processing batch 2433/2854
+Written 14598/17122 entries to file
+Processing batch 2434/2854
+Written 14604/17122 entries to file
+Processing batch 2435/2854
+Written 14610/17122 entries to file
+Processing batch 2436/2854
+Written 14616/17122 entries to file
+Processing batch 2437/2854
+Written 14622/17122 entries to file
+Processing batch 2438/2854
+Written 14628/17122 entries to file
+Processing batch 2439/2854
+Written 14634/17122 entries to file
+Processing batch 2440/2854
+Written 14640/17122 entries to file
+Processing batch 2441/2854
+Written 14646/17122 entries to file
+Processing batch 2442/2854
+Written 14652/17122 entries to file
+Processing batch 2443/2854
+Written 14658/17122 entries to file
+Processing batch 2444/2854
+Written 14664/17122 entries to file
+Processing batch 2445/2854
+Written 14670/17122 entries to file
+Processing batch 2446/2854
+Written 14676/17122 entries to file
+Processing batch 2447/2854
+Written 14682/17122 entries to file
+Processing batch 2448/2854
+Written 14688/17122 entries to file
+Processing batch 2449/2854
+Written 14694/17122 entries to file
+Processing batch 2450/2854
+Written 14700/17122 entries to file
+Processing batch 2451/2854
+Written 14706/17122 entries to file
+Processing batch 2452/2854
+Written 14712/17122 entries to file
+Processing batch 2453/2854
+Written 14718/17122 entries to file
+Processing batch 2454/2854
+Written 14724/17122 entries to file
+Processing batch 2455/2854
+Written 14730/17122 entries to file
+Processing batch 2456/2854
+Written 14736/17122 entries to file
+Processing batch 2457/2854
+Written 14742/17122 entries to file
+Processing batch 2458/2854
+Written 14748/17122 entries to file
+Processing batch 2459/2854
+Written 14754/17122 entries to file
+Processing batch 2460/2854
+Written 14760/17122 entries to file
+Processing batch 2461/2854
+Written 14766/17122 entries to file
+Processing batch 2462/2854
+Written 14772/17122 entries to file
+Processing batch 2463/2854
+Written 14778/17122 entries to file
+Processing batch 2464/2854
+Written 14784/17122 entries to file
+Processing batch 2465/2854
+Written 14790/17122 entries to file
+Processing batch 2466/2854
+Written 14796/17122 entries to file
+Processing batch 2467/2854
+Written 14802/17122 entries to file
+Processing batch 2468/2854
+Written 14808/17122 entries to file
+Processing batch 2469/2854
+Written 14814/17122 entries to file
+Processing batch 2470/2854
+Written 14820/17122 entries to file
+Processing batch 2471/2854
+Written 14826/17122 entries to file
+Processing batch 2472/2854
+Written 14832/17122 entries to file
+Processing batch 2473/2854
+Written 14838/17122 entries to file
+Processing batch 2474/2854
+Written 14844/17122 entries to file
+Processing batch 2475/2854
+Written 14850/17122 entries to file
+Processing batch 2476/2854
+Written 14856/17122 entries to file
+Processing batch 2477/2854
+Written 14862/17122 entries to file
+Processing batch 2478/2854
+Written 14868/17122 entries to file
+Processing batch 2479/2854
+Written 14874/17122 entries to file
+Processing batch 2480/2854
+Written 14880/17122 entries to file
+Processing batch 2481/2854
+Written 14886/17122 entries to file
+Processing batch 2482/2854
+Written 14892/17122 entries to file
+Processing batch 2483/2854
+Written 14898/17122 entries to file
+Processing batch 2484/2854
+Written 14904/17122 entries to file
+Processing batch 2485/2854
+Written 14910/17122 entries to file
+Processing batch 2486/2854
+Written 14916/17122 entries to file
+Processing batch 2487/2854
+Written 14922/17122 entries to file
+Processing batch 2488/2854
+Written 14928/17122 entries to file
+Processing batch 2489/2854
+Written 14934/17122 entries to file
+Processing batch 2490/2854
+Written 14940/17122 entries to file
+Processing batch 2491/2854
+Written 14946/17122 entries to file
+Processing batch 2492/2854
+Written 14952/17122 entries to file
+Processing batch 2493/2854
+Written 14958/17122 entries to file
+Processing batch 2494/2854
+Written 14964/17122 entries to file
+Processing batch 2495/2854
+Written 14970/17122 entries to file
+Processing batch 2496/2854
+Written 14976/17122 entries to file
+Processing batch 2497/2854
+Written 14982/17122 entries to file
+Processing batch 2498/2854
+Written 14988/17122 entries to file
+Processing batch 2499/2854
+Written 14994/17122 entries to file
+Processing batch 2500/2854
+Written 15000/17122 entries to file
+Processing batch 2501/2854
+Written 15006/17122 entries to file
+Processing batch 2502/2854
+Written 15012/17122 entries to file
+Processing batch 2503/2854
+Written 15018/17122 entries to file
+Processing batch 2504/2854
+Written 15024/17122 entries to file
+Processing batch 2505/2854
+Written 15030/17122 entries to file
+Processing batch 2506/2854
+Written 15036/17122 entries to file
+Processing batch 2507/2854
+Written 15042/17122 entries to file
+Processing batch 2508/2854
+Written 15048/17122 entries to file
+Processing batch 2509/2854
+Written 15054/17122 entries to file
+Processing batch 2510/2854
+Written 15060/17122 entries to file
+Processing batch 2511/2854
+Written 15066/17122 entries to file
+Processing batch 2512/2854
+Written 15072/17122 entries to file
+Processing batch 2513/2854
+Written 15078/17122 entries to file
+Processing batch 2514/2854
+Written 15084/17122 entries to file
+Processing batch 2515/2854
+Written 15090/17122 entries to file
+Processing batch 2516/2854
+Written 15096/17122 entries to file
+Processing batch 2517/2854
+Written 15102/17122 entries to file
+Processing batch 2518/2854
+Written 15108/17122 entries to file
+Processing batch 2519/2854
+Written 15114/17122 entries to file
+Processing batch 2520/2854
+Written 15120/17122 entries to file
+Processing batch 2521/2854
+Written 15126/17122 entries to file
+Processing batch 2522/2854
+Written 15132/17122 entries to file
+Processing batch 2523/2854
+Written 15138/17122 entries to file
+Processing batch 2524/2854
+Written 15144/17122 entries to file
+Processing batch 2525/2854
+Written 15150/17122 entries to file
+Processing batch 2526/2854
+Written 15156/17122 entries to file
+Processing batch 2527/2854
+Written 15162/17122 entries to file
+Processing batch 2528/2854
+Written 15168/17122 entries to file
+Processing batch 2529/2854
+Written 15174/17122 entries to file
+Processing batch 2530/2854
+Written 15180/17122 entries to file
+Processing batch 2531/2854
+Written 15186/17122 entries to file
+Processing batch 2532/2854
+Written 15192/17122 entries to file
+Processing batch 2533/2854
+Written 15198/17122 entries to file
+Processing batch 2534/2854
+Written 15204/17122 entries to file
+Processing batch 2535/2854
+Written 15210/17122 entries to file
+Processing batch 2536/2854
+Written 15216/17122 entries to file
+Processing batch 2537/2854
+Written 15222/17122 entries to file
+Processing batch 2538/2854
+Written 15228/17122 entries to file
+Processing batch 2539/2854
+Written 15234/17122 entries to file
+Processing batch 2540/2854
+Written 15240/17122 entries to file
+Processing batch 2541/2854
+Written 15246/17122 entries to file
+Processing batch 2542/2854
+Written 15252/17122 entries to file
+Processing batch 2543/2854
+Written 15258/17122 entries to file
+Processing batch 2544/2854
+Written 15264/17122 entries to file
+Processing batch 2545/2854
+Written 15270/17122 entries to file
+Processing batch 2546/2854
+Written 15276/17122 entries to file
+Processing batch 2547/2854
+Written 15282/17122 entries to file
+Processing batch 2548/2854
+Written 15288/17122 entries to file
+Processing batch 2549/2854
+Written 15294/17122 entries to file
+Processing batch 2550/2854
+Written 15300/17122 entries to file
+Processing batch 2551/2854
+Written 15306/17122 entries to file
+Processing batch 2552/2854
+Written 15312/17122 entries to file
+Processing batch 2553/2854
+Written 15318/17122 entries to file
+Processing batch 2554/2854
+Written 15324/17122 entries to file
+Processing batch 2555/2854
+Written 15330/17122 entries to file
+Processing batch 2556/2854
+Written 15336/17122 entries to file
+Processing batch 2557/2854
+Written 15342/17122 entries to file
+Processing batch 2558/2854
+Written 15348/17122 entries to file
+Processing batch 2559/2854
+Written 15354/17122 entries to file
+Processing batch 2560/2854
+Written 15360/17122 entries to file
+Processing batch 2561/2854
+Written 15366/17122 entries to file
+Processing batch 2562/2854
+Written 15372/17122 entries to file
+Processing batch 2563/2854
+Written 15378/17122 entries to file
+Processing batch 2564/2854
+Written 15384/17122 entries to file
+Processing batch 2565/2854
+Written 15390/17122 entries to file
+Processing batch 2566/2854
+Written 15396/17122 entries to file
+Processing batch 2567/2854
+Written 15402/17122 entries to file
+Processing batch 2568/2854
+Written 15408/17122 entries to file
+Processing batch 2569/2854
+Written 15414/17122 entries to file
+Processing batch 2570/2854
+Written 15420/17122 entries to file
+Processing batch 2571/2854
+Written 15426/17122 entries to file
+Processing batch 2572/2854
+Written 15432/17122 entries to file
+Processing batch 2573/2854
+Written 15438/17122 entries to file
+Processing batch 2574/2854
+Written 15444/17122 entries to file
+Processing batch 2575/2854
+Written 15450/17122 entries to file
+Processing batch 2576/2854
+Written 15456/17122 entries to file
+Processing batch 2577/2854
+Written 15462/17122 entries to file
+Processing batch 2578/2854
+Written 15468/17122 entries to file
+Processing batch 2579/2854
+Written 15474/17122 entries to file
+Processing batch 2580/2854
+Written 15480/17122 entries to file
+Processing batch 2581/2854
+Written 15486/17122 entries to file
+Processing batch 2582/2854
+Written 15492/17122 entries to file
+Processing batch 2583/2854
+Written 15498/17122 entries to file
+Processing batch 2584/2854
+Written 15504/17122 entries to file
+Processing batch 2585/2854
+Written 15510/17122 entries to file
+Processing batch 2586/2854
+Written 15516/17122 entries to file
+Processing batch 2587/2854
+Written 15522/17122 entries to file
+Processing batch 2588/2854
+Written 15528/17122 entries to file
+Processing batch 2589/2854
+Written 15534/17122 entries to file
+Processing batch 2590/2854
+Written 15540/17122 entries to file
+Processing batch 2591/2854
+Written 15546/17122 entries to file
+Processing batch 2592/2854
+Written 15552/17122 entries to file
+Processing batch 2593/2854
+Written 15558/17122 entries to file
+Processing batch 2594/2854
+Written 15564/17122 entries to file
+Processing batch 2595/2854
+Written 15570/17122 entries to file
+Processing batch 2596/2854
+Written 15576/17122 entries to file
+Processing batch 2597/2854
+Written 15582/17122 entries to file
+Processing batch 2598/2854
+Written 15588/17122 entries to file
+Processing batch 2599/2854
+Written 15594/17122 entries to file
+Processing batch 2600/2854
+Written 15600/17122 entries to file
+Processing batch 2601/2854
+Written 15606/17122 entries to file
+Processing batch 2602/2854
+Written 15612/17122 entries to file
+Processing batch 2603/2854
+Written 15618/17122 entries to file
+Processing batch 2604/2854
+Written 15624/17122 entries to file
+Processing batch 2605/2854
+Written 15630/17122 entries to file
+Processing batch 2606/2854
+Written 15636/17122 entries to file
+Processing batch 2607/2854
+Written 15642/17122 entries to file
+Processing batch 2608/2854
+Written 15648/17122 entries to file
+Processing batch 2609/2854
+Written 15654/17122 entries to file
+Processing batch 2610/2854
+Written 15660/17122 entries to file
+Processing batch 2611/2854
+Written 15666/17122 entries to file
+Processing batch 2612/2854
+Written 15672/17122 entries to file
+Processing batch 2613/2854
+Written 15678/17122 entries to file
+Processing batch 2614/2854
+Written 15684/17122 entries to file
+Processing batch 2615/2854
+Written 15690/17122 entries to file
+Processing batch 2616/2854
+Written 15696/17122 entries to file
+Processing batch 2617/2854
+Written 15702/17122 entries to file
+Processing batch 2618/2854
+Written 15708/17122 entries to file
+Processing batch 2619/2854
+Written 15714/17122 entries to file
+Processing batch 2620/2854
+Written 15720/17122 entries to file
+Processing batch 2621/2854
+Written 15726/17122 entries to file
+Processing batch 2622/2854
+Written 15732/17122 entries to file
+Processing batch 2623/2854
+Written 15738/17122 entries to file
+Processing batch 2624/2854
+Written 15744/17122 entries to file
+Processing batch 2625/2854
+Written 15750/17122 entries to file
+Processing batch 2626/2854
+Written 15756/17122 entries to file
+Processing batch 2627/2854
+Written 15762/17122 entries to file
+Processing batch 2628/2854
+Written 15768/17122 entries to file
+Processing batch 2629/2854
+Written 15774/17122 entries to file
+Processing batch 2630/2854
+Written 15780/17122 entries to file
+Processing batch 2631/2854
+Written 15786/17122 entries to file
+Processing batch 2632/2854
+Written 15792/17122 entries to file
+Processing batch 2633/2854
+Written 15798/17122 entries to file
+Processing batch 2634/2854
+Written 15804/17122 entries to file
+Processing batch 2635/2854
+Written 15810/17122 entries to file
+Processing batch 2636/2854
+Written 15816/17122 entries to file
+Processing batch 2637/2854
+Written 15822/17122 entries to file
+Processing batch 2638/2854
+Written 15828/17122 entries to file
+Processing batch 2639/2854
+Written 15834/17122 entries to file
+Processing batch 2640/2854
+Written 15840/17122 entries to file
+Processing batch 2641/2854
+Written 15846/17122 entries to file
+Processing batch 2642/2854
+Written 15852/17122 entries to file
+Processing batch 2643/2854
+Written 15858/17122 entries to file
+Processing batch 2644/2854
+Written 15864/17122 entries to file
+Processing batch 2645/2854
+Written 15870/17122 entries to file
+Processing batch 2646/2854
+Written 15876/17122 entries to file
+Processing batch 2647/2854
+Written 15882/17122 entries to file
+Processing batch 2648/2854
+Written 15888/17122 entries to file
+Processing batch 2649/2854
+Written 15894/17122 entries to file
+Processing batch 2650/2854
+Written 15900/17122 entries to file
+Processing batch 2651/2854
+Written 15906/17122 entries to file
+Processing batch 2652/2854
+Written 15912/17122 entries to file
+Processing batch 2653/2854
+Written 15918/17122 entries to file
+Processing batch 2654/2854
+Written 15924/17122 entries to file
+Processing batch 2655/2854
+Written 15930/17122 entries to file
+Processing batch 2656/2854
+Written 15936/17122 entries to file
+Processing batch 2657/2854
+Written 15942/17122 entries to file
+Processing batch 2658/2854
+Written 15948/17122 entries to file
+Processing batch 2659/2854
+Written 15954/17122 entries to file
+Processing batch 2660/2854
+Written 15960/17122 entries to file
+Processing batch 2661/2854
+Written 15966/17122 entries to file
+Processing batch 2662/2854
+Written 15972/17122 entries to file
+Processing batch 2663/2854
+Written 15978/17122 entries to file
+Processing batch 2664/2854
+Written 15984/17122 entries to file
+Processing batch 2665/2854
+Written 15990/17122 entries to file
+Processing batch 2666/2854
+Written 15996/17122 entries to file
+Processing batch 2667/2854
+Written 16002/17122 entries to file
+Processing batch 2668/2854
+Written 16008/17122 entries to file
+Processing batch 2669/2854
+Written 16014/17122 entries to file
+Processing batch 2670/2854
+Written 16020/17122 entries to file
+Processing batch 2671/2854
+Written 16026/17122 entries to file
+Processing batch 2672/2854
+Written 16032/17122 entries to file
+Processing batch 2673/2854
+Written 16038/17122 entries to file
+Processing batch 2674/2854
+Written 16044/17122 entries to file
+Processing batch 2675/2854
+Written 16050/17122 entries to file
+Processing batch 2676/2854
+Written 16056/17122 entries to file
+Processing batch 2677/2854
+Written 16062/17122 entries to file
+Processing batch 2678/2854
+Written 16068/17122 entries to file
+Processing batch 2679/2854
+Written 16074/17122 entries to file
+Processing batch 2680/2854
+Written 16080/17122 entries to file
+Processing batch 2681/2854
+Written 16086/17122 entries to file
+Processing batch 2682/2854
+Written 16092/17122 entries to file
+Processing batch 2683/2854
+Written 16098/17122 entries to file
+Processing batch 2684/2854
+Written 16104/17122 entries to file
+Processing batch 2685/2854
+Written 16110/17122 entries to file
+Processing batch 2686/2854
+Written 16116/17122 entries to file
+Processing batch 2687/2854
+Written 16122/17122 entries to file
+Processing batch 2688/2854
+Written 16128/17122 entries to file
+Processing batch 2689/2854
+Written 16134/17122 entries to file
+Processing batch 2690/2854
+Written 16140/17122 entries to file
+Processing batch 2691/2854
+Written 16146/17122 entries to file
+Processing batch 2692/2854
+Written 16152/17122 entries to file
+Processing batch 2693/2854
+Written 16158/17122 entries to file
+Processing batch 2694/2854
+Written 16164/17122 entries to file
+Processing batch 2695/2854
+Written 16170/17122 entries to file
+Processing batch 2696/2854
+Written 16176/17122 entries to file
+Processing batch 2697/2854
+Written 16182/17122 entries to file
+Processing batch 2698/2854
+Written 16188/17122 entries to file
+Processing batch 2699/2854
+Written 16194/17122 entries to file
+Processing batch 2700/2854
+Written 16200/17122 entries to file
+Processing batch 2701/2854
+Written 16206/17122 entries to file
+Processing batch 2702/2854
+Written 16212/17122 entries to file
+Processing batch 2703/2854
+Written 16218/17122 entries to file
+Processing batch 2704/2854
+Written 16224/17122 entries to file
+Processing batch 2705/2854
+Written 16230/17122 entries to file
+Processing batch 2706/2854
+Written 16236/17122 entries to file
+Processing batch 2707/2854
+Written 16242/17122 entries to file
+Processing batch 2708/2854
+Written 16248/17122 entries to file
+Processing batch 2709/2854
+Written 16254/17122 entries to file
+Processing batch 2710/2854
+Written 16260/17122 entries to file
+Processing batch 2711/2854
+Written 16266/17122 entries to file
+Processing batch 2712/2854
+Written 16272/17122 entries to file
+Processing batch 2713/2854
+Written 16278/17122 entries to file
+Processing batch 2714/2854
+Written 16284/17122 entries to file
+Processing batch 2715/2854
+Written 16290/17122 entries to file
+Processing batch 2716/2854
+Written 16296/17122 entries to file
+Processing batch 2717/2854
+Written 16302/17122 entries to file
+Processing batch 2718/2854
+Written 16308/17122 entries to file
+Processing batch 2719/2854
+Written 16314/17122 entries to file
+Processing batch 2720/2854
+Written 16320/17122 entries to file
+Processing batch 2721/2854
+Written 16326/17122 entries to file
+Processing batch 2722/2854
+Written 16332/17122 entries to file
+Processing batch 2723/2854
+Written 16338/17122 entries to file
+Processing batch 2724/2854
+Written 16344/17122 entries to file
+Processing batch 2725/2854
+Written 16350/17122 entries to file
+Processing batch 2726/2854
+Written 16356/17122 entries to file
+Processing batch 2727/2854
+Written 16362/17122 entries to file
+Processing batch 2728/2854
+Written 16368/17122 entries to file
+Processing batch 2729/2854
+Written 16374/17122 entries to file
+Processing batch 2730/2854
+Written 16380/17122 entries to file
+Processing batch 2731/2854
+Written 16386/17122 entries to file
+Processing batch 2732/2854
+Written 16392/17122 entries to file
+Processing batch 2733/2854
+Written 16398/17122 entries to file
+Processing batch 2734/2854
+Written 16404/17122 entries to file
+Processing batch 2735/2854
+Written 16410/17122 entries to file
+Processing batch 2736/2854
+Written 16416/17122 entries to file
+Processing batch 2737/2854
+Written 16422/17122 entries to file
+Processing batch 2738/2854
+Written 16428/17122 entries to file
+Processing batch 2739/2854
+Written 16434/17122 entries to file
+Processing batch 2740/2854
+Written 16440/17122 entries to file
+Processing batch 2741/2854
+Written 16446/17122 entries to file
+Processing batch 2742/2854
+Written 16452/17122 entries to file
+Processing batch 2743/2854
+Written 16458/17122 entries to file
+Processing batch 2744/2854
+Written 16464/17122 entries to file
+Processing batch 2745/2854
+Written 16470/17122 entries to file
+Processing batch 2746/2854
+Written 16476/17122 entries to file
+Processing batch 2747/2854
+Written 16482/17122 entries to file
+Processing batch 2748/2854
+Written 16488/17122 entries to file
+Processing batch 2749/2854
+Written 16494/17122 entries to file
+Processing batch 2750/2854
+Written 16500/17122 entries to file
+Processing batch 2751/2854
+Written 16506/17122 entries to file
+Processing batch 2752/2854
+Written 16512/17122 entries to file
+Processing batch 2753/2854
+Written 16518/17122 entries to file
+Processing batch 2754/2854
+Written 16524/17122 entries to file
+Processing batch 2755/2854
+Written 16530/17122 entries to file
+Processing batch 2756/2854
+Written 16536/17122 entries to file
+Processing batch 2757/2854
+Written 16542/17122 entries to file
+Processing batch 2758/2854
+Written 16548/17122 entries to file
+Processing batch 2759/2854
+Written 16554/17122 entries to file
+Processing batch 2760/2854
+Written 16560/17122 entries to file
+Processing batch 2761/2854
+Written 16566/17122 entries to file
+Processing batch 2762/2854
+Written 16572/17122 entries to file
+Processing batch 2763/2854
+Written 16578/17122 entries to file
+Processing batch 2764/2854
+Written 16584/17122 entries to file
+Processing batch 2765/2854
+Written 16590/17122 entries to file
+Processing batch 2766/2854
+Written 16596/17122 entries to file
+Processing batch 2767/2854
+Written 16602/17122 entries to file
+Processing batch 2768/2854
+Written 16608/17122 entries to file
+Processing batch 2769/2854
+Written 16614/17122 entries to file
+Processing batch 2770/2854
+Written 16620/17122 entries to file
+Processing batch 2771/2854
+Written 16626/17122 entries to file
+Processing batch 2772/2854
+Written 16632/17122 entries to file
+Processing batch 2773/2854
+Written 16638/17122 entries to file
+Processing batch 2774/2854
+Written 16644/17122 entries to file
+Processing batch 2775/2854
+Written 16650/17122 entries to file
+Processing batch 2776/2854
+Written 16656/17122 entries to file
+Processing batch 2777/2854
+Written 16662/17122 entries to file
+Processing batch 2778/2854
+Written 16668/17122 entries to file
+Processing batch 2779/2854
+Written 16674/17122 entries to file
+Processing batch 2780/2854
+Written 16680/17122 entries to file
+Processing batch 2781/2854
+Written 16686/17122 entries to file
+Processing batch 2782/2854
+Written 16692/17122 entries to file
+Processing batch 2783/2854
+Written 16698/17122 entries to file
+Processing batch 2784/2854
+Written 16704/17122 entries to file
+Processing batch 2785/2854
+Written 16710/17122 entries to file
+Processing batch 2786/2854
+Written 16716/17122 entries to file
+Processing batch 2787/2854
+Written 16722/17122 entries to file
+Processing batch 2788/2854
+Written 16728/17122 entries to file
+Processing batch 2789/2854
+Written 16734/17122 entries to file
+Processing batch 2790/2854
+Written 16740/17122 entries to file
+Processing batch 2791/2854
+Written 16746/17122 entries to file
+Processing batch 2792/2854
+Written 16752/17122 entries to file
+Processing batch 2793/2854
+Written 16758/17122 entries to file
+Processing batch 2794/2854
+Written 16764/17122 entries to file
+Processing batch 2795/2854
+Written 16770/17122 entries to file
+Processing batch 2796/2854
+Written 16776/17122 entries to file
+Processing batch 2797/2854
+Written 16782/17122 entries to file
+Processing batch 2798/2854
+Written 16788/17122 entries to file
+Processing batch 2799/2854
+Written 16794/17122 entries to file
+Processing batch 2800/2854
+Written 16800/17122 entries to file
+Processing batch 2801/2854
+Written 16806/17122 entries to file
+Processing batch 2802/2854
+Written 16812/17122 entries to file
+Processing batch 2803/2854
+Written 16818/17122 entries to file
+Processing batch 2804/2854
+Written 16824/17122 entries to file
+Processing batch 2805/2854
+Written 16830/17122 entries to file
+Processing batch 2806/2854
+Written 16836/17122 entries to file
+Processing batch 2807/2854
+Written 16842/17122 entries to file
+Processing batch 2808/2854
+Written 16848/17122 entries to file
+Processing batch 2809/2854
+Written 16854/17122 entries to file
+Processing batch 2810/2854
+Written 16860/17122 entries to file
+Processing batch 2811/2854
+Written 16866/17122 entries to file
+Processing batch 2812/2854
+Written 16872/17122 entries to file
+Processing batch 2813/2854
+Written 16878/17122 entries to file
+Processing batch 2814/2854
+Written 16884/17122 entries to file
+Processing batch 2815/2854
+Written 16890/17122 entries to file
+Processing batch 2816/2854
+Written 16896/17122 entries to file
+Processing batch 2817/2854
+Written 16902/17122 entries to file
+Processing batch 2818/2854
+Written 16908/17122 entries to file
+Processing batch 2819/2854
+Written 16914/17122 entries to file
+Processing batch 2820/2854
+Written 16920/17122 entries to file
+Processing batch 2821/2854
+Written 16926/17122 entries to file
+Processing batch 2822/2854
+Written 16932/17122 entries to file
+Processing batch 2823/2854
+Written 16938/17122 entries to file
+Processing batch 2824/2854
+Written 16944/17122 entries to file
+Processing batch 2825/2854
+Written 16950/17122 entries to file
+Processing batch 2826/2854
+Written 16956/17122 entries to file
+Processing batch 2827/2854
+Written 16962/17122 entries to file
+Processing batch 2828/2854
+Written 16968/17122 entries to file
+Processing batch 2829/2854
+Written 16974/17122 entries to file
+Processing batch 2830/2854
+Written 16980/17122 entries to file
+Processing batch 2831/2854
+Written 16986/17122 entries to file
+Processing batch 2832/2854
+Written 16992/17122 entries to file
+Processing batch 2833/2854
+Written 16998/17122 entries to file
+Processing batch 2834/2854
+Written 17004/17122 entries to file
+Processing batch 2835/2854
+Written 17010/17122 entries to file
+Processing batch 2836/2854
+Written 17016/17122 entries to file
+Processing batch 2837/2854
+Written 17022/17122 entries to file
+Processing batch 2838/2854
+Written 17028/17122 entries to file
+Processing batch 2839/2854
+Written 17034/17122 entries to file
+Processing batch 2840/2854
+Written 17040/17122 entries to file
+Processing batch 2841/2854
+Written 17046/17122 entries to file
+Processing batch 2842/2854
+Written 17052/17122 entries to file
+Processing batch 2843/2854
+Written 17058/17122 entries to file
+Processing batch 2844/2854
+Written 17064/17122 entries to file
+Processing batch 2845/2854
+Written 17070/17122 entries to file
+Processing batch 2846/2854
+Written 17076/17122 entries to file
+Processing batch 2847/2854
+Written 17082/17122 entries to file
+Processing batch 2848/2854
+Written 17088/17122 entries to file
+Processing batch 2849/2854
+Written 17094/17122 entries to file
+Processing batch 2850/2854
+Written 17100/17122 entries to file
+Processing batch 2851/2854
+Written 17106/17122 entries to file
+Processing batch 2852/2854
+Written 17112/17122 entries to file
+Processing batch 2853/2854
+Written 17118/17122 entries to file
+Processing batch 2854/2854
+Written 17122/17122 entries to file
+Dispatching perplexity results for model: meta-llama-Llama-3.3-70B-Instruct, lang: zh_cn, input file: judge/result/meta-llama-Llama-3.3-70B-Instruct/perplexity_zh_cn_output.jsonl
+Cannot open file: Unable to open file: No such file or directory (os error 2), assuming empty result file
+Cannot open file: Unable to open file: No such file or directory (os error 2), assuming empty result file
+Dispatched perplexity results for model: meta-llama-Llama-3.3-70B-Instruct, lang: zh_cn
+Completed writing all 17122 results to judge/result/meta-llama-Llama-3.3-70B-Instruct/perplexity_zh_cn_output.jsonl
+Dispatched results and removed file: judge/result/meta-llama-Llama-3.3-70B-Instruct/perplexity_zh_cn_output.jsonl
