@@ -67,21 +67,27 @@ def collect_perplexity_batch(
 
     print(f"[qwen3_backend] Prepared {len(formatted_prompts)} prompts, now tokenizing...", flush=True, file=sys.stderr)
     # Tokenize all prompts with padding for batching
+    # Add truncation and max_length to prevent extremely long sequences
     inputs = tokenizer(
         formatted_prompts,
         return_tensors="pt",
         padding=True,
+        truncation=True,
+        max_length=2048,  # Limit to reasonable length
         add_special_tokens=False
     )
 
     # Move batch to model's device
+    print(f"[qwen3_backend] Tokenization complete. Batch shape: {inputs.input_ids.shape}. Moving to device...", flush=True, file=sys.stderr)
     input_ids_batch = inputs.input_ids.to(model.device)
     attention_mask = inputs.attention_mask.to(model.device)
 
+    print(f"[qwen3_backend] Running model forward pass...", flush=True, file=sys.stderr)
     # Get logits from model for the entire batch
     with torch.no_grad():
         outputs = model(input_ids_batch, attention_mask=attention_mask)
         logits_batch = outputs.logits.cpu()  # [batch_size, seq_len, vocab_size], move to CPU
+    print(f"[qwen3_backend] Forward pass complete. Processing results...", flush=True, file=sys.stderr)
 
     # Process each item in the batch
     results = []

@@ -405,10 +405,13 @@ def collect_perplexity_batch(
         answers.append(answer)
 
     # Tokenize all prompts with padding for batching
+    # Add truncation and max_length to prevent extremely long sequences
     inputs = tokenizer(
         formatted_prompts,
         return_tensors="pt",
         padding=True,
+        truncation=True,
+        max_length=2048,  # Limit to reasonable length
         add_special_tokens=False
     )
 

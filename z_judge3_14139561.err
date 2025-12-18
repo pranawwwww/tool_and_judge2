@@ -25,3 +25,4 @@ warning: `codebase_rs` (lib) generated 2 warnings
   warnings.warn(
 `torch_dtype` is deprecated! Use `dtype` instead!
 Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 86.13it/s]
+slurmstepd: error: *** JOB 14139561 ON gpua022 CANCELLED AT 2025-12-18T02:45:31 ***

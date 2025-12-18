@@ -212,7 +212,9 @@ match config.experiment:
         # perplexity uses huggingface backend
         from src_py.huggingface_backend import create_huggingface_backend
         model_size = config.model.size_in_billion_parameters()
-        batch_size = int(120 * args.num_gpus / model_size)  # model_size * batch size = 120 * num_gpus
+        # Reduce batch size significantly for HuggingFace backend due to padding overhead
+        # With max_length=2048 and padding, memory usage is batch_size * 2048 * hidden_size
+        batch_size = max(1, int(60 * args.num_gpus / model_size))  # Reduced from 120 to 60
         print(f"Creating backend for model {model_name} with batch size {batch_size}...", flush=True)
         model, tokenizer = create_huggingface_backend(model_name, batch_size)
         print(f"Backend created for model {model_name} with batch size {batch_size}", flush=True)
