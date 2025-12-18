@@ -278,61 +278,64 @@ match config.experiment:
 
         # Process entries in batches
         print(f"Processing {len(combined_entries)} entries with batch size {batch_size}", flush=True)
-        all_results = []
+        total_processed = 0
 
-        for i in range(0, len(combined_entries), batch_size):
-            batch_entries = combined_entries[i:i+batch_size]
-            print(f"Processing batch {i//batch_size + 1}/{(len(combined_entries) + batch_size - 1)//batch_size}", flush=True)
-
-            # Get model outputs for the batch
-            if config.model == LocalModel.Llama3_3_70B:
-                from src_py.llama3_1_backend import collect_perplexity_batch
-            elif config.model in [LocalModel.Qwen3_8B, LocalModel.Qwen3_14B, LocalModel.Qwen3_30bA3b, LocalModel.Qwen3Next80bA3b]:
-                from src_py.qwen3_backend import collect_perplexity_batch
-            else:
-                raise ValueError(f"Unsupported model for perplexity collection: {config.model}")
-
-            batch_outputs = collect_perplexity_batch(batch_entries, model, tokenizer)
-
-            # Process each entry in the batch
-            for entry, output in zip(batch_entries, batch_outputs):
-                try:
-                    perplexity = calculate_perplexity_from_logits(
-                        output['logits'],
-                        output['input_ids'],
-                        output['answer'],
-                        tokenizer
-                    )
-
-                    result_entry = {
-                        'index': entry['index'],
-                        'perplexity': {'Ok': perplexity},
-                        'question': entry['question'],
-                        'answer': entry['answer'],
-                        'lang': entry['lang'],
-                        'is_correct': entry['is_correct'],
-                        'subject': entry['subject'],
-                    }
-                except Exception as e:
-                    error_message = str(e)
-                    result_entry = {
-                        'index': entry['index'],
-                        'perplexity': {'Err': error_message},
-                        'question': entry['question'],
-                        'answer': entry['answer'],
-                        'lang': entry['lang'],
-                        'is_correct': entry['is_correct'],
-                        'subject': entry['subject'],
-                    }
-
-                all_results.append(result_entry)
-
-        # Write all results to file
+        # Open file for writing results incrementally
         with open(combined_output_path, 'w', encoding='utf-8') as f:
-            for result in all_results:
-                f.write(json.dumps(result, ensure_ascii=False) + '\n')
+            for i in range(0, len(combined_entries), batch_size):
+                batch_entries = combined_entries[i:i+batch_size]
+                print(f"Processing batch {i//batch_size + 1}/{(len(combined_entries) + batch_size - 1)//batch_size}", flush=True)
 
-        print(f"Wrote {len(all_results)} results to {combined_output_path}")
+                # Get model outputs for the batch
+                if config.model == LocalModel.Llama3_3_70B:
+                    from src_py.llama3_1_backend import collect_perplexity_batch
+                elif config.model in [LocalModel.Qwen3_8B, LocalModel.Qwen3_14B, LocalModel.Qwen3_30bA3b, LocalModel.Qwen3Next80bA3b]:
+                    from src_py.qwen3_backend import collect_perplexity_batch
+                else:
+                    raise ValueError(f"Unsupported model for perplexity collection: {config.model}")
+
+                batch_outputs = collect_perplexity_batch(batch_entries, model, tokenizer)
+
+                # Process each entry in the batch and write immediately
+                for entry, output in zip(batch_entries, batch_outputs):
+                    try:
+                        perplexity = calculate_perplexity_from_logits(
+                            output['logits'],
+                            output['input_ids'],
+                            output['answer'],
+                            tokenizer
+                        )
+
+                        result_entry = {
+                            'index': entry['index'],
+                            'perplexity': {'Ok': perplexity},
+                            'question': entry['question'],
+                            'answer': entry['answer'],
+                            'lang': entry['lang'],
+                            'is_correct': entry['is_correct'],
+                            'subject': entry['subject'],
+                        }
+                    except Exception as e:
+                        error_message = str(e)
+                        result_entry = {
+                            'index': entry['index'],
+                            'perplexity': {'Err': error_message},
+                            'question': entry['question'],
+                            'answer': entry['answer'],
+                            'lang': entry['lang'],
+                            'is_correct': entry['is_correct'],
+                            'subject': entry['subject'],
+                        }
+
+                    # Write result immediately
+                    f.write(json.dumps(result_entry, ensure_ascii=False) + '\n')
+                    total_processed += 1
+
+                # Flush after each batch to ensure results are written
+                f.flush()
+                print(f"Written {total_processed}/{len(combined_entries)} entries to file", flush=True)
+
+        print(f"Completed writing all {total_processed} results to {combined_output_path}")
 
         # Dispatch results
         dispatch_perplexity_results(model_safe_name, lang, combined_output_path)
