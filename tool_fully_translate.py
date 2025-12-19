@@ -1,5 +1,6 @@
 """
-Async version of fully translate to Igbo with support for DeepSeek and GPT-5.
+Async version of full translation with support for DeepSeek and GPT-5.
+Supports multiple languages: Igbo, Chinese (Simplified), Hindi.
 Processes multiple translations concurrently for better performance.
 """
 
@@ -10,22 +11,22 @@ import os
 import re
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
-from parse_dataset import load_json_lines
+from src_py.utils import load_json_lines_from_file
 
 # Load API keys from .env file
 load_dotenv(dotenv_path=".env")
 
 
-def create_translation_prompt(question_content: str) -> str:
+def create_translation_prompt(question_content: str, target_language: str) -> str:
     """
-    Create a simple prompt for full translation to Igbo.
+    Create a simple prompt for full translation.
     """
-    prompt = f"""Translate the following English question to Igbo. Provide a natural, fluent translation that maintains the meaning and intent of the original question.
+    prompt = f"""Translate the following English question to {target_language}. Provide a natural, fluent translation that maintains the meaning and intent of the original question.
 
 English question:
 {question_content}
 
-Provide only the Igbo translation, without any explanations or additional text."""
+Provide only the {target_language} translation, without any explanations or additional text."""
 
     return prompt
 
@@ -83,74 +84,55 @@ async def translate_item(
     dataset_line: dict,
     model: str,
     api_type: str,
+    target_language: str,
     index: int,
-    total: int
+    total: int,
+    semaphore: asyncio.Semaphore
 ) -> tuple[str, dict | None]:
     """
-    Translate a single item asynchronously.
+    Translate a single item asynchronously with semaphore control.
 
     Returns:
         Tuple of (item_id, translated_line or None)
     """
-    item_id = dataset_line["id"]
-    question_content = dataset_line["question"][0][0]["content"]
+    async with semaphore:
+        item_id = dataset_line["id"]
+        question_content = dataset_line["question"][0][0]["content"]
 
-    # Create translation prompt
-    prompt = create_translation_prompt(question_content)
+        # Create translation prompt
+        prompt = create_translation_prompt(question_content, target_language)
 
-    # Translate
-    print(f"[{index+1}/{total}] Translating {item_id} to Igbo...")
-    translated_content = await translate_with_api(client, prompt, model, api_type)
+        # Translate
+        print(f"[{index+1}/{total}] Translating {item_id} to {target_language}...")
+        translated_content = await translate_with_api(client, prompt, model, api_type)
 
-    if translated_content:
-        # Create translated item
-        translated_line = dataset_line.copy()
-        translated_line["question"] = [[{
-            "role": "user",
-            "content": translated_content
-        }]]
+        if translated_content:
+            # Create translated item
+            translated_line = dataset_line.copy()
+            translated_line["question"] = [[{
+                "role": "user",
+                "content": translated_content
+            }]]
 
-        print(f"  ✓ {item_id}: {translated_content[:60]}...")
-        return (item_id, translated_line)
-    else:
-        print(f"  ✗ {item_id}: Translation failed")
-        return (item_id, None)
-
-
-async def process_batch(
-    client: AsyncOpenAI,
-    batch: list[tuple[int, dict]],
-    model: str,
-    api_type: str,
-    total: int
-) -> list[tuple[str, dict | None]]:
-    """
-    Process a batch of items concurrently.
-    """
-    tasks = [
-        translate_item(client, item, model, api_type, idx, total)
-        for idx, item in batch
-    ]
-    return await asyncio.gather(*tasks)
+            print(f"  ✓ {item_id}: {translated_content[:60]}...")
+            return (item_id, translated_line)
+        else:
+            print(f"  ✗ {item_id}: Translation failed")
+            return (item_id, None)
 
 
-def save_results(output_file: str, translated_lines: list[dict]):
-    """
-    Save translated lines to file, sorted by ID.
-    """
-    sorted_lines = sorted(
-        translated_lines,
-        key=lambda x: int(re.search(r'\d+', x["id"]).group()) if re.search(r'\d+', x["id"]) else float('inf')
-    )
-    with open(output_file, "w", encoding="utf-8") as f:
-        for t_line in sorted_lines:
-            f.write(json.dumps(t_line, ensure_ascii=False) + "\n")
 
 
 async def main():
     # === Parse command line arguments ===
     parser = argparse.ArgumentParser(
-        description="Async full translation to Igbo with DeepSeek or GPT-5"
+        description="Async full translation with DeepSeek or GPT-5"
+    )
+    parser.add_argument(
+        "--language",
+        choices=["igbo", "chinese", "hindi"],
+        default="igbo",
+        help="Target language (igbo, chinese, or hindi)"
     )
     parser.add_argument(
         "--api",
@@ -165,7 +147,7 @@ async def main():
     )
     parser.add_argument(
         "--input",
-        default="dataset/BFCL_v4_multiple.json",
+        default="tool/dataset/BFCL_v4_multiple.jsonl",
         help="Input dataset file"
     )
     parser.add_argument(
@@ -174,16 +156,22 @@ async def main():
         help="Output file (default: auto-generated)"
     )
     parser.add_argument(
-        "--batch-size",
+        "--max-concurrent",
         type=int,
-        default=10,
-        help="Number of concurrent translations (default: 10)"
+        default=200,
+        help="Maximum number of concurrent translations (default: 200)"
     )
 
     args = parser.parse_args()
 
     # === Configuration ===
     api_type = args.api
+    language_map = {
+        "igbo": "Igbo",
+        "chinese": "Chinese (Simplified)",
+        "hindi": "Hindi"
+    }
+    target_language = language_map[args.language]
 
     # Set default model based on API
     if args.model:
@@ -195,7 +183,7 @@ async def main():
     if args.output:
         output_file = args.output
     else:
-        output_file = f"dataset/BFCL_v4_multiple_igbo_full_{api_type}.json"
+        output_file = f"tool/dataset/BFCL_v4_multiple_{args.language}_full_{api_type}.json"
 
     # Get API configuration
     if api_type == "deepseek":
@@ -210,26 +198,27 @@ async def main():
             raise EnvironmentError("OPENAI_API_KEY not found in .env")
 
     print(f"Using {api_type.upper()} API with model: {model_name}")
-    print(f"Batch size: {args.batch_size} concurrent translations")
+    print(f"Max concurrent translations: {args.max_concurrent}")
 
     # Initialize async client
     client = AsyncOpenAI(api_key=api_key, base_url=base_url)
 
     # === Load input file ===
     print(f"\nLoading dataset from {args.input}...")
-    with open(args.input, "r", encoding="utf-8") as f:
-        dataset = load_json_lines(f)
+
+    dataset = load_json_lines_from_file(args.input)
 
     # === Load existing translations (for resumption) ===
     existing_indices = set()
-    translated_lines = []
     try:
-        with open(output_file, "r", encoding="utf-8") as f:
-            translated_lines = load_json_lines(f)
-            existing_indices = {item["id"] for item in translated_lines}
+        existing_lines = load_json_lines_from_file(output_file)
+        existing_indices = {item["id"] for item in existing_lines}
         print(f"Found {len(existing_indices)} existing translations, will skip those")
     except FileNotFoundError:
         print(f"No existing translations found, starting fresh")
+        # Create empty file
+        with open(output_file, "w", encoding="utf-8") as f:
+            pass
 
     # Filter out already processed items
     items_to_process = [
@@ -243,38 +232,54 @@ async def main():
 
     print(f"\nProcessing {len(items_to_process)} new items...")
 
-    # === Process in batches ===
+    # === Process with semaphore and asyncio.as_completed ===
     total = len(dataset)
-    batch_size = args.batch_size
-    all_results = []
+    semaphore = asyncio.Semaphore(args.max_concurrent)
+    failed = []
+    completed = 0
 
-    for i in range(0, len(items_to_process), batch_size):
-        batch = items_to_process[i:i+batch_size]
-        print(f"\n--- Batch {i//batch_size + 1}/{(len(items_to_process)-1)//batch_size + 1} ---")
+    # Create all tasks
+    tasks = [
+        translate_item(client, item, model_name, api_type, target_language, idx, total, semaphore)
+        for idx, item in items_to_process
+    ]
 
-        results = await process_batch(client, batch, model_name, api_type, total)
-        all_results.extend(results)
+    # Process tasks as they complete
+    for coro in asyncio.as_completed(tasks):
+        item_id, translated_line = await coro
+        completed += 1
 
-        # Save progress after each batch
-        for item_id, translated_line in results:
-            if translated_line:
-                translated_lines.append(translated_line)
+        if translated_line:
+            # Append immediately to file
+            with open(output_file, "a", encoding="utf-8") as f:
+                f.write(json.dumps(translated_line, ensure_ascii=False) + "\n")
+        else:
+            failed.append(item_id)
 
-        save_results(output_file, translated_lines)
-        print(f"Progress saved to {output_file}")
+        if completed % 10 == 0 or completed == len(items_to_process):
+            print(f"Progress: {completed}/{len(items_to_process)} completed")
 
-    # Check for failures
-    failed = [item_id for item_id, line in all_results if line is None]
+    # Sort the output file by ID
+    print(f"\nSorting output file by ID...")
+    all_lines = load_json_lines_from_file(output_file)
+    sorted_lines = sorted(
+        all_lines,
+        key=lambda x: int(re.search(r'\d+', x["id"]).group()) if re.search(r'\d+', x["id"]) else float('inf')
+    )
+    with open(output_file, "w", encoding="utf-8") as f:
+        for line in sorted_lines:
+            f.write(json.dumps(line, ensure_ascii=False) + "\n")
+
+    # Summary
     if failed:
         print(f"\n⚠ Warning: {len(failed)} translations failed:")
-        for item_id in failed[:10]:  # Show first 10
+        for item_id in failed[:10]:
             print(f"  - {item_id}")
         if len(failed) > 10:
             print(f"  ... and {len(failed) - 10} more")
 
     print(f"\n✅ Translation complete! Output saved to: {output_file}")
-    print(f"Total items translated: {len(translated_lines)}")
-    print(f"Success rate: {len(all_results) - len(failed)}/{len(all_results)}")
+    print(f"Success rate: {completed - len(failed)}/{completed}")
 
 
 if __name__ == "__main__":

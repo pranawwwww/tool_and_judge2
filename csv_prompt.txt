@@ -1,0 +1,7 @@
+Now I would like to aggregate the translated Igbo dataset along with the keywords to create csv files for a human to validate.
+Specifically:
+Create a script called generate_full_csv.py that takes in the original dataset and fully translated dataset, and generate a table with the following header:
+Case ID, Original, Translated, Same Meaning? (Y/N), Correct Translation (Copy from Translated if no modification needed)
+
+Then create a second script called generate_partial_csv.py that takes in the original dataset, partially translated dataset and the keyword dataset, and generate a table with the following header:
+Case ID, Original, Keywords to Keep, Partially Translated, Same Meaning? (Y/N), Correct Translation (Copy from Translated if no modification needed)
