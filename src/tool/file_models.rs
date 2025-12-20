@@ -11,17 +11,6 @@ pub struct InferenceRawEntry {
     pub raw_output: String,
 }
 
-// impl InferenceRawEntry {
-//     pub fn new(id: String, raw_output: String) -> Self {
-//         Self { id, raw_output }
-//     }
-// }
-
-// #[derive(Serialize, Deserialize, Clone)]
-// pub enum ToolCallParsingResult{
-//     Success(Vec<serde_json::Value>),
-//     Failure(EvaluationError),
-// }
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct InferenceJsonEntry {
@@ -30,11 +19,6 @@ pub struct InferenceJsonEntry {
     pub result: Result<Vec<BfclOutputFunctionCall>, EvaluationError>,
 }
 
-// impl InferenceJsonEntry {
-//     pub fn new(id: String, valid: bool, result: Result<Vec<BfclOutputFunctionCall>, EvaluationError>) -> Self {
-//         Self { id, valid, result }
-//     }
-// }
 
 #[derive(Serialize, Deserialize, Clone)]
 pub struct EvaluationResultEntry {
@@ -43,11 +27,6 @@ pub struct EvaluationResultEntry {
     pub error: Option<EvaluationError>,
 }
 
-// impl EvaluationResultEntry {
-//     pub fn new(id: String, valid: bool, error: Option<EvaluationError>) -> Self {
-//         Self { id, valid, error }
-//     }
-// }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct EvaluationSummary {
@@ -62,9 +41,3 @@ pub struct CategorizedEntry {
     pub error_category: ToolErrorCategory,
     pub error: EvaluationError,
 }
-
-// impl CategorizedEntry {
-//     pub fn new(id: String, error: EvaluationError, error_category: ToolErrorCategory) -> Self {
-//         Self { id, error, error_category }
-//     }
-// }

@@ -48,22 +48,57 @@ with open(lock_file_path, "w") as lock_file:
         fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
         print("Released build lock.")
 
-import codebase_rs
+from codebase_rs import *
 
 print(f"Loading configs from: {args.config}")
-configs = load_config_from_file(args.config, "configs")
+config = load_config_from_file(args.config, "configs")
+print("Processing configuration: ", config)
 
-# Run the async task
-# Note: Ctrl+C handling is done in Rust (tool_run.rs) using the ctrlc crate
-# The Rust handler will gracefully shut down between configs
-asyncio.run(codebase_rs.tool_run_async(configs, args.num_gpus))
+# api model needs client and vllm model needs an engine and a tokenizer
 
 
-# Refactor idea:
-# Separate python and rust code completely.
-# One pass runs python and the other runs rust.
-# Still needs to take advantage of rust's model interface.
+# Acquire model-level lock, so that all aggregated files can be free of race condition, and is safe to read
 
-# Python side: string input, string output
+# The first pass is pre-translation
+# aggregate all questions across datasets
+# We can create a dataset file that contains questions only for each dataset file
+# aggregate and extract questions can be done at the same time
+# This involves calling a rust function
+# Then we have the question only dataset file. Its path can be retrieved from Rust code.
+# Then we get the python array object from reading the file
 
-# choose backend implementation based on model name
+# Then we call a python interface adapter to get translated questions
+# Then we actually do not need to replicate the same dataset file, but simply override the original questions with translated ones
+# dispatch result to separate result files
+
+# The second pass is generate the raw function calls
+# This involves first calling the rust function to generate the tool definitions for each model
+# Then aggregate all tool definitions across datasets
+# Then we take in the model-specific tool definitions and call the python interface adapter to get the raw function calls
+# We needs to manually map the function calls with its ids to generate the raw output file in python
+# Then dispatch result to separate result files
+# We generate the function name map and store it in a file for later use
+
+# The third pass is to convert the raw function calls to BFCL compatible function calls
+# For each raw result file, we call the rust function to convert it to BFCL compatible function calls
+
+# The fourth pass is to post translate the function calls
+# We collect all parameter values that require translation
+# Then we call the python interface adapter to get translated parameter values
+# Then we replace the original parameter values with translated ones
+
+
+# The fifth pass is to evaluate the BFCL function calls
+# For each BFCL function call file, we call the rust function to evaluate it
+
+# We can remove the scoring pass
+
+# The sixth pass is to categorize errors. 
+# In the first sub-pass, invalid parameter errors are collected. Other errors are ignored. No file is written to.
+# In the second sub-pass, all invalid parameter errors are categorized either through the cache or through gpt5.
+# Finally, we dispatch invalid parameter errors and determine other errors.
+
+# The seventh pass is to generate the final report.
+
+
+

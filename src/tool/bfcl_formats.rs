@@ -24,30 +24,6 @@ pub struct BfclDatasetEntry {
     // pub raw_entry: serde_json::Value,
 }
 
-impl BfclDatasetEntry {
-    
-    // pub fn modify_question_content(&mut self, new_content: &str) -> Result<(), String> {
-    //     let raw_entry = &mut self.raw_entry;
-    //     let question_array = raw_entry
-    //         .get_mut("question")
-    //         .and_then(|v| v.as_array_mut())
-    //         .ok_or("Missing or invalid 'question' field")?;
-    //     let first_question = question_array
-    //         .get_mut(0)
-    //         .and_then(|v| v.as_array_mut())
-    //         .ok_or("Missing or invalid 'question[0]' field")?;
-    //     let first_content = first_question
-    //         .get_mut(0)
-    //         .and_then(|v| v.as_object_mut())
-    //         .ok_or("Missing or invalid 'question[0][0]' field")?;
-    //     first_content.insert(
-    //         "content".to_string(),
-    //         serde_json::Value::String(new_content.to_string()),
-    //     );
-    //     self.question_content = new_content.to_string();
-    //     Ok(())
-    // }
-}
 
 #[derive(Serialize, Deserialize, Clone)]
 pub struct BfclFunctionDef {
@@ -119,28 +95,3 @@ pub struct BfclGroundTruthEntry {
     pub id: String,
     pub ground_truth: Vec<BfclGroundTruthFunctionCall>,
 }
-
-// impl BfclGroundTruthEntry {
-//     pub fn deserialize_from_json(raw_entry: serde_json::Value) -> Result<Self, String> {
-//         let id = raw_entry
-//             .get("id")
-//             .and_then(|v| v.as_str())
-//             .ok_or("Missing or invalid 'id' field")?
-//             .to_string();
-
-//         let gt_array = raw_entry
-//             .get("ground_truth")
-//             .and_then(|v| v.as_array())
-//             .ok_or("Missing or invalid 'ground_truth' field")?;
-
-//         let mut ground_truth = Vec::new();
-//         for gt_val in gt_array {
-//             let function_call = BfclGroundTruthFunctionCall::deserialize_from_json(gt_val)?;
-//             ground_truth.push(function_call);
-//         }
-
-//         Ok(BfclGroundTruthEntry { id, ground_truth })
-//     }
-// }
-// sample ground truth function call:
-// {"triangle_properties.get": {"side1": [5], "side2": [4], "side3": [3], "get_area": ["", true], "get_perimeter": ["", true], "get_angles": ["", true]}}

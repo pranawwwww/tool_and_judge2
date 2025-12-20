@@ -255,38 +255,48 @@ async def main():
 
     if not items_to_process:
         print("\n✅ All items already translated!")
-        return
+    else:
+        print(f"\nProcessing {len(items_to_process)} new items...")
 
-    print(f"\nProcessing {len(items_to_process)} new items...")
+        # === Process with semaphore and asyncio.as_completed ===
+        total = len(dataset)
+        semaphore = asyncio.Semaphore(args.max_concurrent)
+        failed = []
+        completed = 0
 
-    # === Process with semaphore and asyncio.as_completed ===
-    total = len(dataset)
-    semaphore = asyncio.Semaphore(args.max_concurrent)
-    failed = []
-    completed = 0
+        # Create all tasks
+        tasks = [
+            translate_item(client, item, keywords_map, model_name, api_type, target_language, idx, total, semaphore)
+            for idx, item in items_to_process
+        ]
 
-    # Create all tasks
-    tasks = [
-        translate_item(client, item, keywords_map, model_name, api_type, target_language, idx, total, semaphore)
-        for idx, item in items_to_process
-    ]
+        # Process tasks as they complete
+        for coro in asyncio.as_completed(tasks):
+            item_id, translated_line = await coro
+            completed += 1
 
-    # Process tasks as they complete
-    for coro in asyncio.as_completed(tasks):
-        item_id, translated_line = await coro
-        completed += 1
+            if translated_line:
+                # Append immediately to file
+                with open(output_file, "a", encoding="utf-8") as f:
+                    f.write(json.dumps(translated_line, ensure_ascii=False) + "\n")
+            else:
+                failed.append(item_id)
 
-        if translated_line:
-            # Append immediately to file
-            with open(output_file, "a", encoding="utf-8") as f:
-                f.write(json.dumps(translated_line, ensure_ascii=False) + "\n")
-        else:
-            failed.append(item_id)
+            if completed % 10 == 0 or completed == len(items_to_process):
+                print(f"Progress: {completed}/{len(items_to_process)} completed")
 
-        if completed % 10 == 0 or completed == len(items_to_process):
-            print(f"Progress: {completed}/{len(items_to_process)} completed")
+        # Summary
+        if failed:
+            print(f"\n⚠ Warning: {len(failed)} translations failed:")
+            for item_id in failed[:10]:
+                print(f"  - {item_id}")
+            if len(failed) > 10:
+                print(f"  ... and {len(failed) - 10} more")
 
-    # Sort the output file by ID
+        print(f"\n✅ Translation complete!")
+        print(f"Success rate: {completed - len(failed)}/{completed}")
+
+    # Sort the output file by ID (always runs)
     print(f"\nSorting output file by ID...")
     all_lines = load_json_lines_from_file(output_file)
     sorted_lines = sorted(
@@ -296,17 +306,7 @@ async def main():
     with open(output_file, "w", encoding="utf-8") as f:
         for line in sorted_lines:
             f.write(json.dumps(line, ensure_ascii=False) + "\n")
-
-    # Summary
-    if failed:
-        print(f"\n⚠ Warning: {len(failed)} translations failed:")
-        for item_id in failed[:10]:
-            print(f"  - {item_id}")
-        if len(failed) > 10:
-            print(f"  ... and {len(failed) - 10} more")
-
-    print(f"\n✅ Translation complete! Output saved to: {output_file}")
-    print(f"Success rate: {completed - len(failed)}/{completed}")
+    print(f"Output saved to: {output_file}")
 
 
 if __name__ == "__main__":

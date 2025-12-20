@@ -73,7 +73,6 @@ config: JudgeConfig = load_config_from_file(args.config, "config")
 print("Processing configuration: ", config)
 
 
-# Get or create backend with caching
 model_name = config.model.to_string() # Get model name from Rust enum
 model_safe_name = get_model_directory_safe_name(model_name)
 # Start the first pass

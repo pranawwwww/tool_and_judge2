@@ -149,6 +149,7 @@ pub fn requires_name_sanitization(model: Model) -> bool {
 pub enum Language {
     Chinese,
     Hindi,
+    Igbo,
 }
 
 #[pyclass]
@@ -203,17 +204,14 @@ pub struct ToolConfig {
     #[pyo3(get)]
     pub model: Model,
     #[pyo3(get)]
-    pub experiment_configs: Vec<ToolExperiment>,
+    pub experiments: Vec<ToolExperiment>,
 }
 
 #[pymethods]
 impl ToolConfig {
     #[new]
-    fn new(model: Model, experiment_configs: Vec<ToolExperiment>) -> Self {
-        ToolConfig {
-            model,
-            experiment_configs,
-        }
+    fn new(model: Model, experiments: Vec<ToolExperiment>) -> Self {
+        ToolConfig { model, experiments }
     }
 }
 
@@ -224,20 +222,17 @@ impl ToolConfig {
 #[pyclass]
 #[derive(Clone, Debug)]
 pub enum JudgeExperiment {
-    PreferenceDirect{
-        lang1: String,
-        lang2: String,
-    },
-    Perplexity{
-        lang: String,
-    }
+    PreferenceDirect { lang1: String, lang2: String },
+    Perplexity { lang: String },
 }
 #[pymethods]
 impl JudgeExperiment {
     pub fn to_string(&self) -> String {
         match self {
-            JudgeExperiment::PreferenceDirect{lang1, lang2} => format!("preference_{}_{}", lang1, lang2),
-            JudgeExperiment::Perplexity{lang} => format!("perplexity_{}", lang),
+            JudgeExperiment::PreferenceDirect { lang1, lang2 } => {
+                format!("preference_{}_{}", lang1, lang2)
+            }
+            JudgeExperiment::Perplexity { lang } => format!("perplexity_{}", lang),
         }
     }
 }
@@ -255,9 +250,6 @@ pub struct JudgeConfig {
 impl JudgeConfig {
     #[new]
     fn new(model: LocalModel, experiment: JudgeExperiment) -> Self {
-        JudgeConfig {
-            model,
-            experiment,
-        }
+        JudgeConfig { model, experiment }
     }
 }
