@@ -6,7 +6,6 @@ use pyo3::pyfunction;
 
 use crate::{
     config::ToolConfig,
-    models::model_interface::get_model_interface,
     one_entry_map::KeyValuePair,
     tool::{
         base_path::BASE_RESULT_PATH,

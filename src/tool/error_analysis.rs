@@ -1,25 +1,26 @@
 use serde::{Deserialize, Serialize};
-use strum_macros::{Display};
+use strum_macros::{Display, EnumIter};
 
-#[derive(Clone, Serialize, Deserialize, Display)]
+/// The serialized names must match the gpt5's prompt
+#[derive(Clone, Serialize, Deserialize, Display, EnumIter, PartialEq, Eq, Hash)]
 pub enum ToolErrorCategory {
-    #[serde(rename = "syntax error")]
+    #[serde(rename = "SYNTAX_ERROR")]
     SyntaxError,
-    #[serde(rename = "misc error")]
+    #[serde(rename = "MISC_ERROR")]
     MiscError,
-    #[serde(rename = "wrong value")]
+    #[serde(rename = "WRONG_VALUE")]
     WrongValue,
-    #[serde(rename = "relevant but incorrect")]
+    #[serde(rename = "RELEVANT_BUT_INCORRECT")]
     RelevantButIncorrect,
-    #[serde(rename = "exactly same meaning")]
+    #[serde(rename = "EXACTLY_SAME_MEANING")]
     ExactlySameMeaning,
-    #[serde(rename = "language mismatch wrong value")]
+    #[serde(rename = "LANGUAGE_MISMATCH_WRONG_VALUE")]
     LanguageMismatchWrongValue,
-    #[serde(rename = "language mismatch relevant but incorrect")]
+    #[serde(rename = "LANGUAGE_MISMATCH_RELEVANT_BUT_INCORRECT")]
     LanguageMismatchRelevantButIncorrect,
-    #[serde(rename = "language mismatch exactly same meaning")]
+    #[serde(rename = "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING")]
     LanguageMismatchExactlySameMeaning,
-    #[serde(rename = "other error")]
+    #[serde(rename = "OTHER_ERROR")]
     OtherError,
 }
 

@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::config::{Language, ToolConfig, ToolExperiment, TranslateMode, TranslateOption};
+use crate::config::{Language, ToolExperiment, TranslateMode, TranslateOption};
 
 #[derive(Clone, Copy, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
 pub enum OriginalDataset {

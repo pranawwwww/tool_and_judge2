@@ -9,7 +9,7 @@ use crate::{
         bfcl_formats::{BfclDatasetEntry, BfclGroundTruthEntry},
         error_analysis::EvaluationError,
         experiments::{
-            DatasetFileName, EvaluateFileName, PostTranslateFileName, PostTranslateMode,
+            DatasetFileName, EvaluateFileName, ParseOutputFileName, PostTranslateFileName, PostTranslateMode
         },
         passes::pass_parse_output::ParseOutputEntry,
     },
@@ -42,7 +42,11 @@ pub fn pass_evaluate(config: &ToolConfig) {
             .join(&model_safe_name)
             .join("evaluate")
             .join(&evaluate_file_name_str);
-        let parse_output_file_name_str = evaluate_file_name_str.clone();
+        let parse_output_file_name = ParseOutputFileName::from_config_experiment(experiment);
+        let parse_output_file_name_str = format!(
+            "{}.jsonl",
+            serde_json::to_string(&parse_output_file_name).unwrap()
+        );
         let parse_output_file_path = BASE_RESULT_PATH
             .join(&model_safe_name)
             .join("parse_output")

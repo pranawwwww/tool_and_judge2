@@ -2,10 +2,8 @@ use crate::{
     config::Model,
     tool::{
         bfcl_formats::{BfclDatasetEntry, BfclGroundTruthEntry},
-        file_models::CategorizeEntry,
         passes::{
-            pass_evaluate::EvaluateEntry, pass_generate_raw::GenerateRawEntry,
-            pass_parse_output::ParseOutputEntry,
+            pass_categorize::CategorizeEntry, pass_evaluate::EvaluateEntry, pass_generate_raw::GenerateRawEntry, pass_parse_output::ParseOutputEntry
         },
     },
 };

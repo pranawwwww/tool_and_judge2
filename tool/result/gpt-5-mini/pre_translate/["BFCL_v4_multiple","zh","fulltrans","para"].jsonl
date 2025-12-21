@@ -1,0 +1,200 @@
+{"id":"multiple_0","original_question":"已知三角形的三条边长分别为5、4和3个单位，能否确定其尺寸和属性？","translated_question":"Given a triangle with side lengths 5, 4, and 3 units, can its dimensions and properties be determined?"}
+{"id":"multiple_1","original_question":"已知三角形三边长度分别为3、4和5，请计算其面积。","translated_question":"Given a triangle with side lengths 3, 4, and 5, calculate its area."}
+{"id":"multiple_2","original_question":"巴西的首都是哪个城市？","translated_question":"Which city is the capital of Brazil?"}
+{"id":"multiple_3","original_question":"确定点A(3,4)与点B(1,2)之间的欧几里得距离。","translated_question":"Determine the Euclidean distance between point A(3, 4) and point B(1, 2)."}
+{"id":"multiple_4","original_question":"请计算一辆汽车以20米/秒的初速度行驶，并以10米/秒²的加速度加速5秒后的位移量？（假设为直线运动）","translated_question":"Please calculate the displacement of a car with an initial speed of 20 m/s accelerating at 10 m/s² for 5 seconds (assuming straight-line motion)?"}
+{"id":"multiple_5","original_question":"2019年12月13日，位于坐标46.603354,1.8883340的地方，风速和温度分别是多少？","translated_question":"On December 13, 2019, what were the wind speed and temperature at the location with coordinates 46.603354, 1.8883340?"}
+{"id":"multiple_6","original_question":"计算平行板电容器的电容值，已知极板面积为10平方米，极板间距为0.01米，介电常数为1.0。","translated_question":"Calculate the capacitance of a parallel-plate capacitor, given that the plate area is 10 square meters, the separation between the plates is 0.01 meters, and the dielectric constant is 1.0."}
+{"id":"multiple_7","original_question":"怎样分析华盛顿州近十年来鹿群数量的增加情况以及这种增长对森林地区产生的影响？","translated_question":"How can the increase in deer populations in Washington State over the past decade be analyzed, and what impact has this growth had on forested areas?"}
+{"id":"multiple_8","original_question":"寻找位于圣地亚哥、售价在30万至40万美元之间的三卧室别墅待售房源。","translated_question":"Can you find three-bedroom villas for sale in Santiago priced between $300,000 and $400,000?"}
+{"id":"multiple_9","original_question":"请计算学生约翰在以下科目中的平均分：数学90分，科学75分，历史82分，音乐89分。","translated_question":"Please calculate John's average score across the following subjects: Math 90, Science 75, History 82, Music 89."}
+{"id":"multiple_10","original_question":"我需要从员工数据库的personal_data表里移除某些列。出于隐私保护考虑，我打算删除员工的电子邮件地址和社会安全号码这两列。","translated_question":"I need to remove some columns from the personal_data table in the employee database. For privacy protection, I plan to delete the columns containing employees' email addresses and social security numbers."}
+{"id":"multiple_11","original_question":"求解系数为5、20和-25的一元二次方程的根。","translated_question":"Find the roots of the quadratic equation with coefficients 5, 20, and -25."}
+{"id":"multiple_12","original_question":"计算公司'Tech Inc'从2019年100万美元收入到2020年120万美元收入的同比增长率","translated_question":"Calculate the year-over-year growth rate for company \"Tech Inc\" from $1,000,000 revenue in 2019 to $1,200,000 revenue in 2020?"}
+{"id":"multiple_13","original_question":"假设产品A的销量提升10%，且价格维持原样，公司XYZ能获得多少收入？","translated_question":"If product A's sales increase by 10% while the price remains unchanged, how much revenue can company XYZ obtain?"}
+{"id":"multiple_14","original_question":"估算一栋价值20万美元的房产，在年折旧率为3%的条件下，5年后的折旧价值是多少。","translated_question":"Estimate the depreciated value of a property worth $200,000 after 5 years with an annual depreciation rate of 3%?"}
+{"id":"multiple_15","original_question":"在坐标[43.653225, -79.383186]处，一个总太阳能电池板面积为80000平方英尺的太阳能发电场，在12月份的发电能力预计是多少？","translated_question":"At coordinates [43.653225, -79.383186], what is the expected electricity generation of a solar farm with a total solar panel area of 80,000 square feet in December?"}
+{"id":"multiple_16","original_question":"要维持野生老虎种群在接下来100代中遗传多样性以0.95的概率保持不变，所需的最小有效种群规模（Ne）是多少？","translated_question":"What minimum effective population size (Ne) is required to ensure that the genetic diversity of a wild tiger population remains unchanged with probability 0.95 over the next 100 generations?"}
+{"id":"multiple_17","original_question":"查询2022年1月1日欧元对美元的汇率","translated_question":"What was the euro to US dollar exchange rate on January 1, 2022?"}
+{"id":"multiple_18","original_question":"斯大林格勒战役发生在哪个地点，有哪些主要参战方？","translated_question":"Where did the Battle of Stalingrad take place, and who were the main participants?"}
+{"id":"multiple_19","original_question":"基督教历史上发生过哪三次重大的分裂事件？","translated_question":"What three major schisms have occurred in the history of Christianity?"}
+{"id":"multiple_20","original_question":"制作一件3英尺高的大理石雕像，费用是多少？","translated_question":"How much would it cost to make a 3-foot-tall marble statue?"}
+{"id":"multiple_21","original_question":"如何生成一个持续5秒、频率为440赫兹的声音，需要调用哪些函数以及具体的使用方法是什么？","translated_question":"How can I generate a 5-second sound at 440 Hz? Which functions need to be called and how should they be used?"}
+{"id":"multiple_22","original_question":"NBA单场比赛中，个人得分最高纪录是多少？","translated_question":"What is the highest individual scoring record in a single NBA game?"}
+{"id":"multiple_23","original_question":"勒布朗·詹姆斯当前赛季的场均得分、场均助攻以及场均出场时间分别是多少？","translated_question":"What are LeBron James's averages for points per game, assists per game, and minutes per game in the current season?"}
+{"id":"multiple_24","original_question":"请问从伦敦前往爱丁堡参加国际象棋比赛的最快捷路线是哪条？并请给出大致路程距离。","translated_question":"What is the fastest route from London to Edinburgh to attend a chess tournament, and what is the approximate distance?"}
+{"id":"multiple_25","original_question":"《刺客信条：英灵殿》在美国PlayStation商店的历史最低价格是多少？","translated_question":"What is the historical lowest price of Assassin's Creed Valhalla on the US PlayStation Store?"}
+{"id":"multiple_26","original_question":"探索在Playstation平台游玩《堡垒之夜》时，通过完成各类任务和达成奖杯条件能够获取的奖励内容","translated_question":"What rewards can be obtained on the PlayStation platform when playing Fortnite by completing various tasks and meeting trophy requirements?"}
+{"id":"multiple_27","original_question":"如何通过公共交通从法国巴黎前往意大利罗马，找到最短的路线？","translated_question":"How can I find the shortest route by public transport from Paris, France to Rome, Italy?"}
+{"id":"multiple_28","original_question":"一个二次方程的系数分别为2、3和-4，它的根是多少？","translated_question":"A quadratic equation has coefficients 2, 3, and -4. What are its roots?"}
+{"id":"multiple_29","original_question":"确定函数 y=3x+2 与 y=2x+3 的交点坐标。","translated_question":"Find the coordinates of the intersection point of y = 3x + 2 and y = 2x + 3."}
+{"id":"multiple_30","original_question":"计算一个长为12米、宽为5米的矩形的面积是多少？","translated_question":"What is the area of a rectangle with length 12 meters and width 5 meters?"}
+{"id":"multiple_31","original_question":"计算一个宽7单位、长10单位的矩形的面积和周长。","translated_question":"Calculate the area and perimeter of a rectangle with width 7 units and length 10 units."}
+{"id":"multiple_32","original_question":"求一个底面半径为4、高为7的圆锥体的体积。","translated_question":"Find the volume of a cone with base radius 4 and height 7?"}
+{"id":"multiple_33","original_question":"计算函数 f(x) = 3x² 在区间 [1, 2] 上的定积分。","translated_question":"Compute the definite integral of the function f(x) = 3x² on the interval [1, 2]."}
+{"id":"multiple_34","original_question":"找出18和12的最小公倍数（LCM）。","translated_question":"Find the least common multiple (LCM) of 18 and 12."}
+{"id":"multiple_35","original_question":"找出128与256的最大公约数。","translated_question":"Find the greatest common divisor of 128 and 256."}
+{"id":"multiple_36","original_question":"计算一个物体从静止出发，在恒定加速度下经过4秒移动20米后的速度。","translated_question":"Calculate the velocity of an object that starts from rest and, under constant acceleration, has moved 20 meters after 4 seconds."}
+{"id":"multiple_37","original_question":"计算一个以40米/秒初速度竖直上抛的物体，在6秒后的末速度是多少。","translated_question":"Calculate the final velocity of an object thrown vertically upward with an initial speed of 40 m/s after 6 seconds."}
+{"id":"multiple_38","original_question":"查询纽约市图书馆分馆中《牧羊少年奇幻之旅》的馆藏位置。","translated_question":"Where are copies of \"The Alchemist\" located within branches of the New York Public Library?"}
+{"id":"multiple_39","original_question":"查询从纽约前往费城的交通方案，总花费需控制在50美元以内。","translated_question":"What are the transportation options from New York to Philadelphia with a total cost under $50?"}
+{"id":"multiple_40","original_question":"已知电流为12安培，距离为8米，请计算磁场强度。","translated_question":"Given a current of 12 amperes and a distance of 8 meters, please calculate the magnetic field strength."}
+{"id":"multiple_41","original_question":"应用安培定律，计算在点P处的磁场强度，已知电流I等于10安培，距离r为0.01米。","translated_question":"Using Ampère's law, calculate the magnetic field at point P, given the current I is 10 A and the distance r is 0.01 m."}
+{"id":"multiple_42","original_question":"确定将2摩尔气体在300 K与3摩尔同种气体在400 K混合后的最终温度。","translated_question":"Determine the final temperature after mixing 2 moles of a gas at 300 K with 3 moles of the same gas at 400 K?"}
+{"id":"multiple_43","original_question":"计算5摩尔葡萄糖（C6H12O6）能够释放多少能量？","translated_question":"Calculate how much energy can be released by 5 moles of glucose (C6H12O6)?"}
+{"id":"multiple_44","original_question":"假设在地球上的体重为70公斤，那么在火星上的体重会是多少？","translated_question":"Assuming a weight of 70 kilograms on Earth, what would the weight be on Mars?"}
+{"id":"multiple_45","original_question":"冰河时代距离现在有多少年？","translated_question":"How many years ago was the Ice Age?"}
+{"id":"multiple_46","original_question":"请将以下姓名按升序排列：['Sam', 'Alice', 'Jack']","translated_question":"Please sort the following names in ascending order: ['Sam', 'Alice', 'Jack']"}
+{"id":"multiple_47","original_question":"确定向量A [3, 2, 1] 和向量B [1, 2, 3] 的余弦相似度值。","translated_question":"Determine the cosine similarity between vector A [3, 2, 1] and vector B [1, 2, 3]."}
+{"id":"multiple_48","original_question":"寻找纽约市内一家允许宠物入内并配备无障碍设施的图书馆。","translated_question":"Where can I find a library in New York City that allows pets inside and is equipped with accessibility facilities?"}
+{"id":"multiple_49","original_question":"计算一笔本金为1500元、年利率2.5%、期限2年的复利金额。","translated_question":"Calculate the compound amount of a principal of 1,500 yuan at an annual interest rate of 2.5% for 2 years."}
+{"id":"multiple_50","original_question":"预估纽约市下个月的住宅价格走势。","translated_question":"What is the estimated trend of residential housing prices in New York City next month?"}
+{"id":"multiple_51","original_question":"计算两个骰子掷出点数总和为7的几率。","translated_question":"Calculate the probability that the sum of the numbers rolled on two dice is 7."}
+{"id":"multiple_52","original_question":"如果我有100欧元，能兑换成多少美元？","translated_question":"If I have 100 euros, how many US dollars can I get in exchange?"}
+{"id":"multiple_53","original_question":"基于利率和失业率数据，预测未来五年内的房价走势。","translated_question":"Based on interest rate and unemployment rate data, predict the trend of housing prices over the next five years?"}
+{"id":"multiple_54","original_question":"查找苹果公司近五年来的股息发放记录。","translated_question":"Find Apple's dividend payment records for the past five years?"}
+{"id":"multiple_55","original_question":"预估谷歌接下来三个交易日的股票价格走势。","translated_question":"Estimate Google's stock price movement for the next three trading days?"}
+{"id":"multiple_56","original_question":"计算苹果股票在过去60个交易日内的平均收盘价格","translated_question":"What is the average closing price of Apple stock over the past 60 trading days?"}
+{"id":"multiple_57","original_question":"请帮我计算一下，本金为1000美元，年利率为5%，投资期限为10年，每年复利4次的最终金额。","translated_question":"Please help me calculate the final amount for a principal of $1,000, an annual interest rate of 5%, an investment period of 10 years, compounded quarterly."}
+{"id":"multiple_58","original_question":"寻找洛杉矶的离婚法律专业人士","translated_question":"Looking for divorce lawyers in Los Angeles?"}
+{"id":"multiple_59","original_question":"在纽约周边地区寻找专注于刑事法律领域的律师。","translated_question":"Are there any lawyers in the New York area who specialize in criminal law?"}
+{"id":"multiple_60","original_question":"7天后纽约市的湿度和温度预测是多少？","translated_question":"What are the humidity and temperature forecasts for New York City 7 days from now?"}
+{"id":"multiple_61","original_question":"寻找一位在波特兰拥有五年小空间花园设计经验的景观设计师","translated_question":"Seeking a landscape designer in Portland with five years of small-space garden design experience?"}
+{"id":"multiple_62","original_question":"请推荐波士顿附近近期开放露营且风景优美的自然公园。","translated_question":"Please recommend scenic natural parks near Boston that have recently opened for camping."}
+{"id":"multiple_63","original_question":"未来一周纽约的空气质量指数预测如何？","translated_question":"What is the forecast for New York's Air Quality Index over the next week?"}
+{"id":"multiple_64","original_question":"查询2023年6月1日东京明天的紫外线指数。","translated_question":"What is Tokyo's UV index tomorrow, June 1, 2023?"}
+{"id":"multiple_65","original_question":"确定纽约市与洛杉矶之间的路程长度。","translated_question":"What is the distance between New York City and Los Angeles?"}
+{"id":"multiple_66","original_question":"预计这个周末从拉斯维加斯到洛杉矶的交通情况会怎样？","translated_question":"What is the expected traffic like from Las Vegas to Los Angeles this weekend?"}
+{"id":"multiple_67","original_question":"请将“Hello, how are you?”翻译成法语。","translated_question":"Please translate \"Hello, how are you?\" into French."}
+{"id":"multiple_68","original_question":"在纽约公共图书馆是否可以找到历史小说类的书籍？","translated_question":"Can I find historical novels at the New York Public Library?"}
+{"id":"multiple_69","original_question":"基于所给信息，运用五因素模型分析并确定我的性格类型：我善于交际、易焦虑、对艺术缺乏兴趣、有惰性倾向且待人宽厚。","translated_question":"Based on the information provided, use the Five-Factor Model to analyze and determine my personality type: I am sociable, prone to anxiety, uninterested in the arts, somewhat lazy, and kind and tolerant toward others?"}
+{"id":"multiple_70","original_question":"18世纪法国有哪些君主？","translated_question":"Who were the monarchs of France in the 18th century?"}
+{"id":"multiple_71","original_question":"1954年时，美国退伍军人的数量是多少？","translated_question":"How many U.S. veterans were there in 1954?"}
+{"id":"multiple_72","original_question":"1970年时，加利福尼亚州有多少居民？","translated_question":"How many residents did California have in 1970?"}
+{"id":"multiple_73","original_question":"佛教的创立者是谁，其发源地是何处？","translated_question":"Who was the founder of Buddhism, and where did it originate?"}
+{"id":"multiple_74","original_question":"搜索梵高作品《星夜》在各大拍卖平台上的成交价格。","translated_question":"Can you search for the sale prices of Van Gogh's \"The Starry Night\" on major auction platforms?"}
+{"id":"multiple_75","original_question":"当前客厅中最受欢迎的油漆颜色是哪一种？","translated_question":"What is the most popular paint color for living rooms right now?"}
+{"id":"multiple_76","original_question":"定制一尊铜马雕塑时，有哪些材料可以选择？","translated_question":"When customizing a bronze horse sculpture, what materials can be chosen?"}
+{"id":"multiple_77","original_question":"查找纽约知名的现代雕塑作品。","translated_question":"What are well-known modern sculptures in New York?"}
+{"id":"multiple_78","original_question":"查询伦敦自然历史博物馆的相关信息，涵盖其开放时段、展出项目以及无障碍服务。","translated_question":"Could you provide information about the Natural History Museum in London, including its opening hours, exhibitions, and accessibility services?"}
+{"id":"multiple_79","original_question":"查询纽约现代艺术博物馆下个月的艺术展览安排。","translated_question":"What art exhibitions are scheduled at the Museum of Modern Art in New York next month?"}
+{"id":"multiple_80","original_question":"寻找纳什维尔本地一家既销售吉他又开设小提琴课程的乐器店。","translated_question":"Are there any local music stores in Nashville that both sell guitars and offer violin lessons?"}
+{"id":"multiple_81","original_question":"我想预定一张埃米纳姆在纽约市演出的后台通行门票。","translated_question":"Can I book a backstage pass for Eminem's performance in New York City?"}
+{"id":"multiple_82","original_question":"以每分钟120拍的速度，在C大调上演奏一首乐曲。","translated_question":"Play a piece in C major at a tempo of 120 beats per minute?"}
+{"id":"multiple_83","original_question":"莱昂内尔·梅西在巴塞罗那队的总进球数是多少？","translated_question":"How many total goals did Lionel Messi score for Barcelona?"}
+{"id":"multiple_84","original_question":"列出巴塞罗那足球俱乐部在欧冠联赛中进球数排名前十的球员。","translated_question":"List the top ten goal scorers for FC Barcelona in the UEFA Champions League."}
+{"id":"multiple_85","original_question":"查询皇家马德里最近五场西甲联赛的足球比赛结果。","translated_question":"What were Real Madrid's results in their last five La Liga matches?"}
+{"id":"multiple_86","original_question":"在BoardGameGeek商店中，有哪些值得推荐的适合双人进行的策略型桌游？","translated_question":"Which strategy board games suitable for two players are recommended in the BoardGameGeek store?"}
+{"id":"multiple_87","original_question":"查询游戏《赛博朋克2077》在Xbox主机上的近期更新内容或修复程序。","translated_question":"What are the recent updates or patches for the game \"Cyberpunk 2077\" on Xbox consoles?"}
+{"id":"multiple_88","original_question":"查询2020年游戏《魔兽世界》的活跃玩家数量是多少。","translated_question":"How many active players did the game \"World of Warcraft\" have in 2020?"}
+{"id":"multiple_89","original_question":"寻找一份健康的午餐食谱，要求热量低于500卡路里，并且包含鸡肉和蘑菇作为主要食材。","translated_question":"Can you recommend a healthy lunch recipe that is under 500 calories and features chicken and mushrooms as the main ingredients?"}
+{"id":"multiple_90","original_question":"请推荐一家位于西雅图、可接待5人团体的海鲜餐厅。","translated_question":"Please recommend a seafood restaurant in Seattle that can accommodate a group of five."}
+{"id":"multiple_91","original_question":"有没有使用不超过5种食材制作美味苹果派的方法？","translated_question":"Is there a way to make a delicious apple pie using no more than five ingredients?"}
+{"id":"multiple_92","original_question":"提供一份在丹佛周边沃尔玛门店能够购买到的素食及无麸质食品列表。","translated_question":"Please provide a list of vegetarian and gluten-free foods available for purchase at Walmart stores in the Denver area."}
+{"id":"multiple_93","original_question":"请为我在纽约万豪酒店安排一间豪华客房，连续住宿两晚，并包含早餐服务。","translated_question":"Could you please arrange a deluxe room for me at the New York Marriott Hotel for two consecutive nights, including breakfast?"}
+{"id":"multiple_94","original_question":"请帮我查询纽约希尔顿酒店大床套房住三晚的价格","translated_question":"Could you help me check the price of a three-night stay in a king-bed suite at the Hilton Hotel in New York?"}
+{"id":"multiple_95","original_question":"根据现行汇率，将200欧元换算成美元。","translated_question":"According to the current exchange rate, how much are 200 euros in US dollars?"}
+{"id":"multiple_96","original_question":"求解一个二次方程，其系数为a=2，b=6，c=5","translated_question":"Solve the quadratic equation with coefficients a = 2, b = 6, c = 5."}
+{"id":"multiple_97","original_question":"计算半径为10的圆的面积。","translated_question":"Calculate the area of a circle with radius 10."}
+{"id":"multiple_98","original_question":"求一个半径为3的圆的周长","translated_question":"Find the circumference of a circle with radius 3."}
+{"id":"multiple_99","original_question":"求函数2x^2在x=1时的导数值。","translated_question":"Find the value of the derivative of the function 2x^2 at x = 1."}
+{"id":"multiple_100","original_question":"计算36和24的最大公约数。","translated_question":"Calculate the greatest common divisor of 36 and 24."}
+{"id":"multiple_101","original_question":"计算12和18的最大公约数","translated_question":"Calculate the greatest common divisor of 12 and 18."}
+{"id":"multiple_102","original_question":"求一辆初速度为10、加速度为9.8的汽车在5秒内的位移。","translated_question":"Find the displacement of a car with an initial velocity of 10 and an acceleration of 9.8 over 5 seconds."}
+{"id":"multiple_103","original_question":"确定一个物体在真空中从100米高度自由落体时的末速度。","translated_question":"Determine the final velocity of an object in free fall from a height of 100 meters in a vacuum."}
+{"id":"multiple_104","original_question":"确定纽约市与华盛顿特区之间的最短行车距离。","translated_question":"Determine the shortest driving distance between New York City and Washington, D.C."}
+{"id":"multiple_105","original_question":"确定在半径为4米的圆形环路中流过5安培电流时，圆心位置产生的磁场强度。","translated_question":"Determine the magnetic field strength at the center of a circular loop of radius 4 meters when a current of 5 amperes flows through it?"}
+{"id":"multiple_106","original_question":"确定在距离0.01库仑电荷4米位置处的电场强度数值。","translated_question":"Determine the value of the electric field strength at a point located 4 meters from a charge of 0.01 coulombs."}
+{"id":"multiple_107","original_question":"计算质量为45千克、体积为15立方米的物质的密度。","translated_question":"Calculate the density of a substance with a mass of 45 kilograms and a volume of 15 cubic meters?"}
+{"id":"multiple_108","original_question":"在恒定压力下，计算温度为298K、体积为10立方米的空气的热容量。","translated_question":"At constant pressure, calculate the heat capacity of air at a temperature of 298 K and a volume of 10 m³."}
+{"id":"multiple_109","original_question":"血浆膜中存在哪些蛋白质种类？","translated_question":"What types of proteins are present in the plasma membrane?"}
+{"id":"multiple_110","original_question":"查询SNP（单核苷酸多态性）标识符rs6034464对应的基因变异类别。","translated_question":"What is the gene variant category corresponding to the SNP (single nucleotide polymorphism) identifier rs6034464?"}
+{"id":"multiple_111","original_question":"如果A等位基因的频率是0.3，那么人群中AA基因型的频率是多少？","translated_question":"If the allele frequency of A is 0.3, what is the frequency of the AA genotype in the population?"}
+{"id":"multiple_112","original_question":"预估黄石国家公园在未来五年内森林覆盖面积的变化趋势，并分析人为因素对其产生的影响。","translated_question":"Estimate the trend in forest cover change in Yellowstone National Park over the next five years, and analyze the impact of human factors on it."}
+{"id":"multiple_113","original_question":"根据特征A对适应度的贡献为40%和特征B的贡献为60%，且特征A的值为0.8，特征B的值为0.7，计算该生物的预期进化适应度。","translated_question":"Given that trait A contributes 40% to fitness and trait B contributes 60%, and trait A has a value of 0.8 and trait B has a value of 0.7, calculate the organism's expected evolutionary fitness."}
+{"id":"multiple_114","original_question":"预测未来50年内人类进化速率，基于达尔文进化论模型","translated_question":"What will the rate of human evolution be over the next 50 years, based on Darwinian evolutionary theory?"}
+{"id":"multiple_115","original_question":"请帮我查找曼哈顿周边5家同时供应泰国菜和素食的餐厅。","translated_question":"Please help me find five restaurants in or near Manhattan that serve both Thai cuisine and vegetarian food."}
+{"id":"multiple_116","original_question":"请计算一个体重为85公斤、身高180厘米的人的体重指数（BMI）。","translated_question":"Please calculate the body mass index (BMI) of a person who weighs 85 kilograms and is 180 centimeters tall."}
+{"id":"multiple_117","original_question":"请计算一个体重为70公斤、身高1.75米的人的BMI（身体质量指数）。","translated_question":"Please calculate the BMI (body mass index) of a person who weighs 70 kilograms and is 1.75 meters tall?"}
+{"id":"multiple_118","original_question":"在IMDB数据库中搜索2010年由莱昂纳多·迪卡普里奥主演的全部影片。","translated_question":"Could you search the IMDb database for all films from 2010 starring Leonardo DiCaprio?"}
+{"id":"multiple_119","original_question":"从用户表中检索年龄超过25岁且职业为“工程师”的数据条目。","translated_question":"Retrieve records from the user table where age is greater than 25 and occupation is \"Engineer\"?"}
+{"id":"multiple_120","original_question":"光从距离地球4光年的恒星传播到地球需要多少时间？","translated_question":"How long does it take for light from a star 4 light-years away to reach Earth?"}
+{"id":"multiple_121","original_question":"请计算一个底边长度为6、高度为10的三角形的面积。","translated_question":"Please calculate the area of a triangle with a base length of 6 and a height of 10."}
+{"id":"multiple_122","original_question":"构建一个线性回归模型，其中使用'年龄'、'收入'和'教育程度'作为预测变量，'购买金额'作为目标变量，并对数据进行标准化处理。","translated_question":"Construct a linear regression model that uses 'age', 'income', and 'education level' as predictor variables, with 'purchase amount' as the target variable, and standardize the data."}
+{"id":"multiple_123","original_question":"计算从一副扑克牌中抽到一张K的概率。","translated_question":"Calculate the probability of drawing a K from a deck of playing cards?"}
+{"id":"multiple_124","original_question":"从一副充分洗匀的标准52张牌中，随机抽取一张牌，抽到国王的可能性有多大？","translated_question":"From a well-shuffled standard 52-card deck, one card is drawn at random. What is the probability of drawing a king?"}
+{"id":"multiple_125","original_question":"对A组[3, 4, 5, 6, 4]和B组[7, 8, 9, 8, 7]执行等方差假设下的双样本T检验，以分析两组均值是否存在显著差异。","translated_question":"Perform a two-sample t-test assuming equal variances on group A [3, 4, 5, 6, 4] and group B [7, 8, 9, 8, 7] to determine whether there is a significant difference between their means?"}
+{"id":"multiple_126","original_question":"确定两组变量之间的统计显著性，其中数据集A包含数值12、24、36，数据集B包含数值15、30、45。","translated_question":"Determine the statistical significance between the two groups of variables, where dataset A contains the values 12, 24, 36, and dataset B contains the values 15, 30, 45."}
+{"id":"multiple_127","original_question":"如果一家公司发行了1亿股流通股，年度总股息支出为5000万美元，那么每季度每股的股息金额是多少？","translated_question":"If a company has issued 100 million outstanding shares and the total annual dividend payout is $50 million, what is the dividend per share per quarter?"}
+{"id":"multiple_128","original_question":"根据已知数据，计算公司的净资产收益率：净利润为2,000,000美元，股东权益为10,000,000美元，股息支付额为200,000美元。","translated_question":"Based on the given data, calculate the company's return on equity: net profit is $2,000,000, shareholders' equity is $10,000,000, and dividend payments are $200,000."}
+{"id":"multiple_129","original_question":"计算一笔初始投资为10000美元，年利率为5%，按月计复利，投资期限为5年的最终复利总额。","translated_question":"Calculate the final amount of an initial investment of $10,000 at an annual interest rate of 5% compounded monthly over a 5-year period."}
+{"id":"multiple_130","original_question":"确定在初始投资2000美元、最终价值3000美元、投资期为4年的情况下，复合年增长率（CAGR）是多少。","translated_question":"What is the compound annual growth rate (CAGR) given an initial investment of $2,000, a final value of $3,000, and an investment period of 4 years?"}
+{"id":"multiple_131","original_question":"查询过去5个交易日内标准普尔500指数与道琼斯工业平均指数的市场走势情况。","translated_question":"What were the market trends of the S&P 500 Index and the Dow Jones Industrial Average over the past five trading days?"}
+{"id":"multiple_132","original_question":"确定一项初始投资为20000美元、年回报率为8%、投资期限为5年的投资的未来价值。","translated_question":"Determine the future value of an investment with an initial investment of $20,000, an annual rate of return of 8%, and an investment period of 5 years."}
+{"id":"multiple_133","original_question":"计算一笔初始投资为50000美元、年化收益率为5%的互惠基金，在三年后的总价值。","translated_question":"Calculate the total value after three years of a mutual fund with an initial investment of $50,000 and an annual return rate of 5%?"}
+{"id":"multiple_134","original_question":"查找圣地亚哥县案件编号为CA123456的重罪犯罪记录详细信息","translated_question":"Can you locate detailed information on the felony criminal record for San Diego County case number CA123456?"}
+{"id":"multiple_135","original_question":"2022/AL2562号加利福尼亚州案件的受害者身份是什么？","translated_question":"What is the identity of the victim in California case No. 2022/AL2562?"}
+{"id":"multiple_136","original_question":"请给出2020年旧金山暴力犯罪的官方犯罪率统计信息。","translated_question":"Please provide the official violent crime rate statistics for San Francisco in 2020."}
+{"id":"multiple_137","original_question":"查找自2021年1月1日起在加利福尼亚州对\"谷歌\"公司发起的未决法律案件。","translated_question":"Can you find pending legal cases filed against the company \"Google\" in California since January 1, 2021?"}
+{"id":"multiple_138","original_question":"怎样查找R诉亚当斯法律案件的具体案件详情？","translated_question":"How can I find the specific details of the legal case R v Adams?"}
+{"id":"multiple_139","original_question":"搜索2010年与苹果公司相关的专利纠纷案件具体信息。","translated_question":"Could you search for detailed information about patent dispute cases involving Apple Inc. in 2010?"}
+{"id":"multiple_140","original_question":"搜索2020年针对谷歌公司在加利福尼亚州发起的法律诉讼案件","translated_question":"Search for lawsuits filed against Google in California in 2020."}
+{"id":"multiple_141","original_question":"请提供案件ID为1234的诉讼案件详细信息，并确认该案件是否已经结案。","translated_question":"Please provide detailed information about the litigation case with case ID 1234, and confirm whether the case has been closed."}
+{"id":"multiple_142","original_question":"查询佛罗里达州迈阿密接下来一周的湿度情况。","translated_question":"What will the humidity be like in Miami, Florida over the next week?"}
+{"id":"multiple_143","original_question":"计算两点（40.7128，-74.0060）与（34.0522，-118.2437）之间的坡度，结果以度表示。","translated_question":"Calculate the slope between the two points (40.7128, -74.0060) and (34.0522, -118.2437), with the result expressed in degrees."}
+{"id":"multiple_144","original_question":"2022年8月16日伦敦的空气质量指数具体数值是多少？","translated_question":"What was the Air Quality Index (AQI) value in London on August 16, 2022?"}
+{"id":"multiple_145","original_question":"计算一辆汽油动力汽车每年排放的二氧化碳量，已知其燃油效率为20英里每加仑，每年行驶里程为12,000英里。","translated_question":"Calculate the amount of carbon dioxide emitted annually by a gasoline-powered car, given its fuel efficiency is 20 miles per gallon and it travels 12,000 miles per year."}
+{"id":"multiple_146","original_question":"搜索西雅图周边10英里范围内提供中餐服务的餐厅。","translated_question":"Can you search for restaurants within a 10-mile radius of Seattle that offer Chinese cuisine?"}
+{"id":"multiple_147","original_question":"请提供从纽约到洛杉矶的路线，要求避开高速公路和收费道路。","translated_question":"Please provide a route from New York to Los Angeles that avoids highways and toll roads."}
+{"id":"multiple_148","original_question":"提供苹果公司股票的全面资料。","translated_question":"Please provide comprehensive information about Apple Inc.'s stock?"}
+{"id":"multiple_149","original_question":"评估客户评论“I love the food here! It's always fresh and delicious.”中表达的情感。","translated_question":"Evaluate the sentiment expressed in the customer review \"I love the food here! It's always fresh and delicious.\""}
+{"id":"multiple_150","original_question":"根据200的突触输入频率、0.5的权重系数和0.1的衰减率，计算神经元的活动水平。","translated_question":"Calculate the neuron's activity level given a synaptic input frequency of 200, a weight coefficient of 0.5, and a decay rate of 0.1."}
+{"id":"multiple_151","original_question":"在推特上搜索关注者数量最多、发布内容涉及行为心理学和群体动力学的用户。","translated_question":"Can you search Twitter for the users with the most followers who post content related to behavioral psychology and group dynamics?"}
+{"id":"multiple_152","original_question":"列举1871年至1945年间德国历史上的重要战争事件。","translated_question":"List the major war events in German history from 1871 to 1945."}
+{"id":"multiple_153","original_question":"《里斯本条约》的签署日期是什么时候？","translated_question":"When was the Treaty of Lisbon signed?"}
+{"id":"multiple_154","original_question":"1861年担任美国总统的人的全名是什么？","translated_question":"What is the full name of the person who served as President of the United States in 1861?"}
+{"id":"multiple_155","original_question":"请提供关于中子发现者的详细信息。","translated_question":"Please provide detailed information about the discoverer of the neutron."}
+{"id":"multiple_156","original_question":"1915年3月17日，阿尔伯特·爱因斯坦在科学领域做出了哪些重要贡献？","translated_question":"On March 17, 1915, what significant contributions did Albert Einstein make in the field of science?"}
+{"id":"multiple_157","original_question":"历史上关于耶稣基督的最早记录是什么？","translated_question":"What is the earliest historical record about Jesus Christ?"}
+{"id":"multiple_158","original_question":"查找教皇英诺森三世的生平事迹及其重要成就。","translated_question":"Can you find the life and major achievements of Pope Innocent III?"}
+{"id":"multiple_159","original_question":"估算使用某品牌油漆粉刷一面30英尺宽、12英尺高的墙壁所需的总量，该品牌每加仑可覆盖400平方英尺的面积。","translated_question":"Estimate the total amount of paint required to paint a wall 30 feet wide and 12 feet high using a brand that covers 400 square feet per gallon?"}
+{"id":"multiple_160","original_question":"请帮我查找詹姆斯·普伦萨最近创作的艺术雕塑作品，并提供其详细描述。","translated_question":"Please help me find the art sculptures recently created by James Pulensa and provide detailed descriptions of them."}
+{"id":"multiple_161","original_question":"查询下个月纽约地区举办的顶尖现代雕塑展览。","translated_question":"What are the top modern sculpture exhibitions taking place in the New York area next month?"}
+{"id":"multiple_162","original_question":"B1004号建筑二、三、四层的结构动力分析内容是什么？","translated_question":"What are the contents of the structural dynamic analysis for the second, third, and fourth floors of Building No. B1004?"}
+{"id":"multiple_163","original_question":"请提供大都会艺术博物馆最受欢迎的五件艺术品清单，并按受欢迎程度从高到低排列。","translated_question":"Please provide a list of the five most popular artworks at the Metropolitan Museum of Art, arranged from most to least popular."}
+{"id":"multiple_164","original_question":"Fender American Professional II Stratocaster 玫瑰木饰面款的售价是多少？","translated_question":"How much does the Fender American Professional II Stratocaster with a rosewood fingerboard cost?"}
+{"id":"multiple_165","original_question":"查询芝加哥地区二手Gibson Les Paul吉他在优良状态下的市场价格。","translated_question":"What is the market price of a used Gibson Les Paul guitar in good condition in the Chicago area?"}
+{"id":"multiple_166","original_question":"在洛杉矶寻找本周末票价实惠的古典音乐会。","translated_question":"Are there any affordable classical concerts in Los Angeles this weekend?"}
+{"id":"multiple_167","original_question":"创作一段C大调旋律，起始音为C4，总长16小节，节奏设定为每分钟120拍。","translated_question":"Compose a melody in C major that starts on C4, is 16 measures long, and has a tempo of 120 beats per minute?"}
+{"id":"multiple_168","original_question":"寻找皇后乐队（Queen）演唱的《波西米亚狂想曲》（Bohemian Rhapsody）的歌词内容。","translated_question":"Where can I find the lyrics of \"Bohemian Rhapsody\" performed by Queen?"}
+{"id":"multiple_169","original_question":"C#大调的音阶由哪些音符组成？","translated_question":"Which notes make up the C-sharp major scale?"}
+{"id":"multiple_170","original_question":"查询克里斯蒂亚诺·罗纳尔多在2019-2020赛季的球员数据统计","translated_question":"What were Cristiano Ronaldo's player statistics in the 2019–2020 season?"}
+{"id":"multiple_171","original_question":"2021年1月28日洛杉矶湖人队与洛杉矶快船队的篮球比赛，哪支队伍获胜了？","translated_question":"Which team won the basketball game between the Los Angeles Lakers and the Los Angeles Clippers on January 28, 2021?"}
+{"id":"multiple_172","original_question":"获取篮球运动员勒布朗·詹姆斯的详细信息","translated_question":"Can you get detailed information about the basketball player LeBron James?"}
+{"id":"multiple_173","original_question":"查询2021赛季NBA中防守表现最出色的球队排名情况。","translated_question":"What were the rankings of the teams with the best defensive performance in the 2021 NBA season?"}
+{"id":"multiple_174","original_question":"曼联目前在英超联赛中的排名情况如何？","translated_question":"What is Manchester United's current position in the Premier League standings?"}
+{"id":"multiple_175","original_question":"当前女子网球世界排名第一的是哪位选手？","translated_question":"Who is currently ranked number one in the women's tennis world rankings?"}
+{"id":"multiple_176","original_question":"请提供曼联接下来六场英超联赛的赛程安排。","translated_question":"Please provide Manchester United's schedule for their next six Premier League matches."}
+{"id":"multiple_177","original_question":"在纽约市范围内，搜寻国际象棋等级分超过2300的顶级棋手。","translated_question":"Can you find top chess players in New York City whose international chess rating is above 2300?"}
+{"id":"multiple_178","original_question":"从牌组中找出等级是“皇后”且花色为“红心”的那张牌。","translated_question":"Find the card in the deck whose rank is \"Queen\" and whose suit is \"Hearts\"."}
+{"id":"multiple_179","original_question":"计算在扑克牌游戏中，拿到满堂红这一手牌的概率是多少？","translated_question":"In a poker game, what is the probability of being dealt a \"mantanghong\" hand?"}
+{"id":"multiple_180","original_question":"查询用户'Sam'在Switch平台上的'Zelda'游戏玩家数据统计。","translated_question":"Query the player statistics for user 'Sam' on the 'Zelda' game on the Switch platform?"}
+{"id":"multiple_181","original_question":"请提供利物浦足球俱乐部最近一场比赛的完整信息，包含相关统计数据。","translated_question":"Please provide complete information about Liverpool Football Club's most recent match, including relevant statistics?"}
+{"id":"multiple_182","original_question":"请推荐一款评分高于4.5分并支持Windows 10系统的多人在线游戏。","translated_question":"Please recommend a multiplayer online game with a rating above 4.5 that supports Windows 10."}
+{"id":"multiple_183","original_question":"请问在Foodnetwork.com网站上，牛肉千层面这道菜的食谱含有多少卡路里？","translated_question":"How many calories are in the beef lasagna recipe on FoodNetwork.com?"}
+{"id":"multiple_184","original_question":"请提供一份适合两人份的素食奶酪意面制作方法。","translated_question":"Please provide a vegetarian cheesy pasta recipe suitable for two people."}
+{"id":"multiple_185","original_question":"请帮我查找波士顿地区距离最近的带露台的寿司餐厅。","translated_question":"Please help me find the closest sushi restaurants with terraces in the Boston area."}
+{"id":"multiple_186","original_question":"请提供一个制作时间不超过30分钟的素食布朗尼配方。","translated_question":"Please provide a vegan brownie recipe that takes no more than 30 minutes to make."}
+{"id":"multiple_187","original_question":"查询洛杉矶Whole Foods超市的西红柿与生菜售价。","translated_question":"What are the prices of tomatoes and lettuce at the Whole Foods supermarket in Los Angeles?"}
+{"id":"multiple_188","original_question":"请查找距离伯克利最近、评分不低于4.5星、同时售卖番茄和宠物食品的杂货店。","translated_question":"Could you find the grocery store nearest to Berkeley with a rating of at least 4.5 stars that also sells tomatoes and pet food?"}
+{"id":"multiple_189","original_question":"请将纽约时区下午3点的时间转换为伦敦时区的时间。","translated_question":"Please convert 3:00 PM in the New York time zone to the time in the London time zone?"}
+{"id":"multiple_190","original_question":"为2022年12月10日开始的两晚住宿，预订芝加哥希尔顿酒店的单人间。","translated_question":"Could you book a single room at the Hilton Hotel in Chicago for two nights starting December 10, 2022?"}
+{"id":"multiple_191","original_question":"为2022年5月12日开始的3天住宿，预订拉斯维加斯天堂酒店的一间带城市景观的豪华客房。","translated_question":"Can you book a deluxe room with a city view at the Las Vegas Paradise Hotel for a three-night stay starting May 12, 2022?"}
+{"id":"multiple_192","original_question":"请将150欧元转换为加拿大元。","translated_question":"Please convert 150 euros to Canadian dollars?"}
+{"id":"multiple_193","original_question":"查询从埃菲尔铁塔到卢浮宫的行程距离及所需时间","translated_question":"What is the distance and travel time from the Eiffel Tower to the Louvre?"}
+{"id":"multiple_194","original_question":"请问大都会艺术博物馆在星期六的开放时间是什么时候？","translated_question":"What are the Metropolitan Museum of Art's opening hours on Saturdays?"}
+{"id":"multiple_195","original_question":"在恒定压力下，计算温度为298K、体积为10立方米的空气的热容量。","translated_question":"At constant pressure, calculate the heat capacity of air at a temperature of 298 K and a volume of 10 cubic meters."}
+{"id":"multiple_196","original_question":"在血浆膜中存在的蛋白质有哪些具体名称？","translated_question":"What are the specific names of the proteins present in the plasma membrane?"}
+{"id":"multiple_197","original_question":"查询SNP（单核苷酸多态性）标识符rs6034464对应的基因变异类别。","translated_question":"What is the gene variant category corresponding to the SNP (single nucleotide polymorphism) identifier rs6034464?"}
+{"id":"multiple_198","original_question":"如果A等位基因的频率是0.3，那么人群中AA基因型的频率是多少？","translated_question":"If the frequency of allele A is 0.3, what is the frequency of the AA genotype in the population?"}
+{"id":"multiple_199","original_question":"预估黄石公园未来五年内森林覆盖面积的变化趋势，并分析人类活动对其产生的影响。","translated_question":"Estimate the trend of changes in forest cover area in Yellowstone National Park over the next five years, and analyze the impact of human activities on it."}

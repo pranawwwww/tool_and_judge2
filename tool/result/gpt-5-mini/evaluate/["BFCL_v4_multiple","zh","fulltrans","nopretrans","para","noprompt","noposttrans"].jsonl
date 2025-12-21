@@ -1,0 +1,200 @@
+{"id":"multiple_0","valid":true,"error":null}
+{"id":"multiple_1","valid":true,"error":null}
+{"id":"multiple_2","valid":true,"error":null}
+{"id":"multiple_3","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":6,"expected_values":["",0],"decoded_output":"[{\"EuclideanDistance.calculate\":{\"pointA\":[3,4],\"pointB\":[1,2],\"rounding\":6}}]"}}}
+{"id":"multiple_4","valid":true,"error":null}
+{"id":"multiple_5","valid":true,"error":null}
+{"id":"multiple_6","valid":true,"error":null}
+{"id":"multiple_7","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Washington State","expected_values":["Washington state","WA","Washington"],"decoded_output":"[{\"wildlife_population.assess_growth\":{\"species\":\"deer\",\"location\":\"Washington State\",\"duration\":10}}]"}}}
+{"id":"multiple_8","valid":true,"error":null}
+{"id":"multiple_9","valid":false,"error":{"MissingRequiredParam":{"missing_param":"gradeDict","required_params":["gradeDict"],"decoded_output":"[{\"calculate_average\":{}}]"}}}
+{"id":"multiple_10","valid":false,"error":{"WrongFuncName":{"expected_name":"database.modify_columns","actual_name":"database.create_backup","decoded_output":"[{\"database.create_backup\":{\"db_name\":\"employee_db\",\"backup_location\":\"/backups/employee_db_backup.sql\",\"timestamp\":true}}]"}}}
+{"id":"multiple_11","valid":true,"error":null}
+{"id":"multiple_12","valid":true,"error":null}
+{"id":"multiple_13","valid":true,"error":null}
+{"id":"multiple_14","valid":true,"error":null}
+{"id":"multiple_15","valid":true,"error":null}
+{"id":"multiple_16","valid":false,"error":{"InvalidParamValue":{"param":"species","actual_value":"Panthera tigris","expected_values":["wild tiger","tiger"],"decoded_output":"[{\"population_genetics.calculate_ne\":{\"species\":\"Panthera tigris\",\"generations\":100,\"probability\":0.95}}]"}}}
+{"id":"multiple_17","valid":true,"error":null}
+{"id":"multiple_18","valid":false,"error":{"InvalidParamValue":{"param":"battle","actual_value":"斯大林格勒战役","expected_values":["Battle of Stalingrad","Stalingrad"],"decoded_output":"[{\"european_history.battle_details\":{\"battle\":\"斯大林格勒战役\"}}]"}}}
+{"id":"multiple_19","valid":true,"error":null}
+{"id":"multiple_20","valid":true,"error":null}
+{"id":"multiple_21","valid":true,"error":null}
+{"id":"multiple_22","valid":true,"error":null}
+{"id":"multiple_23","valid":true,"error":null}
+{"id":"multiple_24","valid":true,"error":null}
+{"id":"multiple_25","valid":false,"error":{"InvalidParamValue":{"param":"game_title","actual_value":"Assassin's Creed Valhalla","expected_values":["Assassins Creed Valhalla"],"decoded_output":"[{\"video_games.store_price\":{\"game_title\":\"Assassin's Creed Valhalla\",\"platform\":\"PlayStation\",\"region\":\"United States\"}}]"}}}
+{"id":"multiple_26","valid":false,"error":{"WrongFuncName":{"expected_name":"game_rewards.get","actual_name":"game_missions.list","decoded_output":"[{\"game_missions.list\":{\"game\":\"Fortnite\"}}]"}}}
+{"id":"multiple_27","valid":true,"error":null}
+{"id":"multiple_28","valid":true,"error":null}
+{"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
+{"id":"multiple_30","valid":true,"error":null}
+{"id":"multiple_31","valid":true,"error":null}
+{"id":"multiple_32","valid":false,"error":{"InvalidParamValue":{"param":"round_off","actual_value":3,"expected_values":["",0],"decoded_output":"[{\"geometry.calculate_cone_volume\":{\"radius\":4,\"height\":7,\"round_off\":3}}]"}}}
+{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3*x^2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"func\":\"3*x^2\",\"a\":1,\"b\":2}}]"}}}
+{"id":"multiple_34","valid":true,"error":null}
+{"id":"multiple_35","valid":true,"error":null}
+{"id":"multiple_36","valid":true,"error":null}
+{"id":"multiple_37","valid":true,"error":null}
+{"id":"multiple_38","valid":false,"error":{"InvalidParamValue":{"param":"book_name","actual_value":"牧羊少年奇幻之旅","expected_values":["The Alchemist"],"decoded_output":"[{\"library.search_book\":{\"book_name\":\"牧羊少年奇幻之旅\",\"city\":\"纽约市\",\"availability\":false,\"genre\":\"\"}}]"}}}
+{"id":"multiple_39","valid":true,"error":null}
+{"id":"multiple_40","valid":true,"error":null}
+{"id":"multiple_41","valid":true,"error":null}
+{"id":"multiple_42","valid":true,"error":null}
+{"id":"multiple_43","valid":true,"error":null}
+{"id":"multiple_44","valid":true,"error":null}
+{"id":"multiple_45","valid":false,"error":{"InvalidParamValue":{"param":"era_name","actual_value":"冰河时代","expected_values":["Ice age"],"decoded_output":"[{\"geology.get_era\":{\"era_name\":\"冰河时代\",\"calculate_years_ago\":true}}]"}}}
+{"id":"multiple_46","valid":true,"error":null}
+{"id":"multiple_47","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":4,"expected_values":["",0],"decoded_output":"[{\"cosine_similarity.calculate\":{\"vector1\":[3,2,1],\"vector2\":[1,2,3],\"rounding\":4}}]"}}}
+{"id":"multiple_48","valid":true,"error":null}
+{"id":"multiple_49","valid":true,"error":null}
+{"id":"multiple_50","valid":true,"error":null}
+{"id":"multiple_51","valid":true,"error":null}
+{"id":"multiple_52","valid":true,"error":null}
+{"id":"multiple_53","valid":false,"error":{"WrongFuncName":{"expected_name":"linear_regression","actual_name":"random_forest_regression","decoded_output":"[{\"random_forest_regression\":{\"independent_var\":[\"interest_rate\",\"unemployment_rate\"],\"dependent_var\":\"house_price\",\"n_estimators\":100,\"forecast_period\":5}}]"}}}
+{"id":"multiple_54","valid":false,"error":{"InvalidParamValue":{"param":"frequency","actual_value":"quarterly","expected_values":["","annually"],"decoded_output":"[{\"corporate_finance.dividend_data\":{\"company\":\"Apple Inc.\",\"years\":5,\"frequency\":\"quarterly\"}}]"}}}
+{"id":"multiple_55","valid":false,"error":{"InvalidParamValue":{"param":"company","actual_value":"Alphabet Inc. (GOOGL)","expected_values":["Google","GOOG"],"decoded_output":"[{\"stock_forecast\":{\"company\":\"Alphabet Inc. (GOOGL)\",\"days\":3,\"model\":\"regression\"}}]"}}}
+{"id":"multiple_56","valid":false,"error":{"InvalidParamValue":{"param":"company","actual_value":"AAPL","expected_values":["Apple"],"decoded_output":"[{\"avg_closing_price\":{\"company\":\"AAPL\",\"days\":60,\"data_source\":\"yahoo finance\"}}]"}}}
+{"id":"multiple_57","valid":true,"error":null}
+{"id":"multiple_58","valid":true,"error":null}
+{"id":"multiple_59","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"纽约周边地区","expected_values":["New York","New York, NY","NY","New York City","NYC"],"decoded_output":"[{\"lawyer_finder\":{\"location\":\"纽约周边地区\",\"specialization\":[\"刑事法律\",\"刑事辩护\"],\"experience\":null}}]"}}}
+{"id":"multiple_60","valid":true,"error":null}
+{"id":"multiple_61","valid":true,"error":null}
+{"id":"multiple_62","valid":true,"error":null}
+{"id":"multiple_63","valid":true,"error":null}
+{"id":"multiple_64","valid":false,"error":{"InvalidParamValue":{"param":"date","actual_value":"06-02-2023","expected_values":["06-01-2023"],"decoded_output":"[{\"uv_index.get_future\":{\"location\":\"Tokyo\",\"date\":\"06-02-2023\"}}]"}}}
+{"id":"multiple_65","valid":true,"error":null}
+{"id":"multiple_66","valid":true,"error":null}
+{"id":"multiple_67","valid":true,"error":null}
+{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"location\":\"New York Public Library\",\"genre\":\"Historical fiction\",\"title\":null}}]"}}}
+{"id":"multiple_69","valid":true,"error":null}
+{"id":"multiple_70","valid":true,"error":null}
+{"id":"multiple_71","valid":true,"error":null}
+{"id":"multiple_72","valid":true,"error":null}
+{"id":"multiple_73","valid":false,"error":{"InvalidParamValue":{"param":"religion","actual_value":"佛教","expected_values":["Buddhism"],"decoded_output":"[{\"religion.get_origin\":{\"religion\":\"佛教\"}}]"}}}
+{"id":"multiple_74","valid":false,"error":{"InvalidParamValue":{"param":"artwork_name","actual_value":"星夜 (The Starry Night)","expected_values":["Starry Night"],"decoded_output":"[{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"星夜 (The Starry Night)\",\"artist\":\"Vincent van Gogh\",\"platform\":\"all\"}}]"}}}
+{"id":"multiple_75","valid":false,"error":{"InvalidParamValue":{"param":"period","actual_value":"Monthly","expected_values":["","Daily"],"decoded_output":"[{\"paint_color.trends\":{\"room\":\"Living room\",\"period\":\"Monthly\"}}]"}}}
+{"id":"multiple_76","valid":false,"error":{"InvalidParamValue":{"param":"item","actual_value":"马","expected_values":["horse","Horse"],"decoded_output":"[{\"sculpture.create_custom\":{\"item\":\"马\",\"material\":\"Bronze\",\"size\":null}}]"}}}
+{"id":"multiple_77","valid":false,"error":{"InvalidParamValue":{"param":"era","actual_value":"modern","expected_values":["contemporary",""],"decoded_output":"[{\"artwork_search.find\":{\"type\":\"sculpture\",\"location\":\"New York\",\"era\":\"modern\"}}]"}}}
+{"id":"multiple_78","valid":true,"error":null}
+{"id":"multiple_79","valid":false,"error":{"InvalidParamValue":{"param":"museum_name","actual_value":"Museum of Modern Art (MoMA), New York","expected_values":["Museum of Modern Art","MOMA","Museum of Modern Art, New York"],"decoded_output":"[{\"exhibition_info\":{\"museum_name\":\"Museum of Modern Art (MoMA), New York\",\"month\":1}}]"}}}
+{"id":"multiple_80","valid":true,"error":null}
+{"id":"multiple_81","valid":true,"error":null}
+{"id":"multiple_82","valid":true,"error":null}
+{"id":"multiple_83","valid":true,"error":null}
+{"id":"multiple_84","valid":true,"error":null}
+{"id":"multiple_85","valid":false,"error":{"InvalidParamValue":{"param":"team","actual_value":"皇家马德里","expected_values":["Real Madrid"],"decoded_output":"[{\"soccer_scores.get_scores\":{\"team\":\"皇家马德里\",\"league\":\"西甲\",\"rounds\":5}}]"}}}
+{"id":"multiple_86","valid":false,"error":{"InvalidParamValue":{"param":"difficulty","actual_value":"intermediate","expected_values":["","beginner"],"decoded_output":"[{\"BoardGameGeek.recommend\":{\"numPlayers\":2,\"category\":\"strategy\",\"difficulty\":\"intermediate\"}}]"}}}
+{"id":"multiple_87","valid":false,"error":{"InvalidParamValue":{"param":"game","actual_value":"赛博朋克2077","expected_values":["Cyberpunk 2077"],"decoded_output":"[{\"games.update.find\":{\"game\":\"赛博朋克2077\",\"platform\":\"Xbox\",\"region\":\"global\"}}]"}}}
+{"id":"multiple_88","valid":false,"error":{"InvalidParamValue":{"param":"game_title","actual_value":"魔兽世界","expected_values":["World of Warcraft"],"decoded_output":"[{\"video_games.get_player_count\":{\"game_title\":\"魔兽世界\",\"year\":2020,\"platform\":\"\"}}]"}}}
+{"id":"multiple_89","valid":false,"error":{"InvalidParamValue":{"param":"ingredients","actual_value":["鸡肉","蘑菇"],"expected_values":[["chicken","mushrooms"],["mushrooms","chicken"]],"decoded_output":"[{\"recipe_search\":{\"ingredients\":[\"鸡肉\",\"蘑菇\"],\"calories\":500,\"meal\":\"lunch\"}}]"}}}
+{"id":"multiple_90","valid":true,"error":null}
+{"id":"multiple_91","valid":false,"error":{"InvalidParamValue":{"param":"ingredientLimit","actual_value":5,"expected_values":[4],"decoded_output":"[{\"recipe.find\":{\"mainIngredient\":\"apple\",\"ingredientLimit\":5}}]"}}}
+{"id":"multiple_92","valid":true,"error":null}
+{"id":"multiple_93","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"纽约万豪酒店","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"hotel.book\":{\"location\":\"纽约万豪酒店\",\"roomType\":\"豪华客房\",\"nights\":2,\"additional_services\":[\"breakfast\"]}}]"}}}
+{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"大床套房","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"hotelName\":\"Hilton New York\",\"roomType\":\"大床套房\",\"nights\":3}}]"}}}
+{"id":"multiple_95","valid":true,"error":null}
+{"id":"multiple_96","valid":true,"error":null}
+{"id":"multiple_97","valid":true,"error":null}
+{"id":"multiple_98","valid":true,"error":null}
+{"id":"multiple_99","valid":false,"error":{"InvalidParamValue":{"param":"function","actual_value":"2*x^2","expected_values":["2x**2","lambda x: 2x**2"],"decoded_output":"[{\"calculus.derivative\":{\"function\":\"2*x^2\",\"value\":1,\"function_variable\":\"x\"}}]"}}}
+{"id":"multiple_100","valid":true,"error":null}
+{"id":"multiple_101","valid":true,"error":null}
+{"id":"multiple_102","valid":true,"error":null}
+{"id":"multiple_103","valid":true,"error":null}
+{"id":"multiple_104","valid":false,"error":{"InvalidParamValue":{"param":"origin","actual_value":"New York City, NY","expected_values":["New York City","NYC"],"decoded_output":"[{\"get_shortest_driving_distance\":{\"origin\":\"New York City, NY\",\"destination\":\"Washington, D.C.\",\"unit\":\"kilometers\"}}]"}}}
+{"id":"multiple_105","valid":false,"error":{"InvalidParamValue":{"param":"permeability","actual_value":1.2566370614359173e-6,"expected_values":["",0.01],"decoded_output":"[{\"calculate_magnetic_field\":{\"current\":5,\"radius\":4,\"permeability\":1.2566370614359173e-6}}]"}}}
+{"id":"multiple_106","valid":true,"error":null}
+{"id":"multiple_107","valid":true,"error":null}
+{"id":"multiple_108","valid":true,"error":null}
+{"id":"multiple_109","valid":false,"error":{"InvalidParamValue":{"param":"include_description","actual_value":true,"expected_values":[false,""],"decoded_output":"[{\"cellbio.get_proteins\":{\"cell_compartment\":\"plasma membrane\",\"include_description\":true}}]"}}}
+{"id":"multiple_110","valid":true,"error":null}
+{"id":"multiple_111","valid":true,"error":null}
+{"id":"multiple_112","valid":true,"error":null}
+{"id":"multiple_113","valid":true,"error":null}
+{"id":"multiple_114","valid":true,"error":null}
+{"id":"multiple_115","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"曼哈顿","expected_values":["Manhattan"],"decoded_output":"[{\"find_restaurants\":{\"location\":\"曼哈顿\",\"food_type\":\"泰国菜\",\"number\":5,\"dietary_requirements\":[\"素食\",\"vegetarian\"]}}]"}}}
+{"id":"multiple_116","valid":true,"error":null}
+{"id":"multiple_117","valid":true,"error":null}
+{"id":"multiple_118","valid":true,"error":null}
+{"id":"multiple_119","valid":false,"error":{"InvalidParamValue":{"param":"table","actual_value":"用户表","expected_values":["user"],"decoded_output":"[{\"database.query\":{\"table\":\"用户表\",\"conditions\":[{\"field\":\"年龄\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"职业\",\"operation\":\"=\",\"value\":\"工程师\"}]}}]"}}}
+{"id":"multiple_120","valid":true,"error":null}
+{"id":"multiple_121","valid":true,"error":null}
+{"id":"multiple_122","valid":false,"error":{"InvalidParamValue":{"param":"predictors","actual_value":["年龄","收入","教育程度"],"expected_values":[["Age","Income","Education"],["Age","Education","Income"],["Income","Age","Education"],["Income","Education","Age"],["Education","Age","Income"],["Education","Income","Age"]],"decoded_output":"[{\"run_linear_regression\":{\"predictors\":[\"年龄\",\"收入\",\"教育程度\"],\"target\":\"购买金额\",\"standardize\":true}}]"}}}
+{"id":"multiple_123","valid":true,"error":null}
+{"id":"multiple_124","valid":false,"error":{"InvalidParamValue":{"param":"round","actual_value":4,"expected_values":["",2],"decoded_output":"[{\"probabilities.calculate_single\":{\"total_outcomes\":52,\"event_outcomes\":4,\"round\":4}}]"}}}
+{"id":"multiple_125","valid":true,"error":null}
+{"id":"multiple_126","valid":true,"error":null}
+{"id":"multiple_127","valid":true,"error":null}
+{"id":"multiple_128","valid":true,"error":null}
+{"id":"multiple_129","valid":true,"error":null}
+{"id":"multiple_130","valid":true,"error":null}
+{"id":"multiple_131","valid":false,"error":{"InvalidParamValue":{"param":"detailed","actual_value":true,"expected_values":["",false],"decoded_output":"[{\"market_performance.get_data\":{\"indexes\":[\"S&P 500\",\"Dow Jones\"],\"days\":5,\"detailed\":true}}]"}}}
+{"id":"multiple_132","valid":true,"error":null}
+{"id":"multiple_133","valid":true,"error":null}
+{"id":"multiple_134","valid":false,"error":{"InvalidParamValue":{"param":"county","actual_value":"圣地亚哥县","expected_values":["San Diego","San Diego County"],"decoded_output":"[{\"crime_record.get_record\":{\"case_number\":\"CA123456\",\"county\":\"圣地亚哥县\",\"details\":true}}]"}}}
+{"id":"multiple_135","valid":true,"error":null}
+{"id":"multiple_136","valid":true,"error":null}
+{"id":"multiple_137","valid":true,"error":null}
+{"id":"multiple_138","valid":false,"error":{"InvalidParamValue":{"param":"case_id","actual_value":"R v Adams","expected_values":["R vs Adams","R_vs_Adams"],"decoded_output":"[{\"legal_case.fetch\":{\"case_id\":\"R v Adams\",\"details\":true}}]"}}}
+{"id":"multiple_139","valid":true,"error":null}
+{"id":"multiple_140","valid":true,"error":null}
+{"id":"multiple_141","valid":false,"error":{"InvalidParamValue":{"param":"closed_status","actual_value":false,"expected_values":[true],"decoded_output":"[{\"lawsuit.check_case\":{\"case_id\":1234,\"closed_status\":false}}]"}}}
+{"id":"multiple_142","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Miami, Florida, USA","expected_values":["Miami","Miami, Florida","FL"],"decoded_output":"[{\"weather.humidity_forecast\":{\"location\":\"Miami, Florida, USA\",\"days\":7,\"min_humidity\":null}}]"}}}
+{"id":"multiple_143","valid":true,"error":null}
+{"id":"multiple_144","valid":true,"error":null}
+{"id":"multiple_145","valid":true,"error":null}
+{"id":"multiple_146","valid":true,"error":null}
+{"id":"multiple_147","valid":false,"error":{"InvalidParamValue":{"param":"end","actual_value":"Los Angeles, CA","expected_values":["Los Angeles","LA"],"decoded_output":"[{\"map_service.get_directions\":{\"start\":\"New York, NY\",\"end\":\"Los Angeles, CA\",\"avoid\":[\"highways\",\"tolls\"]}}]"}}}
+{"id":"multiple_148","valid":true,"error":null}
+{"id":"multiple_149","valid":true,"error":null}
+{"id":"multiple_150","valid":true,"error":null}
+{"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"topic","actual_value":"behavioral psychology","expected_values":["psychology","Psychology"],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"topic\":\"behavioral psychology\",\"sub_topics\":[\"group dynamics\"],\"region\":\"global\"}}]"}}}
+{"id":"multiple_152","valid":true,"error":null}
+{"id":"multiple_153","valid":true,"error":null}
+{"id":"multiple_154","valid":true,"error":null}
+{"id":"multiple_155","valid":true,"error":null}
+{"id":"multiple_156","valid":false,"error":{"InvalidParamValue":{"param":"category","actual_value":"Physics","expected_values":["","all"],"decoded_output":"[{\"historical_contrib.get_contrib\":{\"scientist\":\"Albert Einstein\",\"date\":\"1915-03-17\",\"category\":\"Physics\"}}]"}}}
+{"id":"multiple_157","valid":false,"error":{"InvalidParamValue":{"param":"name","actual_value":"耶稣基督","expected_values":["Jesus Christ"],"decoded_output":"[{\"get_earliest_reference\":{\"name\":\"耶稣基督\",\"source\":\"scriptures\"}}]"}}}
+{"id":"multiple_158","valid":true,"error":null}
+{"id":"multiple_159","valid":true,"error":null}
+{"id":"multiple_160","valid":false,"error":{"InvalidParamValue":{"param":"artist_name","actual_value":"James Prensa","expected_values":["James Plensa"],"decoded_output":"[{\"get_sculpture_info\":{\"artist_name\":\"James Prensa\",\"detail\":true}}]"}}}
+{"id":"multiple_161","valid":false,"error":{"InvalidParamValue":{"param":"month","actual_value":"January 2026","expected_values":["upcoming","next month","upcoming month","next",""],"decoded_output":"[{\"find_exhibition\":{\"location\":\"New York, NY\",\"art_form\":\"sculpture\",\"month\":\"January 2026\",\"user_ratings\":\"high\"}}]"}}}
+{"id":"multiple_162","valid":true,"error":null}
+{"id":"multiple_163","valid":true,"error":null}
+{"id":"multiple_164","valid":false,"error":{"InvalidParamValue":{"param":"finish","actual_value":"玫瑰木饰面款","expected_values":["Rosewood"],"decoded_output":"[{\"instrument_price.get\":{\"brand\":\"Fender\",\"model\":\"American Professional II Stratocaster\",\"finish\":\"玫瑰木饰面款\"}}]"}}}
+{"id":"multiple_165","valid":false,"error":{"InvalidParamValue":{"param":"condition","actual_value":"Good","expected_values":["Excellent"],"decoded_output":"[{\"guitar_price.find\":{\"model\":\"Gibson Les Paul\",\"condition\":\"Good\",\"location\":\"Chicago\"}}]"}}}
+{"id":"multiple_166","valid":true,"error":null}
+{"id":"multiple_167","valid":true,"error":null}
+{"id":"multiple_168","valid":true,"error":null}
+{"id":"multiple_169","valid":true,"error":null}
+{"id":"multiple_170","valid":true,"error":null}
+{"id":"multiple_171","valid":false,"error":{"InvalidParamValue":{"param":"teams","actual_value":["Los Angeles Lakers","Los Angeles Clippers"],"expected_values":[["Lakers","Clippers"],["Clippers","Lakers"]],"decoded_output":"[{\"game_result.get_winner\":{\"teams\":[\"Los Angeles Lakers\",\"Los Angeles Clippers\"],\"date\":\"2021-01-28\",\"venue\":\"\"}}]"}}}
+{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"name","actual_value":"勒布朗·詹姆斯","expected_values":["Lebron James"],"decoded_output":"[{\"sports_db.find_athlete\":{\"name\":\"勒布朗·詹姆斯\",\"team\":\"\",\"sport\":\"Basketball\"}}]"}}}
+{"id":"multiple_173","valid":true,"error":null}
+{"id":"multiple_174","valid":true,"error":null}
+{"id":"multiple_175","valid":true,"error":null}
+{"id":"multiple_176","valid":true,"error":null}
+{"id":"multiple_177","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York City","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"board_game.chess.get_top_players\":{\"location\":\"New York City\",\"minimum_rating\":2300,\"number_of_players\":10}}]"}}}
+{"id":"multiple_178","valid":true,"error":null}
+{"id":"multiple_179","valid":true,"error":null}
+{"id":"multiple_180","valid":true,"error":null}
+{"id":"multiple_181","valid":true,"error":null}
+{"id":"multiple_182","valid":false,"error":{"InvalidParamValue":{"param":"rating","actual_value":4.6,"expected_values":[4.5],"decoded_output":"[{\"multiplayer_game_finder\":{\"platform\":\"Windows 10\",\"rating\":4.6,\"genre\":\"Action\"}}]"}}}
+{"id":"multiple_183","valid":true,"error":null}
+{"id":"multiple_184","valid":false,"error":{"InvalidParamValue":{"param":"dietary_restriction","actual_value":"素食","expected_values":["Vegetarian"],"decoded_output":"[{\"recipe_search\":{\"dietary_restriction\":\"素食\",\"ingredients\":[\"意大利面\",\"橄榄油\",\"大蒜\",\"洋葱\",\"樱桃番茄\",\"重奶油\",\"帕尔马干酪(刨丝)\",\"黄油\",\"盐\",\"黑胡椒\",\"新鲜罗勒\"],\"servings\":2}}]"}}}
+{"id":"multiple_185","valid":true,"error":null}
+{"id":"multiple_186","valid":false,"error":{"InvalidParamValue":{"param":"dietary_restrictions","actual_value":"vegetarian","expected_values":["vegan"],"decoded_output":"[{\"find_recipe\":{\"dietary_restrictions\":\"vegetarian\",\"recipe_type\":\"brownie\",\"time\":30}}]"}}}
+{"id":"multiple_187","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Los Angeles, CA","expected_values":["Los Angeles","LA"],"decoded_output":"[{\"whole_foods.check_price\":{\"location\":\"Los Angeles, CA\",\"items\":[\"tomatoes\",\"lettuce\"]}}]"}}}
+{"id":"multiple_188","valid":true,"error":null}
+{"id":"multiple_189","valid":false,"error":{"InvalidParamValue":{"param":"time","actual_value":"3:00 PM","expected_values":["3pm"],"decoded_output":"[{\"timezone.convert\":{\"time\":\"3:00 PM\",\"from_timezone\":\"America/New_York\",\"to_timezone\":\"Europe/London\"}}]"}}}
+{"id":"multiple_190","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"芝加哥希尔顿酒店","expected_values":["Hilton Hotel","Hilton"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"芝加哥希尔顿酒店\",\"location\":\"芝加哥\",\"room_type\":\"单人间\",\"start_date\":\"2022-12-10\",\"nights\":2}}]"}}}
+{"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"拉斯维加斯天堂酒店","expected_values":["Hotel Paradise"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"拉斯维加斯天堂酒店\",\"location\":\"拉斯维加斯\",\"room_type\":\"豪华客房\",\"start_date\":\"05-12-2022\",\"stay_duration\":3,\"view\":\"城市景观\"}}]"}}}
+{"id":"multiple_192","valid":true,"error":null}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"start_location","actual_value":"埃菲尔铁塔, 巴黎","expected_values":["Eiffel Tower"],"decoded_output":"[{\"maps.get_distance_duration\":{\"start_location\":\"埃菲尔铁塔, 巴黎\",\"end_location\":\"卢浮宫, 巴黎\",\"traffic\":false}}]"}}}
+{"id":"multiple_194","valid":false,"error":{"InvalidParamValue":{"param":"museum_name","actual_value":"大都会艺术博物馆","expected_values":["Metropolitan Museum of Art","The Met","Met Museum"],"decoded_output":"[{\"get_museum_hours\":{\"museum_name\":\"大都会艺术博物馆\",\"day\":\"Saturday\"}}]"}}}
+{"id":"multiple_195","valid":true,"error":null}
+{"id":"multiple_196","valid":false,"error":{"InvalidParamValue":{"param":"include_description","actual_value":true,"expected_values":["",false],"decoded_output":"[{\"cellbio.get_proteins\":{\"cell_compartment\":\"plasma membrane\",\"include_description\":true}}]"}}}
+{"id":"multiple_197","valid":true,"error":null}
+{"id":"multiple_198","valid":true,"error":null}
+{"id":"multiple_199","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Yellowstone National Park (黄石公园)","expected_values":["Yellowstone","yellowstone"],"decoded_output":"[{\"forest_growth_forecast\":{\"location\":\"Yellowstone National Park (黄石公园)\",\"years\":5,\"include_human_impact\":true}}]"}}}

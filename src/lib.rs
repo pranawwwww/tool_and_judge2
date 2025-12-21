@@ -10,13 +10,13 @@ pub mod utils;
 
 #[pymodule]
 pub mod codebase_rs {
-    use pyo3::{Py, pyfunction, types::PyList};
-    #[pyfunction] // Inline definition of a pyfunction, also made available to Python
-    async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
-        println!("Running tool from Rust!\n");
-        unimplemented!();
-        // tool_run::tool_run_async(configs, num_gpus).await;
-    }
+    // use pyo3::{Py, pyfunction, types::PyList};
+    // #[pyfunction] // Inline definition of a pyfunction, also made available to Python
+    // async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
+    //     println!("Running tool from Rust!\n");
+    //     unimplemented!();
+    //     // tool_run::tool_run_async(configs, num_gpus).await;
+    // }
 
     // use crate::tool_run;
 
@@ -36,6 +36,12 @@ pub mod codebase_rs {
         },
         models::backend::GenerationResult,
         tool::{
+            passes::pass_categorize::{
+                pass_categorize_aggregated_input_file_path,
+                pass_categorize_aggregated_output_file_path, pass_categorize_dispatch_results,
+                pass_categorize_prepare_aggregated_input,
+            },
+            passes::pass_evaluate::pass_evaluate,
             passes::pass_generate_raw::{
                 pass_generate_raw_aggregated_input_file_path,
                 pass_generate_raw_aggregated_output_file_path, pass_generate_raw_dispatch_results,
@@ -53,9 +59,7 @@ pub mod codebase_rs {
                 pass_pre_translate_dispatch_results,
                 pass_pre_translate_prepare_aggregated_questions,
             },
-            passes::pass_evaluate::{
-                pass_evaluate
-            }
+            passes::pass_statistics::pass_statistics,
         },
     };
 }

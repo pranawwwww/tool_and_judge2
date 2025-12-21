@@ -1,13 +1,11 @@
 use std::sync::Arc;
 
-use atomic_refcell::AtomicRefCell;
-
 use crate::{
     config::{ApiModel, LocalModel, Model},
     models::{
         backend::ModelBackend,
         deepseek_interface::DeepSeekInterface,
-        function_name_mapper::{self, FunctionNameMapper},
+        function_name_mapper::{FunctionNameMapper},
         gpt5_interface::Gpt5Interface,
         llama3_1_interface::Llama3_1Interface,
     },

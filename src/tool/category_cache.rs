@@ -5,6 +5,7 @@ use std::fs::File;
 use std::fs::OpenOptions;
 use std::io::Write;
 use std::io::{BufRead, BufReader};
+use std::path::Path;
 
 use crate::tool::error_analysis::ToolErrorCategory;
 
@@ -18,12 +19,16 @@ pub struct CategoryCacheEntry {
 }
 
 impl CategoryCache {
-    pub fn load_or_create(cache_path: &str) -> Self {
+    pub fn load_or_create(cache_path: impl AsRef<Path>) -> Self {
+        
+        println!(
+            "Loading category cache from {}...",
+            cache_path.as_ref().display()
+        );
         let Ok(file) = File::open(cache_path) else {
             println!("Category cache file not found. Creating new cache.");
             return CategoryCache(HashMap::new());
         };
-        println!("Loading category cache from {}...", cache_path);
         let reader = BufReader::new(file);
         let mut category_cache_entries: Vec<CategoryCacheEntry> = Vec::new();
         for line in reader.lines() {
@@ -38,12 +43,15 @@ impl CategoryCache {
         let category_cache = category_cache_entries
             .into_iter()
             .map(|entry| {
-                let category_deserialized = serde_json::from_str::<ToolErrorCategory>(&entry.category).expect("Should serailize to category.");
-                ((entry.query, entry.ground_truths), category_deserialized)})
+                let category_deserialized =
+                    serde_json::from_str::<ToolErrorCategory>(&entry.category)
+                        .expect("Should serailize to category.");
+                ((entry.query, entry.ground_truths), category_deserialized)
+            })
             .collect();
         CategoryCache(category_cache)
     }
-    pub fn save(&self, cache_path: &str) {
+    pub fn save(&self, cache_path: impl AsRef<Path>) {
         let mut file = OpenOptions::new()
             .write(true)
             .create(true)
@@ -54,15 +62,18 @@ impl CategoryCache {
             .0
             .iter()
             .map(|((query, ground_truths), category)| {
-                let category_serialized = serde_json::to_string(category).expect("Should serialize category to string.");
+                let category_serialized =
+                    serde_json::to_string(category).expect("Should serialize category to string.");
                 CategoryCacheEntry {
-                query: query.clone(),
-                ground_truths: ground_truths.clone(),
-                category: category_serialized,
-            }})
+                    query: query.clone(),
+                    ground_truths: ground_truths.clone(),
+                    category: category_serialized,
+                }
+            })
             .collect();
         for entry in category_entries {
-            let entry = serde_json::to_string(&entry).expect("Failed to serialize cache entry to JSON value");
+            let entry = serde_json::to_string(&entry)
+                .expect("Failed to serialize cache entry to JSON value");
             writeln!(file, "{}", entry).expect("Failed to write cache entry to file");
         }
     }

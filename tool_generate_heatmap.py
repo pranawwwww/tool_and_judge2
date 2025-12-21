@@ -39,23 +39,21 @@ def generate_heatmap(model_name: str, output_dir: str, result_dir: str) -> None:
         for nm in noise_modes:
             data_dict[tm][nm] = None
 
-    # Path to model's score directory
-    model_score_dir = Path(result_dir) / model_name
+    # Path to model's statistics directory
+    model_score_dir = Path(result_dir) / model_name / "statistics"
 
     if not model_score_dir.exists():
         print(f"Error: Model directory '{model_score_dir}' does not exist")
         return
 
-    # The new file naming convention from main.py is:
-    # Filename format: {language_tag}{translate_level_tag}{pre_translate_tag}{noise_tag}{prompt_translate_tag}{post_translate_tag}.jsonl
-    # All tags are concatenated with underscores in this fixed order
-    # Example: _zh_fulltrans_nopretrans_nonoise_noprompt_noposttrans.jsonl
+    # The file naming convention is now in JSON format:
+    # ["BFCL_v4_multiple", language, translate_level, pre_translate, noise, prompt_translate, post_translate].json
+    # Example: ["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","noprompt","noposttrans"].json
 
-    for score_file in model_score_dir.glob("*.jsonl"):
+    for score_file in model_score_dir.glob("*.json"):
         try:
             with open(score_file, 'r', encoding='utf-8') as f:
-                first_line = f.readline()
-                data = json.loads(first_line)
+                data = json.load(f)
                 accuracy = data.get("accuracy")
 
                 if accuracy is None:
@@ -65,32 +63,33 @@ def generate_heatmap(model_name: str, output_dir: str, result_dir: str) -> None:
                 # Extract translate and noise modes from filename
                 filename = score_file.stem  # Remove .jsonl extension
 
-                # Parse the filename by splitting on underscore
-                # Expected format: _{lang}_{trans_level}_{pre_trans}_{noise}_{prompt}_{post_trans}
-                # Remove leading underscore if present
-                if filename.startswith("_"):
-                    filename = filename[1:]
-
-                tags = filename.split("_")
-
-                # We expect 6 tags in this order:
-                # 0: language_tag (en, zh, hi)
-                # 1: translate_level_tag (na, parttrans, fulltrans)
-                # 2: pre_translate_tag (pretrans, nopretrans)
-                # 3: noise_tag (nonoise, syno, para)
-                # 4: prompt_translate_tag (prompt, noprompt)
-                # 5: post_translate_tag (posttrans, noposttrans)
-
-                if len(tags) != 6:
-                    print(f"Warning: Unexpected filename format '{score_file.name}' (expected 6 tags, got {len(tags)})")
+                # Parse the filename as a JSON array
+                # Expected format: ["BFCL_v4_multiple", lang, trans_level, pre_trans, noise, prompt, post_trans]
+                try:
+                    tags = json.loads(filename)
+                except json.JSONDecodeError:
+                    print(f"Warning: Cannot parse filename as JSON: '{score_file.name}'")
                     continue
 
-                language_tag = tags[0]
-                translate_level_tag = tags[1]
-                pre_translate_tag = tags[2]
-                noise_tag = tags[3]
-                prompt_translate_tag = tags[4]
-                post_translate_tag = tags[5]
+                # We expect 7 elements in this order:
+                # 0: dataset name (e.g., "BFCL_v4_multiple")
+                # 1: language_tag (en, zh, hi, igbo)
+                # 2: translate_level_tag (na, parttrans, fulltrans)
+                # 3: pre_translate_tag (pretrans, nopretrans)
+                # 4: noise_tag (nonoise, syno, para)
+                # 5: prompt_translate_tag (prompt, noprompt)
+                # 6: post_translate_tag (posttrans, noposttrans)
+
+                if len(tags) != 7:
+                    print(f"Warning: Unexpected filename format '{score_file.name}' (expected 7 elements, got {len(tags)})")
+                    continue
+
+                language_tag = tags[1]
+                translate_level_tag = tags[2]
+                pre_translate_tag = tags[3]
+                noise_tag = tags[4]
+                prompt_translate_tag = tags[5]
+                post_translate_tag = tags[6]
 
                 # Map noise_tag to noise_mode
                 if noise_tag == "nonoise":
@@ -107,11 +106,11 @@ def generate_heatmap(model_name: str, output_dir: str, result_dir: str) -> None:
                 # NT = en + na
                 if language_tag == "en" and translate_level_tag == "na":
                     translate_mode = "NT"
-                # PAR = (zh or hi) + parttrans
-                elif language_tag in ["zh", "hi"] and translate_level_tag == "parttrans":
+                # PAR = (zh or hi or igbo) + parttrans
+                elif language_tag in ["zh", "hi", "igbo"] and translate_level_tag == "parttrans":
                     translate_mode = "PAR"
                 # All other cases require fulltrans
-                elif language_tag in ["zh", "hi"] and translate_level_tag == "fulltrans":
+                elif language_tag in ["zh", "hi", "igbo"] and translate_level_tag == "fulltrans":
                     # FT = fulltrans + nopretrans + noprompt + noposttrans
                     if (pre_translate_tag == "nopretrans" and prompt_translate_tag == "noprompt" and
                         post_translate_tag == "noposttrans"):
@@ -219,13 +218,13 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--output-dir",
-        default="tool/heatmaps",
+        default="tool/plots/heatmaps",
         help="Directory to save heatmap images (default: current directory)"
     )
     parser.add_argument(
         "--result-dir",
-        default="tool/result/score",
-        help="Directory containing the score files (default: tool/result/score)"
+        default="tool/result",
+        help="Directory containing the result files (default: tool/result)"
     )
 
     args = parser.parse_args()

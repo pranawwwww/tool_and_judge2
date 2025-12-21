@@ -82,43 +82,54 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         for nm in noise_modes:
             data_dict[tm][nm] = {cat: 0 for cat in error_categories}
 
-    # Path to model's categorize_score directory
-    model_categorize_dir = Path(result_dir) / model_name
+    # Path to model's statistics directory
+    model_categorize_dir = Path(result_dir) / model_name / "statistics"
 
     if not model_categorize_dir.exists():
         print(f"Error: Model directory '{model_categorize_dir}' does not exist")
         return
 
-    # Parse categorize_score files
+    # Parse statistics files
     for score_file in model_categorize_dir.glob("*.json"):
         try:
             with open(score_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                summary = data.get("summary")
+                category_counts = data.get("category_counts")
 
-                if summary is None:
-                    print(f"Warning: No 'summary' field in {score_file.name}")
+                if category_counts is None:
+                    print(f"Warning: No 'category_counts' field in {score_file.name}")
                     continue
 
                 # Extract translate and noise modes from filename
                 filename = score_file.stem  # Remove .json extension
 
-                # Parse the filename by splitting on underscore
-                if filename.startswith("_"):
-                    filename = filename[1:]
-
-                tags = filename.split("_")
-
-                if len(tags) != 6:
-                    print(f"Warning: Unexpected filename format '{score_file.name}' (expected 6 tags, got {len(tags)})")
+                # Parse the filename as a JSON array
+                # Expected format: ["BFCL_v4_multiple", lang, trans_level, pre_trans, noise, prompt, post_trans]
+                try:
+                    tags = json.loads(filename)
+                except json.JSONDecodeError:
+                    print(f"Warning: Cannot parse filename as JSON: '{score_file.name}'")
                     continue
 
-                language_tag = tags[0]
-                translate_level_tag = tags[1]
-                pre_translate_tag = tags[2]
-                noise_tag = tags[3]
-                prompt_translate_tag = tags[4]
-                post_translate_tag = tags[5]
+                # We expect 7 elements in this order:
+                # 0: dataset name (e.g., "BFCL_v4_multiple")
+                # 1: language_tag (en, zh, hi, igbo)
+                # 2: translate_level_tag (na, parttrans, fulltrans)
+                # 3: pre_translate_tag (pretrans, nopretrans)
+                # 4: noise_tag (nonoise, syno, para)
+                # 5: prompt_translate_tag (prompt, noprompt)
+                # 6: post_translate_tag (posttrans, noposttrans)
+
+                if len(tags) != 7:
+                    print(f"Warning: Unexpected filename format '{score_file.name}' (expected 7 elements, got {len(tags)})")
+                    continue
+
+                language_tag = tags[1]
+                translate_level_tag = tags[2]
+                pre_translate_tag = tags[3]
+                noise_tag = tags[4]
+                prompt_translate_tag = tags[5]
+                post_translate_tag = tags[6]
 
                 # Map noise_tag to noise_mode
                 if noise_tag == "nonoise":
@@ -134,9 +145,9 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
                 # Map combination of tags to translate_mode (same logic as heatmap)
                 if language_tag == "en" and translate_level_tag == "na":
                     translate_mode = "NT"
-                elif language_tag in ["zh", "hi"] and translate_level_tag == "parttrans":
+                elif language_tag in ["zh", "hi", "igbo"] and translate_level_tag == "parttrans":
                     translate_mode = "PAR"
-                elif language_tag in ["zh", "hi"] and translate_level_tag == "fulltrans":
+                elif language_tag in ["zh", "hi", "igbo"] and translate_level_tag == "fulltrans":
                     if (pre_translate_tag == "nopretrans" and prompt_translate_tag == "noprompt" and
                         post_translate_tag == "noposttrans"):
                         translate_mode = "FT"
@@ -157,9 +168,22 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
                     exit(1)
 
                 # Store the category counts
-                for category, count in summary.items():
-                    if category in error_categories:
-                        data_dict[translate_mode][noise_mode][category] = count
+                # Map from statistics file format (UPPERCASE_WITH_UNDERSCORES) to PascalCase
+                category_map = {
+                    "SYNTAX_ERROR": "SyntaxError",
+                    "MISC_ERROR": "MiscError",
+                    "LANGUAGE_MISMATCH_WRONG_VALUE": "LanguageMismatchWrongValue",
+                    "LANGUAGE_MISMATCH_RELEVANT_BUT_INCORRECT": "LanguageMismatchRelevantButIncorrect",
+                    "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING": "LanguageMismatchExactlySameMeaning",
+                    "WRONG_VALUE": "WrongValue",
+                    "RELEVANT_BUT_INCORRECT": "RelevantButIncorrect",
+                    "EXACTLY_SAME_MEANING": "ExactlySameMeaning",
+                    "OTHER_ERROR": "OtherError",
+                }
+                for stats_category, count in category_counts.items():
+                    pascal_category = category_map.get(stats_category)
+                    if pascal_category and pascal_category in error_categories:
+                        data_dict[translate_mode][noise_mode][pascal_category] = count
 
                 print(f"Loaded {score_file.name}: {translate_mode} + {noise_mode}")
 
@@ -283,13 +307,13 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--output-dir",
-        default="tool/stacked_bars",
+        default="tool/plots/stacked_bars",
         help="Directory to save chart images (default: current directory)"
     )
     parser.add_argument(
         "--result-dir",
-        default="tool/result/categorize_score",
-        help="Directory containing the categorize_score files (default: tool/result/categorize_score)"
+        default="tool/result",
+        help="Directory containing the result files (default: tool/result)"
     )
     parser.add_argument(
         "--translate-mode",

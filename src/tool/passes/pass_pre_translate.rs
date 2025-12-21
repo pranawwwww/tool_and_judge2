@@ -1,20 +1,19 @@
 use std::{
     collections::{HashMap, HashSet},
-    path::PathBuf,
 };
 
 use pyo3::pyfunction;
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    config::{Model, ToolConfig},
+    config::{ToolConfig},
     tool::{
         base_path::{BASE_DATASET_PATH, BASE_RESULT_PATH},
         bfcl_formats::BfclDatasetEntry,
-        experiments::{DatasetFileName, PreTranslateFileName, PreTranslateMode},
+        experiments::{DatasetFileName, PreTranslateMode},
     },
     utils::{
-        compare_id, get_model_safe_name, load_json_lines, model_name_to_safe_name,
+        compare_id, get_model_safe_name, load_json_lines,
         write_json_lines_to_file,
     },
 };

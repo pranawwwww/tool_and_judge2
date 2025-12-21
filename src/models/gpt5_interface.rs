@@ -10,9 +10,7 @@ use crate::{
     tool::bfcl_formats::{BfclFunctionDef, BfclOutputFunctionCall, BfclParameter},
     tool::error_analysis::EvaluationError,
 };
-use atomic_refcell::AtomicRefCell;
 use indexmap::IndexMap;
-use pyo3::types::PyList;
 use pyo3::{Python, types::PyAnyMethods};
 use serde::{Deserialize, Serialize};
 
