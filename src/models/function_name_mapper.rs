@@ -11,68 +11,68 @@ pub struct FunctionNameMapper{
 }
 
 
-impl FunctionNameMapper {
-    pub fn new() -> Self {
-        FunctionNameMapper {
-            original_to_sanitized: HashMap::new(),
-            sanitized_to_original: HashMap::new(),
-        }
-    }
-    pub fn map_function_names(&mut self, functions: &Vec<BfclFunctionDef>) -> Vec<BfclFunctionDef> {
-        let mut mapped_functions = functions.clone();
-        for func in &mut mapped_functions {
-            let original_name = &func.name;
-            let sanitized_name = self.get_or_create_sanitized_name(original_name);
-            func.name = sanitized_name;
-        }
-        mapped_functions
-    }
+// impl FunctionNameMapper {
+//     pub fn new() -> Self {
+//         FunctionNameMapper {
+//             original_to_sanitized: HashMap::new(),
+//             sanitized_to_original: HashMap::new(),
+//         }
+//     }
+//     pub fn map_function_names(&mut self, functions: &Vec<BfclFunctionDef>) -> Vec<BfclFunctionDef> {
+//         let mut mapped_functions = functions.clone();
+//         for func in &mut mapped_functions {
+//             let original_name = &func.name;
+//             let sanitized_name = self.get_or_create_sanitized_name(original_name);
+//             func.name = sanitized_name;
+//         }
+//         mapped_functions
+//     }
 
-    pub fn populate_from_functions(&mut self, functions: &Vec<BfclFunctionDef>) {
-        self.map_function_names(functions);
-    }
+//     pub fn populate_from_functions(&mut self, functions: &Vec<BfclFunctionDef>) {
+//         self.map_function_names(functions);
+//     }
 
-    pub fn get_or_create_sanitized_name(&mut self, original_name: &str) -> String {
-        if let Some(sanitized) = self.original_to_sanitized.get(original_name) {
-            return sanitized.clone();
-        }
+//     pub fn get_or_create_sanitized_name(&mut self, original_name: &str) -> String {
+//         if let Some(sanitized) = self.original_to_sanitized.get(original_name) {
+//             return sanitized.clone();
+//         }
 
-        let existing_sanitized: HashSet<String> = self.sanitized_to_original.keys().cloned().collect();
-        let sanitized_name = Self::create_sanitized_name(original_name, &existing_sanitized);
+//         let existing_sanitized: HashSet<String> = self.sanitized_to_original.keys().cloned().collect();
+//         let sanitized_name = Self::create_sanitized_name(original_name, &existing_sanitized);
 
-        self.original_to_sanitized.insert(original_name.to_string(), sanitized_name.clone());
-        self.sanitized_to_original.insert(sanitized_name.clone(), original_name.to_string());
+//         self.original_to_sanitized.insert(original_name.to_string(), sanitized_name.clone());
+//         self.sanitized_to_original.insert(sanitized_name.clone(), original_name.to_string());
 
-        sanitized_name
-    }
+//         sanitized_name
+//     }
 
-    pub fn create_sanitized_name(original_name: &str, existing_sanitized: &HashSet<String>) -> String {
-        // Replace dots with underscores
-        let mut sanitized = original_name.replace(".", "_");
-        // Replace any other invalid characters with underscores
-        sanitized = sanitized
-            .chars()
-            .map(|c| if c.is_alphanumeric() || c == '_' || c == '-' { c } else { '_' })
-            .collect();
+//     pub fn create_sanitized_name(original_name: &str, existing_sanitized: &HashSet<String>) -> String {
+//         // Replace dots with underscores
+//         let mut sanitized = original_name.replace(".", "_");
+//         // Replace any other invalid characters with underscores
+//         sanitized = sanitized
+//             .chars()
+//             .map(|c| if c.is_alphanumeric() || c == '_' || c == '-' { c } else { '_' })
+//             .collect();
 
-        if existing_sanitized.contains(&sanitized) {
-            let mut counter = 1;
-            let base_sanitized = sanitized.clone();
-            while existing_sanitized.contains(&format!("{}_{}", base_sanitized, counter)) {
-                counter += 1;
-            }
-            sanitized = format!("{}_{}", base_sanitized, counter);
-        }
-        sanitized
-    }
+//         if existing_sanitized.contains(&sanitized) {
+//             let mut counter = 1;
+//             let base_sanitized = sanitized.clone();
+//             while existing_sanitized.contains(&format!("{}_{}", base_sanitized, counter)) {
+//                 counter += 1;
+//             }
+//             sanitized = format!("{}_{}", base_sanitized, counter);
+//         }
+//         sanitized
+//     }
 
-    pub fn get_original_name(&self, sanitized_name: &str) -> String {
-        self.sanitized_to_original
-            .get(sanitized_name)
-            .cloned()
-            .unwrap_or_else(|| sanitized_name.to_string())
-    }
-}
+//     pub fn get_original_name(&self, sanitized_name: &str) -> String {
+//         self.sanitized_to_original
+//             .get(sanitized_name)
+//             .cloned()
+//             .unwrap_or_else(|| sanitized_name.to_string())
+//     }
+// }
 
 
 

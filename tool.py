@@ -44,7 +44,7 @@ with open(lock_file_path, "w") as lock_file:
         print("Building Rust extension with maturin develop...")
         result = subprocess.run(["maturin", "develop", "--release"], check=True)
         print("Installed Rust extension successfully.")
-        time.sleep(2)  # Give some time for the build to complete
+        time.sleep(5)  # Give some time for the build to complete
     finally:
         # Release lock
         fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
@@ -104,7 +104,7 @@ async def collect_single_question_translation_async(entry: dict) -> dict:
             else:
                 raise NotImplementedError(f"Translation not implemented for model {config.model}.")
         except Exception as e:
-            print(f"Error translating question index {entry['index']}: {e}")
+            print(f"Error translating question index {entry['id']}: {e}")
             exit(1) # Todo: handle error properly
         # Each output entry has a signature of type PreTranslateAggregatedOutputQuestionEntry in src/tool/passes/pass_pre_translation.rs
         return {
@@ -122,6 +122,9 @@ async def collect_all_question_translations_async(entries: list[dict]) -> list[d
             f.flush()
             print(f"Translated {i}/{len(entries)} questions...")
 asyncio.run(collect_all_question_translations_async(question_entries))
+# finished processing pre translation, deleting input file
+os.remove(aggregated_questions_input_file_path)
+# dispatch results to respective dataset files
 pass_pre_translation_dispatch_results(config)
 
 # Pre-translation is done
@@ -129,6 +132,7 @@ pass_pre_translation_dispatch_results(config)
 # Then we call a python interface adapter to get translated questions
 # Then we actually do not need to replicate the same dataset file, but simply override the original questions with translated ones
 # dispatch result to separate result files
+
 
 # The second pass is generate the raw function calls
 # This involves first calling the rust function to generate the tool definitions for each model
@@ -138,8 +142,63 @@ pass_pre_translation_dispatch_results(config)
 # Then dispatch result to separate result files
 # We generate the function name map and store it in a file for later use
 
+pass_generate_raw_prepare_aggregated_input(config)
+aggregated_input_file_path = pass_generate_raw_aggregated_input_file_path(config)
+aggregated_output_file_path = pass_generate_raw_aggregated_output_file_path(config)
+if os.path.exists(aggregated_output_file_path):
+    pass_generate_raw_dispatch_results(config)
+# Each entry has a signature of type GenerateRawAggregatedInputEntry in src/tool/passes/pass_generate_raw.rs
+input_entries = load_json_lines_from_file(aggregated_input_file_path)
+semaphore = asyncio.Semaphore(200)
+async def collect_single_raw_function_call_async(entry: dict) -> dict:
+    async with semaphore:
+        try:
+            if config.model in [Model.Api(ApiModel.Gpt5), Model.Api(ApiModel.Gpt5Mini), Model.Api(ApiModel.Gpt5Nano)]:
+                from src_py.gpt5_backend import generate_tool_call_async
+                raw_output = await generate_tool_call_async(
+                    model_name = config.model.to_string(),
+                    client = client,
+                    question=entry["question"],
+                    tools = entry["tools"],                    
+                    prompt_passing_in_english = entry["prompt_passing_in_english"],
+                )
+            elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B)]:
+                # from src_py.qwen3_backend import 
+                raise NotImplementedError("Qwen3 raw function call generation not implemented yet.")
+            else:
+                raise NotImplementedError(f"Raw function call generation not implemented for model {config.model}.")
+        except Exception as e:
+            print(f"Error generating raw function call for index {entry['id']}: {e}")
+            exit(1) # Todo: handle error properly
+        # Each output entry has a signature of type GenerateRawAggregatedOutputEntry in src/tool/passes/pass_generate_raw.rs
+        return {
+            "id": entry["id"],
+            "raw_output": raw_output,
+            "file_name": entry["file_name"],
+        }
+async def collect_all_raw_function_calls_async(entries: list[dict]) -> list[dict]:
+    tasks = [collect_single_raw_function_call_async(entry) for entry in entries]
+    with open(aggregated_output_file_path, "w") as f:
+        for i, coro in enumerate(asyncio.as_completed(tasks), 1):
+            result = await coro
+            f.write(json.dumps(result, ensure_ascii=False) + "\n")
+            f.flush()
+            print(f"Generated raw function call {i}/{len(entries)}...")
+asyncio.run(collect_all_raw_function_calls_async(input_entries))
+# finished processing raw function calls, deleting input file
+os.remove(aggregated_input_file_path)
+# dispatch results to respective dataset files
+pass_generate_raw_dispatch_results(config)
+
+# generate raw function calls is done
+
+
+
 # The third pass is to convert the raw function calls to BFCL compatible function calls
 # For each raw result file, we call the rust function to convert it to BFCL compatible function calls
+
+
+
 
 # The fourth pass is to post translate the function calls
 # We collect all parameter values that require translation

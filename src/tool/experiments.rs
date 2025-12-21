@@ -3,32 +3,33 @@ use serde::{Deserialize, Serialize};
 use crate::config::{Language, ToolConfig, ToolExperiment, TranslateMode, TranslateOption};
 
 #[derive(Clone, Copy, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
-pub enum OriginalDataset{
-    #[serde(rename="BFCL_v4_multiple")]
+pub enum OriginalDataset {
+    #[serde(rename = "BFCL_v4_multiple")]
     BfclV4Multiple,
 }
 
 #[derive(Clone, Copy, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
-pub enum DatasetLanguage{
-    #[serde(rename="en")]
+pub enum DatasetLanguage {
+    #[serde(rename = "en")]
     English,
-    #[serde(rename="zh")]
+    #[serde(rename = "zh")]
     Chinese,
-    #[serde(rename="hi")]
+    #[serde(rename = "hi")]
     Hindi,
-    #[serde(rename="igbo")]
+    #[serde(rename = "igbo")]
     Igbo,
 }
 
 impl DatasetLanguage {
     pub fn from_config_experiment(exp: &ToolExperiment) -> Self {
         match &exp.translate_mode {
-            TranslateMode::Translated { language, option: _ } => {
-                match language {
-                    Language::Chinese => DatasetLanguage::Chinese,
-                    Language::Hindi => DatasetLanguage::Hindi,
-                    Language::Igbo => DatasetLanguage::Igbo,
-                }
+            TranslateMode::Translated {
+                language,
+                option: _,
+            } => match language {
+                Language::Chinese => DatasetLanguage::Chinese,
+                Language::Hindi => DatasetLanguage::Hindi,
+                Language::Igbo => DatasetLanguage::Igbo,
             },
             TranslateMode::NotTranslated {} => DatasetLanguage::English,
         }
@@ -47,14 +48,15 @@ pub enum TranslateLevel {
 impl TranslateLevel {
     pub fn from_config_experiment(exp: &ToolExperiment) -> Self {
         match &exp.translate_mode {
-            TranslateMode::Translated { language: _, option } => {
-                match &option {
-                    TranslateOption::FullyTranslated => TranslateLevel::FullyTranslated,
-                    TranslateOption::PartiallyTranslated => TranslateLevel::PartiallyTranslated,
-                    TranslateOption::FullyTranslatedPreTranslate => TranslateLevel::FullyTranslated,
-                    TranslateOption::FullyTranslatedPromptTranslate => TranslateLevel::FullyTranslated,
-                    TranslateOption::FullyTranslatedPostTranslate => TranslateLevel::FullyTranslated,
-                }
+            TranslateMode::Translated {
+                language: _,
+                option,
+            } => match &option {
+                TranslateOption::FullyTranslated => TranslateLevel::FullyTranslated,
+                TranslateOption::PartiallyTranslated => TranslateLevel::PartiallyTranslated,
+                TranslateOption::FullyTranslatedPreTranslate => TranslateLevel::FullyTranslated,
+                TranslateOption::FullyTranslatedPromptTranslate => TranslateLevel::FullyTranslated,
+                TranslateOption::FullyTranslatedPostTranslate => TranslateLevel::FullyTranslated,
             },
             TranslateMode::NotTranslated {} => TranslateLevel::NotApplicable,
         }
@@ -91,13 +93,20 @@ pub enum PromptTranslateMode {
 impl PromptTranslateMode {
     pub fn from_config_experiment(exp: &ToolExperiment) -> Self {
         match &exp.translate_mode {
-            TranslateMode::Translated { language: _, option } => {
-                match &option {
-                    TranslateOption::FullyTranslatedPromptTranslate => PromptTranslateMode::PromptTranslate,
-                    TranslateOption::FullyTranslated => PromptTranslateMode::NoPromptTranslate,
-                    TranslateOption::PartiallyTranslated => PromptTranslateMode::NoPromptTranslate,
-                    TranslateOption::FullyTranslatedPreTranslate => PromptTranslateMode::NoPromptTranslate,
-                    TranslateOption::FullyTranslatedPostTranslate => PromptTranslateMode::NoPromptTranslate,
+            TranslateMode::Translated {
+                language: _,
+                option,
+            } => match &option {
+                TranslateOption::FullyTranslatedPromptTranslate => {
+                    PromptTranslateMode::PromptTranslate
+                }
+                TranslateOption::FullyTranslated => PromptTranslateMode::NoPromptTranslate,
+                TranslateOption::PartiallyTranslated => PromptTranslateMode::NoPromptTranslate,
+                TranslateOption::FullyTranslatedPreTranslate => {
+                    PromptTranslateMode::NoPromptTranslate
+                }
+                TranslateOption::FullyTranslatedPostTranslate => {
+                    PromptTranslateMode::NoPromptTranslate
                 }
             },
             TranslateMode::NotTranslated {} => PromptTranslateMode::NoPromptTranslate,
@@ -106,7 +115,7 @@ impl PromptTranslateMode {
 }
 
 #[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
-pub enum PreTranslateMode{
+pub enum PreTranslateMode {
     #[serde(rename = "pretrans")]
     PreTranslate,
     #[serde(rename = "nopretrans")]
@@ -116,21 +125,22 @@ pub enum PreTranslateMode{
 impl PreTranslateMode {
     pub fn from_config_experiment(exp: &ToolExperiment) -> Self {
         match &exp.translate_mode {
-            TranslateMode::Translated { language: _, option } => {
-                match &option {
-                    TranslateOption::FullyTranslatedPreTranslate => PreTranslateMode::PreTranslate,
-                    TranslateOption::FullyTranslated => PreTranslateMode::NoPreTranslate,
-                    TranslateOption::PartiallyTranslated => PreTranslateMode::NoPreTranslate,
-                    TranslateOption::FullyTranslatedPromptTranslate => PreTranslateMode::NoPreTranslate,
-                    TranslateOption::FullyTranslatedPostTranslate => PreTranslateMode::NoPreTranslate,
-                }
+            TranslateMode::Translated {
+                language: _,
+                option,
+            } => match &option {
+                TranslateOption::FullyTranslatedPreTranslate => PreTranslateMode::PreTranslate,
+                TranslateOption::FullyTranslated => PreTranslateMode::NoPreTranslate,
+                TranslateOption::PartiallyTranslated => PreTranslateMode::NoPreTranslate,
+                TranslateOption::FullyTranslatedPromptTranslate => PreTranslateMode::NoPreTranslate,
+                TranslateOption::FullyTranslatedPostTranslate => PreTranslateMode::NoPreTranslate,
             },
             TranslateMode::NotTranslated {} => PreTranslateMode::NoPreTranslate,
         }
     }
 }
 #[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
-pub enum PostTranslateMode{
+pub enum PostTranslateMode {
     #[serde(rename = "posttrans")]
     PostTranslate,
     #[serde(rename = "noposttrans")]
@@ -139,13 +149,16 @@ pub enum PostTranslateMode{
 impl PostTranslateMode {
     pub fn from_config_experiment(exp: &ToolExperiment) -> Self {
         match &exp.translate_mode {
-            TranslateMode::Translated { language: _, option } => {
-                match &option {
-                    TranslateOption::FullyTranslatedPostTranslate => PostTranslateMode::PostTranslate,
-                    TranslateOption::FullyTranslated => PostTranslateMode::NoPostTranslate,
-                    TranslateOption::PartiallyTranslated => PostTranslateMode::NoPostTranslate,
-                    TranslateOption::FullyTranslatedPreTranslate => PostTranslateMode::NoPostTranslate,
-                    TranslateOption::FullyTranslatedPromptTranslate => PostTranslateMode::NoPostTranslate,
+            TranslateMode::Translated {
+                language: _,
+                option,
+            } => match &option {
+                TranslateOption::FullyTranslatedPostTranslate => PostTranslateMode::PostTranslate,
+                TranslateOption::FullyTranslated => PostTranslateMode::NoPostTranslate,
+                TranslateOption::PartiallyTranslated => PostTranslateMode::NoPostTranslate,
+                TranslateOption::FullyTranslatedPreTranslate => PostTranslateMode::NoPostTranslate,
+                TranslateOption::FullyTranslatedPromptTranslate => {
+                    PostTranslateMode::NoPostTranslate
                 }
             },
             TranslateMode::NotTranslated {} => PostTranslateMode::NoPostTranslate,
@@ -171,7 +184,7 @@ impl DatasetFileName {
 }
 pub type PreTranslateFileName = DatasetFileName;
 #[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
-pub struct GenerationRawFileName(
+pub struct GenerateRawFileName(
     pub DatasetFileName,
     pub DatasetLanguage,
     pub TranslateLevel,
@@ -179,9 +192,9 @@ pub struct GenerationRawFileName(
     pub AddNoiseMode,
     pub PromptTranslateMode,
 );
-impl GenerationRawFileName {
+impl GenerateRawFileName {
     pub fn from_config_experiment(exp: &ToolExperiment) -> Self {
-        GenerationRawFileName(
+        GenerateRawFileName(
             DatasetFileName::from_config_experiment(exp),
             DatasetLanguage::from_config_experiment(exp),
             TranslateLevel::from_config_experiment(exp),
@@ -191,10 +204,10 @@ impl GenerationRawFileName {
         )
     }
 }
-pub type GenerationParsedFileName = GenerationRawFileName;
-pub type PostTranslateFileName = GenerationRawFileName;
+pub type ParseOutputFileName = GenerateRawFileName;
+pub type PostTranslateFileName = GenerateRawFileName;
 #[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
-pub struct EvaluationFileName(
+pub struct EvaluateFileName(
     pub DatasetFileName,
     pub DatasetLanguage,
     pub TranslateLevel,
@@ -203,9 +216,9 @@ pub struct EvaluationFileName(
     pub PromptTranslateMode,
     pub PostTranslateMode,
 );
-impl EvaluationFileName {
+impl EvaluateFileName {
     pub fn from_config_experiment(exp: &ToolExperiment) -> Self {
-        EvaluationFileName(
+        EvaluateFileName(
             DatasetFileName::from_config_experiment(exp),
             DatasetLanguage::from_config_experiment(exp),
             TranslateLevel::from_config_experiment(exp),
@@ -216,5 +229,5 @@ impl EvaluationFileName {
         )
     }
 }
-pub type CategorizedFileName = EvaluationFileName;
-pub type StatisticsFileName = EvaluationFileName;
+pub type CategorizeFileName = EvaluateFileName;
+pub type StatisticsFileName = EvaluateFileName;

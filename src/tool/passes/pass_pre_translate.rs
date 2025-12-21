@@ -178,11 +178,11 @@ pub fn pass_pre_translation_dispatch_results(config: &ToolConfig) {
         let dataset_entries = load_json_lines(&dataset_file_path)
             .expect("Unable to load dataset file for dispatching pre-translation results");
         let ids = dataset_entries
-            .iter()
-            .map(|entry_json| {
-                let entry: BfclDatasetEntry =
-                    serde_json::from_value(entry_json.clone()).expect("Unable to parse dataset entry");
-                entry.id
+            .into_iter()
+            .map(|entry| {
+                let parsed_entry: BfclDatasetEntry =
+                    serde_json::from_value(entry).expect("Unable to parse dataset entry");
+                parsed_entry.id
             })
             .collect::<HashSet<String>>();
         let mut result_existing_entries: Vec<PreTranslateQuestionEntry> = match load_json_lines(&result_file_path) {
@@ -204,9 +204,9 @@ pub fn pass_pre_translation_dispatch_results(config: &ToolConfig) {
             .iter()
             .map(|entry| entry.id.clone())
             .collect();
-        let result_remaining_ids: HashSet<String> = ids.difference(&result_existing_ids).cloned().collect();
+        let result_missing_ids: HashSet<String> = ids.difference(&result_existing_ids).cloned().collect();
         let mut missing_count = 0;
-        for missing_id in result_remaining_ids.iter() {
+        for missing_id in result_missing_ids.iter() {
             let key = (missing_id.clone(), dataset_file_name.clone());
             if let Some(output_entry) = output_entries_parsed.get(&key) {
                 let question_entry = PreTranslateQuestionEntry {

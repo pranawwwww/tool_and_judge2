@@ -36,10 +36,11 @@ pub mod codebase_rs {
         },
         models::backend::GenerationResult,
         tool::{
-            passes::pass_pre_translation::{
+            passes::pass_pre_translate::{
                 pass_pre_translation_aggregated_questions_input_file_path,
                 pass_pre_translation_aggregated_questions_output_file_path,
                 pass_pre_translation_prepare_aggregated_questions,
+                pass_pre_translation_dispatch_results,
             },
         }
     };

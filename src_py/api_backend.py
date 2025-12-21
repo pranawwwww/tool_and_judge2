@@ -1,4 +1,4 @@
-from types import Any
+from typing import Any
 from codebase_rs import ApiModel
 import os
 

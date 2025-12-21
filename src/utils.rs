@@ -3,8 +3,8 @@ use crate::{
     tool::{
         bfcl_formats::{BfclDatasetEntry, BfclGroundTruthEntry},
         file_models::{
-            CategorizedEntry, EvaluationResultEntry, InferenceJsonEntry, InferenceRawEntry,
-        },
+            CategorizedEntry, EvaluationResultEntry,
+        }, passes::{pass_generate_raw::GenerateRawEntry, pass_parse_output::ParseOutputEntry},
     },
 };
 use serde_json::Value;
@@ -64,7 +64,7 @@ pub fn try_load_test_cases_and_ids(file_path: &str) -> (Vec<BfclDatasetEntry>, V
     (test_cases, existing_ids)
 }
 
-pub fn try_load_inference_raw_and_ids(file_path: &str) -> (Vec<InferenceRawEntry>, Vec<String>) {
+pub fn try_load_inference_raw_and_ids(file_path: &str) -> (Vec<GenerateRawEntry>, Vec<String>) {
     let inference_entries = match load_json_lines(file_path) {
         Ok(json_lines) => deserialize_inference_raw_entries(json_lines),
         Err(_) => {
@@ -79,7 +79,7 @@ pub fn try_load_inference_raw_and_ids(file_path: &str) -> (Vec<InferenceRawEntry
     (inference_entries, existing_ids)
 }
 
-pub fn try_load_inference_json_and_ids(file_path: &str) -> (Vec<InferenceJsonEntry>, Vec<String>) {
+pub fn try_load_inference_json_and_ids(file_path: &str) -> (Vec<ParseOutputEntry>, Vec<String>) {
     let inference_entries = match load_json_lines(file_path) {
         Ok(json_lines) => deserialize_inference_json_entries(json_lines),
         Err(_) => {
@@ -124,19 +124,19 @@ pub fn serialize_test_cases(test_cases: &Vec<BfclDatasetEntry>) -> Vec<serde_jso
 }
 
 pub fn serialize_inference_raw_entries(
-    inference_raw_entries: &Vec<InferenceRawEntry>,
+    inference_raw_entries: &Vec<GenerateRawEntry>,
 ) -> Vec<serde_json::Value> {
     inference_raw_entries
         .iter()
-        .map(|entry| serde_json::to_value(entry).expect("Unable to serialize InferenceRawEntry"))
+        .map(|entry| serde_json::to_value(entry).expect("Unable to serialize GenerateRawEntry"))
         .collect()
 }
 pub fn serialize_inference_json_entries(
-    inference_json_entries: &Vec<InferenceJsonEntry>,
+    inference_json_entries: &Vec<ParseOutputEntry>,
 ) -> Vec<serde_json::Value> {
     inference_json_entries
         .iter()
-        .map(|entry| serde_json::to_value(entry).expect("Unable to serialize InferenceJsonEntry"))
+        .map(|entry| serde_json::to_value(entry).expect("Unable to serialize ParseOutputEntry"))
         .collect()
 }
 
@@ -192,7 +192,7 @@ pub fn deserialize_test_cases(cases_to_translate: Vec<serde_json::Value>) -> Vec
 
 pub fn deserialize_inference_json_entries(
     inference_json_entries: Vec<serde_json::Value>,
-) -> Vec<InferenceJsonEntry> {
+) -> Vec<ParseOutputEntry> {
     inference_json_entries
         .iter()
         .map(|entry| {
@@ -203,7 +203,7 @@ pub fn deserialize_inference_json_entries(
 
 pub fn deserialize_inference_raw_entries(
     inference_raw_entries: Vec<serde_json::Value>,
-) -> Vec<InferenceRawEntry> {
+) -> Vec<GenerateRawEntry> {
     inference_raw_entries
         .iter()
         .map(|entry| {

@@ -16,8 +16,8 @@ fn test_rust_tool_format_generation() {
     let output_path = "tool_format_comparison_rust.json";
 
     // Read the dataset
-    let file = File::open(dataset_path)
-        .expect(&format!("Failed to open dataset file: {}", dataset_path));
+    let file =
+        File::open(dataset_path).expect(&format!("Failed to open dataset file: {}", dataset_path));
     let reader = BufReader::new(file);
 
     // Create output file
@@ -44,21 +44,21 @@ fn test_rust_tool_format_generation() {
         // Deserialize to BfclDatasetEntry
         // let dataset_entry = BfclDatasetEntry::deserialize_from_json(raw_entry.clone())
         //     .expect(&format!("Failed to deserialize entry at line {}", line_num + 1));
-        let dataset_entry: BfclDatasetEntry = serde_json::from_value(raw_entry)
-            .expect(&format!("Failed to deserialize entry at line {}", line_num + 1));
+        let dataset_entry: BfclDatasetEntry = serde_json::from_value(raw_entry).expect(&format!(
+            "Failed to deserialize entry at line {}",
+            line_num + 1
+        ));
 
         // Create a function name mapper for this entry
         let mut name_mapper = FunctionNameMapper::new();
 
         // Generate GPT-5 tools using the Rust implementation
-        let gpt5_tools = Gpt5Interface::sanitize_and_convert_function_format(
-            &dataset_entry.function,
-            &mut name_mapper,
-        );
+        let gpt5_tools =
+            Gpt5Interface::generate_tool_definitions(&dataset_entry.function, &mut name_mapper);
 
         // Serialize to JSON
-        let tools_json = serde_json::to_value(&gpt5_tools)
-            .expect("Failed to serialize tools to JSON");
+        let tools_json =
+            serde_json::to_value(&gpt5_tools).expect("Failed to serialize tools to JSON");
 
         // Create result object with id and tools
         let result = serde_json::json!({
@@ -75,12 +75,14 @@ fn test_rust_tool_format_generation() {
     }
 
     // Write all results to the output file as a JSON array
-    let output_json = serde_json::to_string_pretty(&results)
-        .expect("Failed to serialize results to JSON");
+    let output_json =
+        serde_json::to_string_pretty(&results).expect("Failed to serialize results to JSON");
 
-    writeln!(output_file, "{}", output_json)
-        .expect("Failed to write to output file");
+    writeln!(output_file, "{}", output_json).expect("Failed to write to output file");
 
-    println!("Rust tool format generation completed. Output written to: {}", output_path);
+    println!(
+        "Rust tool format generation completed. Output written to: {}",
+        output_path
+    );
     println!("Total entries processed: {}", results.len());
 }

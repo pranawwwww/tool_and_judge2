@@ -1,20 +1,16 @@
 use indexmap::IndexMap;
 
-use crate::{
-    tool::bfcl_formats::{
+use crate::tool::{bfcl_formats::{
         BfclDatasetEntry, BfclGroundTruthEntry, BfclParameter,
-    },
-    tool::error_analysis::EvaluationError,
-    tool::file_models::{EvaluationResultEntry, InferenceJsonEntry},
-};
+    }, error_analysis::EvaluationError, file_models::EvaluationResultEntry, passes::pass_parse_output::ParseOutputEntry};
 
 pub fn evaluate_entry(
     id: String,
-    inference_entry: &InferenceJsonEntry,
+    parse_output_entry: &ParseOutputEntry,
     test_case_entry: &BfclDatasetEntry,
     ground_truth_entry: &BfclGroundTruthEntry,
 ) -> EvaluationResultEntry {
-    let functions = match &inference_entry.result {
+    let functions = match &parse_output_entry.result {
         Ok(funcs) => funcs,
         Err(e) => {
             return EvaluationResultEntry {

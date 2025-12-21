@@ -125,6 +125,15 @@ impl Model {
             Model::Local(local_model) => local_model.to_string(),
         }
     }
+    fn __richcmp__(&self, other: PyRef<Model>, op: CompareOp) -> PyResult<bool> {
+        match op {
+            CompareOp::Eq => Ok(self == &*other),
+            CompareOp::Ne => Ok(self != &*other),
+            _ => Err(pyo3::exceptions::PyNotImplementedError::new_err(
+                "Only equality comparisons are supported",
+            )),
+        }
+    }
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
