@@ -73,6 +73,7 @@ impl Llama3_1Interface {
     }
 }
 
+/// See https://www.llama.com/docs/model-cards-and-prompt-formats/llama3_1/#json-based-tool-calling
 fn bfcl_param_to_llama3_1_param(bfcl_parameter: &BfclParameter) -> Llama3_1Parameter {
     let BfclParameter {
         ty: bfcl_type,
@@ -122,70 +123,7 @@ fn bfcl_param_to_llama3_1_param(bfcl_parameter: &BfclParameter) -> Llama3_1Param
 
 #[async_trait::async_trait]
 impl ModelInterface for Llama3_1Interface {
-    // async fn generate_tool_call_async(
-    //     &self,
-    //     backend: Arc<ModelBackend>,
-    //     raw_functions: Vec<BfclFunctionDef>,
-    //     user_question: String,
-    //     prompt_passing_in_english: bool,
-    //     name_mapper: Arc<AtomicRefCell<FunctionNameMapper>>,
-    // ) -> String {
-    //     // downcast backend to vllm backend
-    //     // let vllm_backend = (backend.as_ref() as &dyn Any)
-    //     //     .downcast_ref::<VllmBackend>()
-    //     //     .expect("Failed to downcast to VllmBackend");
-    //     let ModelBackend::Vllm(vllm_backend) = backend.as_ref() else {
-    //         panic!("Llama3_1 interface generate_tool_call_async should use VllmBackend");
-    //     };
-    //     let engine = &vllm_backend.engine;
-    //     let tokenizer = &vllm_backend.tokenizer;
-
-    //     let llama3_1_tools = {
-    //         let mut name_mapper_borrow = name_mapper.borrow_mut();
-    //         Llama3_1Interface::sanitize_and_convert_function_format(
-    //             &raw_functions,
-    //             &mut *name_mapper_borrow,
-    //         )
-    //     };
-
-    //     let llama3_1_tools_serialized =
-    //         serde_json::to_string(&llama3_1_tools).expect("Failed to serialize Llama 3.1 tools");
-
-    //     let fut = Python::attach(|py| {
-    //         let llama3_1_backend_module = py
-    //             .import("src_py.llama3_1_backend")
-    //             .expect("Failed to import src_py.llama3_1_backend module");
-    //         let generate_tool_call_async_fn = llama3_1_backend_module
-    //             .getattr("generate_tool_call_async")
-    //             .expect("Failed to get generate_tool_call_async function");
-    //         let model_name = vllm_backend.model.to_string();
-    //         let json = py.import("json").expect("failed to import json");
-    //         let llama3_1_tools_obj = json
-    //             .call_method("loads", (llama3_1_tools_serialized,), None)
-    //             .expect("Failed to parse Llama 3.1 tools JSON");
-    //         assert!(llama3_1_tools_obj.is_instance_of::<PyList>());
-    //         let arguments = (
-    //             model_name,
-    //             engine,
-    //             tokenizer,
-    //             user_question,
-    //             llama3_1_tools_obj,
-    //             prompt_passing_in_english,
-    //         );
-    //         let fut = generate_tool_call_async_fn
-    //             .call1(arguments)
-    //             .expect("Failed to call generate_tool_call_async");
-    //         pyo3_async_runtimes::tokio::into_future(fut).expect("Failed to convert to Rust future")
-    //     });
-    //     let response_str = fut.await.expect("Llama 3.1 tool call generation failed");
-    //     let response_str = Python::attach(|py| {
-    //         response_str
-    //             .extract::<String>(py)
-    //             .expect("Failed to extract response string")
-    //     });
-    //     response_str
-    // }
-
+    /// See https://www.llama.com/docs/model-cards-and-prompt-formats/llama3_1/#json-based-tool-calling
     fn generate_tool_definitions(
         &self,
         bfcl_functions: &Vec<BfclFunctionDef>,
@@ -193,7 +131,7 @@ impl ModelInterface for Llama3_1Interface {
     ) -> serde_json::Value {
         let mut llama3_1_tools = Vec::new();
         for bfcl_func in bfcl_functions.iter() {
-            let name = name_mapper
+            let sanitized_name = name_mapper
                 .original_to_sanitized
                 .get(&bfcl_func.name)
                 .expect("Function name mapper does not contain key")
@@ -204,50 +142,13 @@ impl ModelInterface for Llama3_1Interface {
             llama3_1_tools.push(Llama3_1Tool {
                 ty: "function".to_string(),
                 function: Llama3_1Function {
-                    name,
+                    name: sanitized_name,
                     description,
                     parameters: llama3_1_params,
                 },
             });
         }
         serde_json::to_value(llama3_1_tools).expect("Failed to serialize Llama 3.1 tools")
-    }
-
-    async fn translate_tool_question_async(
-        &self,
-        backend: Arc<ModelBackend>,
-        user_question: String,
-    ) -> String {
-        // downcast backend to vllm backend
-        let ModelBackend::Vllm(vllm_backend) = backend.as_ref() else {
-            panic!("Llama3_1 interface translate_tool_question_async should use VllmBackend");
-        };
-        let engine = &vllm_backend.engine;
-        let tokenizer = &vllm_backend.tokenizer;
-
-        let fut = Python::attach(|py| {
-            let llama3_1_backend_module = py
-                .import("src_py.llama3_1_backend")
-                .expect("Failed to import src_py.llama3_1_backend module");
-            let translate_tool_question_async_fn = llama3_1_backend_module
-                .getattr("translate_tool_question_async")
-                .expect("Failed to get translate_tool_question_async function");
-            let model_name = vllm_backend.model.to_string();
-            let arguments = (model_name, engine, tokenizer, user_question);
-            let fut = translate_tool_question_async_fn
-                .call1(arguments)
-                .expect("Failed to call translate_tool_question_async");
-            pyo3_async_runtimes::tokio::into_future(fut).expect("Failed to convert to Rust future")
-        });
-        let response_str = fut
-            .await
-            .expect("Llama 3.1 tool question translation failed");
-        let response_str = Python::attach(|py| {
-            response_str
-                .extract::<String>(py)
-                .expect("Failed to extract response string")
-        });
-        response_str
     }
 
     fn parse_tool_calls(
@@ -280,42 +181,7 @@ impl ModelInterface for Llama3_1Interface {
             .map(|llama3_1_call| llama3_1_call_to_bfcl_call(llama3_1_call, name_mapper))
             .collect();
         Ok(bfcl_calls)
-    }
-
-    async fn translate_tool_answer_async(
-        &self,
-        backend: Arc<ModelBackend>,
-        parameter_value: String,
-    ) -> String {
-        // downcast backend to vllm backend
-        let ModelBackend::Vllm(vllm_backend) = backend.as_ref() else {
-            panic!("Llama3_1 interface translate_tool_answer_async should use VllmBackend");
-        };
-        let engine = &vllm_backend.engine;
-        let tokenizer = &vllm_backend.tokenizer;
-
-        let fut = Python::attach(|py| {
-            let llama3_1_backend_module = py
-                .import("src_py.llama3_1_backend")
-                .expect("Failed to import src_py.llama3_1_backend module");
-            let translate_tool_answer_async_fn = llama3_1_backend_module
-                .getattr("translate_tool_answer_async")
-                .expect("Failed to get translate_tool_answer_async function");
-            let model_name = vllm_backend.model.to_string();
-            let arguments = (model_name, engine, tokenizer, parameter_value);
-            let fut = translate_tool_answer_async_fn
-                .call1(arguments)
-                .expect("Failed to call translate_tool_answer_async");
-            pyo3_async_runtimes::tokio::into_future(fut).expect("Failed to convert to Rust future")
-        });
-        let response_str = fut.await.expect("Llama 3.1 tool answer translation failed");
-        let response_str = Python::attach(|py| {
-            response_str
-                .extract::<String>(py)
-                .expect("Failed to extract response string")
-        });
-        response_str
-    }
+    }   
 }
 fn llama3_1_call_to_bfcl_call(
     llama3_1_call: Llama3_1OutputFunctionCall,
@@ -332,39 +198,3 @@ fn llama3_1_call_to_bfcl_call(
         value: llama3_1_call.parameters,
     })
 }
-// fn parse_llama3_1_function_call(
-//     function_call: &serde_json::Value,
-// ) -> Result<Llama3_1OutputFunctionCall, String> {
-//     // let mut function_call = function_call.clone();
-
-//     // Llama 3.1 format: {"type": "function", "function": {"name": "...", "arguments": {...}}}
-//     let function_obj = function_call
-//         .get("function")
-//         .ok_or("Missing 'function' field in function call")?;
-
-//     let name = function_obj
-//         .get("name")
-//         .and_then(|v| v.as_str())
-//         .ok_or("Missing 'name' field in function object")?
-//         .to_string();
-
-//     let arguments_value = function_obj
-//         .get("arguments")
-//         .ok_or("Missing 'arguments' field in function object")?;
-
-//     // Arguments might be a string or already an object
-//     let arguments_json = if arguments_value.is_string() {
-//         let arguments_str = arguments_value
-//             .as_str()
-//             .ok_or("'arguments' field is not a string")?;
-//         serde_json::from_str::<serde_json::Value>(arguments_str)
-//             .map_err(|e| format!("Failed to parse 'arguments' JSON string: {}", e))?
-//     } else {
-//         arguments_value.clone()
-//     };
-
-//     let arguments: IndexMap<String, serde_json::Value> = serde_json::from_value(arguments_json)
-//         .map_err(|e| format!("Failed to deserialize arguments: {}", e))?;
-
-//     Ok(Llama3_1OutputFunctionCall { name, arguments })
-// }

@@ -3,10 +3,16 @@
 
 
 import re
-from typing import Any, List
+from typing import Any
 
 
-async def generate_tool_call_async(model_name: str, client: any, question: str, tools: list, prompt_passing_in_english: bool) -> str:
+async def generate_tool_call_async(
+    model_name: str, 
+    client: any, 
+    question: str, 
+    tools: list, 
+    prompt_passing_in_english: bool
+) -> str:
     developer_message = {
         "role": "developer",
         "content": (
@@ -37,7 +43,11 @@ async def generate_tool_call_async(model_name: str, client: any, question: str, 
     response_json_str = json.dumps(response_dicts)
     return response_json_str
 
-async def translate_tool_question_async(model_name: str, client: any, question: str) -> str:
+async def translate_tool_question_async(
+    model_name: str, 
+    client: any, 
+    question: str
+) -> str:
     messages = [
             {
                 "role": "developer",

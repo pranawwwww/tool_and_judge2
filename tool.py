@@ -110,9 +110,20 @@ async def collect_single_question_translation_async(entry: dict) -> dict:
                     client = client,
                     question = entry["question"],
                 )
-            elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B)]:
-                # from src_py.qwen3_backend import 
-                raise NotImplementedError("Qwen3 translation not implemented yet.")
+            elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B), Model.Local(LocalModel.Qwen3_32B), Model.Local(LocalModel.Qwen3_30bA3b), Model.Local(LocalModel.Qwen3Next80bA3b)]:
+                from src_py.qwen3_backend import translate_tool_question_async
+                translated_question = await translate_tool_question_async(
+                    engine = engine,
+                    tokenizer = tokenizer,
+                    question = entry["question"],
+                )
+            elif config.model in [Model.Local(LocalModel.Llama3_1_8B), Model.Local(LocalModel.Llama3_1_70B)]:
+                from src_py.llama3_1_backend import translate_tool_question_async
+                translated_question = await translate_tool_question_async(
+                    engine = engine,
+                    tokenizer = tokenizer,
+                    question = entry["question"],
+                )
             else:
                 raise NotImplementedError(f"Translation not implemented for model {config.model}.")
         except Exception as e:
@@ -179,9 +190,24 @@ async def collect_single_raw_function_call_async(entry: dict) -> dict:
                     tools = entry["tools"],                    
                     prompt_passing_in_english = entry["prompt_passing_in_english"],
                 )
-            elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B)]:
-                # from src_py.qwen3_backend import 
-                raise NotImplementedError("Qwen3 raw function call generation not implemented yet.")
+            elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B), Model.Local(LocalModel.Qwen3_32B), Model.Local(LocalModel.Qwen3_30bA3b), Model.Local(LocalModel.Qwen3Next80bA3b)]:
+                from src_py.qwen3_backend import generate_tool_call_async
+                raw_output = await generate_tool_call_async(
+                    engine = engine,
+                    tokenizer = tokenizer,
+                    question=entry["question"],
+                    tools = entry["tools"],                    
+                    prompt_passing_in_english = entry["prompt_passing_in_english"],
+               )
+            elif config.model in [Model.Local(LocalModel.Llama3_1_8B), Model.Local(LocalModel.Llama3_1_70B)]:
+                from src_py.llama3_1_backend import generate_tool_call_async
+                raw_output = await generate_tool_call_async(
+                    engine = engine,
+                    tokenizer = tokenizer,
+                    question=entry["question"],
+                    tools = entry["tools"],                    
+                    prompt_passing_in_english = entry["prompt_passing_in_english"],
+               )
             else:
                 raise NotImplementedError(f"Raw function call generation not implemented for model {config.model}.")
         except Exception as e:
@@ -252,9 +278,20 @@ async def collect_single_parameter_translation_async(entry: dict) -> dict:
                     client = client,
                     parameter_value = parameter_value,
                 )
-            elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B)]:
-                # from src_py.qwen3_backend import 
-                raise NotImplementedError("Qwen3 parameter translation not implemented yet.")
+            elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B), Model.Local(LocalModel.Qwen3_32B), Model.Local(LocalModel.Qwen3_30bA3b), Model.Local(LocalModel.Qwen3Next80bA3b)]:
+                from src_py.qwen3_backend import translate_tool_parameter_async
+                translated_value = await translate_tool_parameter_async(
+                    engine = engine,
+                    tokenizer = tokenizer,
+                    parameter_value = parameter_value,
+                )
+            elif config.model in [Model.Local(LocalModel.Llama3_1_8B), Model.Local(LocalModel.Llama3_1_70B)]:
+                from src_py.llama3_1_backend import translate_tool_parameter_async
+                translated_value = await translate_tool_parameter_async(
+                    engine = engine,
+                    tokenizer = tokenizer,
+                    parameter_value = parameter_value,
+                )
             else:
                 raise NotImplementedError(f"Parameter translation not implemented for model {config.model}.")
         except Exception as e:
@@ -283,7 +320,6 @@ pass_post_translate_dispatch_results(config)
 # For each BFCL function call file, we call the rust function to evaluate it
 print("----------PASS 5: EVALUATE FUNCTION CALLS----------")
 pass_evaluate(config)
-
 # We can remove the scoring pass
 
 # The sixth pass is to categorize errors. 

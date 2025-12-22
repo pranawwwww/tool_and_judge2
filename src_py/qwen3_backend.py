@@ -3,6 +3,202 @@ from vllm import SamplingParams
 
 
 
+async def generate_tool_call_async(
+    engine: Any,
+    tokenizer: Any,
+    question: str,
+    tools: List[dict],
+    prompt_passing_in_english: bool
+) -> str:
+    """
+    Generate tool calls using Qwen 3's native tool calling format.
+
+    Args:
+        engine: vLLM AsyncLLMEngine instance
+        tokenizer: Tokenizer instance
+        question: User question
+        tools: List of tool definitions in Qwen 3 format
+        prompt_passing_in_english: Whether to pass parameters in English
+
+    Returns:
+        JSON string containing the tool calls
+    """
+    # Build messages for Qwen 3's chat template
+    system_message = {
+        "role": "system",
+        "content": (
+            "You are an expert in composing functions. "
+            "You are given a question and a set of possible functions. "
+            "Based on the question, you will need to make one or more function/tool calls to achieve the purpose. "
+            "If none of the functions can be used, point it out. "
+            "If the given question lacks the parameters required by the function, also point it out.\n\n"
+            "You should ONLY return function calls in your response. "
+            "You MUST NOT include any other text, explanations, or direct answers. "
+            "If you decide to invoke any function(s), you MUST use the provided tools. "
+            "Do NOT attempt to answer the question directly without using the available functions."
+            f"{' IMPORTANT: Pass all parameter values in English' if prompt_passing_in_english else ''}"
+        )
+    }
+
+    messages = [
+        system_message,
+        {"role": "user", "content": question}
+    ]
+
+    # Apply chat template with tools
+    # The tokenizer.apply_chat_template will format the prompt according to Qwen 3's conventions
+    formatted_prompt = tokenizer.apply_chat_template(
+        messages,
+        tools=tools,
+        add_generation_prompt=True,
+        tokenize=False
+    )
+
+    # Use vLLM to generate the response
+    from vllm.sampling_params import SamplingParams
+
+    sampling_params = SamplingParams(
+        temperature=0.0,  # Greedy decoding for tool calls
+        max_tokens=2048,
+        stop_token_ids=[tokenizer.eos_token_id, tokenizer.convert_tokens_to_ids("<|eot_id|>")]
+    )
+
+    # Generate with vLLM engine
+    request_id = f"qwen3_toolcall_{id(question)}"
+    results_generator = engine.generate(
+        formatted_prompt,
+        sampling_params,
+        request_id
+    )
+
+    # Wait for completion
+    final_output = None
+    async for request_output in results_generator:
+        final_output = request_output
+
+    if final_output is None:
+        raise RuntimeError("vLLM generation returned no output")
+
+    # Extract the generated text
+    generated_text = final_output.outputs[0].text.strip()
+    return generated_text
+
+async def translate_tool_question_async(
+    engine: Any,
+    tokenizer: Any,
+    question: str
+) -> str:
+    """
+    Translate a question to English using Qwen 3.
+
+    Args:
+        engine: vLLM AsyncLLMEngine instance
+        tokenizer: Tokenizer instance
+        question: Question to translate
+
+    Returns:
+        Translated question in English
+    """
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a professional translator. Translate the given text to English accurately. If the given text is already in English or is language agnostic, return it unchanged."
+        },
+        {
+            "role": "user",
+            "content": f"Translate the following question to English. Only output the translated question, nothing else:\n\n{question}"
+        }
+    ]
+
+    formatted_prompt = tokenizer.apply_chat_template(
+        messages,
+        add_generation_prompt=True,
+        tokenize=False
+    )
+
+    from vllm.sampling_params import SamplingParams
+
+    sampling_params = SamplingParams(
+        temperature=0.0,
+        max_tokens=512,
+        stop_token_ids=[tokenizer.eos_token_id, tokenizer.convert_tokens_to_ids("<|eot_id|>")]
+    )
+
+    request_id = f"qwen3_{id(question)}"
+    results_generator = engine.generate(
+        formatted_prompt,
+        sampling_params,
+        request_id
+    )
+
+    final_output = None
+    async for request_output in results_generator:
+        final_output = request_output
+
+    if final_output is None:
+        raise RuntimeError("vLLM generation returned no output")
+
+    return final_output.outputs[0].text.strip()
+
+
+async def translate_tool_parameter_async(
+    engine: Any,
+    tokenizer: Any,
+    parameter_value: str
+) -> str:
+    """
+    Translate a parameter value to English using Qwen 3.
+
+    Args:
+        engine: vLLM AsyncLLMEngine instance
+        tokenizer: Tokenizer instance
+        parameter_value: Parameter value to translate
+
+    Returns:
+        Translated parameter value in English
+    """
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a professional translator. Translate the given text to English accurately. If the given text is already in English or is language agnostic, return it unchanged."
+        },
+        {
+            "role": "user",
+            "content": f"Translate the following text to English. Only output the translated text, nothing else:\n\n{parameter_value}"
+        }
+    ]
+
+    formatted_prompt = tokenizer.apply_chat_template(
+        messages,
+        add_generation_prompt=True,
+        tokenize=False
+    )
+
+    from vllm.sampling_params import SamplingParams
+
+    sampling_params = SamplingParams(
+        temperature=0.0,
+        max_tokens=512,
+        stop_token_ids=[tokenizer.eos_token_id, tokenizer.convert_tokens_to_ids("<|eot_id|>")]
+    )
+
+    request_id = f"qwen3_translate_a_{id(parameter_value)}"
+    results_generator = engine.generate(
+        formatted_prompt,
+        sampling_params,
+        request_id
+    )
+
+    final_output = None
+    async for request_output in results_generator:
+        final_output = request_output
+
+    if final_output is None:
+        raise RuntimeError("vLLM generation returned no output")
+
+    return final_output.outputs[0].text.strip()
+
+
 def collect_perplexity_batch(
     entries: List[dict],
     model: Any,
@@ -111,7 +307,7 @@ async def collect_preference_local_async(
     tokenizer: Any,
 ) -> tuple[float, float]:
     """
-    Collect preference between two answers using Llama 3.1 backend.
+    Collect preference between two answers using Qwen 3 backend.
 
     Returns:
         Tuple of (logprob_1, logprob_2) where:

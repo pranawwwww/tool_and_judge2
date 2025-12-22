@@ -26,17 +26,17 @@ pub trait ModelInterface: Send + Sync {
     //     name_mapper: Arc<AtomicRefCell<FunctionNameMapper>>,
     // ) -> String;
 
-    async fn translate_tool_question_async(
-        &self,
-        backend: Arc<ModelBackend>,
-        user_question: String,
-    ) -> String;
+    // async fn translate_tool_question_async(
+    //     &self,
+    //     backend: Arc<ModelBackend>,
+    //     user_question: String,
+    // ) -> String;
 
-    async fn translate_tool_answer_async(
-        &self,
-        backend: Arc<ModelBackend>,
-        parameter_value: String,
-    ) -> String;
+    // async fn translate_tool_answer_async(
+    //     &self,
+    //     backend: Arc<ModelBackend>,
+    //     parameter_value: String,
+    // ) -> String;
 
     fn parse_tool_calls(
         &self,

@@ -13,7 +13,6 @@ from vllm import SamplingParams
 
 
 async def generate_tool_call_async(
-    model_name: str,
     engine: Any,
     tokenizer: Any,
     question: str,
@@ -24,7 +23,6 @@ async def generate_tool_call_async(
     Generate tool calls using Llama 3.1's native tool calling format.
 
     Args:
-        model_name: The model name
         engine: vLLM AsyncLLMEngine instance
         tokenizer: Tokenizer instance
         question: User question
@@ -94,34 +92,7 @@ async def generate_tool_call_async(
     generated_text = final_output.outputs[0].text.strip()
     return generated_text
 
-    # # Parse the tool calls from the generated text
-    # # Llama 3.1 outputs tool calls in a specific format that needs to be extracted
-    # tool_calls = parse_llama3_1_tool_calls(generated_text)
-
-    # # Convert to the expected output format
-    # response_dicts = []
-    # for tool_call in tool_calls:
-    #     # Check if the tool call has required fields
-    #     if "name" not in tool_call:
-    #         continue  # Skip malformed tool calls without a name
-
-    #     # Get arguments, default to empty dict if not present
-    #     arguments = tool_call.get("arguments", {})
-
-    #     response_dicts.append({
-    #         "type": "function",
-    #         "function": {
-    #             "name": tool_call["name"],
-    #             "arguments": json.dumps(arguments)
-    #         }
-    #     })
-
-    # response_json_str = json.dumps(response_dicts)
-    # return response_json_str
-
-
 async def translate_tool_question_async(
-    model_name: str,
     engine: Any,
     tokenizer: Any,
     question: str
@@ -130,7 +101,6 @@ async def translate_tool_question_async(
     Translate a question to English using Llama 3.1.
 
     Args:
-        model_name: The model name
         engine: vLLM AsyncLLMEngine instance
         tokenizer: Tokenizer instance
         question: Question to translate
@@ -180,8 +150,7 @@ async def translate_tool_question_async(
     return final_output.outputs[0].text.strip()
 
 
-async def translate_tool_answer_async(
-    model_name: str,
+async def translate_tool_parameter_async(
     engine: Any,
     tokenizer: Any,
     parameter_value: str
@@ -190,7 +159,6 @@ async def translate_tool_answer_async(
     Translate a parameter value to English using Llama 3.1.
 
     Args:
-        model_name: The model name
         engine: vLLM AsyncLLMEngine instance
         tokenizer: Tokenizer instance
         parameter_value: Parameter value to translate
@@ -240,109 +208,109 @@ async def translate_tool_answer_async(
     return final_output.outputs[0].text.strip()
 
 
-def parse_llama3_1_tool_calls(generated_text: str) -> List[dict]:
-    """
-    Parse tool calls from Llama 3.1's generated text.
+# def parse_llama3_1_tool_calls(generated_text: str) -> List[dict]:
+#     """
+#     Parse tool calls from Llama 3.1's generated text.
 
-    Llama 3.1 outputs tool calls in a structured format. This function extracts them.
+#     Llama 3.1 outputs tool calls in a structured format. This function extracts them.
 
-    Args:
-        generated_text: The generated text from the model
+#     Args:
+#         generated_text: The generated text from the model
 
-    Returns:
-        List of tool call dictionaries with 'name' and 'arguments' keys
-    """
-    tool_calls = []
+#     Returns:
+#         List of tool call dictionaries with 'name' and 'arguments' keys
+#     """
+#     tool_calls = []
 
-    # Try to parse as JSON first (if model outputs JSON directly)
-    try:
-        parsed = json.loads(generated_text)
-        if isinstance(parsed, list):
-            # Validate and normalize each item
-            normalized = []
-            for item in parsed:
-                if isinstance(item, dict) and "name" in item:
-                    normalized.append({
-                        "name": item["name"],
-                        "arguments": item.get("arguments", {})
-                    })
-            if normalized:
-                return normalized
-        elif isinstance(parsed, dict) and "name" in parsed:
-            return [{
-                "name": parsed["name"],
-                "arguments": parsed.get("arguments", {})
-            }]
-    except json.JSONDecodeError:
-        pass
+#     # Try to parse as JSON first (if model outputs JSON directly)
+#     try:
+#         parsed = json.loads(generated_text)
+#         if isinstance(parsed, list):
+#             # Validate and normalize each item
+#             normalized = []
+#             for item in parsed:
+#                 if isinstance(item, dict) and "name" in item:
+#                     normalized.append({
+#                         "name": item["name"],
+#                         "arguments": item.get("arguments", {})
+#                     })
+#             if normalized:
+#                 return normalized
+#         elif isinstance(parsed, dict) and "name" in parsed:
+#             return [{
+#                 "name": parsed["name"],
+#                 "arguments": parsed.get("arguments", {})
+#             }]
+#     except json.JSONDecodeError:
+#         pass
 
-    # Look for tool call patterns in the text
-    # Llama 3.1 typically outputs: <function=function_name>{"arg1": "value1", ...}</function>
-    # or other structured formats
-    import re
+#     # Look for tool call patterns in the text
+#     # Llama 3.1 typically outputs: <function=function_name>{"arg1": "value1", ...}</function>
+#     # or other structured formats
+#     import re
 
-    # Pattern 1: <function=name>{...}</function>
-    pattern1 = r'<function=([^>]+)>(.*?)</function>'
-    matches = re.finditer(pattern1, generated_text, re.DOTALL)
-    for match in matches:
-        function_name = match.group(1).strip()
-        arguments_str = match.group(2).strip()
-        try:
-            arguments = json.loads(arguments_str)
-            tool_calls.append({
-                "name": function_name,
-                "arguments": arguments
-            })
-        except json.JSONDecodeError:
-            # Skip malformed tool calls
-            continue
+#     # Pattern 1: <function=name>{...}</function>
+#     pattern1 = r'<function=([^>]+)>(.*?)</function>'
+#     matches = re.finditer(pattern1, generated_text, re.DOTALL)
+#     for match in matches:
+#         function_name = match.group(1).strip()
+#         arguments_str = match.group(2).strip()
+#         try:
+#             arguments = json.loads(arguments_str)
+#             tool_calls.append({
+#                 "name": function_name,
+#                 "arguments": arguments
+#             })
+#         except json.JSONDecodeError:
+#             # Skip malformed tool calls
+#             continue
 
-    # Pattern 2: {"name": "...", "arguments": {...}}
-    if not tool_calls:
-        # Try to find JSON objects with name and arguments
-        pattern2 = r'\{[^}]*"name"\s*:\s*"([^"]+)"[^}]*"arguments"\s*:\s*(\{[^}]*\})[^}]*\}'
-        matches = re.finditer(pattern2, generated_text)
-        for match in matches:
-            function_name = match.group(1)
-            arguments_str = match.group(2)
-            try:
-                arguments = json.loads(arguments_str)
-            except json.JSONDecodeError:
-                arguments = {}
-            tool_calls.append({
-                "name": function_name,
-                "arguments": arguments
-            })
+#     # Pattern 2: {"name": "...", "arguments": {...}}
+#     if not tool_calls:
+#         # Try to find JSON objects with name and arguments
+#         pattern2 = r'\{[^}]*"name"\s*:\s*"([^"]+)"[^}]*"arguments"\s*:\s*(\{[^}]*\})[^}]*\}'
+#         matches = re.finditer(pattern2, generated_text)
+#         for match in matches:
+#             function_name = match.group(1)
+#             arguments_str = match.group(2)
+#             try:
+#                 arguments = json.loads(arguments_str)
+#             except json.JSONDecodeError:
+#                 arguments = {}
+#             tool_calls.append({
+#                 "name": function_name,
+#                 "arguments": arguments
+#             })
 
-    # If still no tool calls found, try to extract any JSON-like structure
-    if not tool_calls:
-        # Look for any JSON object in the text
-        try:
-            # Find all JSON objects
-            json_pattern = r'\{(?:[^{}]|(?:\{[^{}]*\}))*\}'
-            for match in re.finditer(json_pattern, generated_text):
-                try:
-                    obj = json.loads(match.group(0))
-                    if "name" in obj:
-                        tool_calls.append({
-                            "name": obj["name"],
-                            "arguments": obj.get("arguments", {})
-                        })
-                except json.JSONDecodeError:
-                    continue
-        except Exception:
-            pass
+#     # If still no tool calls found, try to extract any JSON-like structure
+#     if not tool_calls:
+#         # Look for any JSON object in the text
+#         try:
+#             # Find all JSON objects
+#             json_pattern = r'\{(?:[^{}]|(?:\{[^{}]*\}))*\}'
+#             for match in re.finditer(json_pattern, generated_text):
+#                 try:
+#                     obj = json.loads(match.group(0))
+#                     if "name" in obj:
+#                         tool_calls.append({
+#                             "name": obj["name"],
+#                             "arguments": obj.get("arguments", {})
+#                         })
+#                 except json.JSONDecodeError:
+#                     continue
+#         except Exception:
+#             pass
 
-    # Ensure all tool calls have the required structure
-    normalized_tool_calls = []
-    for tool_call in tool_calls:
-        if isinstance(tool_call, dict) and "name" in tool_call:
-            normalized_tool_calls.append({
-                "name": tool_call["name"],
-                "arguments": tool_call.get("arguments", {})
-            })
+#     # Ensure all tool calls have the required structure
+#     normalized_tool_calls = []
+#     for tool_call in tool_calls:
+#         if isinstance(tool_call, dict) and "name" in tool_call:
+#             normalized_tool_calls.append({
+#                 "name": tool_call["name"],
+#                 "arguments": tool_call.get("arguments", {})
+#             })
 
-    return normalized_tool_calls
+#     return normalized_tool_calls
 
 
 def collect_perplexity_batch(
