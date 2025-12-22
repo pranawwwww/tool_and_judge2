@@ -94,6 +94,14 @@ assistant_client = None
 # This involves calling a rust function
 # Then we have the question only dataset file. Its path can be retrieved from Rust code.
 # Then we get the python array object from reading the file
+print("----------PASS 1: PRE-TRANSLATE QUESTIONS----------")
+pass_pre_translate_prepare_aggregated_questions(config)
+aggregated_questions_input_file_path = pass_pre_translate_aggregated_questions_input_file_path(config)
+aggregated_questions_output_file_path = pass_pre_translate_aggregated_questions_output_file_path(config)
+if os.path.exists(aggregated_questions_output_file_path):
+    pass_pre_translate_dispatch_results(config)
+# Each entry has a signature of type PreTranslateAggregatedInputQuestionEntry in src/tool/passes/pass_pre_translate.rs
+question_entries = load_json_lines_from_file(aggregated_questions_input_file_path)
 # Define all async functions first
 async def collect_single_question_translation_async(entry: dict, semaphore, client_or_engine, tokenizer_or_none, is_api) -> dict:
     async with semaphore:

@@ -1,0 +1,75 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+warning: unused import: `backend::ModelBackend`
+ --> src/models/model_interface.rs:6:9
+  |
+6 |         backend::ModelBackend,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `sync::Arc`
+ --> src/models/deepseek_interface.rs:1:33
+  |
+1 | use std::{collections::HashMap, sync::Arc};
+  |                                 ^^^^^^^^^
+
+warning: unused import: `backend::ModelBackend`
+ --> src/models/deepseek_interface.rs:5:9
+  |
+5 |         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> src/models/gpt5_interface.rs:1:5
+  |
+1 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `backend::ModelBackend`
+ --> src/models/gpt5_interface.rs:5:9
+  |
+5 |         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Python`
+  --> src/models/gpt5_interface.rs:14:12
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |            ^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> src/models/llama3_1_interface.rs:1:5
+  |
+1 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `backend::ModelBackend`
+ --> src/models/llama3_1_interface.rs:5:9
+  |
+5 |         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Python`
+  --> src/models/llama3_1_interface.rs:14:12
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |            ^^^^^^
+
+warning: unused import: `types::PyAnyMethods`
+  --> src/models/llama3_1_interface.rs:14:20
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |                    ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `types::PyAnyMethods`
+  --> src/models/gpt5_interface.rs:14:20
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |                    ^^^^^^^^^^^^^^^^^^^
+
+warning: `codebase_rs` (lib) generated 11 warnings (run `cargo fix --lib -p codebase_rs` to apply 9 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.91s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmpyR0yWA/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+[2025-12-22T17:39:06.305] error: *** JOB 14308280 ON gpua012 CANCELLED AT 2025-12-22T17:39:06 DUE to SIGNAL Terminated ***
