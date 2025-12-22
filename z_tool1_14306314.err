@@ -1,0 +1,144 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+   Compiling codebase_rs v0.1.0 (/projects/bfdz/zluo8/tool_and_judge2)
+warning: unused import: `backend::ModelBackend`
+ --> src/models/model_interface.rs:6:9
+  |
+6 |         backend::ModelBackend,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `sync::Arc`
+ --> src/models/deepseek_interface.rs:1:33
+  |
+1 | use std::{collections::HashMap, sync::Arc};
+  |                                 ^^^^^^^^^
+
+warning: unused import: `backend::ModelBackend`
+ --> src/models/deepseek_interface.rs:5:9
+  |
+5 |         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> src/models/gpt5_interface.rs:1:5
+  |
+1 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `backend::ModelBackend`
+ --> src/models/gpt5_interface.rs:5:9
+  |
+5 |         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Python`
+  --> src/models/gpt5_interface.rs:14:12
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |            ^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> src/models/llama3_1_interface.rs:1:5
+  |
+1 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `backend::ModelBackend`
+ --> src/models/llama3_1_interface.rs:5:9
+  |
+5 |         backend::ModelBackend, function_name_mapper::FunctionNameMapper,
+  |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Python`
+  --> src/models/llama3_1_interface.rs:14:12
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |            ^^^^^^
+
+warning: unused import: `types::PyAnyMethods`
+  --> src/models/llama3_1_interface.rs:14:20
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |                    ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `types::PyAnyMethods`
+  --> src/models/gpt5_interface.rs:14:20
+   |
+14 | use pyo3::{Python, types::PyAnyMethods};
+   |                    ^^^^^^^^^^^^^^^^^^^
+
+warning: `codebase_rs` (lib) generated 11 warnings (run `cargo fix --lib -p codebase_rs` to apply 9 suggestions)
+    Finished `release` profile [optimized] target(s) in 23.27s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmp01xkfx/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+🛠 Installed codebase_rs-0.1.0
+/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py:1041: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:01<00:03,  1.16s/it]
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:04<00:04,  2.39s/it]
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:07<00:02,  2.87s/it]
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:11<00:00,  3.14s/it]
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:11<00:00,  2.85s/it]
+[0;36m(EngineCore_DP0 pid=120327)[0;0m 
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 2/35 [00:00<00:02, 16.15it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  11%|█▏        | 4/35 [00:00<00:01, 17.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|██        | 7/35 [00:00<00:01, 19.45it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▊       | 10/35 [00:00<00:01, 19.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 13/35 [00:01<00:02,  9.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▌     | 16/35 [00:01<00:01, 12.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  54%|█████▍    | 19/35 [00:01<00:01, 14.47it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 22/35 [00:01<00:00, 16.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████▏  | 25/35 [00:01<00:00, 16.70it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 28/35 [00:01<00:00, 18.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  89%|████████▊ | 31/35 [00:01<00:00, 17.22it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  97%|█████████▋| 34/35 [00:02<00:00, 19.10it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:02<00:00, 13.94it/s]
+[0;36m(EngineCore_DP0 pid=120327)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   5%|▌         | 1/19 [00:01<00:33,  1.88s/it]Capturing CUDA graphs (decode, FULL):  16%|█▌        | 3/19 [00:01<00:08,  1.89it/s]Capturing CUDA graphs (decode, FULL):  26%|██▋       | 5/19 [00:02<00:03,  3.52it/s]Capturing CUDA graphs (decode, FULL):  42%|████▏     | 8/19 [00:02<00:01,  6.44it/s]Capturing CUDA graphs (decode, FULL):  58%|█████▊    | 11/19 [00:02<00:00,  9.58it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▎  | 14/19 [00:02<00:00, 12.84it/s]Capturing CUDA graphs (decode, FULL):  89%|████████▉ | 17/19 [00:02<00:00, 15.99it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 19/19 [00:02<00:00,  7.31it/s]
+[2025-12-22 15:17:09] ERROR base_events.py:1871: Task exception was never retrieved
+future: <Task finished name='Task-606' coro=<collect_single_raw_function_call_async() done, defined at /projects/bfdz/zluo8/tool_and_judge2/tool.py:181> exception=SystemExit(1)>
+Traceback (most recent call last):
+  File "/projects/bfdz/zluo8/tool_and_judge2/tool.py", line 204, in collect_single_raw_function_call_async
+     raw_output = await generate_tool_call_async(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/projects/bfdz/zluo8/tool_and_judge2/src_py/llama3_1_backend.py", line 85, in generate_tool_call_async
+    async for request_output in results_generator:
+        final_output = request_output
+  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 426, in generate
+    q = await self.add_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 296, in add_request
+    raise EngineDeadError()
+vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/projects/bfdz/zluo8/tool_and_judge2/tool.py", line 230, in <module>
+    asyncio.run(collect_all_raw_function_calls_async(input_entries))
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/projects/bfdz/zluo8/tool_and_judge2/tool.py", line 215, in collect_single_raw_function_call_async
+    exit(1) # Todo: handle error properly
+    ~~~~^^^
+  File "<frozen _sitebuiltins>", line 26, in __call__
+SystemExit: 1
+Exception ignored in: <function AsyncLLM.__del__ at 0x7f51ec326d40>
+Traceback (most recent call last):
+  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 263, in __del__
+  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 268, in shutdown
+TypeError: 'NoneType' object is not callable

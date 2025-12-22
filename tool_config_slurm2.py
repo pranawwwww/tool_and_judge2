@@ -16,6 +16,6 @@ for noise in [AddNoiseMode.NoNoise, AddNoiseMode.Synonym, AddNoiseMode.Paraphras
         experiments.append(ToolExperiment(translate, noise))
 
 config = ToolConfig(
-    Model.Api(ApiModel.Gpt5Nano),
+    Model.Local(LocalModel.Llama3_1_70B),
     experiments
 )
