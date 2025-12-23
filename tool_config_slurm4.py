@@ -16,6 +16,6 @@ for noise in [AddNoiseMode.NoNoise, AddNoiseMode.Synonym, AddNoiseMode.Paraphras
         experiments.append(ToolExperiment(translate, noise))
 
 config = ToolConfig(
-    Model.Local(LocalModel.Granite4_0HTiny),
+    Model.Local(LocalModel.Granite4_0HSmall),
     experiments
 )
