@@ -1,0 +1,77 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+   Compiling codebase_rs v0.1.0 (/projects/bfdz/zluo8/tool_and_judge2)
+    Finished `release` profile [optimized] target(s) in 13.05s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmpICqvT0/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+🛠 Installed codebase_rs-0.1.0
+/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py:1041: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.82it/s]
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:02<00:03,  1.52s/it]
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:05<00:01,  1.91s/it]
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:07<00:00,  2.09s/it]
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:07<00:00,  1.87s/it]
+[0;36m(EngineCore_DP0 pid=473495)[0;0m 
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 2/35 [00:00<00:02, 14.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▍        | 5/35 [00:00<00:01, 18.76it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  23%|██▎       | 8/35 [00:00<00:01, 20.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 11/35 [00:00<00:01, 21.76it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|████      | 14/35 [00:01<00:02, 10.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▊     | 17/35 [00:01<00:01, 12.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 20/35 [00:01<00:00, 15.57it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▌   | 23/35 [00:01<00:00, 17.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  74%|███████▍  | 26/35 [00:01<00:00, 18.50it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  83%|████████▎ | 29/35 [00:01<00:00, 20.80it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  91%|█████████▏| 32/35 [00:01<00:00, 17.97it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:02<00:00, 10.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:02<00:00, 14.35it/s]
+[0;36m(EngineCore_DP0 pid=473495)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   5%|▌         | 1/19 [00:01<00:31,  1.75s/it]Capturing CUDA graphs (decode, FULL):  21%|██        | 4/19 [00:01<00:05,  2.76it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 7/19 [00:01<00:02,  5.33it/s]Capturing CUDA graphs (decode, FULL):  53%|█████▎    | 10/19 [00:02<00:01,  8.28it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▎  | 14/19 [00:02<00:00, 12.42it/s]Capturing CUDA graphs (decode, FULL):  95%|█████████▍| 18/19 [00:02<00:00, 16.35it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 19/19 [00:02<00:00,  8.05it/s]
+[2025-12-22 19:36:56] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:56] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:57] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:58] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:59] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:59] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:59] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:59] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:59] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:59] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:36:59] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:00] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:00] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:00] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:00] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:00] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:01] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:01] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:01] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:01] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:01] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:01] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:02] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:02] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:02] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:03] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:03] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:05] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:06] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:07] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:07] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:09] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-12-22 19:37:11] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+Exception ignored in: <function AsyncLLM.__del__ at 0x7f64b32ce200>
+Traceback (most recent call last):
+  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 263, in __del__
+  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 268, in shutdown
+TypeError: 'NoneType' object is not callable

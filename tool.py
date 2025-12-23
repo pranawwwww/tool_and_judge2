@@ -125,6 +125,13 @@ async def main_async():
                         client = main_client,
                         question = entry["question"],
                     )
+                elif config.model in [Model.Api(ApiModel.DeepSeek)]:
+                    from src_py.deepseek_backend import translate_tool_question_async
+                    translated_question = await translate_tool_question_async(
+                        model_name = config.model.to_string(),
+                        client = main_client,
+                        question = entry["question"],
+                    )
                 elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B), Model.Local(LocalModel.Qwen3_32B), Model.Local(LocalModel.Qwen3_30bA3b), Model.Local(LocalModel.Qwen3Next80bA3b)]:
                     from src_py.qwen3_backend import translate_tool_question_async
                     translated_question = await translate_tool_question_async(
@@ -134,6 +141,13 @@ async def main_async():
                     )
                 elif config.model in [Model.Local(LocalModel.Llama3_1_8B), Model.Local(LocalModel.Llama3_1_70B)]:
                     from src_py.llama3_1_backend import translate_tool_question_async
+                    translated_question = await translate_tool_question_async(
+                        engine = main_engine,
+                        tokenizer = main_tokenizer,
+                        question = entry["question"],
+                    )
+                elif config.model in [Model.Local(LocalModel.Granite4_0HTiny), Model.Local(LocalModel.Granite4_0HSmall)]:
+                    from src_py.granite4_backend import translate_tool_question_async
                     translated_question = await translate_tool_question_async(
                         engine = main_engine,
                         tokenizer = main_tokenizer,
@@ -210,6 +224,15 @@ async def main_async():
                         tools = entry["tools"],
                         prompt_passing_in_english = entry["prompt_passing_in_english"],
                     )
+                elif config.model in [Model.Api(ApiModel.DeepSeek)]:
+                    from src_py.deepseek_backend import generate_tool_call_async
+                    raw_output = await generate_tool_call_async(
+                        model_name = config.model.to_string(),
+                        client = main_client,
+                        question=entry["question"],
+                        tools = entry["tools"],
+                        prompt_passing_in_english = entry["prompt_passing_in_english"],
+                )
                 elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B), Model.Local(LocalModel.Qwen3_32B), Model.Local(LocalModel.Qwen3_30bA3b), Model.Local(LocalModel.Qwen3Next80bA3b)]:
                     from src_py.qwen3_backend import generate_tool_call_async
                     raw_output = await generate_tool_call_async(
@@ -228,6 +251,16 @@ async def main_async():
                         tools = entry["tools"],
                         prompt_passing_in_english = entry["prompt_passing_in_english"],
                 )
+                elif config.model in [Model.Local(LocalModel.Granite4_0HTiny), Model.Local(LocalModel.Granite4_0HSmall)]:
+                    from src_py.granite4_backend import generate_tool_call_async
+                    raw_output = await generate_tool_call_async(
+                        engine = main_engine,
+                        tokenizer = main_tokenizer,
+                        question=entry["question"],
+                        tools = entry["tools"],
+                        prompt_passing_in_english = entry["prompt_passing_in_english"],
+                )
+                
                 else:
                     raise NotImplementedError(f"Raw function call generation not implemented for model {config.model}.")
             except Exception as e:
@@ -303,6 +336,13 @@ async def main_async():
                         client = main_client,
                         parameter_value = parameter_value,
                     )
+                elif config.model in [Model.Api(ApiModel.DeepSeek)]:
+                    from src_py.deepseek_backend import translate_tool_answer_async
+                    translated_value = await translate_tool_answer_async(
+                        model_name = config.model.to_string(),
+                        client = main_client,
+                        parameter_value = parameter_value,
+                    )
                 elif config.model in [Model.Local(LocalModel.Qwen3_8B), Model.Local(LocalModel.Qwen3_14B), Model.Local(LocalModel.Qwen3_32B), Model.Local(LocalModel.Qwen3_30bA3b), Model.Local(LocalModel.Qwen3Next80bA3b)]:
                     from src_py.qwen3_backend import translate_tool_parameter_async
                     translated_value = await translate_tool_parameter_async(
@@ -312,6 +352,13 @@ async def main_async():
                     )
                 elif config.model in [Model.Local(LocalModel.Llama3_1_8B), Model.Local(LocalModel.Llama3_1_70B)]:
                     from src_py.llama3_1_backend import translate_tool_parameter_async
+                    translated_value = await translate_tool_parameter_async(
+                        engine = main_engine,
+                        tokenizer = main_tokenizer,
+                        parameter_value = parameter_value,
+                    )
+                elif config.model in [Model.Local(LocalModel.Granite4_0HTiny), Model.Local(LocalModel.Granite4_0HSmall)]:
+                    from src_py.granite4_backend import translate_tool_parameter_async
                     translated_value = await translate_tool_parameter_async(
                         engine = main_engine,
                         tokenizer = main_tokenizer,

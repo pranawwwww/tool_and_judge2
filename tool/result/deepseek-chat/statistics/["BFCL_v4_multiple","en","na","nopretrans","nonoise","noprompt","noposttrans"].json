@@ -1,0 +1,49 @@
+{
+  "accuracy": 0.9,
+  "total_cases": 200,
+  "correct_cases": 180,
+  "incorrect_cases": 20,
+  "category_counts": {
+    "SYNTAX_ERROR": 7,
+    "MISC_ERROR": 3,
+    "WRONG_VALUE": 1,
+    "RELEVANT_BUT_INCORRECT": 6,
+    "EXACTLY_SAME_MEANING": 3,
+    "LANGUAGE_MISMATCH_WRONG_VALUE": 0,
+    "LANGUAGE_MISMATCH_RELEVANT_BUT_INCORRECT": 0,
+    "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING": 0,
+    "OTHER_ERROR": 0
+  },
+  "category_samples": {
+    "SYNTAX_ERROR": [
+      "multiple_53",
+      "multiple_64",
+      "multiple_82",
+      "multiple_86",
+      "multiple_88",
+      "multiple_120",
+      "multiple_193"
+    ],
+    "MISC_ERROR": [
+      "multiple_7",
+      "multiple_13",
+      "multiple_26"
+    ],
+    "WRONG_VALUE": [
+      "multiple_133"
+    ],
+    "RELEVANT_BUT_INCORRECT": [
+      "multiple_33",
+      "multiple_47",
+      "multiple_58",
+      "multiple_91",
+      "multiple_92",
+      "multiple_99"
+    ],
+    "EXACTLY_SAME_MEANING": [
+      "multiple_10",
+      "multiple_29",
+      "multiple_151"
+    ]
+  }
+}

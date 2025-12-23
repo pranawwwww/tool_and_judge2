@@ -1,0 +1,113 @@
+{
+  "accuracy": 0.6,
+  "total_cases": 200,
+  "correct_cases": 120,
+  "incorrect_cases": 80,
+  "category_counts": {
+    "SYNTAX_ERROR": 19,
+    "MISC_ERROR": 4,
+    "WRONG_VALUE": 4,
+    "RELEVANT_BUT_INCORRECT": 17,
+    "EXACTLY_SAME_MEANING": 7,
+    "LANGUAGE_MISMATCH_WRONG_VALUE": 0,
+    "LANGUAGE_MISMATCH_RELEVANT_BUT_INCORRECT": 2,
+    "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING": 27,
+    "OTHER_ERROR": 0
+  },
+  "category_samples": {
+    "SYNTAX_ERROR": [
+      "multiple_25",
+      "multiple_27",
+      "multiple_53",
+      "multiple_68",
+      "multiple_74",
+      "multiple_76",
+      "multiple_92",
+      "multiple_135",
+      "multiple_138",
+      "multiple_141",
+      "multiple_142",
+      "multiple_160",
+      "multiple_162",
+      "multiple_174",
+      "multiple_182",
+      "multiple_184",
+      "multiple_187",
+      "multiple_191",
+      "multiple_199"
+    ],
+    "MISC_ERROR": [
+      "multiple_7",
+      "multiple_10",
+      "multiple_13",
+      "multiple_26"
+    ],
+    "WRONG_VALUE": [
+      "multiple_32",
+      "multiple_50",
+      "multiple_127",
+      "multiple_173"
+    ],
+    "RELEVANT_BUT_INCORRECT": [
+      "multiple_33",
+      "multiple_47",
+      "multiple_58",
+      "multiple_60",
+      "multiple_77",
+      "multiple_86",
+      "multiple_91",
+      "multiple_93",
+      "multiple_99",
+      "multiple_109",
+      "multiple_119",
+      "multiple_131",
+      "multiple_132",
+      "multiple_165",
+      "multiple_186",
+      "multiple_190",
+      "multiple_196"
+    ],
+    "EXACTLY_SAME_MEANING": [
+      "multiple_29",
+      "multiple_89",
+      "multiple_104",
+      "multiple_114",
+      "multiple_171",
+      "multiple_177",
+      "multiple_188"
+    ],
+    "LANGUAGE_MISMATCH_RELEVANT_BUT_INCORRECT": [
+      "multiple_94",
+      "multiple_178"
+    ],
+    "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING": [
+      "multiple_9",
+      "multiple_18",
+      "multiple_23",
+      "multiple_38",
+      "multiple_45",
+      "multiple_59",
+      "multiple_73",
+      "multiple_78",
+      "multiple_79",
+      "multiple_85",
+      "multiple_87",
+      "multiple_88",
+      "multiple_115",
+      "multiple_122",
+      "multiple_134",
+      "multiple_137",
+      "multiple_139",
+      "multiple_151",
+      "multiple_152",
+      "multiple_153",
+      "multiple_156",
+      "multiple_157",
+      "multiple_172",
+      "multiple_176",
+      "multiple_183",
+      "multiple_193",
+      "multiple_194"
+    ]
+  }
+}

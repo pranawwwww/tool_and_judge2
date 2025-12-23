@@ -1,0 +1,28 @@
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
+   Compiling codebase_rs v0.1.0 (/projects/bfdz/zluo8/tool_and_judge2)
+    Finished `release` profile [optimized] target(s) in 16.49s
+📖 Found type stub file at codebase_rs.pyi
+📦 Built wheel for CPython 3.13 to /tmp/.tmpG39f2D/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
+🛠 Installed codebase_rs-0.1.0
+
+thread '<unnamed>' panicked at src/models/qwen3_interface.rs:153:70:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Traceback (most recent call last):
+  File "/projects/bfdz/zluo8/tool_and_judge2/tool.py", line 409, in <module>
+    asyncio.run(main_async())
+    ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/sw/rh9.4/spack/v1.0.0/sw/linux-x86_64_v2/python-3.13.5-7bp2p4z/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/projects/bfdz/zluo8/tool_and_judge2/tool.py", line 266, in main_async
+    pass_parse_output(config)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+pyo3_runtime.PanicException: called `Option::unwrap()` on a `None` value

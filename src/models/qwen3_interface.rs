@@ -150,8 +150,11 @@ impl ModelInterface for Qwen3Interface {
         raw_output: &str,
         name_mapper: &FunctionNameMapper,
     ) -> Result<Vec<BfclOutputFunctionCall>, EvaluationError> {
+        let stripped_output = raw_output.strip_prefix("<tool_call>").unwrap_or(raw_output);
+        let stripped_output = stripped_output.strip_suffix("</tool_call>").unwrap_or(stripped_output);
+        let stripped_output = stripped_output.trim();
         // Parse the raw output as JSON
-        let output_json = serde_json::from_str::<serde_json::Value>(raw_output).map_err(|e| {
+        let output_json = serde_json::from_str::<serde_json::Value>(stripped_output).map_err(|e| {
             EvaluationError::JsonDecodeError {
                 error_message: e.to_string(),
                 raw_output: raw_output.to_string(),

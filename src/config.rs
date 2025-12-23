@@ -42,6 +42,17 @@ impl ApiModel {
             }
         }
     }
+    pub fn base_url(&self) -> String {
+        match self {
+            ApiModel::Gpt5 | ApiModel::Gpt5Mini | ApiModel::Gpt5Nano => {
+                "https://api.openai.com/v1".to_string()
+            }
+            ApiModel::DeepSeek => "https://api.deepseek.com".to_string(),
+            ApiModel::Llama3_1_8B | ApiModel::Llama3_1_70B => {
+                panic!("Llama 3 does not use a base URL")
+            }
+        }
+    }
 }
 
 impl std::fmt::Debug for ApiModel {

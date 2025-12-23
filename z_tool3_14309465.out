@@ -1,0 +1,74 @@
+✏️ Setting installed package as editable
+For dataset file ["BFCL_v4_multiple","zh","fulltrans","para"].jsonl, total entries: 200, existing entries: 200, missing entries: 0
+For dataset file ["BFCL_v4_multiple","zh","fulltrans","nonoise"].jsonl, total entries: 200, existing entries: 200, missing entries: 0
+For dataset file ["BFCL_v4_multiple","zh","fulltrans","syno"].jsonl, total entries: 200, existing entries: 200, missing entries: 0
+Wrote aggregated questions to file: tool/result/Qwen-Qwen3-8B/pre_translate_aggregated_questions_input.jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nonoise"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote pre-translate result file: "tool/result/Qwen-Qwen3-8B/pre_translate/[\"BFCL_v4_multiple\",\"zh\",\"fulltrans\",\"nonoise\"].jsonl"
+For result file ["BFCL_v4_multiple","zh","fulltrans","syno"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote pre-translate result file: "tool/result/Qwen-Qwen3-8B/pre_translate/[\"BFCL_v4_multiple\",\"zh\",\"fulltrans\",\"syno\"].jsonl"
+For result file ["BFCL_v4_multiple","zh","fulltrans","para"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote pre-translate result file: "tool/result/Qwen-Qwen3-8B/pre_translate/[\"BFCL_v4_multiple\",\"zh\",\"fulltrans\",\"para\"].jsonl"
+Removed pre-translate aggregated questions output file: tool/result/Qwen-Qwen3-8B/pre_translate_aggregated_questions_output.jsonl
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","en","na","nopretrans","para","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","parttrans","nopretrans","para","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","en","na","nopretrans","nonoise","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","pretrans","nonoise","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","en","na","nopretrans","syno","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","pretrans","para","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","prompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","prompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","parttrans","nopretrans","nonoise","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","prompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","pretrans","syno","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+For result file tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","parttrans","nopretrans","syno","noprompt"].jsonl, total entries: 200, existing entries: 200, missing entries to generate: 0
+Wrote aggregated input file to tool/result/Qwen-Qwen3-8B/generate_raw_aggregated_input.jsonl
+For result file ["BFCL_v4_multiple","en","na","nopretrans","nonoise","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","en","na","nopretrans","nonoise","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","parttrans","nopretrans","nonoise","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","parttrans","nopretrans","nonoise","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","prompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","prompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","pretrans","nonoise","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","pretrans","nonoise","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","nonoise","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","en","na","nopretrans","syno","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","en","na","nopretrans","syno","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","parttrans","nopretrans","syno","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","parttrans","nopretrans","syno","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","prompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","prompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","pretrans","syno","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","pretrans","syno","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","syno","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","en","na","nopretrans","para","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","en","na","nopretrans","para","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","parttrans","nopretrans","para","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","parttrans","nopretrans","para","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","prompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","prompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","pretrans","para","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","pretrans","para","noprompt"].jsonl
+For result file ["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","noprompt"].jsonl, target entries: 200, dispatched entries: 200, missing entries: 0
+Wrote result file to tool/result/Qwen-Qwen3-8B/generate_raw/["BFCL_v4_multiple","zh","fulltrans","nopretrans","para","noprompt"].jsonl
+Removed aggregated output file tool/result/Qwen-Qwen3-8B/generate_raw_aggregated_output.jsonl
+Acquiring build lock...
+Building Rust extension with maturin develop...
+Installed Rust extension successfully.
+Released build lock.
+Loading config from: tool_config_slurm3.py
+Processing configuration:  <builtins.ToolConfig object at 0x7f83d15fb730>
+----------PASS 1: PRE-TRANSLATE QUESTIONS----------
+----------PASS 2: GENERATE RAW FUNCTION CALLS----------
+----------PASS 3: PARSE FUNCTION CALLS----------

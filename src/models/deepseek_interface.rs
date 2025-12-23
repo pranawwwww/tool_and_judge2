@@ -1,5 +1,3 @@
-use std::{collections::HashMap};
-
 use crate::{
     models::{ function_name_mapper::FunctionNameMapper,
         model_interface::ModelInterface,
@@ -10,23 +8,18 @@ use crate::{
     tool::error_analysis::EvaluationError,
 };
 use indexmap::IndexMap;
-use pyo3::{Python, types::PyAnyMethods};
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
-/// Response structure from Python postprocess_tool_calls function
-#[derive(Deserialize)]
-struct PostprocessResponse {
-    success: bool,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    calls: Option<Vec<HashMap<String, IndexMap<String, serde_json::Value>>>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    error_type: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    metadata: Option<HashMap<String, String>>,
+/// DeepSeek output function call structure (OpenAI-compatible)
+#[derive(Deserialize, Clone)]
+pub struct DeepSeekOutputFunctionCall {
+    name: String,
+    arguments: IndexMap<String, serde_json::Value>,
 }
 
-/// DeepSeek uses Python function call syntax for tool responses
-/// Reference: https://api-docs.deepseek.com/api/create-chat-completion/
+/// DeepSeek uses native function calling API with structured responses
+/// Reference: https://api-docs.deepseek.com/guides/function_calling
 #[derive(Serialize)]
 pub struct DeepSeekTool {
     #[serde(rename = "type")]
@@ -173,98 +166,96 @@ impl ModelInterface for DeepSeekInterface {
         raw_output: &str,
         name_mapper: &FunctionNameMapper,
     ) -> Result<Vec<BfclOutputFunctionCall>, EvaluationError> {
-        // DeepSeek outputs Python function call syntax: [func_name(param=value)]
-        // We need to parse this using Python's AST parser
-        let json_result = Python::attach(|py| {
-            let deepseek_backend_module = py
-                .import("src_py.deepseek_backend")
-                .expect("Failed to import src_py.deepseek_backend module");
-            let postprocess_fn = deepseek_backend_module
-                .getattr("postprocess_tool_calls")
-                .expect("Failed to get postprocess_tool_calls function");
+        // DeepSeek now uses structured JSON format (OpenAI-compatible)
+        // The raw_output is a JSON object with tool_calls array
+        let output_json = serde_json::from_str::<Value>(raw_output).map_err(|e| {
+            EvaluationError::JsonDecodeError {
+                error_message: e.to_string(),
+                raw_output: raw_output.to_string(),
+            }
+        })?;
 
-            let result = postprocess_fn
-                .call1((raw_output,))
-                .expect("Failed to call postprocess_tool_calls");
-
-            // Extract the JSON string from Python
-            result
-                .extract::<String>()
-                .expect("Failed to extract JSON string from postprocess result")
-        });
-
-        // Deserialize the JSON string
-        let response: PostprocessResponse =
-            serde_json::from_str(&json_result).map_err(|e| EvaluationError::ParsingError {
-                error_message: format!("Failed to deserialize postprocess response: {}", e),
+        // Extract tool_calls array from the message object
+        let tool_calls = output_json
+            .get("tool_calls")
+            .and_then(|v| v.as_array())
+            .ok_or(EvaluationError::ParsingError {
+                error_message: "Expected 'tool_calls' array in response".into(),
                 raw_output: raw_output.to_string(),
             })?;
 
-        if response.success {
-            let calls_list = response
-                .calls
-                .ok_or_else(|| EvaluationError::ParsingError {
-                    error_message: "Success response missing 'calls' field".to_string(),
+        let mut func_calls = Vec::new();
+        for tool_call in tool_calls {
+            let tool_type = tool_call
+                .get("type")
+                .and_then(|v| v.as_str())
+                .ok_or(EvaluationError::ParsingError {
+                    error_message: "Missing 'type' field in tool call".into(),
                     raw_output: raw_output.to_string(),
                 })?;
 
-            let mut bfcl_calls = Vec::new();
-            for call_map in calls_list {
-                // Each call is a single-entry map: {func_name: {arguments}}
-                if call_map.len() != 1 {
-                    return Err(EvaluationError::ParsingError {
-                        error_message: format!(
-                            "Expected single-entry function call map, got {} entries",
-                            call_map.len()
-                        ),
-                        raw_output: raw_output.to_string(),
-                    });
+            if tool_type != "function" {
+                continue; // skip non-function tool calls
+            }
+
+            let function_obj = tool_call
+                .get("function")
+                .ok_or(EvaluationError::ParsingError {
+                    error_message: "Missing 'function' field in tool call".into(),
+                    raw_output: raw_output.to_string(),
+                })?;
+
+            let func_call = parse_deepseek_function_call(function_obj).map_err(|e| {
+                EvaluationError::ParsingError {
+                    error_message: format!("Failed to parse DeepSeekOutputFunctionCall: {}", e),
+                    raw_output: raw_output.to_string(),
                 }
-                let (func_name, arguments) = call_map.iter().next().unwrap();
+            })?;
 
-                let original_function_name = name_mapper
-                    .sanitized_to_original
-                    .get(func_name)
-                    .expect("Function name mapper does not contain key")
-                    .clone();
+            let original_function_name = name_mapper
+                .sanitized_to_original
+                .get(&func_call.name)
+                .ok_or_else(|| EvaluationError::ParsingError {
+                    error_message: format!("Function name '{}' not found in mapper", func_call.name),
+                    raw_output: raw_output.to_string(),
+                })?
+                .clone();
 
-                let bfcl_output_function_call = BfclOutputFunctionCall(KeyValuePair {
-                    key: original_function_name,
-                    value: arguments.clone(),
-                });
-                bfcl_calls.push(bfcl_output_function_call);
-            }
-            Ok(bfcl_calls)
-        } else {
-            let error_type = response
-                .error_type
-                .unwrap_or_else(|| "UNKNOWN_ERROR".to_string());
-            let metadata = response.metadata.unwrap_or_default();
-
-            // Map Python error type to Rust EvaluationError
-            match error_type.as_str() {
-                "PARSING_ERROR" => Err(EvaluationError::ParsingError {
-                    error_message: metadata
-                        .get("error_message")
-                        .unwrap_or(&"Unknown parsing error".to_string())
-                        .clone(),
-                    raw_output: raw_output.to_string(),
-                }),
-                "JSON_DECODE_ERROR" => Err(EvaluationError::JsonDecodeError {
-                    error_message: metadata
-                        .get("error_message")
-                        .unwrap_or(&"Unknown JSON decode error".to_string())
-                        .clone(),
-                    raw_output: raw_output.to_string(),
-                }),
-                "NO_FUNCTION_CALLS_FOUND" => Err(EvaluationError::NoFunctionCallsFound {
-                    raw_output: raw_output.to_string(),
-                }),
-                _ => Err(EvaluationError::ParsingError {
-                    error_message: format!("Unknown error type: {}", error_type),
-                    raw_output: raw_output.to_string(),
-                }),
-            }
+            let bfcl_output_function_call = BfclOutputFunctionCall(KeyValuePair {
+                key: original_function_name,
+                value: func_call.arguments,
+            });
+            func_calls.push(bfcl_output_function_call);
         }
+
+        Ok(func_calls)
     }
+}
+
+fn parse_deepseek_function_call(
+    function_obj: &serde_json::Value,
+) -> Result<DeepSeekOutputFunctionCall, String> {
+    let mut function_call = function_obj.clone();
+
+    // Retrieve the "arguments" field (it's a JSON string, not an object)
+    let arguments_value = function_call
+        .get("arguments")
+        .ok_or("Missing 'arguments' field in function call")?;
+    let arguments_str = arguments_value
+        .as_str()
+        .ok_or("'arguments' field is not a string")?;
+
+    // Parse the arguments string as JSON
+    let arguments_json: serde_json::Value = serde_json::from_str(arguments_str)
+        .map_err(|e| format!("Failed to parse 'arguments' JSON string: {}", e))?;
+
+    // Replace the "arguments" field with the parsed JSON object
+    function_call["arguments"] = arguments_json;
+
+    // Deserialize the modified function call into DeepSeekOutputFunctionCall
+    let deepseek_output_function_call: DeepSeekOutputFunctionCall =
+        serde_json::from_value(function_call)
+            .map_err(|e| format!("Failed to deserialize DeepSeekOutputFunctionCall: {}", e))?;
+
+    Ok(deepseek_output_function_call)
 }

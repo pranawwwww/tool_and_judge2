@@ -16,6 +16,6 @@ for noise in [AddNoiseMode.NoNoise, AddNoiseMode.Synonym, AddNoiseMode.Paraphras
         experiments.append(ToolExperiment(translate, noise))
 
 config = ToolConfig(
-    Model.Api(ApiModel.Gpt5),
+    Model.Api(ApiModel.DeepSeek),
     experiments
 )

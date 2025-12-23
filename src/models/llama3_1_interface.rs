@@ -180,6 +180,66 @@ impl ModelInterface for Llama3_1Interface {
         Ok(bfcl_calls)
     }   
 }
+/// Recursively replace Python-style keywords with JSON-compatible values
+/// This function assumes the input is already a valid serde_json::Value
+fn replace_keywords_recursive(value: serde_json::Value) -> serde_json::Value {
+    match value {
+        serde_json::Value::String(s) => {
+            let trimmed = s.trim();
+            // Handle exact matches for Python-style booleans and None
+            match trimmed {
+                "True" => serde_json::Value::Bool(true),
+                "False" => serde_json::Value::Bool(false),
+                "None" => serde_json::Value::Null,
+                _ => serde_json::Value::String(s),
+            }
+        }
+        serde_json::Value::Object(map) => {
+            // Recursively process object values
+            let parsed_map: serde_json::Map<String, serde_json::Value> = map
+                .into_iter()
+                .map(|(k, v)| (k, replace_keywords_recursive(v)))
+                .collect();
+            serde_json::Value::Object(parsed_map)
+        }
+        serde_json::Value::Array(arr) => {
+            // Recursively process array elements
+            let parsed_arr: Vec<serde_json::Value> = arr
+                .into_iter()
+                .map(replace_keywords_recursive)
+                .collect();
+            serde_json::Value::Array(parsed_arr)
+        }
+        // For other types (Number, Bool, Null), return as-is
+        _ => value,
+    }
+}
+
+/// Deserialize a string value to a JSON value
+/// Handles both standard JSON syntax and Python-style syntax (single quotes)
+fn deserialize_string_value(s: &str) -> serde_json::Value {
+    let trimmed = s.trim();
+
+    // Empty string remains a string
+    if trimmed.is_empty() {
+        return serde_json::Value::String(s.to_string());
+    }
+
+    // Try to parse as standard JSON first
+    if let Ok(parsed) = serde_json::from_str::<serde_json::Value>(trimmed) {
+        return parsed;
+    }
+
+    // Try converting Python-style syntax to JSON (replace single quotes with double quotes)
+    let json_compatible = trimmed.replace('\'', "\"");
+    if let Ok(parsed) = serde_json::from_str::<serde_json::Value>(&json_compatible) {
+        return parsed;
+    }
+
+    // If all parsing attempts fail, return the original string
+    serde_json::Value::String(s.to_string())
+}
+
 fn llama3_1_call_to_bfcl_call(
     llama3_1_call: Llama3_1OutputFunctionCall,
     name_mapper: &FunctionNameMapper,
@@ -190,8 +250,22 @@ fn llama3_1_call_to_bfcl_call(
         .get(&llama3_1_call.name)
         .expect("Function name mapper does not contain key")
         .clone();
+
+    // Parse string parameters to their proper types
+    let parsed_parameters: IndexMap<String, serde_json::Value> = llama3_1_call
+        .parameters
+        .into_iter()
+        .map(|(key, value)| {
+            let deserialized = match value {
+                serde_json::Value::String(ref s) => deserialize_string_value(s),
+                _ => value,
+            };
+            (key, replace_keywords_recursive(deserialized))
+        })
+        .collect();
+
     BfclOutputFunctionCall(KeyValuePair {
         key: mapped_name,
-        value: llama3_1_call.parameters,
+        value: parsed_parameters,
     })
 }

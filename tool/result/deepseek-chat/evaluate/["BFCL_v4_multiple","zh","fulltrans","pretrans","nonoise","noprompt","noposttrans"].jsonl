@@ -1,0 +1,200 @@
+{"id":"multiple_0","valid":true,"error":null}
+{"id":"multiple_1","valid":true,"error":null}
+{"id":"multiple_2","valid":true,"error":null}
+{"id":"multiple_3","valid":true,"error":null}
+{"id":"multiple_4","valid":true,"error":null}
+{"id":"multiple_5","valid":true,"error":null}
+{"id":"multiple_6","valid":true,"error":null}
+{"id":"multiple_7","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"wildlife_population.assess_growth\":{\"species\":\"deer\",\"location\":\"Washington State\",\"duration\":10}},{\"ecological_impact.analyze\":{\"species\":\"deer\",\"ecosystem\":\"woodland\",\"location\":\"Washington State\",\"timeframe\":10}}]"}}}
+{"id":"multiple_8","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Santiago","expected_values":["SD","San Diego","San Diego, CA","CA"],"decoded_output":"[{\"realestate.find_properties\":{\"location\":\"Santiago\",\"propertyType\":\"villa\",\"bedrooms\":3,\"budget\":{\"min\":300000,\"max\":400000}}}]"}}}
+{"id":"multiple_9","valid":false,"error":{"InvalidParamValue":{"param":"gradeDict","actual_value":{"mathematics":90,"science":75,"history":82,"music":89},"expected_values":[{"math":[90],"science":[75],"history":[82],"music":[89]}],"decoded_output":"[{\"calculate_average\":{\"gradeDict\":{\"mathematics\":90,\"science\":75,\"history\":82,\"music\":89}}}]"}}}
+{"id":"multiple_10","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I can help you delete those columns from the personal_data table. However, I notice that you haven't specified the exact column names for the email addresses and social security numbers. The function requires the specific column names to be deleted.\\n\\nCould you please provide the exact column names for:\\n1. The email addresses column (e.g., \\\"email\\\", \\\"email_address\\\", \\\"contact_email\\\", etc.)\\n2. The social security numbers column (e.g., \\\"ssn\\\", \\\"social_security\\\", \\\"ss_number\\\", etc.)\\n\\nOnce you provide these column names, I can proceed with deleting them from the personal_data table in the employee database.\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_11","valid":true,"error":null}
+{"id":"multiple_12","valid":true,"error":null}
+{"id":"multiple_13","valid":true,"error":null}
+{"id":"multiple_14","valid":true,"error":null}
+{"id":"multiple_15","valid":true,"error":null}
+{"id":"multiple_16","valid":true,"error":null}
+{"id":"multiple_17","valid":true,"error":null}
+{"id":"multiple_18","valid":true,"error":null}
+{"id":"multiple_19","valid":true,"error":null}
+{"id":"multiple_20","valid":true,"error":null}
+{"id":"multiple_21","valid":true,"error":null}
+{"id":"multiple_22","valid":true,"error":null}
+{"id":"multiple_23","valid":true,"error":null}
+{"id":"multiple_24","valid":true,"error":null}
+{"id":"multiple_25","valid":false,"error":{"InvalidParamValue":{"param":"game_title","actual_value":"Assassin's Creed: Valhalla","expected_values":["Assassins Creed Valhalla"],"decoded_output":"[{\"video_games.store_price\":{\"game_title\":\"Assassin's Creed: Valhalla\",\"platform\":\"PlayStation\",\"region\":\"United States\"}}]"}}}
+{"id":"multiple_26","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I can help you learn about rewards for Fortnite on PlayStation, but I need some additional information to use the available functions effectively. The `game_rewards_get` function requires specific parameters about missions or trophies to retrieve reward information.\\n\\nCurrently, I have:\\n- Game: Fortnite\\n- Platform: PlayStation\\n\\nHowever, I need to know either:\\n1. A specific mission you're interested in (or I can check with an empty mission parameter)\\n2. A specific trophy level you want to know about\\n\\nAlternatively, I could first use the `game_missions_list` function to get all available missions for Fortnite, and then check rewards for specific missions.\\n\\nWhich approach would you prefer? Or do you have specific missions or trophy levels in mind that you'd like to explore for rewards?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_27","valid":true,"error":null}
+{"id":"multiple_28","valid":true,"error":null}
+{"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
+{"id":"multiple_30","valid":true,"error":null}
+{"id":"multiple_31","valid":true,"error":null}
+{"id":"multiple_32","valid":true,"error":null}
+{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3*x^2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"func\":\"3*x^2\",\"a\":1,\"b\":2}}]"}}}
+{"id":"multiple_34","valid":true,"error":null}
+{"id":"multiple_35","valid":true,"error":null}
+{"id":"multiple_36","valid":true,"error":null}
+{"id":"multiple_37","valid":true,"error":null}
+{"id":"multiple_38","valid":true,"error":null}
+{"id":"multiple_39","valid":true,"error":null}
+{"id":"multiple_40","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice that you've provided the distance (8 meters) and current (12 amperes) for calculating magnetic field strength. However, I need to know which law you want me to use for this calculation. \\n\\nI have two functions available:\\n1. `electromagnetism_ampere_law` - which requires enclosed_current, radius, and mu0\\n2. `electromagnetism_biot_savart_law` - which requires current, distance, and mu0\\n\\nSince you mentioned \\\"distance\\\" specifically, it seems like you might be referring to the Biot-Savart law, which uses distance from a current-carrying conductor. However, I need clarification on which physical setup you're considering. \\n\\nCould you please specify:\\n1. Are you considering a straight current-carrying wire (Biot-Savart law) or a symmetrical current distribution (Ampere's law)?\\n2. For Ampere's law, I would need to know the radius of the circular path, not just the distance.\\n\\nOnce you clarify this, I can use the appropriate function to calculate the magnetic field strength.\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_41","valid":true,"error":null}
+{"id":"multiple_42","valid":true,"error":null}
+{"id":"multiple_43","valid":true,"error":null}
+{"id":"multiple_44","valid":true,"error":null}
+{"id":"multiple_45","valid":false,"error":{"InvalidParamValue":{"param":"era_name","actual_value":"Ice Age","expected_values":["Ice age"],"decoded_output":"[{\"geology.get_era\":{\"era_name\":\"Ice Age\",\"calculate_years_ago\":true}}]"}}}
+{"id":"multiple_46","valid":true,"error":null}
+{"id":"multiple_47","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":4,"expected_values":["",0],"decoded_output":"[{\"cosine_similarity.calculate\":{\"vector1\":[3,2,1],\"vector2\":[1,2,3],\"rounding\":4}}]"}}}
+{"id":"multiple_48","valid":true,"error":null}
+{"id":"multiple_49","valid":true,"error":null}
+{"id":"multiple_50","valid":true,"error":null}
+{"id":"multiple_51","valid":true,"error":null}
+{"id":"multiple_52","valid":true,"error":null}
+{"id":"multiple_53","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you want to predict housing prices for the next five years based on interest rates and unemployment rates. However, I need to know what specific dependent variable you want to predict (e.g., \\\"housing_prices\\\", \\\"home_prices\\\", etc.) to use the available regression functions.\\n\\nCould you please specify the exact name of the dependent variable you want to predict? For example, is it \\\"housing_prices\\\", \\\"median_home_price\\\", or something else?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_54","valid":true,"error":null}
+{"id":"multiple_55","valid":true,"error":null}
+{"id":"multiple_56","valid":true,"error":null}
+{"id":"multiple_57","valid":true,"error":null}
+{"id":"multiple_58","valid":false,"error":{"InvalidParamValue":{"param":"expertise","actual_value":"Marriage","expected_values":["Divorce"],"decoded_output":"[{\"lawyer.search\":{\"location\":\"Los Angeles, CA\",\"expertise\":\"Marriage\"}}]"}}}
+{"id":"multiple_59","valid":true,"error":null}
+{"id":"multiple_60","valid":true,"error":null}
+{"id":"multiple_61","valid":true,"error":null}
+{"id":"multiple_62","valid":true,"error":null}
+{"id":"multiple_63","valid":true,"error":null}
+{"id":"multiple_64","valid":true,"error":null}
+{"id":"multiple_65","valid":true,"error":null}
+{"id":"multiple_66","valid":true,"error":null}
+{"id":"multiple_67","valid":true,"error":null}
+{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"location\":\"New York Public Library\",\"genre\":\"historical fiction\",\"title\":\"\"}}]"}}}
+{"id":"multiple_69","valid":true,"error":null}
+{"id":"multiple_70","valid":true,"error":null}
+{"id":"multiple_71","valid":true,"error":null}
+{"id":"multiple_72","valid":true,"error":null}
+{"id":"multiple_73","valid":true,"error":null}
+{"id":"multiple_74","valid":false,"error":{"InvalidParamValue":{"param":"artwork_name","actual_value":"The Starry Night","expected_values":["Starry Night"],"decoded_output":"[{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"The Starry Night\",\"artist\":\"Van Gogh\",\"platform\":\"all\"}}]"}}}
+{"id":"multiple_75","valid":true,"error":null}
+{"id":"multiple_76","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I can help you create a bronze horse sculpture, but I need to clarify something about your question. The sculpture creation function requires specifying the material, and you've already mentioned \\\"bronze\\\" which is one of the available materials. \\n\\nHowever, I notice that the function requires a size parameter, which you haven't provided. Could you please specify what size (in inches) you'd like for your bronze horse sculpture? Once you provide the size, I can proceed with creating your custom sculpture order.\\n\\nThe available materials for sculptures are: Bronze, Marble, Terracotta, Wood, and Stone.\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_77","valid":true,"error":null}
+{"id":"multiple_78","valid":true,"error":null}
+{"id":"multiple_79","valid":true,"error":null}
+{"id":"multiple_80","valid":true,"error":null}
+{"id":"multiple_81","valid":true,"error":null}
+{"id":"multiple_82","valid":true,"error":null}
+{"id":"multiple_83","valid":true,"error":null}
+{"id":"multiple_84","valid":true,"error":null}
+{"id":"multiple_85","valid":true,"error":null}
+{"id":"multiple_86","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you're asking for strategy board game recommendations for two players from the BoardGameGeek store. However, to use the BoardGameGeek recommendation function, I need to know the preferred difficulty level as well. The function requires three parameters: number of players, category, and difficulty.\\n\\nCould you please specify what difficulty level you're looking for? For example: beginner, intermediate, or advanced?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_87","valid":true,"error":null}
+{"id":"multiple_88","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you're asking for the number of active players for \\\"World of Warcraft\\\" in 2020, but you haven't specified which platform. The function requires a platform parameter. Could you please specify which platform you're interested in? For example, is it PC, Xbox, Playstation, or another platform?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_89","valid":true,"error":null}
+{"id":"multiple_90","valid":true,"error":null}
+{"id":"multiple_91","valid":true,"error":null}
+{"id":"multiple_92","valid":true,"error":null}
+{"id":"multiple_93","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"luxury","expected_values":["deluxe","Deluxe"],"decoded_output":"[{\"hotel.book\":{\"location\":\"New York\",\"roomType\":\"luxury\",\"nights\":2,\"additional_services\":[\"breakfast\"]}}]"}}}
+{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"suite","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"hotelName\":\"Hilton New York\",\"roomType\":\"suite\",\"nights\":3}}]"}}}
+{"id":"multiple_95","valid":true,"error":null}
+{"id":"multiple_96","valid":true,"error":null}
+{"id":"multiple_97","valid":true,"error":null}
+{"id":"multiple_98","valid":true,"error":null}
+{"id":"multiple_99","valid":false,"error":{"InvalidParamValue":{"param":"function","actual_value":"2x^2","expected_values":["2x**2","lambda x: 2x**2"],"decoded_output":"[{\"calculus.derivative\":{\"function\":\"2x^2\",\"value\":1,\"function_variable\":\"x\"}}]"}}}
+{"id":"multiple_100","valid":true,"error":null}
+{"id":"multiple_101","valid":true,"error":null}
+{"id":"multiple_102","valid":true,"error":null}
+{"id":"multiple_103","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you want to calculate the final velocity of an object falling from 100 meters without air resistance. However, to use the available function, I need to know the initial velocity of the object. The function requires three parameters: initial_velocity, height, and gravity.\\n\\nCould you please provide the initial velocity of the object? For example, is it dropped from rest (initial_velocity = 0 m/s) or thrown with some initial velocity?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_104","valid":false,"error":{"InvalidParamValue":{"param":"destination","actual_value":"Washington, D.C.","expected_values":["Washington D.C.","D.C.","DC"],"decoded_output":"[{\"get_shortest_driving_distance\":{\"origin\":\"New York City\",\"destination\":\"Washington, D.C.\",\"unit\":\"kilometers\"}}]"}}}
+{"id":"multiple_105","valid":true,"error":null}
+{"id":"multiple_106","valid":true,"error":null}
+{"id":"multiple_107","valid":true,"error":null}
+{"id":"multiple_108","valid":true,"error":null}
+{"id":"multiple_109","valid":true,"error":null}
+{"id":"multiple_110","valid":true,"error":null}
+{"id":"multiple_111","valid":true,"error":null}
+{"id":"multiple_112","valid":true,"error":null}
+{"id":"multiple_113","valid":true,"error":null}
+{"id":"multiple_114","valid":false,"error":{"InvalidParamValue":{"param":"species","actual_value":"human","expected_values":["Homo Sapiens","Homo sapiens"],"decoded_output":"[{\"prediction.evolution\":{\"species\":\"human\",\"years\":50,\"model\":\"Darwin\"}}]"}}}
+{"id":"multiple_115","valid":false,"error":{"InvalidParamValue":{"param":"dietary_requirements","actual_value":["vegetarian"],"expected_values":[["vegan"]],"decoded_output":"[{\"find_restaurants\":{\"location\":\"Manhattan\",\"food_type\":\"Thai\",\"number\":5,\"dietary_requirements\":[\"vegetarian\"]}}]"}}}
+{"id":"multiple_116","valid":true,"error":null}
+{"id":"multiple_117","valid":true,"error":null}
+{"id":"multiple_118","valid":true,"error":null}
+{"id":"multiple_119","valid":false,"error":{"InvalidParamValue":{"param":"conditions","actual_value":[{"field":"age","operation":">","value":"25"},{"field":"occupation","operation":"=","value":"engineer"}],"expected_values":[[{"field":["age"],"operation":[">"],"value":["25"]},{"field":["job"],"operation":["="],"value":["engineer"]}]],"decoded_output":"[{\"database.query\":{\"table\":\"user\",\"conditions\":[{\"field\":\"age\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"occupation\",\"operation\":\"=\",\"value\":\"engineer\"}]}}]"}}}
+{"id":"multiple_120","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you're asking about light travel time from a star 4 light-years away to Earth. I have a function that can calculate this, but I need to know the speed of light value you'd like to use. The function requires both the distance in light years and the speed of light as parameters.\\n\\nCould you specify what speed of light value you'd like me to use? The default in the function is 299,792,458 m/s, but I need you to confirm this or provide a different value.\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_121","valid":true,"error":null}
+{"id":"multiple_122","valid":false,"error":{"InvalidParamValue":{"param":"predictors","actual_value":["age","income","education level"],"expected_values":[["Age","Income","Education"],["Age","Education","Income"],["Income","Age","Education"],["Income","Education","Age"],["Education","Age","Income"],["Education","Income","Age"]],"decoded_output":"[{\"run_linear_regression\":{\"predictors\":[\"age\",\"income\",\"education level\"],\"target\":\"purchase amount\",\"standardize\":true}}]"}}}
+{"id":"multiple_123","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you want to calculate the probability of drawing a king from a deck of cards, but I need one additional piece of information to use the probability calculation function. The function requires me to specify how many decimal places to round the result to.\\n\\nCould you please tell me how many decimal places you'd like the probability rounded to? For example, 2 decimal places, 3 decimal places, or perhaps no rounding at all?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_124","valid":true,"error":null}
+{"id":"multiple_125","valid":true,"error":null}
+{"id":"multiple_126","valid":true,"error":null}
+{"id":"multiple_127","valid":true,"error":null}
+{"id":"multiple_128","valid":true,"error":null}
+{"id":"multiple_129","valid":true,"error":null}
+{"id":"multiple_130","valid":true,"error":null}
+{"id":"multiple_131","valid":true,"error":null}
+{"id":"multiple_132","valid":true,"error":null}
+{"id":"multiple_133","valid":false,"error":{"InvalidParamValue":{"param":"annual_yield","actual_value":5,"expected_values":[0.05],"decoded_output":"[{\"calculate_mutual_fund_balance\":{\"investment_amount\":50000,\"annual_yield\":5,\"years\":3}}]"}}}
+{"id":"multiple_134","valid":true,"error":null}
+{"id":"multiple_135","valid":true,"error":null}
+{"id":"multiple_136","valid":false,"error":{"InvalidParamValue":{"param":"state","actual_value":"","expected_values":["California","CA"],"decoded_output":"[{\"get_crime_rate\":{\"city\":\"San Francisco\",\"state\":\"\",\"type\":\"violent\",\"year\":2020}}]"}}}
+{"id":"multiple_137","valid":true,"error":null}
+{"id":"multiple_138","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I cannot obtain detailed case information for \\\"R v. Adams\\\" using the available functions. The legal_case_fetch function requires a specific case_id parameter, but I don't have that information. The function needs a case ID to retrieve case details, and I don't have access to the case ID for \\\"R v. Adams\\\" from the provided information.\\n\\nTo use the legal_case_fetch function, I would need the specific case ID for \\\"R v. Adams\\\" as well as confirmation that you want detailed information (setting details to true).\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_139","valid":true,"error":null}
+{"id":"multiple_140","valid":true,"error":null}
+{"id":"multiple_141","valid":true,"error":null}
+{"id":"multiple_142","valid":true,"error":null}
+{"id":"multiple_143","valid":true,"error":null}
+{"id":"multiple_144","valid":false,"error":{"InvalidParamValue":{"param":"date","actual_value":"August 16, 2022","expected_values":["2022-08-16","16/08/2022","Aug.16,2022","2022/08/16","16\\08\\2022"],"decoded_output":"[{\"air_quality\":{\"location\":\"London\",\"date\":\"August 16, 2022\"}}]"}}}
+{"id":"multiple_145","valid":true,"error":null}
+{"id":"multiple_146","valid":true,"error":null}
+{"id":"multiple_147","valid":true,"error":null}
+{"id":"multiple_148","valid":true,"error":null}
+{"id":"multiple_149","valid":true,"error":null}
+{"id":"multiple_150","valid":true,"error":null}
+{"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"sub_topics","actual_value":["behavior","group dynamics"],"expected_values":[["behaviour","group dynamics"],["group dynamics","behaviour"]],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"topic\":\"psychology\",\"sub_topics\":[\"behavior\",\"group dynamics\"],\"region\":\"global\"}}]"}}}
+{"id":"multiple_152","valid":true,"error":null}
+{"id":"multiple_153","valid":false,"error":{"InvalidParamValue":{"param":"event","actual_value":"Lisbon Treaty","expected_values":["Treaty of Lisbon","Signing of the Treaty of Lisbon"],"decoded_output":"[{\"get_event_date\":{\"event\":\"Lisbon Treaty\",\"location\":\"Lisbon\"}}]"}}}
+{"id":"multiple_154","valid":true,"error":null}
+{"id":"multiple_155","valid":true,"error":null}
+{"id":"multiple_156","valid":false,"error":{"InvalidParamValue":{"param":"category","actual_value":"Physics","expected_values":["","all"],"decoded_output":"[{\"historical_contrib.get_contrib\":{\"scientist\":\"Albert Einstein\",\"date\":\"1915-03-17\",\"category\":\"Physics\"}}]"}}}
+{"id":"multiple_157","valid":true,"error":null}
+{"id":"multiple_158","valid":true,"error":null}
+{"id":"multiple_159","valid":true,"error":null}
+{"id":"multiple_160","valid":true,"error":null}
+{"id":"multiple_161","valid":true,"error":null}
+{"id":"multiple_162","valid":true,"error":null}
+{"id":"multiple_163","valid":true,"error":null}
+{"id":"multiple_164","valid":false,"error":{"InvalidParamValue":{"param":"finish","actual_value":"rosewood","expected_values":["Rosewood"],"decoded_output":"[{\"instrument_price.get\":{\"brand\":\"Fender\",\"model\":\"American Professional II Stratocaster\",\"finish\":\"rosewood\"}}]"}}}
+{"id":"multiple_165","valid":true,"error":null}
+{"id":"multiple_166","valid":true,"error":null}
+{"id":"multiple_167","valid":true,"error":null}
+{"id":"multiple_168","valid":true,"error":null}
+{"id":"multiple_169","valid":true,"error":null}
+{"id":"multiple_170","valid":true,"error":null}
+{"id":"multiple_171","valid":true,"error":null}
+{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"name","actual_value":"LeBron James","expected_values":["Lebron James"],"decoded_output":"[{\"sports_db.find_athlete\":{\"name\":\"LeBron James\",\"team\":\"\",\"sport\":\"Basketball\"}}]"}}}
+{"id":"multiple_173","valid":false,"error":{"InvalidParamValue":{"param":"top","actual_value":30,"expected_values":[1,""],"decoded_output":"[{\"get_defense_ranking\":{\"season\":2021,\"top\":30}}]"}}}
+{"id":"multiple_174","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you're asking about Manchester United's ranking in the Premier League, but I need to know which season you're interested in. The function requires a season parameter. Could you please specify which season you'd like me to check? For example, are you looking for the current season (2024) or a specific past season?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_175","valid":true,"error":null}
+{"id":"multiple_176","valid":true,"error":null}
+{"id":"multiple_177","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York City","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"board_game.chess.get_top_players\":{\"location\":\"New York City\",\"minimum_rating\":2300,\"number_of_players\":10}}]"}}}
+{"id":"multiple_178","valid":true,"error":null}
+{"id":"multiple_179","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you're asking about the probability of getting a full house in poker, but you haven't specified the deck size or hand size. The poker probability function requires both parameters to calculate the probability.\\n\\nCould you please provide:\\n1. The deck size (typically 52 for a standard deck)\\n2. The hand size (typically 5 for a standard poker hand)\\n\\nOnce you provide these details, I can calculate the probability for you.\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_180","valid":true,"error":null}
+{"id":"multiple_181","valid":false,"error":{"InvalidParamValue":{"param":"team_name","actual_value":"Liverpool Football Club","expected_values":["Liverpool F.C.","Liverpool"],"decoded_output":"[{\"soccer.get_last_match\":{\"team_name\":\"Liverpool Football Club\",\"include_stats\":true}}]"}}}
+{"id":"multiple_182","valid":true,"error":null}
+{"id":"multiple_183","valid":false,"error":{"InvalidParamValue":{"param":"recipe","actual_value":"beef lasagna","expected_values":["Beef Lasagna","Beef Lasagna Recipe"],"decoded_output":"[{\"recipe_info.get_calories\":{\"website\":\"Foodnetwork.com\",\"recipe\":\"beef lasagna\",\"optional_meal_time\":\"\"}}]"}}}
+{"id":"multiple_184","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you're looking for a vegetarian cheese pasta recipe for two people. However, to use the recipe search function, I need to know what specific ingredients you have available. The function requires a list of ingredients to search for recipes that use those ingredients.\\n\\nCould you please let me know what ingredients you have on hand or would like to use in your vegetarian cheese pasta? For example, do you have specific types of pasta, cheeses, vegetables, or other ingredients available?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_185","valid":true,"error":null}
+{"id":"multiple_186","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I can help you find a vegetarian brownie recipe with a preparation time under 30 minutes. However, I notice that the available functions don't include one specifically for finding recipes. The functions I have access to are for finding scientific discovery details, not recipes.\\n\\nLooking at the available tools:\\n1. `find_recipe` - This would be perfect for your request, but it's not in the list of available functions\\n2. `science_history_get_discovery_details` - This is for scientific discoveries, not recipes\\n\\nSince I don't have access to a recipe-finding function, I cannot fulfill your request to find a vegetarian brownie recipe with under 30 minutes preparation time. You would need a different tool or service to find this type of recipe.\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_187","valid":true,"error":null}
+{"id":"multiple_188","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice that you want to find a grocery store near Berkeley with specific requirements. However, I need your current location to use the grocery store search function. The function requires a \\\"my_location\\\" parameter, but you've only mentioned \\\"Berkeley\\\" as a reference point.\\n\\nCould you please provide your specific current location or address so I can find the closest grocery store to you that meets your criteria?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_189","valid":true,"error":null}
+{"id":"multiple_190","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"Hilton Chicago","expected_values":["Hilton Hotel","Hilton"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hilton Chicago\",\"location\":\"Chicago\",\"room_type\":\"single\",\"start_date\":\"December 10, 2022\",\"nights\":2}}]"}}}
+{"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"Las Vegas Paradise Hotel","expected_values":["Hotel Paradise"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Las Vegas Paradise Hotel\",\"location\":\"Las Vegas\",\"room_type\":\"luxury\",\"start_date\":\"05-12-2022\",\"stay_duration\":3,\"view\":\"city\"}}]"}}}
+{"id":"multiple_192","valid":true,"error":null}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"start_location","actual_value":"Eiffel Tower, Paris, France","expected_values":["Eiffel Tower"],"decoded_output":"[{\"maps.get_distance_duration\":{\"start_location\":\"Eiffel Tower, Paris, France\",\"end_location\":\"Louvre Museum, Paris, France\",\"traffic\":false}}]"}}}
+{"id":"multiple_194","valid":true,"error":null}
+{"id":"multiple_195","valid":true,"error":null}
+{"id":"multiple_196","valid":false,"error":{"InvalidParamValue":{"param":"include_description","actual_value":true,"expected_values":["",false],"decoded_output":"[{\"cellbio.get_proteins\":{\"cell_compartment\":\"plasma membrane\",\"include_description\":true}}]"}}}
+{"id":"multiple_197","valid":true,"error":null}
+{"id":"multiple_198","valid":true,"error":null}
+{"id":"multiple_199","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Yellowstone National Park","expected_values":["Yellowstone","yellowstone"],"decoded_output":"[{\"forest_growth_forecast\":{\"location\":\"Yellowstone National Park\",\"years\":5,\"include_human_impact\":true}}]"}}}

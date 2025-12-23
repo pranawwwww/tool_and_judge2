@@ -137,4 +137,6 @@ Put your final answer in \\boxed{{category_name}}."""
         return raw_category
 
     except Exception as e:
-        return "LLM returns exception"
+        # return "LLM returns exception"
+        print(f"Exception during categorize_parameter_value_async: {e}")
+        exit(1)
