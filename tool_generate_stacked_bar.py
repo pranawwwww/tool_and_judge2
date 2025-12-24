@@ -60,6 +60,7 @@ def pascal_to_readable(pascal_str: str) -> str:
 
 
 def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str,
+                                language: str,
                                 selected_translate_mode: str = None,
                                 selected_noise_mode: str = None,
                                 max_height: float = 0.5,
@@ -71,6 +72,7 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         model_name: The model directory name (e.g., "gpt-5", "gpt-5-mini", "gpt-5-nano")
         output_dir: Directory to save the chart image (default: current directory)
         result_dir: Directory containing the categorize_score files (default: "tool/result/categorize_score")
+        language: The language name for the plot title (e.g., "Chinese", "Hindi", "Igbo")
         selected_translate_mode: If specified, only show bars for this translate mode across noise modes
         selected_noise_mode: If specified, only show bars for this noise mode across translate modes
         max_height: Maximum height of the vertical axis (default: 0.5, range: 0.0-1.0)
@@ -202,7 +204,8 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         bar_data = []
         bar_positions = []
         pos = 0
-        group_spacing = 0.5  # Extra space between translate mode groups
+        bar_spacing = 0.6  # Spacing between bars within a group
+        group_spacing = 0.3  # Extra space between translate mode groups
 
         # Map noise modes to short abbreviations
         noise_mode_abbrev = {
@@ -217,11 +220,11 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
                 category_counts = data_dict[tm][nm]
                 bar_data.append(category_counts)
                 bar_positions.append(pos)
-                pos += 1
+                pos += bar_spacing  # Use smaller spacing between bars
             pos += group_spacing  # Add extra space after each translate mode group
 
-        title = f"{model_name} - All Translate and Noise Modes"
-        output_name = f"stacked_bar_{model_name}_all_combined.png"
+        title = f"Tool Calling Errors of {model_name} Under {language} Queries"
+        output_name = f"stacked_bar_{model_name}_{language}_all_combined.png"
     elif selected_translate_mode:
         # Show bars for selected translate mode across noise modes
         bar_labels = noise_modes
@@ -230,8 +233,8 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         for nm in noise_modes:
             category_counts = data_dict[selected_translate_mode][nm]
             bar_data.append(category_counts)
-        title = f"{model_name} - {selected_translate_mode} across Noise Modes"
-        output_name = f"stacked_bar_{model_name}_{selected_translate_mode}.png"
+        title = f"Tool Calling Errors of {model_name} Under {language} Queries - {selected_translate_mode}"
+        output_name = f"stacked_bar_{model_name}_{language}_{selected_translate_mode}.png"
     elif selected_noise_mode:
         # Show bars for selected noise mode across translate modes
         bar_labels = translate_modes
@@ -240,8 +243,8 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         for tm in translate_modes:
             category_counts = data_dict[tm][selected_noise_mode]
             bar_data.append(category_counts)
-        title = f"{model_name} - {selected_noise_mode} across Translate Modes"
-        output_name = f"stacked_bar_{model_name}_{selected_noise_mode}.png"
+        title = f"Tool Calling Error Rate of {model_name} Under {language} Queries - {selected_noise_mode}"
+        output_name = f"stacked_bar_{model_name}_{language}_{selected_noise_mode}.png"
     else:
         # Default: show all combinations (might be too many bars)
         bar_labels = []
@@ -252,8 +255,8 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
                 bar_labels.append(f"{tm}_{nm}")
                 category_counts = data_dict[tm][nm]
                 bar_data.append(category_counts)
-        title = f"{model_name} - All Combinations"
-        output_name = f"stacked_bar_{model_name}_all.png"
+        title = f"Tool Calling Error Rate of {model_name} Under {language} Queries - All Combinations"
+        output_name = f"stacked_bar_{model_name}_{language}_all.png"
 
     # Create DataFrame for easier plotting
     df_data = []
@@ -273,7 +276,7 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
 
     # Plot stacked bar chart (wider if showing all combined)
     if show_all_combined:
-        fig, ax = plt.subplots(figsize=(16, 6))
+        fig, ax = plt.subplots(figsize=(12, 8))
     else:
         fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -306,13 +309,12 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         if total > 0:  # Only annotate if there's data
             x_pos = x_positions[i] if bar_positions is not None else i
             ax.text(x_pos, total, f'{total:.3f}',
-                   ha='center', va='bottom', fontsize=9, fontweight='bold')
+                   ha='center', va='bottom', fontsize=7, fontweight='bold')
 
     # Set y-axis range to the specified max_height
     ax.set_ylim(0, max_height)
 
     # Customize plot
-    ax.set_xlabel('Configuration', fontsize=12)
     ax.set_ylabel('Error Rate', fontsize=12)
     ax.set_title(title, fontsize=14, fontweight='bold')
 
@@ -325,16 +327,26 @@ def generate_stacked_bar_chart(model_name: str, output_dir: str, result_dir: str
         ax.set_xticks(x_positions)
         ax.set_xticklabels(bar_labels, rotation=45, ha='right', fontsize=8)
 
-        # Add translate mode group labels below the noise mode labels
-        group_spacing = 0.5
+        # Add translate mode group labels as a second row below noise mode labels
+        # Position them closer to the axis (smaller negative offset)
+        bar_spacing = 0.6
+        group_spacing = 0.3
         for i, tm in enumerate(translate_modes):
             # Calculate the center position of each translate mode group
-            group_center = i * (len(noise_modes) + group_spacing) + (len(noise_modes) - 1) / 2
-            ax.text(group_center, -max_height * 0.15, tm,
+            group_center = i * (len(noise_modes) * bar_spacing + group_spacing) + (len(noise_modes) - 1) * bar_spacing / 2
+            ax.text(group_center, -max_height * 0.08, tm,
                    ha='center', va='top', fontsize=10, fontweight='bold')
+
+        # Add "Configuration" label below the group names (larger negative offset)
+        # Calculate the center of all bars for proper centering
+        overall_center = (x_positions[0] + x_positions[-1]) / 2
+        ax.text(overall_center, -max_height * 0.12, 'Configuration',
+               ha='center', va='top', fontsize=12)
     elif len(bar_labels) > 10:
+        ax.set_xlabel('Configuration', fontsize=12)
         plt.xticks(rotation=45, ha='right')
     else:
+        ax.set_xlabel('Configuration', fontsize=12)
         plt.xticks(rotation=0)
 
     plt.tight_layout()
@@ -359,6 +371,10 @@ if __name__ == "__main__":
         "models",
         nargs="+",
         help="Model names to process (e.g., gpt-5 gpt-5-mini gpt-5-nano)"
+    )
+    parser.add_argument(
+        "language",
+        help="Language name for the plot title (e.g., Chinese, Hindi, Igbo)"
     )
     parser.add_argument(
         "--output-dir",
@@ -405,6 +421,7 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
+                args.language,
                 max_height=args.max_height,
                 show_all_combined=True
             )
@@ -414,6 +431,7 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
+                args.language,
                 selected_translate_mode=args.translate_mode,
                 selected_noise_mode=args.noise_mode,
                 max_height=args.max_height
@@ -424,6 +442,7 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
+                args.language,
                 selected_noise_mode="NO_NOISE",
                 max_height=args.max_height
             )
@@ -433,6 +452,7 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
+                args.language,
                 selected_noise_mode="PARAPHRASE",
                 max_height=args.max_height
             )
@@ -442,6 +462,7 @@ if __name__ == "__main__":
                 model,
                 args.output_dir,
                 args.result_dir,
+                args.language,
                 selected_noise_mode="SYNONYM",
                 max_height=args.max_height
             )
