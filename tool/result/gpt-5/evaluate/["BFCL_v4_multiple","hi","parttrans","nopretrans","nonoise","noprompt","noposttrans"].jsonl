@@ -8,7 +8,7 @@
 {"id":"multiple_7","valid":true,"error":null}
 {"id":"multiple_8","valid":true,"error":null}
 {"id":"multiple_9","valid":false,"error":{"MissingRequiredParam":{"missing_param":"gradeDict","required_params":["gradeDict"],"decoded_output":"[{\"calculate_average\":{}}]"}}}
-{"id":"multiple_10","valid":false,"error":{"WrongFuncName":{"expected_name":"database.modify_columns","actual_name":"database.create_backup","decoded_output":"[{\"database.create_backup\":{\"db_name\":\"employees\",\"backup_location\":\"/backups/employees_backup\",\"timestamp\":true}}]"}}}
+{"id":"multiple_10","valid":true,"error":null}
 {"id":"multiple_11","valid":true,"error":null}
 {"id":"multiple_12","valid":true,"error":null}
 {"id":"multiple_13","valid":true,"error":null}
@@ -22,16 +22,16 @@
 {"id":"multiple_21","valid":true,"error":null}
 {"id":"multiple_22","valid":true,"error":null}
 {"id":"multiple_23","valid":true,"error":null}
-{"id":"multiple_24","valid":false,"error":{"InvalidParamValue":{"param":"start","actual_value":"London, UK","expected_values":["London"],"decoded_output":"[{\"route_planner.calculate_route\":{\"start\":\"London, UK\",\"destination\":\"Edinburgh, UK\",\"method\":\"fastest\"}}]"}}}
-{"id":"multiple_25","valid":false,"error":{"WrongFuncName":{"expected_name":"video_games.store_price","actual_name":"video_games.on_sale","decoded_output":"[{\"video_games.on_sale\":{\"game_title\":\"Assassins Creed Valhalla\",\"platform\":\"PlayStation\",\"region\":\"United States\"}}]"}}}
-{"id":"multiple_26","valid":false,"error":{"WrongFuncName":{"expected_name":"game_rewards.get","actual_name":"game_missions.list","decoded_output":"[{\"game_missions.list\":{\"game\":\"Fortnite\"}}]"}}}
+{"id":"multiple_24","valid":true,"error":null}
+{"id":"multiple_25","valid":false,"error":{"WrongFuncName":{"expected_name":"video_games.store_price","actual_name":"video_games.on_sale","decoded_output":"[{\"video_games.on_sale\":{\"game_title\":\"Assassin's Creed Valhalla\",\"platform\":\"PlayStation\",\"region\":\"United States\"}}]"}}}
+{"id":"multiple_26","valid":true,"error":null}
 {"id":"multiple_27","valid":true,"error":null}
 {"id":"multiple_28","valid":true,"error":null}
 {"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
 {"id":"multiple_30","valid":true,"error":null}
 {"id":"multiple_31","valid":true,"error":null}
-{"id":"multiple_32","valid":true,"error":null}
-{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3x^2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"func\":\"3x^2\",\"a\":1,\"b\":2}}]"}}}
+{"id":"multiple_32","valid":false,"error":{"InvalidParamValue":{"param":"round_off","actual_value":2,"expected_values":["",0],"decoded_output":"[{\"geometry.calculate_cone_volume\":{\"radius\":4,\"height\":7,\"round_off\":2}}]"}}}
+{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3*x^2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"func\":\"3*x^2\",\"a\":1,\"b\":2}}]"}}}
 {"id":"multiple_34","valid":true,"error":null}
 {"id":"multiple_35","valid":true,"error":null}
 {"id":"multiple_36","valid":true,"error":null}
@@ -41,7 +41,7 @@
 {"id":"multiple_40","valid":true,"error":null}
 {"id":"multiple_41","valid":true,"error":null}
 {"id":"multiple_42","valid":true,"error":null}
-{"id":"multiple_43","valid":false,"error":{"InvalidParamValue":{"param":"substance","actual_value":"glucose","expected_values":["C6H12O6"],"decoded_output":"[{\"biological.calc_energy\":{\"mols\":5,\"substance\":\"glucose\",\"joules_per_mol\":null}}]"}}}
+{"id":"multiple_43","valid":true,"error":null}
 {"id":"multiple_44","valid":true,"error":null}
 {"id":"multiple_45","valid":true,"error":null}
 {"id":"multiple_46","valid":true,"error":null}
@@ -51,22 +51,22 @@
 {"id":"multiple_50","valid":true,"error":null}
 {"id":"multiple_51","valid":true,"error":null}
 {"id":"multiple_52","valid":true,"error":null}
-{"id":"multiple_53","valid":false,"error":{"InvalidParamValue":{"param":"dependent_var","actual_value":"house prices","expected_values":["house_price","house price"],"decoded_output":"[{\"linear_regression\":{\"independent_var\":[\"interest rates\",\"unemployment rates\"],\"dependent_var\":\"house prices\",\"forecast_period\":5}}]"}}}
-{"id":"multiple_54","valid":true,"error":null}
+{"id":"multiple_53","valid":false,"error":{"WrongFuncName":{"expected_name":"linear_regression","actual_name":"random_forest_regression","decoded_output":"[{\"random_forest_regression\":{\"independent_var\":[\"interest rates\",\"unemployment rates\"],\"dependent_var\":\"house prices\",\"n_estimators\":200,\"forecast_period\":5}}]"}}}
+{"id":"multiple_54","valid":false,"error":{"InvalidParamValue":{"param":"frequency","actual_value":"quarterly","expected_values":["","annually"],"decoded_output":"[{\"corporate_finance.dividend_data\":{\"company\":\"Apple Inc\",\"years\":5,\"frequency\":\"quarterly\"}}]"}}}
 {"id":"multiple_55","valid":true,"error":null}
-{"id":"multiple_56","valid":false,"error":{"InvalidParamValue":{"param":"company","actual_value":"AAPL","expected_values":["Apple"],"decoded_output":"[{\"avg_closing_price\":{\"company\":\"AAPL\",\"days\":60,\"data_source\":\"yahoo finance\"}}]"}}}
+{"id":"multiple_56","valid":true,"error":null}
 {"id":"multiple_57","valid":true,"error":null}
 {"id":"multiple_58","valid":true,"error":null}
-{"id":"multiple_59","valid":false,"error":{"InvalidParamValue":{"param":"specialization","actual_value":["Criminal law"],"expected_values":[["Criminal Law"],["criminal law"]],"decoded_output":"[{\"lawyer_finder\":{\"location\":\"New York\",\"specialization\":[\"Criminal law\"],\"experience\":null}}]"}}}
+{"id":"multiple_59","valid":true,"error":null}
 {"id":"multiple_60","valid":true,"error":null}
-{"id":"multiple_61","valid":false,"error":{"InvalidParamValue":{"param":"specialization","actual_value":"छोटे स्थान के बगीचे के डिज़ाइन","expected_values":["small space garden design"],"decoded_output":"[{\"landscape_architect.find_specialty\":{\"location\":\"Portland, OR\",\"specialization\":\"छोटे स्थान के बगीचे के डिज़ाइन\",\"years_experience\":5}}]"}}}
+{"id":"multiple_61","valid":true,"error":null}
 {"id":"multiple_62","valid":true,"error":null}
 {"id":"multiple_63","valid":true,"error":null}
 {"id":"multiple_64","valid":true,"error":null}
-{"id":"multiple_65","valid":false,"error":{"InvalidParamValue":{"param":"unit","actual_value":"kilometers","expected_values":["miles",""],"decoded_output":"[{\"geodistance.find\":{\"origin\":\"New York City\",\"destination\":\"Los Angeles\",\"unit\":\"kilometers\"}}]"}}}
+{"id":"multiple_65","valid":true,"error":null}
 {"id":"multiple_66","valid":true,"error":null}
-{"id":"multiple_67","valid":false,"error":{"InvalidParamValue":{"param":"text","actual_value":"Hello! I'm doing well, thank you. How are you?","expected_values":["Hello, how are you?"],"decoded_output":"[{\"translate\":{\"text\":\"Hello! I'm doing well, thank you. How are you?\",\"source_language\":\"English\",\"target_language\":\"Hindi\"}}]"}}}
-{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"location\":\"New York Public Library\",\"genre\":\"Historical Fiction\",\"title\":null}}]"}}}
+{"id":"multiple_67","valid":true,"error":null}
+{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"location\":\"New York Public Library\",\"genre\":\"historical fiction\",\"title\":null}}]"}}}
 {"id":"multiple_69","valid":true,"error":null}
 {"id":"multiple_70","valid":true,"error":null}
 {"id":"multiple_71","valid":true,"error":null}
@@ -91,8 +91,8 @@
 {"id":"multiple_90","valid":true,"error":null}
 {"id":"multiple_91","valid":true,"error":null}
 {"id":"multiple_92","valid":true,"error":null}
-{"id":"multiple_93","valid":true,"error":null}
-{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"Queen Bed Suite","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"hotelName\":\"Hilton New York\",\"roomType\":\"Queen Bed Suite\",\"nights\":3}}]"}}}
+{"id":"multiple_93","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York - Marriott","expected_values":["New York","New York, NY","NYC"],"decoded_output":"[{\"hotel.book\":{\"location\":\"New York - Marriott\",\"roomType\":\"deluxe\",\"nights\":2,\"additional_services\":[\"breakfast\"]}}]"}}}
+{"id":"multiple_94","valid":true,"error":null}
 {"id":"multiple_95","valid":true,"error":null}
 {"id":"multiple_96","valid":true,"error":null}
 {"id":"multiple_97","valid":true,"error":null}
@@ -102,8 +102,8 @@
 {"id":"multiple_101","valid":true,"error":null}
 {"id":"multiple_102","valid":true,"error":null}
 {"id":"multiple_103","valid":true,"error":null}
-{"id":"multiple_104","valid":false,"error":{"InvalidParamValue":{"param":"origin","actual_value":"New York City, NY","expected_values":["New York City","NYC"],"decoded_output":"[{\"get_shortest_driving_distance\":{\"origin\":\"New York City, NY\",\"destination\":\"Washington, DC\",\"unit\":\"miles\"}}]"}}}
-{"id":"multiple_105","valid":true,"error":null}
+{"id":"multiple_104","valid":false,"error":{"InvalidParamValue":{"param":"destination","actual_value":"Washington, D.C.","expected_values":["Washington D.C.","D.C.","DC"],"decoded_output":"[{\"get_shortest_driving_distance\":{\"origin\":\"New York City\",\"destination\":\"Washington, D.C.\",\"unit\":null}}]"}}}
+{"id":"multiple_105","valid":false,"error":{"InvalidParamValue":{"param":"permeability","actual_value":1.25663706212e-6,"expected_values":["",0.01],"decoded_output":"[{\"calculate_magnetic_field\":{\"current\":5,\"radius\":4,\"permeability\":1.25663706212e-6}}]"}}}
 {"id":"multiple_106","valid":true,"error":null}
 {"id":"multiple_107","valid":true,"error":null}
 {"id":"multiple_108","valid":true,"error":null}
@@ -134,7 +134,7 @@
 {"id":"multiple_133","valid":true,"error":null}
 {"id":"multiple_134","valid":true,"error":null}
 {"id":"multiple_135","valid":true,"error":null}
-{"id":"multiple_136","valid":false,"error":{"InvalidParamValue":{"param":"type","actual_value":"violent crime","expected_values":["violent","Violent"],"decoded_output":"[{\"get_crime_rate\":{\"city\":\"San Francisco\",\"state\":\"California\",\"type\":\"violent crime\",\"year\":2020}}]"}}}
+{"id":"multiple_136","valid":true,"error":null}
 {"id":"multiple_137","valid":true,"error":null}
 {"id":"multiple_138","valid":true,"error":null}
 {"id":"multiple_139","valid":true,"error":null}
@@ -149,28 +149,28 @@
 {"id":"multiple_148","valid":true,"error":null}
 {"id":"multiple_149","valid":true,"error":null}
 {"id":"multiple_150","valid":true,"error":null}
-{"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"sub_topics","actual_value":["behavior","behaviour","group dynamics"],"expected_values":[["behaviour","group dynamics"],["group dynamics","behaviour"]],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"topic\":\"psychology\",\"sub_topics\":[\"behavior\",\"behaviour\",\"group dynamics\"],\"region\":null}}]"}}}
+{"id":"multiple_151","valid":true,"error":null}
 {"id":"multiple_152","valid":true,"error":null}
-{"id":"multiple_153","valid":false,"error":{"InvalidParamValue":{"param":"event","actual_value":"Treaty of Lisbon (2007)","expected_values":["Treaty of Lisbon","Signing of the Treaty of Lisbon"],"decoded_output":"[{\"get_event_date\":{\"event\":\"Treaty of Lisbon (2007)\",\"location\":null}}]"}}}
+{"id":"multiple_153","valid":true,"error":null}
 {"id":"multiple_154","valid":true,"error":null}
 {"id":"multiple_155","valid":true,"error":null}
-{"id":"multiple_156","valid":true,"error":null}
+{"id":"multiple_156","valid":false,"error":{"InvalidParamValue":{"param":"category","actual_value":"Physics","expected_values":["","all"],"decoded_output":"[{\"historical_contrib.get_contrib\":{\"scientist\":\"Albert Einstein\",\"date\":\"1915-03-17\",\"category\":\"Physics\"}}]"}}}
 {"id":"multiple_157","valid":true,"error":null}
 {"id":"multiple_158","valid":true,"error":null}
 {"id":"multiple_159","valid":true,"error":null}
-{"id":"multiple_160","valid":true,"error":null}
-{"id":"multiple_161","valid":false,"error":{"InvalidParamValue":{"param":"month","actual_value":"January 2026","expected_values":["upcoming","next month","upcoming month","next",""],"decoded_output":"[{\"find_exhibition\":{\"location\":\"New York, NY\",\"art_form\":\"modern sculpture\",\"month\":\"January 2026\",\"user_ratings\":\"high\"}}]"}}}
+{"id":"multiple_160","valid":false,"error":{"InvalidParamValue":{"param":"artist_name","actual_value":"Jaume Plensa","expected_values":["James Plensa"],"decoded_output":"[{\"get_sculpture_info\":{\"artist_name\":\"Jaume Plensa\",\"detail\":true}}]"}}}
+{"id":"multiple_161","valid":false,"error":{"InvalidParamValue":{"param":"month","actual_value":"January","expected_values":["upcoming","next month","upcoming month","next",""],"decoded_output":"[{\"find_exhibition\":{\"location\":\"New York, NY\",\"art_form\":\"modern sculpture\",\"month\":\"January\",\"user_ratings\":\"high\"}}]"}}}
 {"id":"multiple_162","valid":true,"error":null}
 {"id":"multiple_163","valid":true,"error":null}
 {"id":"multiple_164","valid":true,"error":null}
-{"id":"multiple_165","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Chicago, IL","expected_values":["Chicago","Chicago area"],"decoded_output":"[{\"guitar_price.find\":{\"model\":\"Gibson Les Paul\",\"condition\":\"Excellent\",\"location\":\"Chicago, IL\"}}]"}}}
+{"id":"multiple_165","valid":true,"error":null}
 {"id":"multiple_166","valid":true,"error":null}
 {"id":"multiple_167","valid":true,"error":null}
 {"id":"multiple_168","valid":true,"error":null}
 {"id":"multiple_169","valid":true,"error":null}
 {"id":"multiple_170","valid":true,"error":null}
 {"id":"multiple_171","valid":false,"error":{"InvalidParamValue":{"param":"teams","actual_value":["Los Angeles Lakers","Los Angeles Clippers"],"expected_values":[["Lakers","Clippers"],["Clippers","Lakers"]],"decoded_output":"[{\"game_result.get_winner\":{\"teams\":[\"Los Angeles Lakers\",\"Los Angeles Clippers\"],\"date\":\"2021-01-28\",\"venue\":\"\"}}]"}}}
-{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"name","actual_value":"LeBron James","expected_values":["Lebron James"],"decoded_output":"[{\"sports_db.find_athlete\":{\"name\":\"LeBron James\",\"team\":\"\",\"sport\":\"Basketball\"}}]"}}}
+{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"name","actual_value":"LeBron James","expected_values":["Lebron James"],"decoded_output":"[{\"sports_db.find_athlete\":{\"name\":\"LeBron James\",\"team\":null,\"sport\":\"Basketball\"}}]"}}}
 {"id":"multiple_173","valid":true,"error":null}
 {"id":"multiple_174","valid":true,"error":null}
 {"id":"multiple_175","valid":true,"error":null}
@@ -181,17 +181,17 @@
 {"id":"multiple_180","valid":true,"error":null}
 {"id":"multiple_181","valid":true,"error":null}
 {"id":"multiple_182","valid":false,"error":{"InvalidParamValue":{"param":"genre","actual_value":"Action","expected_values":[""],"decoded_output":"[{\"multiplayer_game_finder\":{\"platform\":\"Windows 10\",\"rating\":4.5,\"genre\":\"Action\"}}]"}}}
-{"id":"multiple_183","valid":false,"error":{"InvalidParamValue":{"param":"website","actual_value":"foodnetwork.com","expected_values":["Foodnetwork.com"],"decoded_output":"[{\"recipe_info.get_calories\":{\"website\":\"foodnetwork.com\",\"recipe\":\"Beef Lasagna Recipe\",\"optional_meal_time\":\"\"}}]"}}}
+{"id":"multiple_183","valid":false,"error":{"InvalidParamValue":{"param":"website","actual_value":"foodnetwork.com","expected_values":["Foodnetwork.com"],"decoded_output":"[{\"recipe_info.get_calories\":{\"website\":\"foodnetwork.com\",\"recipe\":\"Beef Lasagna\",\"optional_meal_time\":\"\"}}]"}}}
 {"id":"multiple_184","valid":true,"error":null}
 {"id":"multiple_185","valid":true,"error":null}
 {"id":"multiple_186","valid":false,"error":{"InvalidParamValue":{"param":"recipe_type","actual_value":"brownies","expected_values":["dessert"],"decoded_output":"[{\"find_recipe\":{\"dietary_restrictions\":\"vegan\",\"recipe_type\":\"brownies\",\"time\":30}}]"}}}
-{"id":"multiple_187","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Los Angeles, CA","expected_values":["Los Angeles","LA"],"decoded_output":"[{\"whole_foods.check_price\":{\"location\":\"Los Angeles, CA\",\"items\":[\"tomatoes\",\"lettuce\"]}}]"}}}
+{"id":"multiple_187","valid":true,"error":null}
 {"id":"multiple_188","valid":true,"error":null}
 {"id":"multiple_189","valid":true,"error":null}
 {"id":"multiple_190","valid":true,"error":null}
 {"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"view","actual_value":"City view","expected_values":["city","city view"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hotel Paradise\",\"location\":\"Las Vegas\",\"room_type\":\"Luxury\",\"start_date\":\"05-12-2022\",\"stay_duration\":3,\"view\":\"City view\"}}]"}}}
 {"id":"multiple_192","valid":true,"error":null}
-{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"start_location","actual_value":"Eiffel Tower, Paris","expected_values":["Eiffel Tower"],"decoded_output":"[{\"maps.get_distance_duration\":{\"start_location\":\"Eiffel Tower, Paris\",\"end_location\":\"Louvre Museum, Paris\",\"traffic\":null}}]"}}}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"start_location","actual_value":"Eiffel Tower, Paris, France","expected_values":["Eiffel Tower"],"decoded_output":"[{\"maps.get_distance_duration\":{\"start_location\":\"Eiffel Tower, Paris, France\",\"end_location\":\"Louvre Museum, Paris, France\",\"traffic\":false}}]"}}}
 {"id":"multiple_194","valid":true,"error":null}
 {"id":"multiple_195","valid":true,"error":null}
 {"id":"multiple_196","valid":true,"error":null}

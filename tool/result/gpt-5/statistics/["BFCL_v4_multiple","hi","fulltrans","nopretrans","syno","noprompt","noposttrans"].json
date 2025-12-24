@@ -1,60 +1,63 @@
 {
-  "accuracy": 0.765,
+  "accuracy": 0.755,
   "total_cases": 200,
-  "correct_cases": 153,
-  "incorrect_cases": 47,
+  "correct_cases": 151,
+  "incorrect_cases": 49,
   "category_counts": {
     "SYNTAX_ERROR": 0,
-    "MISC_ERROR": 2,
+    "MISC_ERROR": 3,
     "WRONG_VALUE": 3,
-    "RELEVANT_BUT_INCORRECT": 19,
-    "EXACTLY_SAME_MEANING": 18,
+    "RELEVANT_BUT_INCORRECT": 18,
+    "EXACTLY_SAME_MEANING": 22,
     "LANGUAGE_MISMATCH_WRONG_VALUE": 0,
     "LANGUAGE_MISMATCH_RELEVANT_BUT_INCORRECT": 0,
-    "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING": 5,
+    "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING": 3,
     "OTHER_ERROR": 0
   },
   "category_samples": {
     "MISC_ERROR": [
       "multiple_9",
-      "multiple_26"
+      "multiple_10",
+      "multiple_76"
     ],
     "WRONG_VALUE": [
+      "multiple_58",
       "multiple_105",
-      "multiple_139",
       "multiple_182"
     ],
     "RELEVANT_BUT_INCORRECT": [
-      "multiple_3",
+      "multiple_24",
       "multiple_33",
       "multiple_47",
-      "multiple_53",
-      "multiple_65",
-      "multiple_75",
+      "multiple_55",
+      "multiple_67",
       "multiple_77",
       "multiple_93",
       "multiple_99",
-      "multiple_115",
-      "multiple_124",
       "multiple_136",
+      "multiple_139",
+      "multiple_152",
       "multiple_153",
       "multiple_161",
       "multiple_184",
       "multiple_186",
-      "multiple_187",
       "multiple_191",
-      "multiple_193"
+      "multiple_193",
+      "multiple_199"
     ],
     "EXACTLY_SAME_MEANING": [
       "multiple_7",
+      "multiple_16",
       "multiple_25",
       "multiple_29",
-      "multiple_61",
+      "multiple_53",
+      "multiple_64",
       "multiple_68",
       "multiple_74",
       "multiple_89",
       "multiple_94",
       "multiple_104",
+      "multiple_115",
       "multiple_138",
       "multiple_147",
       "multiple_151",
@@ -62,13 +65,12 @@
       "multiple_165",
       "multiple_171",
       "multiple_172",
-      "multiple_194",
-      "multiple_199"
+      "multiple_183",
+      "multiple_187",
+      "multiple_194"
     ],
     "LANGUAGE_MISMATCH_EXACTLY_SAME_MEANING": [
       "multiple_12",
-      "multiple_16",
-      "multiple_67",
       "multiple_119",
       "multiple_149"
     ]

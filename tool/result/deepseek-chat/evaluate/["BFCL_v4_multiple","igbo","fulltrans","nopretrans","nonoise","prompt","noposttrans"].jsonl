@@ -1,0 +1,200 @@
+{"id":"multiple_0","valid":true,"error":null}
+{"id":"multiple_1","valid":true,"error":null}
+{"id":"multiple_2","valid":true,"error":null}
+{"id":"multiple_3","valid":true,"error":null}
+{"id":"multiple_4","valid":true,"error":null}
+{"id":"multiple_5","valid":true,"error":null}
+{"id":"multiple_6","valid":true,"error":null}
+{"id":"multiple_7","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"wildlife_population.assess_growth\":{\"species\":\"deer\",\"location\":\"Washington state\",\"duration\":10}},{\"ecological_impact.analyze\":{\"species\":\"deer\",\"ecosystem\":\"forest\",\"location\":\"Washington state\",\"timeframe\":10}}]"}}}
+{"id":"multiple_8","valid":true,"error":null}
+{"id":"multiple_9","valid":true,"error":null}
+{"id":"multiple_10","valid":false,"error":{"InvalidParamValue":{"param":"db_name","actual_value":"ndị ọrụ m","expected_values":["employees"],"decoded_output":"[{\"database.modify_columns\":{\"db_name\":\"ndị ọrụ m\",\"table\":\"personal_data\",\"operation\":\"delete\",\"columns\":[\"adreesị ozi-e\",\"nọmba nchekwa mmadụ\"]}}]"}}}
+{"id":"multiple_11","valid":true,"error":null}
+{"id":"multiple_12","valid":true,"error":null}
+{"id":"multiple_13","valid":true,"error":null}
+{"id":"multiple_14","valid":true,"error":null}
+{"id":"multiple_15","valid":true,"error":null}
+{"id":"multiple_16","valid":true,"error":null}
+{"id":"multiple_17","valid":true,"error":null}
+{"id":"multiple_18","valid":true,"error":null}
+{"id":"multiple_19","valid":true,"error":null}
+{"id":"multiple_20","valid":true,"error":null}
+{"id":"multiple_21","valid":true,"error":null}
+{"id":"multiple_22","valid":true,"error":null}
+{"id":"multiple_23","valid":true,"error":null}
+{"id":"multiple_24","valid":true,"error":null}
+{"id":"multiple_25","valid":true,"error":null}
+{"id":"multiple_26","valid":true,"error":null}
+{"id":"multiple_27","valid":true,"error":null}
+{"id":"multiple_28","valid":true,"error":null}
+{"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
+{"id":"multiple_30","valid":true,"error":null}
+{"id":"multiple_31","valid":true,"error":null}
+{"id":"multiple_32","valid":true,"error":null}
+{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3*x^2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"func\":\"3*x^2\",\"a\":1,\"b\":2}}]"}}}
+{"id":"multiple_34","valid":true,"error":null}
+{"id":"multiple_35","valid":true,"error":null}
+{"id":"multiple_36","valid":true,"error":null}
+{"id":"multiple_37","valid":true,"error":null}
+{"id":"multiple_38","valid":true,"error":null}
+{"id":"multiple_39","valid":true,"error":null}
+{"id":"multiple_40","valid":true,"error":null}
+{"id":"multiple_41","valid":true,"error":null}
+{"id":"multiple_42","valid":true,"error":null}
+{"id":"multiple_43","valid":true,"error":null}
+{"id":"multiple_44","valid":true,"error":null}
+{"id":"multiple_45","valid":true,"error":null}
+{"id":"multiple_46","valid":true,"error":null}
+{"id":"multiple_47","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":4,"expected_values":["",0],"decoded_output":"[{\"cosine_similarity.calculate\":{\"vector1\":[3,2,1],\"vector2\":[1,2,3],\"rounding\":4}}]"}}}
+{"id":"multiple_48","valid":true,"error":null}
+{"id":"multiple_49","valid":true,"error":null}
+{"id":"multiple_50","valid":true,"error":null}
+{"id":"multiple_51","valid":true,"error":null}
+{"id":"multiple_52","valid":true,"error":null}
+{"id":"multiple_53","valid":true,"error":null}
+{"id":"multiple_54","valid":true,"error":null}
+{"id":"multiple_55","valid":true,"error":null}
+{"id":"multiple_56","valid":true,"error":null}
+{"id":"multiple_57","valid":true,"error":null}
+{"id":"multiple_58","valid":false,"error":{"InvalidParamValue":{"param":"expertise","actual_value":"Marriage","expected_values":["Divorce"],"decoded_output":"[{\"lawyer.search\":{\"location\":\"Los Angeles, CA\",\"expertise\":\"Marriage\"}}]"}}}
+{"id":"multiple_59","valid":true,"error":null}
+{"id":"multiple_60","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York","expected_values":["New York City","NYC"],"decoded_output":"[{\"humidity_temperature_forecast\":{\"location\":\"New York\",\"days\":7}}]"}}}
+{"id":"multiple_61","valid":false,"error":{"InvalidParamValue":{"param":"specialization","actual_value":"residential design","expected_values":["small space garden design"],"decoded_output":"[{\"landscape_architect.find_specialty\":{\"location\":\"Portland, OR\",\"specialization\":\"residential design\",\"years_experience\":5}}]"}}}
+{"id":"multiple_62","valid":true,"error":null}
+{"id":"multiple_63","valid":true,"error":null}
+{"id":"multiple_64","valid":true,"error":null}
+{"id":"multiple_65","valid":true,"error":null}
+{"id":"multiple_66","valid":true,"error":null}
+{"id":"multiple_67","valid":true,"error":null}
+{"id":"multiple_68","valid":true,"error":null}
+{"id":"multiple_69","valid":true,"error":null}
+{"id":"multiple_70","valid":true,"error":null}
+{"id":"multiple_71","valid":true,"error":null}
+{"id":"multiple_72","valid":true,"error":null}
+{"id":"multiple_73","valid":true,"error":null}
+{"id":"multiple_74","valid":true,"error":null}
+{"id":"multiple_75","valid":true,"error":null}
+{"id":"multiple_76","valid":true,"error":null}
+{"id":"multiple_77","valid":false,"error":{"InvalidParamValue":{"param":"type","actual_value":"painting","expected_values":["sculpture"],"decoded_output":"[{\"artwork_search.find\":{\"type\":\"painting\",\"location\":\"New York\",\"era\":\"contemporary\"}}]"}}}
+{"id":"multiple_78","valid":false,"error":{"InvalidParamValue":{"param":"features","actual_value":["timings","exhibitions","accessibility","history"],"expected_values":[["timings","exhibitions","accessibility"],["exhibitions","timings","accessibility"],["exhibitions","accessibility","timings"],["accessibility","timings","exhibitions"],["accessibility","exhibitions","timings"],["timings","accessibility","exhibitions"]],"decoded_output":"[{\"museum_info\":{\"museum\":\"Natural History Museum\",\"city\":\"London\",\"features\":[\"timings\",\"exhibitions\",\"accessibility\",\"history\"]}}]"}}}
+{"id":"multiple_79","valid":true,"error":null}
+{"id":"multiple_80","valid":true,"error":null}
+{"id":"multiple_81","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York","expected_values":["New York City","NYC"],"decoded_output":"[{\"concert.book_ticket\":{\"artist\":\"Eminem\",\"location\":\"New York\",\"add_ons\":[\"Backstage Pass\"]}}]"}}}
+{"id":"multiple_82","valid":true,"error":null}
+{"id":"multiple_83","valid":true,"error":null}
+{"id":"multiple_84","valid":true,"error":null}
+{"id":"multiple_85","valid":true,"error":null}
+{"id":"multiple_86","valid":true,"error":null}
+{"id":"multiple_87","valid":true,"error":null}
+{"id":"multiple_88","valid":true,"error":null}
+{"id":"multiple_89","valid":true,"error":null}
+{"id":"multiple_90","valid":true,"error":null}
+{"id":"multiple_91","valid":false,"error":{"InvalidParamValue":{"param":"ingredientLimit","actual_value":5,"expected_values":[4],"decoded_output":"[{\"recipe.find\":{\"mainIngredient\":\"apple\",\"ingredientLimit\":5}}]"}}}
+{"id":"multiple_92","valid":true,"error":null}
+{"id":"multiple_93","valid":true,"error":null}
+{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"Queen size suite","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"hotelName\":\"Hilton New York\",\"roomType\":\"Queen size suite\",\"nights\":3}}]"}}}
+{"id":"multiple_95","valid":true,"error":null}
+{"id":"multiple_96","valid":true,"error":null}
+{"id":"multiple_97","valid":true,"error":null}
+{"id":"multiple_98","valid":true,"error":null}
+{"id":"multiple_99","valid":false,"error":{"InvalidParamValue":{"param":"function","actual_value":"2x^2","expected_values":["2x**2","lambda x: 2x**2"],"decoded_output":"[{\"calculus.derivative\":{\"function\":\"2x^2\",\"value\":1,\"function_variable\":\"x\"}}]"}}}
+{"id":"multiple_100","valid":true,"error":null}
+{"id":"multiple_101","valid":true,"error":null}
+{"id":"multiple_102","valid":true,"error":null}
+{"id":"multiple_103","valid":true,"error":null}
+{"id":"multiple_104","valid":false,"error":{"InvalidParamValue":{"param":"destination","actual_value":"Washington, D.C.","expected_values":["Washington D.C.","D.C.","DC"],"decoded_output":"[{\"get_shortest_driving_distance\":{\"origin\":\"New York City\",\"destination\":\"Washington, D.C.\",\"unit\":\"kilometers\"}}]"}}}
+{"id":"multiple_105","valid":true,"error":null}
+{"id":"multiple_106","valid":true,"error":null}
+{"id":"multiple_107","valid":true,"error":null}
+{"id":"multiple_108","valid":true,"error":null}
+{"id":"multiple_109","valid":false,"error":{"InvalidParamValue":{"param":"cell_compartment","actual_value":"cell membrane","expected_values":["plasma membrane"],"decoded_output":"[{\"cellbio.get_proteins\":{\"cell_compartment\":\"cell membrane\",\"include_description\":false}}]"}}}
+{"id":"multiple_110","valid":true,"error":null}
+{"id":"multiple_111","valid":true,"error":null}
+{"id":"multiple_112","valid":true,"error":null}
+{"id":"multiple_113","valid":true,"error":null}
+{"id":"multiple_114","valid":true,"error":null}
+{"id":"multiple_115","valid":true,"error":null}
+{"id":"multiple_116","valid":true,"error":null}
+{"id":"multiple_117","valid":true,"error":null}
+{"id":"multiple_118","valid":true,"error":null}
+{"id":"multiple_119","valid":false,"error":{"InvalidParamValue":{"param":"table","actual_value":"onye ọrụ","expected_values":["user"],"decoded_output":"[{\"database.query\":{\"table\":\"onye ọrụ\",\"conditions\":[{\"field\":\"afọ\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"ọrụ\",\"operation\":\"=\",\"value\":\"engineer\"}]}}]"}}}
+{"id":"multiple_120","valid":true,"error":null}
+{"id":"multiple_121","valid":false,"error":{"InvalidParamValue":{"param":"unit","actual_value":"square units","expected_values":["","square meters"],"decoded_output":"[{\"geometry.area_triangle\":{\"base\":6,\"height\":10,\"unit\":\"square units\"}}]"}}}
+{"id":"multiple_122","valid":true,"error":null}
+{"id":"multiple_123","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I understand you're asking about the probability of drawing a king from a deck of cards, but I need more specific information to calculate this probability. \\n\\nTo use the probability calculation function, I need to know:\\n1. The total number of cards in the deck (standard deck is usually 52 cards)\\n2. The number of kings in the deck (standard deck has 4 kings)\\n3. How many decimal places you want the result rounded to\\n\\nCould you please provide these details so I can calculate the exact probability for you?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_124","valid":false,"error":{"InvalidParamValue":{"param":"round","actual_value":4,"expected_values":["",2],"decoded_output":"[{\"probabilities.calculate_single\":{\"total_outcomes\":52,\"event_outcomes\":4,\"round\":4}}]"}}}
+{"id":"multiple_125","valid":true,"error":null}
+{"id":"multiple_126","valid":true,"error":null}
+{"id":"multiple_127","valid":true,"error":null}
+{"id":"multiple_128","valid":true,"error":null}
+{"id":"multiple_129","valid":true,"error":null}
+{"id":"multiple_130","valid":true,"error":null}
+{"id":"multiple_131","valid":true,"error":null}
+{"id":"multiple_132","valid":true,"error":null}
+{"id":"multiple_133","valid":false,"error":{"InvalidParamValue":{"param":"annual_yield","actual_value":5,"expected_values":[0.05],"decoded_output":"[{\"calculate_mutual_fund_balance\":{\"investment_amount\":50000,\"annual_yield\":5,\"years\":3}}]"}}}
+{"id":"multiple_134","valid":true,"error":null}
+{"id":"multiple_135","valid":true,"error":null}
+{"id":"multiple_136","valid":false,"error":{"InvalidParamValue":{"param":"type","actual_value":"","expected_values":["violent","Violent"],"decoded_output":"[{\"get_crime_rate\":{\"city\":\"San Francisco\",\"state\":\"California\",\"type\":\"\",\"year\":2020}}]"}}}
+{"id":"multiple_137","valid":true,"error":null}
+{"id":"multiple_138","valid":false,"error":{"InvalidParamValue":{"param":"case_id","actual_value":"R megide Adams","expected_values":["R vs Adams","R_vs_Adams"],"decoded_output":"[{\"legal_case.fetch\":{\"case_id\":\"R megide Adams\",\"details\":true}}]"}}}
+{"id":"multiple_139","valid":true,"error":null}
+{"id":"multiple_140","valid":true,"error":null}
+{"id":"multiple_141","valid":true,"error":null}
+{"id":"multiple_142","valid":true,"error":null}
+{"id":"multiple_143","valid":true,"error":null}
+{"id":"multiple_144","valid":true,"error":null}
+{"id":"multiple_145","valid":true,"error":null}
+{"id":"multiple_146","valid":true,"error":null}
+{"id":"multiple_147","valid":true,"error":null}
+{"id":"multiple_148","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"I notice you're asking about Apple Inc. stock information in Igbo language. However, I need to know which market you're interested in (like NASDAQ, NYSE, etc.) and what level of detail you want (summary or detailed) to provide you with the stock information.\\n\\nCould you please specify:\\n1. Which stock market you're interested in (e.g., NASDAQ, NYSE)?\\n2. What level of detail you want - \\\"summary\\\" or \\\"detailed\\\"?\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_149","valid":false,"error":{"InvalidParamValue":{"param":"text","actual_value":"A hụrụ m nri ebe a n'anya! Ọ na-adị ọhụrụ mgbe niile ma na-atọ ụtọ.","expected_values":["I love the food here! It's always fresh and delicious."],"decoded_output":"[{\"sentiment_analysis\":{\"text\":\"A hụrụ m nri ebe a n'anya! Ọ na-adị ọhụrụ mgbe niile ma na-atọ ụtọ.\",\"language\":\"Igbo\"}}]"}}}
+{"id":"multiple_150","valid":true,"error":null}
+{"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"sub_topics","actual_value":["behavioral psychology","group dynamics"],"expected_values":[["behaviour","group dynamics"],["group dynamics","behaviour"]],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"topic\":\"Psychology\",\"sub_topics\":[\"behavioral psychology\",\"group dynamics\"],\"region\":\"global\"}}]"}}}
+{"id":"multiple_152","valid":true,"error":null}
+{"id":"multiple_153","valid":false,"error":{"InvalidParamValue":{"param":"event","actual_value":"Lisbon Treaty","expected_values":["Treaty of Lisbon","Signing of the Treaty of Lisbon"],"decoded_output":"[{\"get_event_date\":{\"event\":\"Lisbon Treaty\",\"location\":\"Lisbon\"}}]"}}}
+{"id":"multiple_154","valid":true,"error":null}
+{"id":"multiple_155","valid":true,"error":null}
+{"id":"multiple_156","valid":false,"error":{"InvalidParamValue":{"param":"category","actual_value":"Physics","expected_values":["","all"],"decoded_output":"[{\"historical_contrib.get_contrib\":{\"scientist\":\"Albert Einstein\",\"date\":\"1915-03-17\",\"category\":\"Physics\"}}]"}}}
+{"id":"multiple_157","valid":true,"error":null}
+{"id":"multiple_158","valid":true,"error":null}
+{"id":"multiple_159","valid":true,"error":null}
+{"id":"multiple_160","valid":true,"error":null}
+{"id":"multiple_161","valid":true,"error":null}
+{"id":"multiple_162","valid":true,"error":null}
+{"id":"multiple_163","valid":true,"error":null}
+{"id":"multiple_164","valid":true,"error":null}
+{"id":"multiple_165","valid":false,"error":{"InvalidParamValue":{"param":"condition","actual_value":"Good","expected_values":["Excellent"],"decoded_output":"[{\"guitar_price.find\":{\"model\":\"Gibson Les Paul\",\"condition\":\"Good\",\"location\":\"Chicago\"}}]"}}}
+{"id":"multiple_166","valid":true,"error":null}
+{"id":"multiple_167","valid":true,"error":null}
+{"id":"multiple_168","valid":true,"error":null}
+{"id":"multiple_169","valid":true,"error":null}
+{"id":"multiple_170","valid":true,"error":null}
+{"id":"multiple_171","valid":true,"error":null}
+{"id":"multiple_172","valid":true,"error":null}
+{"id":"multiple_173","valid":true,"error":null}
+{"id":"multiple_174","valid":true,"error":null}
+{"id":"multiple_175","valid":true,"error":null}
+{"id":"multiple_176","valid":true,"error":null}
+{"id":"multiple_177","valid":true,"error":null}
+{"id":"multiple_178","valid":true,"error":null}
+{"id":"multiple_179","valid":true,"error":null}
+{"id":"multiple_180","valid":true,"error":null}
+{"id":"multiple_181","valid":true,"error":null}
+{"id":"multiple_182","valid":true,"error":null}
+{"id":"multiple_183","valid":true,"error":null}
+{"id":"multiple_184","valid":true,"error":null}
+{"id":"multiple_185","valid":true,"error":null}
+{"id":"multiple_186","valid":true,"error":null}
+{"id":"multiple_187","valid":false,"error":{"InvalidParamValue":{"param":"items","actual_value":["tomato","lettuce"],"expected_values":[["tomatoes","lettuce"],["lettuce","tomatoes"]],"decoded_output":"[{\"whole_foods.check_price\":{\"location\":\"Los Angeles\",\"items\":[\"tomato\",\"lettuce\"]}}]"}}}
+{"id":"multiple_188","valid":false,"error":{"InvalidParamValue":{"param":"products","actual_value":["tomato","pet food"],"expected_values":[["tomatoes","pet food"],["pet food","tomatoes"],["Tomatoes","Pet food"],["Pet food","Tomatoes"]],"decoded_output":"[{\"grocery_store.find_best\":{\"my_location\":\"Berkeley\",\"rating\":4.5,\"products\":[\"tomato\",\"pet food\"]}}]"}}}
+{"id":"multiple_189","valid":true,"error":null}
+{"id":"multiple_190","valid":false,"error":{"InvalidParamValue":{"param":"room_type","actual_value":"standard","expected_values":["single","Single"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hilton Hotel\",\"location\":\"Chicago\",\"room_type\":\"standard\",\"start_date\":\"10 December 2022\",\"nights\":2}}]"}}}
+{"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"room_type","actual_value":"high floor","expected_values":["luxury","Luxury"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Hotel Paradise\",\"location\":\"Las Vegas\",\"room_type\":\"high floor\",\"start_date\":\"05-12-2022\",\"stay_duration\":3,\"view\":\"city view\"}}]"}}}
+{"id":"multiple_192","valid":true,"error":null}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"traffic","actual_value":true,"expected_values":["",false],"decoded_output":"[{\"maps.get_distance_duration\":{\"start_location\":\"Eiffel Tower\",\"end_location\":\"Louvre Museum\",\"traffic\":true}}]"}}}
+{"id":"multiple_194","valid":true,"error":null}
+{"id":"multiple_195","valid":true,"error":null}
+{"id":"multiple_196","valid":true,"error":null}
+{"id":"multiple_197","valid":true,"error":null}
+{"id":"multiple_198","valid":true,"error":null}
+{"id":"multiple_199","valid":true,"error":null}

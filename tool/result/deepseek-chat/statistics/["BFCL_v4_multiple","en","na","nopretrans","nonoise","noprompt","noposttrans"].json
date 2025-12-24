@@ -1,12 +1,12 @@
 {
-  "accuracy": 0.885,
+  "accuracy": 0.9,
   "total_cases": 200,
-  "correct_cases": 177,
-  "incorrect_cases": 23,
+  "correct_cases": 180,
+  "incorrect_cases": 20,
   "category_counts": {
-    "SYNTAX_ERROR": 9,
+    "SYNTAX_ERROR": 7,
     "MISC_ERROR": 3,
-    "WRONG_VALUE": 2,
+    "WRONG_VALUE": 1,
     "RELEVANT_BUT_INCORRECT": 6,
     "EXACTLY_SAME_MEANING": 3,
     "LANGUAGE_MISMATCH_WRONG_VALUE": 0,
@@ -17,14 +17,12 @@
   "category_samples": {
     "SYNTAX_ERROR": [
       "multiple_53",
+      "multiple_82",
       "multiple_86",
       "multiple_103",
       "multiple_123",
       "multiple_126",
-      "multiple_138",
-      "multiple_142",
-      "multiple_148",
-      "multiple_192"
+      "multiple_193"
     ],
     "MISC_ERROR": [
       "multiple_7",
@@ -32,8 +30,7 @@
       "multiple_26"
     ],
     "WRONG_VALUE": [
-      "multiple_133",
-      "multiple_156"
+      "multiple_133"
     ],
     "RELEVANT_BUT_INCORRECT": [
       "multiple_33",

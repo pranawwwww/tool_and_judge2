@@ -1,145 +1,0 @@
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.51s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmpa2krc1/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py:1041: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
-  warnings.warn(
-The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.05s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmp0Pj0HN/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.30s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmprZCnr8/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.14s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmp4hJyL9/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.23s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmpB68v13/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.05s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmpOkGFgM/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.23s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmp2pr2nM/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.30s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmp9DRtbq/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.40s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmpXzIlZT/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-    Finished `release` profile [optimized] target(s) in 1.10s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmpps4mjK/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/41 [00:00<?, ?it/s]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:   2% Completed | 1/41 [00:27<18:27, 27.69s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:   5% Completed | 2/41 [00:51<16:31, 25.41s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:   7% Completed | 3/41 [01:00<11:26, 18.07s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  10% Completed | 4/41 [01:26<12:58, 21.04s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  12% Completed | 5/41 [01:44<12:02, 20.08s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  15% Completed | 6/41 [01:52<09:17, 15.92s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  17% Completed | 7/41 [02:13<09:56, 17.55s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  20% Completed | 8/41 [02:32<09:50, 17.91s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  22% Completed | 9/41 [02:45<08:49, 16.55s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  24% Completed | 10/41 [02:55<07:27, 14.43s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  27% Completed | 11/41 [03:03<06:12, 12.43s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  29% Completed | 12/41 [03:12<05:34, 11.54s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  32% Completed | 13/41 [03:27<05:48, 12.44s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  34% Completed | 14/41 [03:44<06:14, 13.88s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  37% Completed | 15/41 [03:59<06:08, 14.16s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  39% Completed | 16/41 [04:05<04:55, 11.83s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  41% Completed | 17/41 [04:15<04:25, 11.07s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  44% Completed | 18/41 [04:33<05:02, 13.16s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  46% Completed | 19/41 [04:44<04:39, 12.73s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  49% Completed | 20/41 [05:05<05:16, 15.07s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  51% Completed | 21/41 [05:22<05:11, 15.56s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  54% Completed | 22/41 [05:39<05:08, 16.24s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  56% Completed | 23/41 [05:59<05:12, 17.37s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  59% Completed | 24/41 [06:09<04:13, 14.91s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  61% Completed | 25/41 [06:16<03:21, 12.57s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  63% Completed | 26/41 [06:24<02:50, 11.36s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  66% Completed | 27/41 [06:41<03:00, 12.89s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  71% Completed | 29/41 [06:59<02:14, 11.25s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  73% Completed | 30/41 [07:11<02:04, 11.30s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  76% Completed | 31/41 [07:27<02:06, 12.62s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  78% Completed | 32/41 [07:35<01:41, 11.25s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  80% Completed | 33/41 [07:56<01:51, 13.99s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  83% Completed | 34/41 [08:09<01:36, 13.76s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  85% Completed | 35/41 [08:20<01:17, 12.85s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  88% Completed | 36/41 [08:29<00:59, 11.97s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  90% Completed | 37/41 [08:48<00:55, 13.83s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  93% Completed | 38/41 [08:55<00:36, 12.02s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  95% Completed | 39/41 [09:14<00:27, 13.99s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards:  98% Completed | 40/41 [09:34<00:15, 15.79s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards: 100% Completed | 41/41 [09:45<00:00, 14.28s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m Loading safetensors checkpoint shards: 100% Completed | 41/41 [09:45<00:00, 14.28s/it]
-[0;36m(Worker_TP0 pid=543833)[0;0m 
-[0;36m(Worker_TP7 pid=543840)[0;0m 2025-12-23 03:30:04,503 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP6 pid=543839)[0;0m 2025-12-23 03:30:04,503 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP4 pid=543837)[0;0m 2025-12-23 03:30:04,503 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP0 pid=543833)[0;0m 2025-12-23 03:30:04,504 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP5 pid=543838)[0;0m 2025-12-23 03:30:04,504 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP3 pid=543836)[0;0m 2025-12-23 03:30:04,504 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP1 pid=543834)[0;0m 2025-12-23 03:30:04,504 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP2 pid=543835)[0;0m 2025-12-23 03:30:04,504 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(Worker_TP3 pid=543836)[0;0m 2025-12-23 03:30:04,589 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP6 pid=543839)[0;0m 2025-12-23 03:30:04,672 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP2 pid=543835)[0;0m 2025-12-23 03:30:04,674 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP0 pid=543833)[0;0m 2025-12-23 03:30:04,674 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP4 pid=543837)[0;0m 2025-12-23 03:30:04,677 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP5 pid=543838)[0;0m 2025-12-23 03:30:04,691 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP7 pid=543840)[0;0m 2025-12-23 03:30:04,698 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP1 pid=543834)[0;0m 2025-12-23 03:30:04,701 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(Worker_TP0 pid=543833)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%| | 0/35 [00:00<?,Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   3%| | 1/35 [00:01<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%| | 2/35 [00:01<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%| | 3/35 [00:02<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  11%| | 4/35 [00:02<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|▏| 5/35 [00:03<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|▏| 6/35 [00:03<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|▏| 7/35 [00:04<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  23%|▏| 8/35 [00:04<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  26%|▎| 9/35 [00:05<00Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|▎| 10/35 [00:05<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|▎| 11/35 [00:06<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|▎| 12/35 [00:06<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|▎| 13/35 [00:07<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|▍| 14/35 [00:07<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|▍| 15/35 [00:08<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|▍| 16/35 [00:08<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|▍| 17/35 [00:09<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|▌| 18/35 [00:09<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  54%|▌| 19/35 [00:10<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|▌| 20/35 [00:10<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|▌| 21/35 [00:11<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|▋| 22/35 [00:11<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|▋| 23/35 [00:12<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|▋| 24/35 [00:12<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|▋| 25/35 [00:12<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  74%|▋| 26/35 [00:13<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  77%|▊| 27/35 [00:13<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|▊| 28/35 [00:14<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  83%|▊| 29/35 [00:14<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|▊| 30/35 [00:15<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  89%|▉| 31/35 [00:15<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  91%|▉| 32/35 [00:16<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|▉| 33/35 [00:17<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  97%|▉| 34/35 [00:18<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|█| 35/35 [00:19<0Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|█| 35/35 [00:19<0
-[0;36m(Worker_TP0 pid=543833)[0;0m Capturing CUDA graphs (decode, FULL):   0%|             | 0/19 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   5%|▎    | 1/19 [00:02<00:53,  2.97s/it]Capturing CUDA graphs (decode, FULL):  11%|▌    | 2/19 [00:03<00:25,  1.52s/it]Capturing CUDA graphs (decode, FULL):  16%|▊    | 3/19 [00:04<00:17,  1.11s/it]Capturing CUDA graphs (decode, FULL):  21%|█    | 4/19 [00:05<00:15,  1.06s/it]Capturing CUDA graphs (decode, FULL):  26%|█▎   | 5/19 [00:06<00:14,  1.03s/it]Capturing CUDA graphs (decode, FULL):  32%|█▌   | 6/19 [00:06<00:11,  1.12it/s]Capturing CUDA graphs (decode, FULL):  37%|█▊   | 7/19 [00:07<00:09,  1.25it/s]Capturing CUDA graphs (decode, FULL):  42%|██   | 8/19 [00:07<00:07,  1.46it/s]Capturing CUDA graphs (decode, FULL):  47%|██▎  | 9/19 [00:08<00:06,  1.66it/s]Capturing CUDA graphs (decode, FULL):  53%|██  | 10/19 [00:08<00:04,  1.85it/s]Capturing CUDA graphs (decode, FULL):  58%|██▎ | 11/19 [00:08<00:03,  2.02it/s]Capturing CUDA graphs (decode, FULL):  63%|██▌ | 12/19 [00:09<00:03,  2.16it/s]Capturing CUDA graphs (decode, FULL):  68%|██▋ | 13/19 [00:09<00:02,  2.45it/s]Capturing CUDA graphs (decode, FULL):  74%|██▉ | 14/19 [00:09<00:01,  2.76it/s]Capturing CUDA graphs (decode, FULL):  79%|███▏| 15/19 [00:10<00:01,  3.03it/s]Capturing CUDA graphs (decode, FULL):  84%|███▎| 16/19 [00:10<00:00,  3.25it/s]Capturing CUDA graphs (decode, FULL):  89%|███▌| 17/19 [00:10<00:00,  3.40it/s]Capturing CUDA graphs (decode, FULL):  95%|███▊| 18/19 [00:10<00:00,  3.55it/s]Capturing CUDA graphs (decode, FULL): 100%|████| 19/19 [00:11<00:00,  2.94it/s]Capturing CUDA graphs (decode, FULL): 100%|████| 19/19 [00:11<00:00,  1.67it/s]
-[2025-12-23 03:37:47] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:47] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:47] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:47] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:48] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:48] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:48] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:48] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:48] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:48] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:49] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:49] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:49] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:49] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:50] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[2025-12-23 03:37:51] INFO _client.py:1740: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Exception ignored in: <function AsyncLLM.__del__ at 0x7fe0e2b13560>
-Traceback (most recent call last):
-  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 263, in __del__
-  File "/projects/bfdz/zluo8/tool_and_judge2/.venv/lib/python3.13/site-packages/vllm/v1/engine/async_llm.py", line 268, in shutdown
-TypeError: 'NoneType' object is not callable

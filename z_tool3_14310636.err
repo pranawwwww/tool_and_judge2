@@ -1,7 +1,0 @@
-🔗 Found pyo3 bindings
-🐍 Found CPython 3.13 at /projects/bfdz/zluo8/tool_and_judge2/.venv/bin/python
-   Compiling codebase_rs v0.1.0 (/projects/bfdz/zluo8/tool_and_judge2)
-    Finished `release` profile [optimized] target(s) in 23.59s
-📖 Found type stub file at codebase_rs.pyi
-📦 Built wheel for CPython 3.13 to /tmp/.tmpJC2xLH/codebase_rs-0.1.0-cp313-cp313-linux_x86_64.whl
-🛠 Installed codebase_rs-0.1.0

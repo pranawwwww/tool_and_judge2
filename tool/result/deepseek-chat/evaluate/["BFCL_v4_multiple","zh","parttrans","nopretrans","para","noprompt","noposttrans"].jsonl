@@ -8,7 +8,7 @@
 {"id":"multiple_7","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"wildlife_population.assess_growth\":{\"species\":\"deer\",\"location\":\"Washington state\",\"duration\":10}},{\"ecological_impact.analyze\":{\"species\":\"deer\",\"ecosystem\":\"woodland\",\"location\":\"Washington state\",\"timeframe\":10}}]"}}}
 {"id":"multiple_8","valid":true,"error":null}
 {"id":"multiple_9","valid":true,"error":null}
-{"id":"multiple_10","valid":false,"error":{"WrongFuncName":{"expected_name":"database.modify_columns","actual_name":"database.create_backup","decoded_output":"[{\"database.create_backup\":{\"db_name\":\"employees\",\"backup_location\":\"/backups/employees_backup\",\"timestamp\":true}}]"}}}
+{"id":"multiple_10","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要从employees数据库的personal_data表中删除邮箱地址和社会安全号码这两列。不过，我需要知道这两列在数据库中的确切列名才能执行删除操作。\\n\\n您提到的\\\"邮箱地址(email)\\\"和\\\"社会安全号码(ssn/social_security_number)\\\"中，哪个是数据库中的实际列名？是：\\n1. \\\"email\\\"和\\\"ssn\\\"？\\n2. \\\"email\\\"和\\\"social_security_number\\\"？\\n3. 还是其他列名？\\n\\n请提供这两列在数据库中的确切列名，这样我就可以为您执行删除操作了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_11","valid":true,"error":null}
 {"id":"multiple_12","valid":true,"error":null}
 {"id":"multiple_13","valid":false,"error":{"WrongFuncName":{"expected_name":"corporate_finance.revenue_forecast","actual_name":"corporate_finance.product_price","decoded_output":"[{\"corporate_finance.product_price\":{\"company\":\"XYZ\",\"product\":\"Product A\"}}]"}}}
@@ -16,15 +16,15 @@
 {"id":"multiple_15","valid":true,"error":null}
 {"id":"multiple_16","valid":true,"error":null}
 {"id":"multiple_17","valid":true,"error":null}
-{"id":"multiple_18","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"european_history.battle_details\":{\"battle\":\"斯大林格勒战役\"}},{\"european_history.leader_info\":{\"leader\":\"斯大林\"}}]"}}}
+{"id":"multiple_18","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"european_history.battle_details\":{\"battle\":\"斯大林格勒战役\"}},{\"european_history.leader_info\":{\"leader\":\"约瑟夫·斯大林\"}}]"}}}
 {"id":"multiple_19","valid":true,"error":null}
-{"id":"multiple_20","valid":false,"error":{"InvalidParamValue":{"param":"material","actual_value":"大理石","expected_values":["marble"],"decoded_output":"[{\"sculpture_price.calculate\":{\"material\":\"大理石\",\"size\":3,\"complexity\":\"medium\"}}]"}}}
+{"id":"multiple_20","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要计算一件3英尺大理石雕塑的价格，但我需要知道雕塑的复杂程度。您希望雕塑的复杂程度是什么级别？有\\\"低\\\"、\\\"中\\\"或\\\"高\\\"三种选择。如果您不确定，我可以使用默认的\\\"中\\\"等复杂程度来计算。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_21","valid":true,"error":null}
 {"id":"multiple_22","valid":true,"error":null}
 {"id":"multiple_23","valid":true,"error":null}
 {"id":"multiple_24","valid":true,"error":null}
 {"id":"multiple_25","valid":true,"error":null}
-{"id":"multiple_26","valid":false,"error":{"InvalidParamValue":{"param":"platform","actual_value":"PlayStation","expected_values":["Playstation","PS"],"decoded_output":"[{\"game_rewards.get\":{\"game\":\"Fortnite\",\"platform\":\"PlayStation\",\"mission\":\"\",\"trophy\":\"\"}}]"}}}
+{"id":"multiple_26","valid":false,"error":{"WrongFuncName":{"expected_name":"game_rewards.get","actual_name":"game_missions.list","decoded_output":"[{\"game_missions.list\":{\"game\":\"Fortnite\"}}]"}}}
 {"id":"multiple_27","valid":true,"error":null}
 {"id":"multiple_28","valid":true,"error":null}
 {"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
@@ -48,12 +48,12 @@
 {"id":"multiple_47","valid":false,"error":{"InvalidParamValue":{"param":"rounding","actual_value":4,"expected_values":["",0],"decoded_output":"[{\"cosine_similarity.calculate\":{\"vector1\":[3,2,1],\"vector2\":[1,2,3],\"rounding\":4}}]"}}}
 {"id":"multiple_48","valid":true,"error":null}
 {"id":"multiple_49","valid":true,"error":null}
-{"id":"multiple_50","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要预测纽约下个月的房价走势，但我需要明确一些参数。您提到的\\\"下个月\\\"是指未来1个月吗？另外，您希望考虑哪些特征因素来预测房价？比如面积、卧室数量、卫生间数量或地理位置等特征？\\n\\n目前我缺少\\\"months\\\"参数（预测月份数）和\\\"features\\\"参数（特征因素）。请提供这些信息，我就可以为您预测纽约的房价走势了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_50","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要预测纽约下个月的房价走势，但我需要明确一些参数。您提到的\\\"下个月\\\"是指未来1个月吗？另外，您希望考虑哪些特征因素来进行预测？比如面积、卧室数量、卫生间数量或地理位置等特征？\\n\\n目前我缺少\\\"months\\\"参数（预测月份数）和\\\"features\\\"参数（预测特征）。请提供这些信息，我就可以为您进行房价预测了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_51","valid":true,"error":null}
 {"id":"multiple_52","valid":true,"error":null}
-{"id":"multiple_53","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想要根据利率（interest rates）和失业率（unemployment rates）来预测未来5年的房价（house price）。然而，我目前可用的工具需要具体的变量名称才能进行预测分析。\\n\\n您提供的函数需要明确的独立变量（independent_var）和依赖变量（dependent_var）参数，但我无法确定您数据集中这些变量的确切名称。\\n\\n为了使用线性回归或随机森林回归进行预测，我需要知道：\\n1. 利率在您的数据集中对应的变量名称\\n2. 失业率在您的数据集中对应的变量名称  \\n3. 房价在您的数据集中对应的变量名称\\n\\n请您提供这些变量的具体名称，这样我就可以为您进行未来5年的房价预测了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_53","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想要根据利率（interest rates）和失业率（unemployment rates）来预测未来5年的房价（house price）。然而，我目前可用的工具需要具体的变量名称才能进行预测分析。\\n\\n为了使用线性回归或随机森林回归模型进行预测，我需要知道：\\n1. 利率在数据集中的具体变量名称是什么？\\n2. 失业率在数据集中的具体变量名称是什么？\\n3. 房价在数据集中的具体变量名称是什么？\\n\\n您能否提供这些变量的确切名称？这样我就可以为您建立预测模型，对未来5年的房价进行预测了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_54","valid":true,"error":null}
-{"id":"multiple_55","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想要获取Google未来3天股价的预测，但是您没有指定要使用哪种预测模型。股价预测函数需要一个模型参数，比如\\\"regression\\\"（回归模型）或其他可用的模型类型。\\n\\n请问您希望使用哪种预测模型？例如：\\n- \\\"regression\\\"（回归模型）\\n- 或者其他可用的模型选项\\n\\n一旦您提供了模型参数，我就可以为您调用股价预测函数。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_55","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想要获取Google未来3天股价的预测，这需要使用股票预测功能。不过，该功能需要一个\\\"model\\\"参数来指定预测模型，而您没有提供这个信息。\\n\\n请问您希望使用哪种预测模型？比如\\\"regression\\\"（回归模型）、\\\"neural_network\\\"（神经网络模型）或其他特定模型？\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_56","valid":true,"error":null}
 {"id":"multiple_57","valid":true,"error":null}
 {"id":"multiple_58","valid":true,"error":null}
@@ -66,7 +66,7 @@
 {"id":"multiple_65","valid":true,"error":null}
 {"id":"multiple_66","valid":true,"error":null}
 {"id":"multiple_67","valid":true,"error":null}
-{"id":"multiple_68","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想查找纽约公共图书馆的历史小说类书籍，但您没有提供具体的书名。为了帮您搜索，我需要知道您想查找哪本历史小说的具体书名。\\n\\n您能告诉我您想查找的历史小说的书名吗？这样我就可以帮您在纽约公共图书馆系统中搜索了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_68","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想查找纽约公共图书馆的历史小说类书籍，但您没有提供具体的书名。为了帮您搜索，我需要知道您想查找哪本历史小说的具体书名。\\n\\n您能告诉我您想查找的历史小说的书名吗？这样我就可以帮您在纽约公共图书馆搜索了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_69","valid":true,"error":null}
 {"id":"multiple_70","valid":true,"error":null}
 {"id":"multiple_71","valid":true,"error":null}
@@ -79,7 +79,7 @@
 {"id":"multiple_78","valid":true,"error":null}
 {"id":"multiple_79","valid":true,"error":null}
 {"id":"multiple_80","valid":true,"error":null}
-{"id":"multiple_81","valid":true,"error":null}
+{"id":"multiple_81","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要为您预订Eminem在纽约市的演唱会门票，并包含后台通行证。不过，我注意到您没有指定具体的演唱会名称，而只是提到了\\\"Eminem演唱会\\\"。为了完成预订，我需要知道具体的演唱会名称或活动名称。\\n\\n您能提供一下具体的演唱会名称吗？比如是\\\"Eminem: The Final Tour\\\"、\\\"Eminem Live in NYC\\\"还是其他具体的演唱会名称？这样我就可以为您预订包含后台通行证的门票了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_82","valid":true,"error":null}
 {"id":"multiple_83","valid":true,"error":null}
 {"id":"multiple_84","valid":true,"error":null}
@@ -90,13 +90,13 @@
 {"id":"multiple_89","valid":true,"error":null}
 {"id":"multiple_90","valid":true,"error":null}
 {"id":"multiple_91","valid":false,"error":{"InvalidParamValue":{"param":"ingredientLimit","actual_value":5,"expected_values":[4],"decoded_output":"[{\"recipe.find\":{\"mainIngredient\":\"apple\",\"ingredientLimit\":5}}]"}}}
-{"id":"multiple_92","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要为您查找Denver附近Walmart的素食且无麸质食品清单。不过，我注意到您只提供了\\\"Denver\\\"这个信息，但没有指定州。为了准确查找，我需要知道具体是哪个州。请问您指的是Denver, Colorado (CO)吗？还是其他州的Denver？\\n\\n一旦您确认了具体位置（例如\\\"Denver, CO\\\"），我就可以为您查询Walmart的素食且无麸质产品了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_92","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要为您查询Denver附近Walmart的素食且无麸质食品清单。不过，我注意到您只提供了\\\"Denver\\\"这个信息，但没有指定州。为了准确查询，我需要知道具体的州信息。请问您指的是哪个州的Denver呢？比如是Colorado州的Denver，还是其他州的Denver？\\n\\n一旦您提供了完整的城市和州信息（例如\\\"Denver, CO\\\"），我就可以为您查询Walmart的素食且无麸质产品了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_93","valid":true,"error":null}
 {"id":"multiple_94","valid":true,"error":null}
 {"id":"multiple_95","valid":true,"error":null}
 {"id":"multiple_96","valid":true,"error":null}
-{"id":"multiple_97","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想计算半径为10的圆的面积，但您没有指定单位。要使用可用的函数，我需要知道半径的单位是什么（比如米、厘米、英寸等）。\\n\\n请告诉我半径10的单位是什么？例如：米、厘米、英尺等。\", \"role\": \"assistant\"}"}}}
-{"id":"multiple_98","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想计算半径为3的圆的周长，但您没有指定单位。为了使用可用的函数，我需要知道您希望使用什么单位来计算周长（比如厘米、米、英寸等）。\\n\\n请告诉我您希望使用什么单位，这样我就可以为您计算了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_97","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想计算半径为10的圆的面积，但您没有指定单位。要使用可用的函数计算圆的面积，我需要知道半径的单位是什么（比如米、厘米、英尺等）。\\n\\n请告诉我半径10的单位是什么？例如：米、厘米、英尺等。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_98","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想计算半径为3的圆的周长，但您没有指定单位。为了使用几何计算函数，我需要知道您希望使用什么单位来表示结果（比如厘米、米、英寸等）。\\n\\n请告诉我您希望使用什么单位来计算周长？\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_99","valid":false,"error":{"InvalidParamValue":{"param":"function","actual_value":"2x^2","expected_values":["2x**2","lambda x: 2x**2"],"decoded_output":"[{\"calculus.derivative\":{\"function\":\"2x^2\",\"value\":1,\"function_variable\":\"x\"}}]"}}}
 {"id":"multiple_100","valid":true,"error":null}
 {"id":"multiple_101","valid":true,"error":null}
@@ -104,7 +104,7 @@
 {"id":"multiple_103","valid":true,"error":null}
 {"id":"multiple_104","valid":true,"error":null}
 {"id":"multiple_105","valid":true,"error":null}
-{"id":"multiple_106","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要计算电场强度，但我注意到您的问题中缺少一个必要的参数：介质（medium）。电场强度计算需要知道电荷所处的介质，因为不同介质的介电常数会影响电场强度。\\n\\n您提供了：\\n- 电荷：0.01库仑\\n- 距离：4米\\n\\n但缺少介质参数。请指定电荷所处的介质环境（如真空、空气、水等），这样我才能为您准确计算电场强度。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_106","valid":true,"error":null}
 {"id":"multiple_107","valid":true,"error":null}
 {"id":"multiple_108","valid":true,"error":null}
 {"id":"multiple_109","valid":true,"error":null}
@@ -113,7 +113,7 @@
 {"id":"multiple_112","valid":true,"error":null}
 {"id":"multiple_113","valid":true,"error":null}
 {"id":"multiple_114","valid":true,"error":null}
-{"id":"multiple_115","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"曼哈顿","expected_values":["Manhattan"],"decoded_output":"[{\"find_restaurants\":{\"location\":\"曼哈顿\",\"food_type\":\"泰国菜\",\"number\":5,\"dietary_requirements\":[\"vegan\"]}}]"}}}
+{"id":"multiple_115","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要使用查找餐厅的功能来帮您在曼哈顿找到泰国菜餐厅。不过，我注意到您提到了\\\"靠近我的\\\"这个位置要求，但您没有提供具体的位置信息。为了使用这个功能，我需要知道您在曼哈顿的具体位置或区域。\\n\\n您能提供更具体的位置信息吗？比如：\\n- 具体的地址\\n- 街区名称（如中城、上东区、下城等）\\n- 邮政编码\\n- 地标建筑附近\\n\\n一旦您提供了具体位置，我就可以帮您查找曼哈顿地区提供泰国菜且有vegan菜单的5家餐厅。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_116","valid":true,"error":null}
 {"id":"multiple_117","valid":true,"error":null}
 {"id":"multiple_118","valid":true,"error":null}
@@ -130,23 +130,23 @@
 {"id":"multiple_129","valid":true,"error":null}
 {"id":"multiple_130","valid":true,"error":null}
 {"id":"multiple_131","valid":true,"error":null}
-{"id":"multiple_132","valid":false,"error":{"InvalidParamValue":{"param":"rate_of_return","actual_value":8,"expected_values":[0.08],"decoded_output":"[{\"finance.calculate_future_value\":{\"initial_investment\":20000,\"rate_of_return\":8,\"years\":5,\"contribution\":0}}]"}}}
+{"id":"multiple_132","valid":true,"error":null}
 {"id":"multiple_133","valid":false,"error":{"InvalidParamValue":{"param":"annual_yield","actual_value":5,"expected_values":[0.05],"decoded_output":"[{\"calculate_mutual_fund_balance\":{\"investment_amount\":50000,\"annual_yield\":5,\"years\":3}}]"}}}
 {"id":"multiple_134","valid":true,"error":null}
-{"id":"multiple_135","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要获取加利福尼亚州案号为2022/AL2562的案件信息，特别是受害者信息。不过，我需要确认一下法院信息。您能告诉我这个案件是在哪个法院审理的吗？比如是加利福尼亚州哪个具体的法院？\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_135","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要获取加利福尼亚州案号为2022/AL2562的案件信息，特别是受害者信息。不过，我需要知道具体的法院信息才能使用这个函数。您能提供该案件是在哪个法院审理的吗？比如是加利福尼亚州的哪个具体法院（例如洛杉矶高等法院、旧金山高等法院等）？\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_136","valid":true,"error":null}
 {"id":"multiple_137","valid":true,"error":null}
-{"id":"multiple_138","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想获取\\\"R vs Adams\\\"这起法律案件的详细信息。不过，要使用法律案件查询功能，我需要知道具体的案件ID编号。您提供的\\\"R vs Adams\\\"看起来像是案件名称或标题，而不是案件ID。\\n\\n您是否有这个案件的具体ID编号？或者您能提供更多关于这个案件的识别信息吗？这样我才能为您查询详细的案件信息。\\n\\n如果您不知道案件ID，可能需要通过其他途径先获取这个案件的准确标识符。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_138","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想获取\\\"R vs Adams\\\"这起法律案件的详细案件信息。不过，要使用法律案件查询功能，我需要知道具体的案件ID（case_id）。您提供的\\\"R vs Adams\\\"这个名称可能不是标准的案件ID格式。\\n\\n您是否有这个案件的具体ID编号？或者您可以提供更准确的案件标识信息，这样我就能帮您查询详细案件信息了。\\n\\n另外，如果您不确定案件ID，您可以尝试：\\n1. 查看法律文件或相关文档中的案件编号\\n2. 联系相关法律机构获取准确的案件ID\\n3. 提供更完整的案件名称或引用信息\\n\\n一旦您提供了正确的案件ID，我就能使用法律案件查询工具为您获取详细的信息。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_139","valid":true,"error":null}
-{"id":"multiple_140","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想查找2020年在加利福尼亚州对Google公司提起的诉讼案件。不过，要使用诉讼搜索功能，我需要知道具体的案件类型。您希望查找哪种类型的诉讼案件呢？例如：\\n\\n- 民事案件 (civil)\\n- 刑事案件 (criminal) \\n- 小额索赔案件 (small_claims)\\n- 或者所有类型的案件 (all)\\n\\n请告诉我您想搜索的案件类型，这样我就能为您查找相关信息了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_140","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想查找2020年在加利福尼亚州对Google公司提起的诉讼案件。不过，要使用诉讼搜索功能，我需要知道具体的案件类型。您希望查找哪种类型的诉讼案件呢？\\n\\n可选的案件类型包括：\\n- \\\"civil\\\"（民事案件）\\n- \\\"criminal\\\"（刑事案件）\\n- \\\"small_claims\\\"（小额索赔案件）\\n- 或者如果您想搜索所有类型的案件，可以指定\\\"all\\\"\\n\\n请告诉我您想搜索哪种类型的诉讼案件，这样我就能为您进行搜索了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_141","valid":true,"error":null}
-{"id":"multiple_142","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想查询佛罗里达州迈阿密未来7天的湿度水平。不过，我目前无法提供这个特定的湿度预报服务。\\n\\n要获取迈阿密的湿度预报，您可能需要：\\n1. 查看当地气象网站或应用程序\\n2. 使用专门的天气服务\\n3. 咨询美国国家气象局(NWS)的预报\\n\\n我现有的工具主要专注于团队比赛得分统计，无法提供您需要的湿度预报信息。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_142","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想查询佛罗里达州迈阿密未来7天的湿度水平，但是目前可用的湿度预报功能需要一个必需的参数 `min_humidity`（最低湿度百分比），而您的请求中没有提供这个信息。\\n\\n为了给您提供准确的湿度预报，我需要知道您希望筛选的最低湿度水平是多少。比如，您是想查看所有湿度水平，还是只关注高于某个特定百分比（例如50%、60%等）的湿度情况？\\n\\n请提供您希望设置的最低湿度百分比，这样我就能为您获取迈阿密未来7天的湿度预报了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_143","valid":true,"error":null}
 {"id":"multiple_144","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"伦敦","expected_values":["London"],"decoded_output":"[{\"air_quality\":{\"location\":\"伦敦\",\"date\":\"2022-08-16\"}}]"}}}
-{"id":"multiple_145","valid":true,"error":null}
+{"id":"multiple_145","valid":false,"error":{"InvalidParamValue":{"param":"fuel_type","actual_value":"汽油","expected_values":["gas","gasoline"],"decoded_output":"[{\"calculate_emissions\":{\"distance\":12000,\"fuel_type\":\"汽油\",\"fuel_efficiency\":20,\"efficiency_reduction\":null}}]"}}}
 {"id":"multiple_146","valid":true,"error":null}
 {"id":"multiple_147","valid":true,"error":null}
-{"id":"multiple_148","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要获取Apple Inc.的股票详细信息，但我注意到您的问题中缺少一些必要的参数。要获取股票信息，我需要知道您希望获取哪种详细程度的信息（\\\"summary\\\"或\\\"detailed\\\"），以及您感兴趣的股票市场（如NASDAQ、NYSE等）。\\n\\n请提供以下信息：\\n1. 您希望获取摘要信息还是详细信息？\\n2. 您希望查询哪个股票市场（默认为NASDAQ）？\\n\\n这样我就能为您获取Apple Inc.的股票信息了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_148","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要获取Apple Inc.的股票详细信息，但我注意到您的问题中缺少一些必要的参数。要获取股票信息，我需要知道您希望获取的详细程度（summary或detailed）以及您感兴趣的股票市场（如NASDAQ等）。\\n\\n请问您希望：\\n1. 获取简要信息还是详细信息？\\n2. 在哪个股票市场查询（默认是NASDAQ）？\\n\\n这样我就能为您提供Apple Inc.的准确股票信息了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_149","valid":true,"error":null}
 {"id":"multiple_150","valid":true,"error":null}
 {"id":"multiple_151","valid":true,"error":null}
@@ -162,30 +162,30 @@
 {"id":"multiple_161","valid":false,"error":{"InvalidParamValue":{"param":"month","actual_value":"null","expected_values":["upcoming","next month","upcoming month","next",""],"decoded_output":"[{\"find_exhibition\":{\"location\":\"New York, NY\",\"art_form\":\"sculpture\",\"month\":\"null\",\"user_ratings\":\"high\"}}]"}}}
 {"id":"multiple_162","valid":true,"error":null}
 {"id":"multiple_163","valid":true,"error":null}
-{"id":"multiple_164","valid":true,"error":null}
+{"id":"multiple_164","valid":false,"error":{"InvalidParamValue":{"param":"finish","actual_value":"玫瑰木漆面","expected_values":["Rosewood"],"decoded_output":"[{\"instrument_price.get\":{\"brand\":\"Fender\",\"model\":\"American Professional II Stratocaster\",\"finish\":\"玫瑰木漆面\"}}]"}}}
 {"id":"multiple_165","valid":true,"error":null}
 {"id":"multiple_166","valid":true,"error":null}
 {"id":"multiple_167","valid":true,"error":null}
 {"id":"multiple_168","valid":true,"error":null}
 {"id":"multiple_169","valid":false,"error":{"InvalidParamValue":{"param":"key","actual_value":"C♯","expected_values":["C#","C sharp"],"decoded_output":"[{\"musical_scale\":{\"key\":\"C♯\",\"scale_type\":\"major\"}}]"}}}
 {"id":"multiple_170","valid":true,"error":null}
-{"id":"multiple_171","valid":true,"error":null}
-{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"team","actual_value":"Los Angeles Lakers","expected_values":[""],"decoded_output":"[{\"sports_db.find_athlete\":{\"name\":\"Lebron James\",\"team\":\"Los Angeles Lakers\",\"sport\":\"Basketball\"}}]"}}}
-{"id":"multiple_173","valid":true,"error":null}
+{"id":"multiple_171","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要知道这场比赛的地点/场馆信息才能查询结果。您能提供2021年1月28日湖人队与快船队比赛的具体场馆吗？\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_172","valid":true,"error":null}
+{"id":"multiple_173","valid":false,"error":{"InvalidParamValue":{"param":"top","actual_value":30,"expected_values":[1,""],"decoded_output":"[{\"get_defense_ranking\":{\"season\":2021,\"top\":30}}]"}}}
 {"id":"multiple_174","valid":true,"error":null}
 {"id":"multiple_175","valid":true,"error":null}
 {"id":"multiple_176","valid":true,"error":null}
 {"id":"multiple_177","valid":true,"error":null}
 {"id":"multiple_178","valid":true,"error":null}
 {"id":"multiple_179","valid":true,"error":null}
-{"id":"multiple_180","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要查询用户Sam在Switch平台的Zelda游戏统计信息，但我注意到您提供的参数中缺少具体的游戏名称。您提到了\\\"Zelda游戏\\\"，但这是一个系列游戏，我需要具体的游戏名称，比如\\\"The Legend of Zelda: Breath of the Wild\\\"或\\\"The Legend of Zelda: Tears of the Kingdom\\\"等。\\n\\n请您提供具体的Zelda游戏名称，这样我就能为您查询Sam在Switch平台上的游戏统计信息了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_180","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要查询用户Sam在Switch平台的Zelda游戏统计信息，但我注意到您提供的参数中缺少具体的游戏名称。您提到了\\\"Zelda游戏\\\"，但这是一个系列游戏，我需要具体的游戏名称才能查询统计信息。\\n\\n请提供具体的游戏名称，例如：\\n- \\\"The Legend of Zelda: Breath of the Wild\\\"\\n- \\\"The Legend of Zelda: Tears of the Kingdom\\\"\\n- \\\"The Legend of Zelda: Skyward Sword\\\"\\n- 或其他具体的Zelda游戏名称\\n\\n这样我才能为您查询Sam在Switch平台上的游戏统计信息。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_181","valid":true,"error":null}
-{"id":"multiple_182","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想找一款评分高于4.5且可在Windows 10上运行的多人联机游戏。不过，我目前无法直接为您推荐具体的游戏，因为游戏推荐功能暂时不可用。\\n\\n您可以考虑以下替代方案：\\n1. 查看Steam、Epic Games Store等平台的多人游戏排行榜\\n2. 搜索\\\"Windows 10 多人联机游戏\\\"并查看用户评价\\n3. 关注游戏社区和论坛中的推荐\\n\\n如果您有其他需要帮助的问题，比如计算距离、发送邮件或数学计算，我很乐意为您提供协助。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_182","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想找一款评分高于4.5且可在Windows 10上运行的多人联机游戏。不过，要使用游戏查找功能，我还需要知道您偏好的游戏类型。\\n\\n可选的游戏类型有：Action（动作）、Adventure（冒险）、Racing（竞速）、Strategy（策略）、Simulation（模拟）。\\n\\n您希望推荐哪种类型的多人联机游戏呢？\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_183","valid":true,"error":null}
-{"id":"multiple_184","valid":false,"error":{"InvalidParamValue":{"param":"ingredients","actual_value":["pasta","cheese","tomato","garlic","olive oil"],"expected_values":[["pasta","cheese"],["cheese","pasta"]],"decoded_output":"[{\"recipe_search\":{\"dietary_restriction\":\"Vegetarian\",\"ingredients\":[\"pasta\",\"cheese\",\"tomato\",\"garlic\",\"olive oil\"],\"servings\":2}}]"}}}
+{"id":"multiple_184","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要为您搜索适合2人份的Vegetarian pasta with cheese食谱。根据您的要求，我需要使用食谱搜索功能，但该功能需要指定具体的食材列表。您提到的是\\\"pasta with cheese\\\"，这是一个比较宽泛的描述。\\n\\n为了给您提供更准确的食谱，您能告诉我您希望使用哪些具体的食材吗？比如：\\n- 您喜欢哪种类型的意大利面（如spaghetti, penne, fettuccine等）？\\n- 您希望使用哪种奶酪（如mozzarella, parmesan, cheddar等）？\\n- 您还有其他想要加入的蔬菜或配料吗？\\n\\n一旦您提供了具体的食材列表，我就可以为您搜索合适的素食意大利面食谱了。\", \"role\": \"assistant\"}"}}}
 {"id":"multiple_185","valid":true,"error":null}
-{"id":"multiple_186","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想要一份纯素布朗尼食谱，准备时间不超过30分钟。不过，我目前无法直接提供食谱，因为相关的食谱查找功能暂时不可用。\\n\\n您可以考虑：\\n1. 搜索在线食谱网站或烹饪应用，使用关键词\\\"vegan brownies 30 minutes\\\"\\n2. 查看专门的纯素烹饪博客或YouTube频道\\n3. 使用常见的纯素布朗尼替代食材，如亚麻籽蛋（1汤匙亚麻籽粉+3汤匙水替代1个鸡蛋）、植物奶、椰子油等\\n\\n如果您有其他关于科学发现或历史方面的问题，我很乐意为您提供帮助。\", \"role\": \"assistant\"}"}}}
-{"id":"multiple_187","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我需要为您查询洛杉矶全食超市中番茄和生菜的价格。不过，我注意到您只提供了城市名称\\\"Los Angeles\\\"，但没有具体的门店地址。为了准确查询价格，我需要知道具体的门店位置。\\n\\n您能提供洛杉矶全食超市的具体地址或门店名称吗？比如：\\n- Whole Foods Market Los Angeles (具体地址)\\n- 或者您想查询的特定门店位置\\n\\n这样我就能为您获取准确的番茄和生菜价格信息了。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_186","valid":false,"error":{"ParsingError":{"error_message":"Expected 'tool_calls' array in response","raw_output":"{\"content\": \"我注意到您想要一份纯素布朗尼食谱，准备时间不超过30分钟。不过，我目前无法直接提供食谱，因为相关的食谱查找功能暂时不可用。\\n\\n您可以考虑：\\n1. 在网上搜索\\\"vegan brownies recipe under 30 minutes\\\"\\n2. 查看专门的素食食谱网站或应用\\n3. 尝试使用其他食谱查找工具\\n\\n如果您有其他关于科学发现的问题，我很乐意为您提供帮助。\", \"role\": \"assistant\"}"}}}
+{"id":"multiple_187","valid":true,"error":null}
 {"id":"multiple_188","valid":true,"error":null}
 {"id":"multiple_189","valid":true,"error":null}
 {"id":"multiple_190","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"希尔顿酒店","expected_values":["Hilton Hotel","Hilton"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"希尔顿酒店\",\"location\":\"芝加哥\",\"room_type\":\"单人房\",\"start_date\":\"2022-12-10\",\"nights\":2}}]"}}}
