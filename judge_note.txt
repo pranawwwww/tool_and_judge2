@@ -1,0 +1,2 @@
+collect response -> gpt5 / deepseek to merge the style and the ground truth answer -> feed it to the model to collect perplexity
+each model, each language, needs to collect correct / incorrect pairs

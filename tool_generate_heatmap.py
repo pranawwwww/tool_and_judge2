@@ -1,5 +1,5 @@
-import matplotlib
-matplotlib.use("Agg")  # HPC-safe backend
+# import matplotlib
+# matplotlib.use("Agg")  # HPC-safe backend
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 
+print("Running tool_generate_heatmap.py")
 # -----------------------------
 # Translate + Noise modes
 # -----------------------------
@@ -19,7 +20,7 @@ translate_modes = [
     "POST", # Fully Translated + Post-Translate
 ]
 
-noise_modes = ["NO_NOISE", "PARAPHRASE", "SYNONYM"]
+noise_modes = ["NO", "PARA", "SYNO"]
 
 
 def generate_heatmap(model_name: str, output_dir: str, result_dir: str, language: str) -> None:
@@ -113,11 +114,11 @@ def generate_heatmap(model_name: str, output_dir: str, result_dir: str, language
 
                 # Map noise_tag to noise_mode
                 if noise_tag == "nonoise":
-                    noise_mode = "NO_NOISE"
+                    noise_mode = "NO"
                 elif noise_tag == "para":
-                    noise_mode = "PARAPHRASE"
+                    noise_mode = "PARA"
                 elif noise_tag == "syno":
-                    noise_mode = "SYNONYM"
+                    noise_mode = "SYNO"
                 else:
                     print(f"Warning: Unknown noise tag '{noise_tag}' in {score_file.name}")
                     continue
@@ -187,17 +188,21 @@ def generate_heatmap(model_name: str, output_dir: str, result_dir: str, language
     print(df)
 
     # Plot heatmap
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(9, 5))
 
     # Use a lighter, pleasant colormap
     plt.imshow(df, cmap="RdYlGn", interpolation="nearest", vmin=0.0, vmax=1.0)
 
     # Colorbar
-    plt.colorbar(label="Accuracy")
+    plt.colorbar(label="Accuracy", shrink=0.8, aspect=15)
 
     # Ticks (transposed: translate modes on x-axis, noise modes on y-axis)
     plt.xticks(np.arange(len(translate_modes)), translate_modes, rotation=45)
     plt.yticks(np.arange(len(noise_modes)), noise_modes)
+
+    # Axis labels
+    plt.xlabel("Translate Mode", fontsize=14)
+    plt.ylabel("Noise Mode", fontsize=14)
 
     # Annotate values in each grid cell
     for i in range(df.shape[0]):
@@ -209,10 +214,10 @@ def generate_heatmap(model_name: str, output_dir: str, result_dir: str, language
                     j, i,
                     f"{value:.3f}",             # round to 3 decimals
                     ha="center", va="center",
-                    color="black", fontsize=9   # black text = readable on light colormap
+                    color="black", fontsize=12   # black text = readable on light colormap
                 )
 
-    plt.title(f"Accuracy of {model_name} Under {language} Queries")
+    plt.title(f"Accuracy of {model_name} Under {language} Queries", fontsize=16, pad=20)
     plt.tight_layout()
 
     # Create output directory if it doesn't exist
