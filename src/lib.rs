@@ -26,10 +26,7 @@ pub mod codebase_rs {
             AddNoiseMode, ApiModel, JudgeConfig, JudgeExperiment, Language, LocalModel, Model,
             ToolConfig, ToolExperiment, TranslateMode, TranslateOption,
         },
-        judge::{
-            concatenate_datasets::concatenate_one_answer_datasets,
-            concatenate_datasets::concatenate_two_answers_datasets,
-        },
+        judge::concatenate_datasets::concatenate_two_answers_datasets,
         judge::{
             dispatch_results::dispatch_perplexity_results,
             dispatch_results::dispatch_preference_results,

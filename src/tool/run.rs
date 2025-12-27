@@ -94,6 +94,7 @@ pub async fn tool_run_async(configs: Py<PyList>, num_gpus: usize) {
             TranslateMode::Translated { language, .. } => match language {
                 Language::Chinese => "_zh",
                 Language::Hindi => "_hi",
+                Language::Igbo => "_igbo",
             },
             TranslateMode::NotTranslated {} => "_en",
         };
