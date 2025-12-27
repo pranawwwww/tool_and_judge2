@@ -30,6 +30,6 @@ for translate in [
     experiments.append(ToolExperiment(translate, AddNoiseMode.NoNoise))
 
 config = ToolConfig(
-    Model.Api(ApiModel.Gpt5),
+    Model.Api(ApiModel.Gpt5Nano),
     experiments
 )
