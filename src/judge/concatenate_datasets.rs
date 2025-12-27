@@ -30,157 +30,152 @@ use crate::{
 //     }
 // }
 
-#[pyfunction]
-pub fn concatenate_perplexity_datasets(
-    model_safe_name: &str,
-    lang: &str,
-    output_file_path: &str,
-    debug_limit: Option<usize>,
-) {
-    let correct_dataset_path = format!("judge/datasets/one_answer/{}_correct.jsonl", lang);
-    let incorrect_dataset_path = format!("judge/datasets/one_answer/{}_incorrect.jsonl", lang);
-    let correct_result_path = format!(
-        "judge/result/{}/perplexity/{}_correct.jsonl",
-        model_safe_name, lang
-    );
-    let incorrect_result_path = format!(
-        "judge/result/{}/perplexity/{}_incorrect.jsonl",
-        model_safe_name, lang
-    );
-    let mask_path = "judge/datasets/perplexity_mask.jsonl";
-    let mut combined_entries: Vec<serde_json::Value> = Vec::new();
-    if !Path::new(&correct_dataset_path).exists() || !Path::new(&incorrect_dataset_path).exists() {
-        println!(
-            "One answer datasets for language {} not found. Generating...",
-            lang
-        );
-        generate_one_answer_dataset(&lang);
-    }
-    if !Path::new(&mask_path).exists() {
-        println!("Perplexity mask dataset not found. Generating...");
-        generate_perplexity_dataset_mask();
-    }
-    let correct_dataset_entries =
-        load_json_lines(&correct_dataset_path).expect("Failed to load correct one answer dataset");
-    let incorrect_dataset_entries = load_json_lines(&incorrect_dataset_path)
-        .expect("Failed to load incorrect one answer dataset");
+// /// This is no longer used for perplexity experiment because we need to first collect the model's natural response, and then generate the merged dataset for correct and incorrect at the same time.
+// #[pyfunction]
+// pub fn concatenate_one_answer_datasets(
+//     model_safe_name: &str,
+//     lang: &str,
+//     output_file_path: &str,
+//     debug_limit: Option<usize>,
+// ) {
+//     let correct_dataset_path = format!("judge/datasets/one_answer/{}_correct.jsonl", lang);
+//     let incorrect_dataset_path = format!("judge/datasets/one_answer/{}_incorrect.jsonl", lang);
+//     let correct_result_path = format!(
+//         "judge/result/{}/perplexity/{}_correct.jsonl",
+//         model_safe_name, lang
+//     );
+//     let incorrect_result_path = format!(
+//         "judge/result/{}/perplexity/{}_incorrect.jsonl",
+//         model_safe_name, lang
+//     );
+//     let mask_path = "judge/datasets/perplexity_mask.jsonl";
+//     let mut combined_entries: Vec<OneAnswerEntry> = Vec::new();
+//     if !Path::new(&correct_dataset_path).exists() || !Path::new(&incorrect_dataset_path).exists() {
+//         println!(
+//             "One answer datasets for language {} not found. Generating...",
+//             lang
+//         );
+//         generate_one_answer_dataset(&lang);
+//     }
+//     if !Path::new(&mask_path).exists() {
+//         println!("Perplexity mask dataset not found. Generating...");
+//         generate_perplexity_dataset_mask();
+//     }
+//     let correct_dataset_entries =
+//         load_json_lines(&correct_dataset_path).expect("Failed to load correct one answer dataset");
+//     let incorrect_dataset_entries = load_json_lines(&incorrect_dataset_path)
+//         .expect("Failed to load incorrect one answer dataset");
 
-    let perplexity_mask_entries =
-        load_json_lines(&mask_path).expect("Failed to load perplexity mask dataset");
+//     let perplexity_mask_entries =
+//         load_json_lines(&mask_path).expect("Failed to load perplexity mask dataset");
 
-    // parse all entries
-    let correct_dataset_entries_parsed: IndexMap<usize, OneAnswerEntry> = correct_dataset_entries
-        .into_iter()
-        .map(|entry| {
-            let parsed: OneAnswerEntry =
-                serde_json::from_value(entry).expect("Failed to parse correct one answer entry");
-            (parsed.index, parsed)
-        })
-        .collect();
-    let incorrect_dataset_entries_parsed: IndexMap<usize, OneAnswerEntry> =
-        incorrect_dataset_entries
-            .into_iter()
-            .map(|entry| {
-                let parsed: OneAnswerEntry = serde_json::from_value(entry)
-                    .expect("Failed to parse incorrect one answer entry");
-                (parsed.index, parsed)
-            })
-            .collect();
-    // let correct_result_entries =
-    //     load_json_lines(&correct_result_path).expect("Failed to load correct one answer result file");
-    // let incorrect_result_entries = load_json_lines(&incorrect_result_path)
-    //     .expect("Failed to load incorrect one answer result file");
-    let correct_result_ids: HashSet<usize> = match load_json_lines(&correct_result_path) {
-        Ok(entries) => entries
-            .into_iter()
-            .map(|entry| {
-                let parsed: PerplexityResultEntry = serde_json::from_value(entry)
-                    .expect("Failed to parse correct one answer result entry");
-                parsed.index
-            })
-            .collect(),
-        Err(_) => {
-            println!(
-                "File {} does not exist, assuming no completed entries.",
-                correct_result_path
-            );
-            HashSet::new()
-        }
-    };
-    let incorrect_result_ids: HashSet<usize> = match load_json_lines(&incorrect_result_path) {
-        Ok(entries) => entries
-            .into_iter()
-            .map(|entry| {
-                let parsed: PerplexityResultEntry = serde_json::from_value(entry)
-                    .expect("Failed to parse incorrect one answer result entry");
-                parsed.index
-            })
-            .collect(),
-        Err(_) => {
-            println!(
-                "File {} does not exist, assuming no completed entries.",
-                incorrect_result_path
-            );
-            HashSet::new()
-        }
-    };
-    let perplexity_mask_entries_parsed: IndexMap<usize, PerplexityDatasetMaskEntry> =
-        perplexity_mask_entries
-            .into_iter()
-            .map(|entry| {
-                let parsed: PerplexityDatasetMaskEntry =
-                    serde_json::from_value(entry).expect("Failed to parse perplexity mask entry");
-                (parsed.index, parsed)
-            })
-            .collect();
-    let dataset_length = correct_dataset_entries_parsed.len();
-    assert_eq!(dataset_length, incorrect_dataset_entries_parsed.len());
-    assert_eq!(dataset_length, perplexity_mask_entries_parsed.len());
-    let indices = correct_dataset_entries_parsed.keys();
-    let mut count = 0;
-    for index in indices {
-        if let Some(limit) = debug_limit {
-            if count >= limit {
-                break;
-            }
-            count += 1;
-        }
-    let mask_entry = &perplexity_mask_entries_parsed.get(index).expect("Missing mask entry");
-        // only push valid entries
-        if mask_entry.valid {
-            if !correct_result_ids.contains(index) {
-                let correct_entry = correct_dataset_entries_parsed
-                    .get(index)
-                    .expect("Missing correct one answer entry");
-                combined_entries.push(
-                    serde_json::to_value(correct_entry)
-                        .expect("Failed to serialize correct one answer entry"),
-                );
-            }
-            if !incorrect_result_ids.contains(index) {
-                let incorrect_entry = incorrect_dataset_entries_parsed
-                    .get(index)
-                    .expect("Missing incorrect one answer entry");
-                combined_entries.push(
-                    serde_json::to_value(incorrect_entry)
-                        .expect("Failed to serialize incorrect one answer entry"),
-                );
-            }
-        }
-    }
-    // serialize combined entries and write to output file
-    let combined_entries_serialized: Vec<serde_json::Value> =
-        combined_entries.into_iter().map(|entry| entry).collect();
-    write_json_lines_to_file(output_file_path, &combined_entries_serialized)
-        .expect("Failed to write combined perplexity dataset");
-    println!(
-        "Concatenated perplexity dataset for language {} written to {}",
-        lang, output_file_path
-    );
-}
+//     // parse all entries
+//     let correct_dataset_entries_parsed: IndexMap<usize, OneAnswerEntry> = correct_dataset_entries
+//         .into_iter()
+//         .map(|entry| {
+//             let parsed: OneAnswerEntry =
+//                 serde_json::from_value(entry).expect("Failed to parse correct one answer entry");
+//             (parsed.index, parsed)
+//         })
+//         .collect();
+//     let incorrect_dataset_entries_parsed: IndexMap<usize, OneAnswerEntry> =
+//         incorrect_dataset_entries
+//             .into_iter()
+//             .map(|entry| {
+//                 let parsed: OneAnswerEntry = serde_json::from_value(entry)
+//                     .expect("Failed to parse incorrect one answer entry");
+//                 (parsed.index, parsed)
+//             })
+//             .collect();
+//     let correct_result_ids: HashSet<usize> = match load_json_lines(&correct_result_path) {
+//         Ok(entries) => entries
+//             .into_iter()
+//             .map(|entry| {
+//                 let parsed: PerplexityResultEntry = serde_json::from_value(entry)
+//                     .expect("Failed to parse correct one answer result entry");
+//                 parsed.index
+//             })
+//             .collect(),
+//         Err(_) => {
+//             println!(
+//                 "File {} does not exist, assuming no completed entries.",
+//                 correct_result_path
+//             );
+//             HashSet::new()
+//         }
+//     };
+//     let incorrect_result_ids: HashSet<usize> = match load_json_lines(&incorrect_result_path) {
+//         Ok(entries) => entries
+//             .into_iter()
+//             .map(|entry| {
+//                 let parsed: PerplexityResultEntry = serde_json::from_value(entry)
+//                     .expect("Failed to parse incorrect one answer result entry");
+//                 parsed.index
+//             })
+//             .collect(),
+//         Err(_) => {
+//             println!(
+//                 "File {} does not exist, assuming no completed entries.",
+//                 incorrect_result_path
+//             );
+//             HashSet::new()
+//         }
+//     };
+//     let perplexity_mask_entries_parsed: IndexMap<usize, PerplexityDatasetMaskEntry> =
+//         perplexity_mask_entries
+//             .into_iter()
+//             .map(|entry| {
+//                 let parsed: PerplexityDatasetMaskEntry =
+//                     serde_json::from_value(entry).expect("Failed to parse perplexity mask entry");
+//                 (parsed.index, parsed)
+//             })
+//             .collect();
+//     let dataset_length = correct_dataset_entries_parsed.len();
+//     assert_eq!(dataset_length, incorrect_dataset_entries_parsed.len());
+//     assert_eq!(dataset_length, perplexity_mask_entries_parsed.len());
+//     let indices = correct_dataset_entries_parsed.keys();
+//     let mut count = 0;
+//     for index in indices {
+//         if let Some(limit) = debug_limit {
+//             if count >= limit {
+//                 break;
+//             }
+//             count += 1;
+//         }
+//         let mask_entry = &perplexity_mask_entries_parsed
+//             .get(index)
+//             .expect("Missing mask entry");
+//         // only push valid entries
+//         if mask_entry.valid {
+//             if !correct_result_ids.contains(index) {
+//                 let correct_entry = correct_dataset_entries_parsed
+//                     .get(index)
+//                     .expect("Missing correct one answer entry");
+//                 combined_entries.push(correct_entry.clone());
+//             }
+//             if !incorrect_result_ids.contains(index) {
+//                 let incorrect_entry = incorrect_dataset_entries_parsed
+//                     .get(index)
+//                     .expect("Missing incorrect one answer entry");
+//                 combined_entries.push(incorrect_entry.clone());
+//             }
+//         }
+//     }
+//     // serialize combined entries and write to output file
+//     let combined_entries_serialized: Vec<serde_json::Value> = combined_entries
+//         .into_iter()
+//         .map(|entry| serde_json::to_value(entry).expect("Failed to serialize combined entry"))
+//         .collect();
+//     write_json_lines_to_file(output_file_path, &combined_entries_serialized)
+//         .expect("Failed to write combined perplexity dataset");
+//     println!(
+//         "Concatenated perplexity dataset for language {} written to {}",
+//         lang, output_file_path
+//     );
+// }
 
 #[pyfunction]
-pub fn concatenate_preference_datasets(
+pub fn concatenate_two_answers_datasets(
     model_safe_name: &str,
     lang1: &str,
     lang2: &str,
@@ -346,11 +341,7 @@ pub fn concatenate_preference_datasets(
     };
 
     // conditionally concatenate
-    let mut combined_entries: Vec<serde_json::Value> = Vec::new();
-    // combined_entries.extend(lang1_correct_lang2_incorrect_dataset_entries);
-    // combined_entries.extend(lang1_incorrect_lang2_correct_dataset_entries);
-    // combined_entries.extend(both_correct_dataset_entries);
-    // combined_entries.extend(both_incorrect_dataset_entries);
+    let mut combined_entries: Vec<TwoAnswersEntry> = Vec::new();
     let mut count = 0;
     for entry in lang1_correct_lang2_incorrect_dataset_parsed {
         if let Some(limit) = debug_limit {
@@ -360,10 +351,7 @@ pub fn concatenate_preference_datasets(
             count += 1;
         }
         if !lang1_correct_lang2_incorrect_result_ids.contains(&entry.index) {
-            combined_entries.push(
-                serde_json::to_value(&entry)
-                    .expect("Failed to serialize lang1 correct lang2 incorrect dataset entry"),
-            );
+            combined_entries.push(entry);   
         }
     }
     count = 0;
@@ -375,10 +363,7 @@ pub fn concatenate_preference_datasets(
             count += 1;
         }
         if !lang1_incorrect_lang2_correct_result_ids.contains(&entry.index) {
-            combined_entries.push(
-                serde_json::to_value(&entry)
-                    .expect("Failed to serialize lang1 incorrect lang2 correct dataset entry"),
-            );
+            combined_entries.push(entry);   
         }
     }
     count = 0;
@@ -390,10 +375,7 @@ pub fn concatenate_preference_datasets(
             count += 1;
         }
         if !both_correct_result_ids.contains(&entry.index) {
-            combined_entries.push(
-                serde_json::to_value(&entry)
-                    .expect("Failed to serialize both correct dataset entry"),
-            );
+            combined_entries.push(entry);   
         }
     }
     count = 0;
@@ -405,17 +387,18 @@ pub fn concatenate_preference_datasets(
             count += 1;
         }
         if !both_incorrect_result_ids.contains(&entry.index) {
-            combined_entries.push(
-                serde_json::to_value(&entry)
-                    .expect("Failed to serialize both incorrect dataset entry"),
-            );
+            combined_entries.push(entry);   
         }
     }
+    let combined_entries_serialized: Vec<serde_json::Value> = combined_entries
+        .iter()
+        .map(|entry| serde_json::to_value(entry).expect("Failed to serialize combined entry"))
+        .collect();
     // write to output file
-    write_json_lines_to_file(output_file_path, &combined_entries)
-        .expect("Failed to write combined preference direct dataset");
+    write_json_lines_to_file(output_file_path, &combined_entries_serialized)
+        .expect("Failed to write combined two answers dataset");
     println!(
-        "Concatenated preference direct dataset for languages {} and {} written to {}",
+        "Concatenated two answers dataset for languages {} and {} written to {}",
         lang1, lang2, output_file_path
     );
 }

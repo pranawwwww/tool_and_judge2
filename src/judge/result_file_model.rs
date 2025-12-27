@@ -32,3 +32,12 @@ pub struct PerplexityResultEntry{
     pub is_correct: bool,
     pub subject: String,
 }
+
+#[derive(Clone, Deserialize, Serialize)]
+pub struct ResponseEntry{
+    pub index: usize,
+    pub question: String,
+    pub response: String,
+    pub lang: String,
+    pub subject: String,
+}

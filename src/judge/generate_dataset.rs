@@ -1,7 +1,7 @@
 use std::{collections::HashSet, path::Path};
 
 use indexmap::IndexMap;
-use pyo3::{Python, types::PyAnyMethods};
+use pyo3::{Python, pyfunction, types::PyAnyMethods};
 use serde::{Deserialize, Serialize};
 
 use crate::{
@@ -35,7 +35,7 @@ pub struct MmmluDatasetEntryChinese {
     pub subject: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct OneAnswerEntry {
     pub index: usize,
     pub question: String,
@@ -45,7 +45,7 @@ pub struct OneAnswerEntry {
     pub subject: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct TwoAnswersEntry {
     pub index: usize,
     pub question: String,
@@ -58,6 +58,15 @@ pub struct TwoAnswersEntry {
     pub subject: String,
 }
 
+#[derive(Deserialize, Serialize)]
+pub struct TwoAnswersSameLangEntry{
+    pub index: usize,
+    pub question: String,
+    pub answer_correct: String,
+    pub answer_incorrect: String,
+    pub lang: String,
+    pub subject: String,
+}
 #[derive(Deserialize, Serialize)]
 pub struct PerplexityDatasetMaskEntry {
     pub index: usize,
@@ -378,6 +387,87 @@ pub fn generate_two_answers_dataset(lang1: &str, lang2: &str) {
     write_json_lines_to_file(&both_incorrect_path, &both_incorrect_serialized)
         .expect("Failed to write both incorrect dataset");
 }
+
+#[pyfunction]
+pub fn generate_two_answers_same_lang_dataset(lang: &str) {
+    let output_path = format!("judge/datasets/two_answers_same_lang/{}.jsonl", lang);
+    if Path::new(&output_path).exists() {
+        println!(
+            "Two answers same language dataset for language {} already exists. Skipping generation.",
+            lang
+        );
+        return;
+    }
+    let input_path_correct = format!("judge/datasets/one_answer/{}_correct.jsonl", lang);
+    let input_path_incorrect = format!("judge/datasets/one_answer/{}_incorrect.jsonl", lang);
+    let input_paths_exist = [
+        &input_path_correct,
+        &input_path_incorrect,
+    ]
+    .iter()
+    .all(|path| Path::new(path).exists());
+    if !input_paths_exist {
+        println!(
+            "One answer datasets for language {} not found. Generating...",
+            lang
+        );
+        generate_one_answer_dataset(lang);
+    }
+    let correct_entries = 
+        load_json_lines(&input_path_correct).expect("Failed to load correct dataset");
+    let incorrect_entries = load_json_lines(&input_path_incorrect)
+        .expect("Failed to load incorrect dataset");
+    let correct_entries: IndexMap<usize, OneAnswerEntry> = correct_entries
+        .into_iter()
+        .map(|entry| {
+            let parsed: OneAnswerEntry =
+                serde_json::from_value(entry).expect("Failed to parse correct entry");
+            (parsed.index, parsed)
+        })
+        .collect();
+    let incorrect_entries: IndexMap<usize, OneAnswerEntry> = incorrect_entries
+        .into_iter()
+        .map(|entry| {
+            let parsed: OneAnswerEntry =
+                serde_json::from_value(entry).expect("Failed to parse incorrect entry");
+            (parsed.index, parsed)
+        })
+        .collect();
+    let dataset_length = correct_entries.len();
+    assert_eq!(dataset_length, incorrect_entries.len());
+    let indices = correct_entries.keys();
+    let mut two_answers_entries: Vec<TwoAnswersSameLangEntry> = Vec::new();
+    for index in indices {
+        let entry_correct = correct_entries
+            .get(index)
+            .expect("Missing correct entry");
+        let entry_incorrect = incorrect_entries
+            .get(index)
+            .expect("Missing incorrect entry");
+        two_answers_entries.push(TwoAnswersSameLangEntry {
+            index: *index,
+            question: entry_correct.question.clone(),
+            answer_correct: entry_correct.answer.clone(),
+            answer_incorrect: entry_incorrect.answer.clone(),
+            lang: lang.to_string(),
+            subject: entry_correct.subject.clone(),
+        });
+    }
+    let two_answers_serialized: Vec<serde_json::Value> = two_answers_entries
+        .into_iter()
+        .map(|entry| serde_json::to_value(entry).expect("Failed to serialize two answers entry"))
+        .collect();
+    write_json_lines_to_file(&output_path, &two_answers_serialized)
+        .expect("Failed to write two answers same language dataset");
+    println!(
+        "Generated two answers same language dataset for language {}.",
+        lang
+    );
+}
+
+
+
+
 
 fn parse_and_normalize(raw_entry: &serde_json::Value, lang: &str) -> MmmluDatasetEntryNormalized {
     match lang {

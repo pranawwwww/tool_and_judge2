@@ -119,3 +119,61 @@ def language_abbreviation_to_name(abbreviation: str) -> str:
         'ko': 'Korean',
     }
     return lang_map.get(abbreviation.lower(), abbreviation)
+
+
+
+
+def calculate_perplexity_from_logits(logits, input_ids, answer, tokenizer):
+    """
+    Calculate perplexity for an answer using backward search to locate answer tokens.
+
+    Args:
+        logits: torch.Tensor of shape [seq_len, vocab_size]
+        input_ids: List of token IDs
+        answer: str, the answer text
+        tokenizer: Tokenizer instance
+
+    Returns:
+        float: perplexity value
+    """
+    import torch
+    import math
+
+    # Tokenize the answer to get its token sequence
+    answer_tokens = tokenizer(answer, add_special_tokens=False).input_ids
+
+    # Search backwards for the answer token sequence
+    answer_start = None
+    for i in range(len(input_ids) - len(answer_tokens), -1, -1):
+        if input_ids[i:i+len(answer_tokens)] == answer_tokens:
+            answer_start = i
+            break
+
+    if answer_start is None:
+        raise ValueError(f"Could not find answer tokens in input_ids by backward search")
+
+    answer_end = answer_start + len(answer_tokens)
+
+    # Shift logits and labels for next-token prediction
+    shift_logits = logits[:-1, :]  # All but last position
+    shift_labels = torch.tensor(input_ids[1:])  # All but first position
+
+    # Compute log probabilities
+    log_probs = torch.nn.functional.log_softmax(shift_logits, dim=-1)
+
+    # Gather log probs for the actual next tokens
+    selected_log_probs = log_probs.gather(1, shift_labels.unsqueeze(-1)).squeeze(-1)
+
+    # Extract log probs for answer tokens (adjusting for shift)
+    mask_start = answer_start - 1
+    mask_end = answer_end - 1
+    answer_log_probs = selected_log_probs[mask_start:mask_end]
+
+    # Calculate perplexity
+    if len(answer_log_probs) > 0:
+        avg_log_prob = answer_log_probs.mean().item()
+        perplexity = math.exp(-avg_log_prob)
+    else:
+        perplexity = float('inf')
+
+    return perplexity

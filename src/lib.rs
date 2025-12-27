@@ -27,8 +27,8 @@ pub mod codebase_rs {
             ToolConfig, ToolExperiment, TranslateMode, TranslateOption,
         },
         judge::{
-            concatenate_datasets::concatenate_perplexity_datasets,
-            concatenate_datasets::concatenate_preference_datasets,
+            concatenate_datasets::concatenate_one_answer_datasets,
+            concatenate_datasets::concatenate_two_answers_datasets,
         },
         judge::{
             dispatch_results::dispatch_perplexity_results,

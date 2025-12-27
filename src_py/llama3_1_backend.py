@@ -306,6 +306,90 @@ def collect_perplexity_batch(
 
     return results
 
+def collect_response_batch(
+    entries: List[dict],
+    model: Any,
+    tokenizer: Any,
+) -> List[str]:
+    """
+    Collect generated responses for a batch of entries using HuggingFace backend.
+
+    Args:
+        entries: List of entries, each containing 'question' field
+        model: HuggingFace model instance
+        tokenizer: Tokenizer instance
+    Returns:
+        List of generated responses as strings
+    """
+    import torch
+    from src_py.utils import language_abbreviation_to_name
+
+    formatted_prompts = []
+
+    for entry in entries:
+        question = entry['question']
+        lang = entry.get('lang', 'en')
+
+        # Map language abbreviation to full name
+        language_name = language_abbreviation_to_name(lang)
+
+        # Build language-specific instructions (following qwen3_interface.py format)
+        instruction = f"Please concisely answer the question in {language_name}."
+
+        # Combine question with instruction
+        user_content = f"{question}\n\n{instruction}"
+
+        # Build messages for chat template
+        messages = [
+            {
+                "role": "user",
+                "content": user_content
+            }
+        ]
+
+        # Apply chat template to get the full formatted prompt
+        formatted_prompt = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+
+        formatted_prompts.append(formatted_prompt)
+
+    # Tokenize all prompts with padding for batching
+    inputs = tokenizer(
+        formatted_prompts,
+        return_tensors="pt",
+        padding=True,
+        truncation=True,
+        max_length=2048,  # Limit to reasonable length
+        add_special_tokens=False
+    )
+
+    # Move batch to model's device
+    input_ids_batch = inputs.input_ids.to(model.device)
+    attention_mask = inputs.attention_mask.to(model.device)
+
+    # Generate responses using model's generate method
+    with torch.no_grad():
+        generated_ids_batch = model.generate(
+            input_ids=input_ids_batch,
+            attention_mask=attention_mask,
+            max_new_tokens=256,
+            do_sample=False,  # Greedy decoding
+            pad_token_id=tokenizer.eos_token_id
+        )
+
+    # Decode generated responses
+    responses = []
+    for gen_ids in generated_ids_batch:
+        response_text = tokenizer.decode(
+            gen_ids,
+            skip_special_tokens=True
+        )
+        responses.append(response_text.strip())
+
+    return responses
 
 async def collect_preference_local_async(
     question: str,
@@ -397,3 +481,5 @@ async def collect_preference_local_async(
         raise ValueError(f"Token '2' (ID: {token_2_id}) not found in top-k logprobs")
 
     return logprob_1, logprob_2
+
+
