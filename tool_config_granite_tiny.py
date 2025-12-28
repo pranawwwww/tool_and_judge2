@@ -2,6 +2,7 @@ from codebase_rs import *
 
 experiments = []
 
+# Chinese and Hindi - all noise modes
 for noise in [AddNoiseMode.NoNoise, AddNoiseMode.Synonym, AddNoiseMode.Paraphrase]:
     for translate in [
         TranslateMode.NotTranslated(),
@@ -18,6 +19,7 @@ for noise in [AddNoiseMode.NoNoise, AddNoiseMode.Synonym, AddNoiseMode.Paraphras
     ]:
         experiments.append(ToolExperiment(translate, noise))
 
+# Igbo - only NoNoise available
 for translate in [
     TranslateMode.Translated(language=Language.Igbo, option=TranslateOption.FullyTranslated),
     TranslateMode.Translated(language=Language.Igbo, option=TranslateOption.PartiallyTranslated),
@@ -28,6 +30,7 @@ for translate in [
     experiments.append(ToolExperiment(translate, AddNoiseMode.NoNoise))
 
 config = ToolConfig(
-    Model.Local(LocalModel.Granite4_0HSmall),
+    Model.Local(LocalModel.Granite4_0HTiny),  # 0.3B parameters - very fast
     experiments
 )
+
