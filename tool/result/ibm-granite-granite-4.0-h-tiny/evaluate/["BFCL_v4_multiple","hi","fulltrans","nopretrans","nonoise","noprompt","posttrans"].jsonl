@@ -1,0 +1,200 @@
+{"id":"multiple_0","valid":true,"error":null}
+{"id":"multiple_1","valid":true,"error":null}
+{"id":"multiple_2","valid":true,"error":null}
+{"id":"multiple_3","valid":true,"error":null}
+{"id":"multiple_4","valid":true,"error":null}
+{"id":"multiple_5","valid":true,"error":null}
+{"id":"multiple_6","valid":true,"error":null}
+{"id":"multiple_7","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"wildlife_population.assess_growth\":{\"species\":\"deer\",\"location\":\"Washington\",\"duration\":10}},{\"ecological_impact.analyze\":{\"species\":\"deer\",\"ecosystem\":\"forest\",\"location\":\"Washington\",\"timeframe\":10}}]"}}}
+{"id":"multiple_8","valid":true,"error":null}
+{"id":"multiple_9","valid":false,"error":{"InvalidParamValue":{"param":"gradeDict","actual_value":{"sin":90,"Yisya":75,"Only output the translated text, nothing else:\n\nOnly output the translated text, nothing else:":82,"nanr":89},"expected_values":[{"math":[90],"science":[75],"history":[82],"music":[89]}],"decoded_output":"[{\"calculate_average\":{\"gradeDict\":{\"sin\":90,\"Yisya\":75,\"Only output the translated text, nothing else:\\n\\nOnly output the translated text, nothing else:\":82,\"nanr\":89}}}]"}}}
+{"id":"multiple_10","valid":false,"error":{"InvalidParamValue":{"param":"db_name","actual_value":"employee_database","expected_values":["employees"],"decoded_output":"[{\"database.modify_columns\":{\"db_name\":\"employee_database\",\"table\":\"personal_data\",\"operation\":\"delete\",\"columns\":[\"email\",\"social_security_number\"]}}]"}}}
+{"id":"multiple_11","valid":true,"error":null}
+{"id":"multiple_12","valid":false,"error":{"InvalidParamValue":{"param":"company_name","actual_value":"Tech Ink","expected_values":["Tech Inc"],"decoded_output":"[{\"corporate_finance.calculate_YOY_growth_rate\":{\"company_name\":\"Tech Ink\",\"year1\":2019,\"year1_revenue\":1000000,\"year2\":2020,\"year2_revenue\":1200000}}]"}}}
+{"id":"multiple_13","valid":true,"error":null}
+{"id":"multiple_14","valid":true,"error":null}
+{"id":"multiple_15","valid":true,"error":null}
+{"id":"multiple_16","valid":false,"error":{"InvalidParamValue":{"param":"species","actual_value":"Wild tiger","expected_values":["wild tiger","tiger"],"decoded_output":"[{\"population_genetics.calculate_ne\":{\"species\":\"Wild tiger\",\"generations\":100,\"probability\":0.95}}]"}}}
+{"id":"multiple_17","valid":true,"error":null}
+{"id":"multiple_18","valid":false,"error":{"WrongFuncName":{"expected_name":"european_history.battle_details","actual_name":"european_history.war_details","decoded_output":"[{\"european_history.war_details\":{\"war\":\"Second World War\"}}]"}}}
+{"id":"multiple_19","valid":true,"error":null}
+{"id":"multiple_20","valid":true,"error":null}
+{"id":"multiple_21","valid":true,"error":null}
+{"id":"multiple_22","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":3,"decoded_output":"[{\"sports_data.basketball.most_points_single_season\":{\"league\":\"NBA\"}},{\"sports_data.basketball.most_points_career\":{\"league\":\"NBA\"}},{\"sports_data.basketball.most_points_single_game\":{\"league\":\"NBA\"}}]"}}}
+{"id":"multiple_23","valid":true,"error":null}
+{"id":"multiple_24","valid":true,"error":null}
+{"id":"multiple_25","valid":false,"error":{"InvalidEntryCount":{"expected_count":1,"actual_count":2,"decoded_output":"[{\"video_games.on_sale\":{\"game_title\":\"Assassin's Creed Valhalla\",\"platform\":\"PlayStation\",\"region\":\"United States\"}},{\"video_games.store_price\":{\"game_title\":\"Assassin's Creed Valhalla\",\"platform\":\"PlayStation\",\"region\":\"United States\"}}]"}}}
+{"id":"multiple_26","valid":false,"error":{"InvalidParamValue":{"param":"platform","actual_value":"PlayStation","expected_values":["Playstation","PS"],"decoded_output":"[{\"game_rewards.get\":{\"game\":\"Fortnite\",\"platform\":\"PlayStation\"}}]"}}}
+{"id":"multiple_27","valid":true,"error":null}
+{"id":"multiple_28","valid":true,"error":null}
+{"id":"multiple_29","valid":false,"error":{"InvalidParamValue":{"param":"function1","actual_value":"3x+2","expected_values":["3x + 2","lambda x: 3x + 2"],"decoded_output":"[{\"functions.intersect\":{\"function1\":\"3x+2\",\"function2\":\"2x+3\"}}]"}}}
+{"id":"multiple_30","valid":true,"error":null}
+{"id":"multiple_31","valid":true,"error":null}
+{"id":"multiple_32","valid":true,"error":null}
+{"id":"multiple_33","valid":false,"error":{"InvalidParamValue":{"param":"func","actual_value":"3*x**2","expected_values":["3x**2","lambda x: 3x**2"],"decoded_output":"[{\"calculate_integral\":{\"func\":\"3*x**2\",\"a\":1,\"b\":2}}]"}}}
+{"id":"multiple_34","valid":true,"error":null}
+{"id":"multiple_35","valid":true,"error":null}
+{"id":"multiple_36","valid":true,"error":null}
+{"id":"multiple_37","valid":true,"error":null}
+{"id":"multiple_38","valid":true,"error":null}
+{"id":"multiple_39","valid":true,"error":null}
+{"id":"multiple_40","valid":true,"error":null}
+{"id":"multiple_41","valid":true,"error":null}
+{"id":"multiple_42","valid":true,"error":null}
+{"id":"multiple_43","valid":true,"error":null}
+{"id":"multiple_44","valid":true,"error":null}
+{"id":"multiple_45","valid":true,"error":null}
+{"id":"multiple_46","valid":true,"error":null}
+{"id":"multiple_47","valid":true,"error":null}
+{"id":"multiple_48","valid":true,"error":null}
+{"id":"multiple_49","valid":true,"error":null}
+{"id":"multiple_50","valid":true,"error":null}
+{"id":"multiple_51","valid":true,"error":null}
+{"id":"multiple_52","valid":true,"error":null}
+{"id":"multiple_53","valid":false,"error":{"InvalidParamValue":{"param":"independent_var","actual_value":["interest_rates","unemployment_rates"],"expected_values":[["interest rates","unemployment rates"],["interest_rate","unemployment_rate"],["interest rate","unemployment rate"]],"decoded_output":"[{\"linear_regression\":{\"independent_var\":[\"interest_rates\",\"unemployment_rates\"],\"dependent_var\":\"home_prices\",\"forecast_period\":5}}]"}}}
+{"id":"multiple_54","valid":false,"error":{"InvalidParamValue":{"param":"company","actual_value":"Sinte teke","expected_values":["Apple Inc","Apple","Apple Inc."],"decoded_output":"[{\"corporate_finance.dividend_data\":{\"company\":\"Sinte teke\",\"years\":5}}]"}}}
+{"id":"multiple_55","valid":true,"error":null}
+{"id":"multiple_56","valid":true,"error":null}
+{"id":"multiple_57","valid":true,"error":null}
+{"id":"multiple_58","valid":false,"error":{"InvalidParamValue":{"param":"expertise","actual_value":"Marriage","expected_values":["Divorce"],"decoded_output":"[{\"lawyer.search\":{\"location\":\"Los Angeles, CA\",\"expertise\":\"Marriage\"}}]"}}}
+{"id":"multiple_59","valid":true,"error":null}
+{"id":"multiple_60","valid":true,"error":null}
+{"id":"multiple_61","valid":false,"error":{"InvalidParamValue":{"param":"specialization","actual_value":"residential design","expected_values":["small space garden design"],"decoded_output":"[{\"landscape_architect.find_specialty\":{\"location\":\"Portland, OR\",\"specialization\":\"residential design\",\"years_experience\":5}}]"}}}
+{"id":"multiple_62","valid":true,"error":null}
+{"id":"multiple_63","valid":true,"error":null}
+{"id":"multiple_64","valid":true,"error":null}
+{"id":"multiple_65","valid":true,"error":null}
+{"id":"multiple_66","valid":true,"error":null}
+{"id":"multiple_67","valid":false,"error":{"InvalidParamValue":{"param":"text","actual_value":"Hello, how are you in the morning? How are you in the evening?","expected_values":["Hello, how are you?"],"decoded_output":"[{\"translate\":{\"text\":\"Hello, how are you in the morning? How are you in the evening?\",\"source_language\":\"Hindi\",\"target_language\":\"English\"}}]"}}}
+{"id":"multiple_68","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"New York Public Library","expected_values":["New York","New York, NY","New York City","New York City, NY","NYC","New York public library"],"decoded_output":"[{\"library.search_books\":{\"location\":\"New York Public Library\",\"genre\":\"Historical novel\"}}]"}}}
+{"id":"multiple_69","valid":true,"error":null}
+{"id":"multiple_70","valid":true,"error":null}
+{"id":"multiple_71","valid":true,"error":null}
+{"id":"multiple_72","valid":true,"error":null}
+{"id":"multiple_73","valid":true,"error":null}
+{"id":"multiple_74","valid":false,"error":{"InvalidParamValue":{"param":"artist","actual_value":"Vincent van Gogh","expected_values":["Van Gogh"],"decoded_output":"[{\"art_auction.fetch_artwork_price\":{\"artwork_name\":\"Starry Night\",\"artist\":\"Vincent van Gogh\",\"platform\":\"all\"}}]"}}}
+{"id":"multiple_75","valid":true,"error":null}
+{"id":"multiple_76","valid":true,"error":null}
+{"id":"multiple_77","valid":true,"error":null}
+{"id":"multiple_78","valid":false,"error":{"InvalidParamValue":{"param":"museum","actual_value":"natural history museum","expected_values":["Natural History Museum"],"decoded_output":"[{\"museum_info\":{\"museum\":\"natural history museum\",\"city\":\"london\",\"features\":[\"timing\",\"exhibitions\",\"accessibility\"]}}]"}}}
+{"id":"multiple_79","valid":false,"error":{"InvalidParamValue":{"param":"museum_name","actual_value":"Modern Art Museum","expected_values":["Museum of Modern Art","MOMA","Museum of Modern Art, New York"],"decoded_output":"[{\"exhibition_info\":{\"museum_name\":\"Modern Art Museum\",\"month\":1}}]"}}}
+{"id":"multiple_80","valid":false,"error":{"InvalidParamValue":{"param":"services","actual_value":["Guitar Lessons","Violin Lessons"],"expected_values":[["Violin Lessons"]],"decoded_output":"[{\"music_shop.find_nearby\":{\"location\":\"Nashville, TN\",\"services\":[\"Guitar Lessons\",\"Violin Lessons\"]}}]"}}}
+{"id":"multiple_81","valid":true,"error":null}
+{"id":"multiple_82","valid":true,"error":null}
+{"id":"multiple_83","valid":true,"error":null}
+{"id":"multiple_84","valid":true,"error":null}
+{"id":"multiple_85","valid":true,"error":null}
+{"id":"multiple_86","valid":true,"error":null}
+{"id":"multiple_87","valid":true,"error":null}
+{"id":"multiple_88","valid":true,"error":null}
+{"id":"multiple_89","valid":true,"error":null}
+{"id":"multiple_90","valid":true,"error":null}
+{"id":"multiple_91","valid":false,"error":{"InvalidParamValue":{"param":"ingredientLimit","actual_value":5,"expected_values":[4],"decoded_output":"[{\"recipe.find\":{\"mainIngredient\":\"apple\",\"ingredientLimit\":5}}]"}}}
+{"id":"multiple_92","valid":true,"error":null}
+{"id":"multiple_93","valid":true,"error":null}
+{"id":"multiple_94","valid":false,"error":{"InvalidParamValue":{"param":"roomType","actual_value":"suite","expected_values":["suite with queen size bed"],"decoded_output":"[{\"hotel_room_pricing.get\":{\"hotelName\":\"Hilton New York\",\"roomType\":\"suite\",\"nights\":3}}]"}}}
+{"id":"multiple_95","valid":true,"error":null}
+{"id":"multiple_96","valid":true,"error":null}
+{"id":"multiple_97","valid":true,"error":null}
+{"id":"multiple_98","valid":true,"error":null}
+{"id":"multiple_99","valid":false,"error":{"InvalidParamValue":{"param":"function","actual_value":"2*x**2","expected_values":["2x**2","lambda x: 2x**2"],"decoded_output":"[{\"calculus.derivative\":{\"function\":\"2*x**2\",\"value\":1,\"function_variable\":\"x\"}}]"}}}
+{"id":"multiple_100","valid":true,"error":null}
+{"id":"multiple_101","valid":true,"error":null}
+{"id":"multiple_102","valid":true,"error":null}
+{"id":"multiple_103","valid":true,"error":null}
+{"id":"multiple_104","valid":true,"error":null}
+{"id":"multiple_105","valid":false,"error":{"InvalidParamValue":{"param":"radius","actual_value":2,"expected_values":[4],"decoded_output":"[{\"calculate_magnetic_field\":{\"current\":5,\"radius\":2}}]"}}}
+{"id":"multiple_106","valid":true,"error":null}
+{"id":"multiple_107","valid":true,"error":null}
+{"id":"multiple_108","valid":true,"error":null}
+{"id":"multiple_109","valid":true,"error":null}
+{"id":"multiple_110","valid":true,"error":null}
+{"id":"multiple_111","valid":true,"error":null}
+{"id":"multiple_112","valid":true,"error":null}
+{"id":"multiple_113","valid":false,"error":{"InvalidParamValue":{"param":"trait_contributions","actual_value":[40,60],"expected_values":[[0.4,0.6]],"decoded_output":"[{\"calculate_fitness\":{\"trait_values\":[0.8,0.7],\"trait_contributions\":[40,60]}}]"}}}
+{"id":"multiple_114","valid":true,"error":null}
+{"id":"multiple_115","valid":true,"error":null}
+{"id":"multiple_116","valid":true,"error":null}
+{"id":"multiple_117","valid":true,"error":null}
+{"id":"multiple_118","valid":true,"error":null}
+{"id":"multiple_119","valid":false,"error":{"InvalidParamValue":{"param":"table","actual_value":"user_table","expected_values":["user"],"decoded_output":"[{\"database.query\":{\"table\":\"user_table\",\"conditions\":[{\"field\":\"age\",\"operation\":\">\",\"value\":\"25\"},{\"field\":\"job\",\"operation\":\"=\",\"value\":\"engineer\"}]}}]"}}}
+{"id":"multiple_120","valid":true,"error":null}
+{"id":"multiple_121","valid":true,"error":null}
+{"id":"multiple_122","valid":true,"error":null}
+{"id":"multiple_123","valid":true,"error":null}
+{"id":"multiple_124","valid":true,"error":null}
+{"id":"multiple_125","valid":true,"error":null}
+{"id":"multiple_126","valid":true,"error":null}
+{"id":"multiple_127","valid":false,"error":{"InvalidParamValue":{"param":"total_payout","actual_value":5000000000,"expected_values":[50000000],"decoded_output":"[{\"finance.calculate_quarterly_dividend_per_share\":{\"total_payout\":5000000000,\"outstanding_shares\":100000000}}]"}}}
+{"id":"multiple_128","valid":true,"error":null}
+{"id":"multiple_129","valid":true,"error":null}
+{"id":"multiple_130","valid":true,"error":null}
+{"id":"multiple_131","valid":true,"error":null}
+{"id":"multiple_132","valid":true,"error":null}
+{"id":"multiple_133","valid":false,"error":{"InvalidParamValue":{"param":"annual_yield","actual_value":5,"expected_values":[0.05],"decoded_output":"[{\"calculate_mutual_fund_balance\":{\"investment_amount\":50000,\"annual_yield\":5,\"years\":3}}]"}}}
+{"id":"multiple_134","valid":true,"error":null}
+{"id":"multiple_135","valid":true,"error":null}
+{"id":"multiple_136","valid":true,"error":null}
+{"id":"multiple_137","valid":true,"error":null}
+{"id":"multiple_138","valid":false,"error":{"InvalidParamValue":{"param":"case_id","actual_value":"R v Adams","expected_values":["R vs Adams","R_vs_Adams"],"decoded_output":"[{\"legal_case.fetch\":{\"case_id\":\"R v Adams\",\"details\":true}}]"}}}
+{"id":"multiple_139","valid":true,"error":null}
+{"id":"multiple_140","valid":true,"error":null}
+{"id":"multiple_141","valid":true,"error":null}
+{"id":"multiple_142","valid":true,"error":null}
+{"id":"multiple_143","valid":true,"error":null}
+{"id":"multiple_144","valid":true,"error":null}
+{"id":"multiple_145","valid":true,"error":null}
+{"id":"multiple_146","valid":false,"error":{"InvalidParamValue":{"param":"location","actual_value":"Settle, UK","expected_values":["Seattle","Seattle, WA"],"decoded_output":"[{\"restaurant.find_nearby\":{\"location\":\"Settle, UK\",\"cuisine\":\"Chinese\",\"max_distance\":10}}]"}}}
+{"id":"multiple_147","valid":true,"error":null}
+{"id":"multiple_148","valid":true,"error":null}
+{"id":"multiple_149","valid":false,"error":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"<tool_call>\n{\"name\": \"sentiment_analysis\", \"arguments\": {\"text\": \"\\u0928\\u093e \\u0915\\u093e \\u091a\\u093e \\u0915\\u093e \\u0924\\u0940 \\u0915\\u093e \\u0926\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u0924\\u0940 \\u0926\\u0940 \\u"}}}
+{"id":"multiple_150","valid":true,"error":null}
+{"id":"multiple_151","valid":false,"error":{"InvalidParamValue":{"param":"topic","actual_value":"behavior and group dynamics","expected_values":["psychology","Psychology"],"decoded_output":"[{\"social_media_analytics.most_followed\":{\"topic\":\"behavior and group dynamics\",\"sub_topics\":[],\"region\":\"global\"}}]"}}}
+{"id":"multiple_152","valid":true,"error":null}
+{"id":"multiple_153","valid":false,"error":{"InvalidParamValue":{"param":"event","actual_value":"Lisbon Treaty","expected_values":["Treaty of Lisbon","Signing of the Treaty of Lisbon"],"decoded_output":"[{\"get_event_date\":{\"event\":\"Lisbon Treaty\"}}]"}}}
+{"id":"multiple_154","valid":true,"error":null}
+{"id":"multiple_155","valid":true,"error":null}
+{"id":"multiple_156","valid":true,"error":null}
+{"id":"multiple_157","valid":true,"error":null}
+{"id":"multiple_158","valid":true,"error":null}
+{"id":"multiple_159","valid":true,"error":null}
+{"id":"multiple_160","valid":true,"error":null}
+{"id":"multiple_161","valid":true,"error":null}
+{"id":"multiple_162","valid":true,"error":null}
+{"id":"multiple_163","valid":true,"error":null}
+{"id":"multiple_164","valid":true,"error":null}
+{"id":"multiple_165","valid":false,"error":{"InvalidParamValue":{"param":"model","actual_value":"Les Paul","expected_values":["Gibson Les Paul"],"decoded_output":"[{\"guitar_price.find\":{\"model\":\"Les Paul\",\"condition\":\"Excellent\",\"location\":\"Chicago\"}}]"}}}
+{"id":"multiple_166","valid":true,"error":null}
+{"id":"multiple_167","valid":true,"error":null}
+{"id":"multiple_168","valid":true,"error":null}
+{"id":"multiple_169","valid":false,"error":{"InvalidParamValue":{"param":"key","actual_value":"C♯","expected_values":["C#","C sharp"],"decoded_output":"[{\"musical_scale\":{\"key\":\"C♯\",\"scale_type\":\"major\"}}]"}}}
+{"id":"multiple_170","valid":true,"error":null}
+{"id":"multiple_171","valid":true,"error":null}
+{"id":"multiple_172","valid":false,"error":{"InvalidParamValue":{"param":"name","actual_value":"LeBron James","expected_values":["Lebron James"],"decoded_output":"[{\"sports_db.find_athlete\":{\"name\":\"LeBron James\",\"sport\":\"Basketball\"}}]"}}}
+{"id":"multiple_173","valid":true,"error":null}
+{"id":"multiple_174","valid":true,"error":null}
+{"id":"multiple_175","valid":true,"error":null}
+{"id":"multiple_176","valid":true,"error":null}
+{"id":"multiple_177","valid":true,"error":null}
+{"id":"multiple_178","valid":true,"error":null}
+{"id":"multiple_179","valid":true,"error":null}
+{"id":"multiple_180","valid":true,"error":null}
+{"id":"multiple_181","valid":false,"error":{"InvalidParamValue":{"param":"team_name","actual_value":"Liverpool FC","expected_values":["Liverpool F.C.","Liverpool"],"decoded_output":"[{\"soccer.get_last_match\":{\"team_name\":\"Liverpool FC\",\"include_stats\":true}}]"}}}
+{"id":"multiple_182","valid":true,"error":null}
+{"id":"multiple_183","valid":true,"error":null}
+{"id":"multiple_184","valid":true,"error":null}
+{"id":"multiple_185","valid":true,"error":null}
+{"id":"multiple_186","valid":true,"error":null}
+{"id":"multiple_187","valid":false,"error":{"InvalidParamValue":{"param":"items","actual_value":["tomatoes","salad"],"expected_values":[["tomatoes","lettuce"],["lettuce","tomatoes"]],"decoded_output":"[{\"whole_foods.check_price\":{\"location\":\"Los Angeles\",\"items\":[\"tomatoes\",\"salad\"]}}]"}}}
+{"id":"multiple_188","valid":true,"error":null}
+{"id":"multiple_189","valid":true,"error":null}
+{"id":"multiple_190","valid":true,"error":null}
+{"id":"multiple_191","valid":false,"error":{"InvalidParamValue":{"param":"hotel_name","actual_value":"Pasta, pasta","expected_values":["Hotel Paradise"],"decoded_output":"[{\"book_hotel\":{\"hotel_name\":\"Pasta, pasta\",\"location\":\"Las Vegas\",\"room_type\":\"Luxury\",\"start_date\":\"05-12-2022\",\"stay_duration\":3}}]"}}}
+{"id":"multiple_192","valid":true,"error":null}
+{"id":"multiple_193","valid":false,"error":{"InvalidParamValue":{"param":"start_location","actual_value":"Eiffel Tower, Paris","expected_values":["Eiffel Tower"],"decoded_output":"[{\"maps.get_distance_duration\":{\"start_location\":\"Eiffel Tower, Paris\",\"end_location\":\"Louvre Museum, Paris\"}}]"}}}
+{"id":"multiple_194","valid":true,"error":null}
+{"id":"multiple_195","valid":true,"error":null}
+{"id":"multiple_196","valid":true,"error":null}
+{"id":"multiple_197","valid":true,"error":null}
+{"id":"multiple_198","valid":true,"error":null}
+{"id":"multiple_199","valid":true,"error":null}
