@@ -25,7 +25,7 @@ async def generate_tool_call_async(
             "You MUST NOT include any other text, explanations, or direct answers. "
             "If you decide to invoke any function(s), you MUST use the provided tools. "
             "Do NOT attempt to answer the question directly without using the available functions. "
-            f"{"IMPORTANT: Pass all parameter values in English" if prompt_passing_in_english else ""}"
+            ("IMPORTANT: Pass all parameter values in English" if prompt_passing_in_english else "")
         )
     }
     input_messages = [
