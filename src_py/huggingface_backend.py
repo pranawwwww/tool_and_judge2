@@ -19,10 +19,10 @@ def create_huggingface_backend(model_name: str, batch_size: int):
     import os
 
     print(f"Creating HuggingFace backend for model {model_name} with batch size {batch_size}...")
-    use_auth_token = os.environ["HF_TOKEN"]
-    assert use_auth_token is not None, "HuggingFace token not found in environment variable HF_TOKEN."
-    # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=use_auth_token)
+    hf_token = os.environ.get("HF_TOKEN")
+    assert hf_token is not None, "HuggingFace token not found in environment variable HF_TOKEN."
+    # Load tokenizer (use 'token' parameter - 'use_auth_token' is deprecated)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
 
     # Set padding token if not set (needed for batching)
     if tokenizer.pad_token is None:
@@ -53,7 +53,7 @@ def create_huggingface_backend(model_name: str, batch_size: int):
         device_map="auto",
         torch_dtype=torch.bfloat16,
         trust_remote_code=True,
-        use_auth_token=use_auth_token,
+        token=hf_token,
         max_memory=max_memory,
     )
     print(f"Model loaded, setting to eval mode...", flush=True)

@@ -18,10 +18,10 @@ def create_vllm_backend(local_model: LocalModel,
     from transformers import AutoTokenizer
     model_name = local_model.to_string()
     print(f"Creating vLLM backend for model {model_name} with {num_gpus} GPUs...")
-    use_auth_token = os.environ["HF_TOKEN"]
-    assert use_auth_token is not None, "HuggingFace token not found in environment variable HF_TOKEN."
-    # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=use_auth_token)
+    hf_token = os.environ.get("HF_TOKEN")
+    assert hf_token is not None, "HuggingFace token not found in environment variable HF_TOKEN."
+    # Load tokenizer (use 'token' parameter - 'use_auth_token' is deprecated)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
 
     # Create engine args
     engine_args = AsyncEngineArgs(
