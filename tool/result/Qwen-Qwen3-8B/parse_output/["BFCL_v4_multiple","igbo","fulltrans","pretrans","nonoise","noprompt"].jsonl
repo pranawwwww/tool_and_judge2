@@ -1,0 +1,200 @@
+{"id":"multiple_0","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is about calculating the total number of units completed, which is not related to the functions provided for calculating properties of triangles or circles. Therefore, none of the functions can be used to answer the question."}}}}
+{"id":"multiple_1","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can calculate the perimeter of a triangle. The functions available are for calculating the area of a triangle using Heron's formula or base-height, and the area of a circle. Perimeter calculation is not supported by any of the given functions."}}}}
+{"id":"multiple_2","valid":true,"result":{"Ok":[{"country_info.capital":{"country":"Brazil"}}]}}
+{"id":"multiple_3","valid":true,"result":{"Ok":[{"EuclideanDistance.calculate":{"pointA":[3,4],"pointB":[1,2]}}]}}
+{"id":"multiple_4","valid":true,"result":{"Ok":[{"kinematics.calculate_displacement":{"initial_speed":20,"acceleration":-9.8,"time":5,"rounding":2}},{"kinematics.calculate_displacement":{"initial_speed":20,"acceleration":-10,"time":5,"rounding":2}}]}}
+{"id":"multiple_5","valid":true,"result":{"Ok":[{"weather.get_by_coordinates_date":{"coordinates":[46.603354,1.8883340],"date":"2019-12-13"}}]}}
+{"id":"multiple_6","valid":true,"result":{"Ok":[{"capacitance_calculator.calculate":{"A":10,"d":0.01,"K":1.0}}]}}
+{"id":"multiple_7","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is about human population, but the provided functions are related to wildlife and ecological impact. Therefore, none of the functions can be used to answer the question."}}}}
+{"id":"multiple_8","valid":true,"result":{"Ok":[{"realestate.find_properties":{"location":"San Diego, CA","propertyType":"villa","bedrooms":0,"budget":{"min":300000,"max":400000}}}]}}
+{"id":"multiple_9","valid":true,"result":{"Ok":[{"calculate_average":{"gradeDict":{"math":90,"science":75,"history":82,"music":89}}}]}}
+{"id":"multiple_10","valid":true,"result":{"Ok":[{"database.create_backup":{"db_name":"personal_data","backup_location":"/backups/personal_data_backup","timestamp":true}}]}}
+{"id":"multiple_11","valid":true,"result":{"Ok":[{"math.roots.polynomial":{"coefficients":[5,20,-25],"degree":2}}]}}
+{"id":"multiple_12","valid":true,"result":{"Ok":[{"corporate_finance.calculate_YOY_growth_rate":{"company_name":"Tech Inc","year1":2019,"year1_revenue":1000000,"year2":2020,"year2_revenue":1200000}}]}}
+{"id":"multiple_13","valid":true,"result":{"Ok":[{"corporate_finance.product_price":{"company":"XYZ","product":"A"}}]}}
+{"id":"multiple_14","valid":true,"result":{"Ok":[{"finance.loan_repayment":{"loan_amount":200000,"interest_rate":3,"loan_term":3}}]}}
+{"id":"multiple_15","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is about the population of a city, but the provided functions are for estimating energy output of solar and wind farms. None of the functions can be used to determine the population of a city."}}}}
+{"id":"multiple_16","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to calculate the probability that the true mean is within a 95% confidence interval of the mean of a single tiger's weight."}}}}
+{"id":"multiple_17","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is unclear and does not provide the necessary parameters to use any of the available functions."}}}}
+{"id":"multiple_18","valid":true,"result":{"Ok":[{"european_history.battle_details":{"battle":"Battle of Stalingrad"}}]}}
+{"id":"multiple_19","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the largest church in the world, as it does not specify a religion or provide any parameters that can be used with the available functions."}}}}
+{"id":"multiple_20","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the name of the stone used to make the most expensive house. Additionally, none of the provided functions are relevant to this query."}}}}
+{"id":"multiple_21","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is not answerable with the provided functions."}}}}
+{"id":"multiple_22","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is about the most valuable player award in the NBA, but none of the provided functions are relevant to this query. The functions provided are for retrieving records related to points scored in a season, career, or game, not for awards. Therefore, no function can be used to answer the question."}}}}
+{"id":"multiple_23","valid":true,"result":{"Ok":[{"basketball.player_stats.get":{"player_name":"LeBron James","stats_fields":["points","assists","rebounds"]}}]}}
+{"id":"multiple_24","valid":true,"result":{"Ok":[{"route_planner.calculate_route":{"start":"London","destination":"Edinburgh","method":"fastest"}}]}}
+{"id":"multiple_25","valid":true,"result":{"Ok":[{"video_games.store_price":{"game_title":"Assassins Creed Valhalla","platform":"PlayStation","region":"Japan"}},{"video_games.store_price":{"game_title":"Assassins Creed Valhalla","platform":"PlayStation","region":"America"}}]}}
+{"id":"multiple_26","valid":true,"result":{"Ok":[{"game_missions.list":{"game":"Fortnite"}},{"game_rewards.get":{"game":"Fortnite","platform":"PlayStation"}}]}}
+{"id":"multiple_27","valid":true,"result":{"Ok":[{"maps.route_times":{"route":"Paris, France to Rome, Italy","mode":"transit"}}]}}
+{"id":"multiple_28","valid":true,"result":{"Ok":[{"solve.quadratic_equation":{"a":2,"b":3,"c":-4}}]}}
+{"id":"multiple_29","valid":true,"result":{"Ok":[{"functions.intersect":{"function1":"3x+2","function2":"2x+3"}}]}}
+{"id":"multiple_30","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question."}}}}
+{"id":"multiple_31","valid":true,"result":{"Ok":[{"geometry_rectangle.calculate":{"width":10,"length":7}}]}}
+{"id":"multiple_32","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The provided functions do not include a tool for calculating the area of a circle."}}}}
+{"id":"multiple_33","valid":true,"result":{"Ok":[{"calculate_integral":{"func":"3x^2","a":1,"b":2}}]}}
+{"id":"multiple_34","valid":true,"result":{"Ok":[{"math.lcm":{"num1":18,"num2":12}}]}}
+{"id":"multiple_35","valid":true,"result":{"Ok":[{"calculate_gcd":{"num1":128,"num2":256}}]}}
+{"id":"multiple_36","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The given functions are not applicable for the question as they are related to kinematics calculations and not for counting object appearances in a video."}}}}
+{"id":"multiple_37","valid":true,"result":{"Ok":[{"kinematics.distance":{"initial_velocity":40,"time":2,"acceleration":-9.81}}]}}
+{"id":"multiple_38","valid":true,"result":{"Ok":[{"library.search_book":{"book_name":"The Alchemist","city":"New York City","availability":true}}]}}
+{"id":"multiple_39","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is about finding the cheapest flight, but the available functions are for grocery delivery and ride hailing. None of the provided functions can be used to find flight prices."}}}}
+{"id":"multiple_40","valid":true,"result":{"Ok":[{"electromagnetism.ampere_law":{"enclosed_current":0,"radius":0}}]}}
+{"id":"multiple_41","valid":true,"result":{"Ok":[{"magnetic_field.calculate":{"I":10,"r":0.01}}]}}
+{"id":"multiple_42","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The given question lacks the necessary parameters to determine the final temperature when different quantities of gases at different temperatures are mixed. The required parameters are the quantities of the two gases."}}}}
+{"id":"multiple_43","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the limiting reagent, as it does not specify the reaction equation or the amounts of other reactants involved."}}}}
+{"id":"multiple_44","valid":true,"result":{"Ok":[{"calculate.weight_in_space":{"weight_earth_kg":70,"planet":"Mars"}}]}}
+{"id":"multiple_45","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine which function to call."}}}}
+{"id":"multiple_46","valid":true,"result":{"Ok":[{"filter_list":{"elements":["Sam","Alice","Jack"],"condition":"not in the same group as the person who is not in the largest group"}}]}}
+{"id":"multiple_47","valid":true,"result":{"Ok":[{"cosine_similarity.calculate":{"vector1":[3,2,1],"vector2":[1,2,3]}}]}}
+{"id":"multiple_48","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to find a restaurant that serves traditional Nigerian food with good reviews. The available functions are for locating stores and libraries with specific preferences, not for finding restaurants based on cuisine or reviews."}}}}
+{"id":"multiple_49","valid":true,"result":{"Ok":[{"calc_Compound_Interest":{"principle_amount":1500,"duration":1,"annual_rate":2.5,"compound_freq":1}},{"calc_Simple_Interest":{"principle_amount":1500,"duration":1,"annual_rate":2.5}}]}}
+{"id":"multiple_50","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine where your mother lived before moving to New York."}}}}
+{"id":"multiple_51","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is asking about the purpose of the given question itself, which is a meta-question. It does not require any function calls to answer."}}}}
+{"id":"multiple_52","valid":true,"result":{"Ok":[{"currency_conversion":{"amount":1,"from_currency":"EUR","to_currency":"NGN"}},{"currency_conversion":{"amount":1,"from_currency":"EUR","to_currency":"USD"}}]}}
+{"id":"multiple_53","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide the necessary parameters or data required to perform a budget comparison using the available functions."}}}}
+{"id":"multiple_54","valid":true,"result":{"Ok":[{"corporate_finance.dividend_data":{"company":"Apple Inc.","years":1,"frequency":"annually"}}]}}
+{"id":"multiple_55","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to remove the Google app from a device."}}}}
+{"id":"multiple_56","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question asks for the current price of Apple stock, but none of the provided functions can retrieve the current stock price. The available functions are for calculating volume traded, total revenue, and average closing price over a specific period, not for fetching the current price."}}}}
+{"id":"multiple_57","valid":true,"result":{"Ok":[{"financial.compound_interest":{"principle":1000,"rate":0.05,"time":10,"n":1}}]}}
+{"id":"multiple_58","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about neighborhoods in Los Angeles known for their vibrant nightlife."}}}}
+{"id":"multiple_59","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question."}}}}
+{"id":"multiple_60","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about the difference between a city and a town in New York City in terms of population."}}}}
+{"id":"multiple_61","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to determine who has the most expensive house in a specific area. The functions are designed to search for home renovation experts and landscape architects based on location and specialization, not to find information about property values or homeowners."}}}}
+{"id":"multiple_62","valid":true,"result":{"Ok":[{"nature_park.find_nearby":{"location":"Boston, MA","features":["Camping","Scenic View","Trails"]}}]}}
+{"id":"multiple_63","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is unclear and does not provide enough information to determine which function to use. Please clarify the question."}}}}
+{"id":"multiple_64","valid":true,"result":{"Ok":[{"uv_index.get_future":{"location":"Tokyo","date":"06-01-2023"}}]}}
+{"id":"multiple_65","valid":true,"result":{"Ok":[{"timezones.get_difference":{"city1":"New York City","city2":"Los Angeles"}}]}}
+{"id":"multiple_66","valid":true,"result":{"Ok":[{"calculate_distance":{"start_point":"Las Vegas","end_point":"Los Angeles"}}]}}
+{"id":"multiple_67","valid":true,"result":{"Ok":[{"translate":{"text":"Hello, how are you?","source_language":"English","target_language":"Arabic"}}]}}
+{"id":"multiple_68","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to find a good restaurant near a subway station that serves authentic New York-style pizza. The functions are related to book searches, not restaurant or location-based services."}}}}
+{"id":"multiple_69","valid":true,"result":{"Ok":[{"five_factor_model.analyse":{"talkative":true,"nervous":true,"artistic_interests":true,"lazy":false,"forgiving":true}}]}}
+{"id":"multiple_70","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is not answerable with the provided functions."}}}}
+{"id":"multiple_71","valid":true,"result":{"Ok":[{"get_population":{"year":1954,"category":"total"}}]}}
+{"id":"multiple_72","valid":true,"result":{"Ok":[{"us_history.population_by_state_year":{"state":"California","year":1970}}]}}
+{"id":"multiple_73","valid":true,"result":{"Ok":[{"religion.get_origin":{"religion":"Buddhism"}}]}}
+{"id":"multiple_74","valid":true,"result":{"Ok":[{"art_auction.fetch_artwork_price":{"artwork_name":"Starry Night","artist":"Van Gogh"}}]}}
+{"id":"multiple_75","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the number of people living in a house. No function can be used to answer this query."}}}}
+{"id":"multiple_76","valid":true,"result":{"Ok":[{"sculpture.create_custom":{"item":"object","material":"Bronze"}}]}}
+{"id":"multiple_77","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to find the best place to eat in New York."}}}}
+{"id":"multiple_78","valid":true,"result":{"Ok":[{"museum_info":{"museum":"Natural History Museum","city":"London","features":["timings","exhibitions","accessibility","history"]}}]}}
+{"id":"multiple_79","valid":true,"result":{"Ok":[{"exhibition_info":{"museum_name":"Museum of Modern Art","month":1}}]}}
+{"id":"multiple_80","valid":true,"result":{"Ok":[{"music_shop.find_nearby":{"location":"Nashville, TN","services":["Violin Lessons"]}}]}}
+{"id":"multiple_81","valid":true,"result":{"Ok":[{"concert.book_ticket":{"artist":"Eminem","location":"New York City","add_ons":["Backstage Pass","VIP Seating","Parking Pass"]}}]}}
+{"id":"multiple_82","valid":true,"result":{"Ok":[{"music.generate":{"key":"C Major","tempo":120}}]}}
+{"id":"multiple_83","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question cannot be answered with the provided functions."}}}}
+{"id":"multiple_84","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The given functions do not provide information about the number of times a team has won a competition. Therefore, it is not possible to answer the question using the provided functions."}}}}
+{"id":"multiple_85","valid":true,"result":{"Ok":[{"soccer_scores.get_scores":{"team":"Real Madrid","league":"La Liga","rounds":1}}]}}
+{"id":"multiple_86","valid":true,"result":{"Ok":[{"BoardGameGeek.recommend":{"numPlayers":2,"category":"strategy","difficulty":"beginner"}}]}}
+{"id":"multiple_87","valid":true,"result":{"Ok":[{"games.update.find":{"game":"Cyberpunk 2077","platform":"Xbox"}}]}}
+{"id":"multiple_88","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The provided functions do not support retrieving character class popularity data for a video game."}}}}
+{"id":"multiple_89","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to determine the calorie count of 500 grams of chicken and mushrooms. The functions are designed for searching recipes or restaurants based on ingredients and calorie preferences, not for calculating the calorie content of specific food quantities."}}}}
+{"id":"multiple_90","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine which house in Seattle has a view of the ocean. No relevant functions can be used to answer this query."}}}}
+{"id":"multiple_91","valid":true,"result":{"Ok":[{"recipe.find":{"mainIngredient":"chicken","ingredientLimit":5}}]}}
+{"id":"multiple_92","valid":true,"result":{"Ok":[{"walmart.vegan_products":{"location":"Denver, CO","categories":["gluten-free"]}}]}}
+{"id":"multiple_93","valid":true,"result":{"Ok":[{"hotel.book":{"location":"New York","roomType":"deluxe","nights":1}}]}}
+{"id":"multiple_94","valid":true,"result":{"Ok":[{"hotel_room_pricing.get":{"hotelName":"Hilton New York","roomType":"Queen size suite","nights":1}}]}}
+{"id":"multiple_95","valid":true,"result":{"Ok":[{"currency_exchange.convert":{"amount":1,"from_currency":"USD","to_currency":"GHS","live_conversion":true}}]}}
+{"id":"multiple_96","valid":true,"result":{"Ok":[{"solve_quadratic_equation":{"a":2,"b":6,"c":5}}]}}
+{"id":"multiple_97","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide the radius of the circle. Please provide the radius to calculate the area."}}}}
+{"id":"multiple_98","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question asks for the volume of a sphere, but none of the provided functions can calculate the volume of a sphere. The available functions are for retrieving historical references, getting the current time, generating a melody, and calculating the circumference of a circle. Therefore, it is not possible to answer the question using the given functions."}}}}
+{"id":"multiple_99","valid":true,"result":{"Ok":[{"calculus.derivative":{"function":"2x^2","value":0,"function_variable":"x"}}]}}
+{"id":"multiple_100","valid":true,"result":{"Ok":[{"math.hcf":{"number1":36,"number2":24}}]}}
+{"id":"multiple_101","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the average age range of 12 to 18 years. No function can be used to calculate or retrieve this information."}}}}
+{"id":"multiple_102","valid":true,"result":{"Ok":[{"calculate_displacement":{"initial_velocity":0,"time":1,"acceleration":9.8}}]}}
+{"id":"multiple_103","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the annual growth of a 100-year-old tree. The growth rate of trees varies depending on species, environmental conditions, and other factors. No function can be used to answer this question with the given information."}}}}
+{"id":"multiple_104","valid":true,"result":{"Ok":[{"get_shortest_driving_distance":{"origin":"New York City","destination":"Washington, D.C."}}]}}
+{"id":"multiple_105","valid":true,"result":{"Ok":[{"calculate_magnetic_field":{"current":5,"radius":4}}]}}
+{"id":"multiple_106","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question lacks the necessary parameters to determine the voltage. The provided functions do not include one that can calculate voltage based on charge and current."}}}}
+{"id":"multiple_107","valid":true,"result":{"Ok":[{"calculate_density":{"mass":45,"volume":15}}]}}
+{"id":"multiple_108","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The given functions do not provide a way to calculate the pressure of a gas based on its temperature and volume."}}}}
+{"id":"multiple_109","valid":true,"result":{"Ok":[{"cellbio.get_proteins":{"cell_compartment":"cell membrane","include_description":true}}]}}
+{"id":"multiple_110","valid":true,"result":{"Ok":[{"mutation_type.find":{"snp_id":"rs6034464"}}]}}
+{"id":"multiple_111","valid":true,"result":{"Ok":[{"calculate_genotype_frequency":{"allele_frequency":0.3,"genotype":"AA"}}]}}
+{"id":"multiple_112","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about the number of visitors to Yellowstone National Park or its impact on the local population."}}}}
+{"id":"multiple_113","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is not clear or contains redundant information. It seems to be asking for the probability of event A occurring, which is already given as 40% (or 0.4). There is no need to calculate anything further."}}}}
+{"id":"multiple_114","valid":true,"result":{"Ok":[{"prediction.evolution":{"species":"Homo Sapiens","years":100000,"model":"Darwin"}}]}}
+{"id":"multiple_115","valid":true,"result":{"Ok":[{"find_restaurants":{"location":"Manhattan","food_type":"Thai","number":1,"dietary_requirements":["vegan"]}}]}}
+{"id":"multiple_116","valid":true,"result":{"Ok":[{"calculate_bmi":{"weight":85,"height":180}}]}}
+{"id":"multiple_117","valid":true,"result":{"Ok":[{"calculate_BMI":{"weight_kg":70,"height_m":1.75}}]}}
+{"id":"multiple_118","valid":true,"result":{"Ok":[{"imdb.find_movies_by_actor":{"actor_name":"Leonardo DiCaprio","year":2010}}]}}
+{"id":"multiple_119","valid":true,"result":{"Ok":[{"database.query":{"table":"people","conditions":[{"field":"age","operation":">","value":"25"},{"field":"age","operation":"<","value":"35"}]}}]}}
+{"id":"multiple_120","valid":true,"result":{"Ok":[{"light_travel_time":{"distance_in_light_years":1}}]}}
+{"id":"multiple_121","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question lacks the necessary parameters to determine the number of pages in a book. No function can be used to answer this query."}}}}
+{"id":"multiple_122","valid":true,"result":{"Ok":[{"run_linear_regression":{"predictors":["Age","Income","Education"],"target":"Purchase_Amount","standardize":true}}]}}
+{"id":"multiple_123","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about the purpose of the law."}}}}
+{"id":"multiple_124","valid":true,"result":{"Ok":[{"fetch_DNA_sequence":{"DNA_id":"prime_numbers_sequence_100"}}]}}
+{"id":"multiple_125","valid":true,"result":{"Ok":[{"run_two_sample_ttest":{"group1":[3,4,5,6,4],"group2":[7,8,9,8,7]}}]}}
+{"id":"multiple_126","valid":true,"result":{"Ok":[{"t_test":{"dataset_A":[12,24,36],"dataset_B":[15,30,45]}}]}}
+{"id":"multiple_127","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question lacks the necessary parameters to calculate the value of the property."}}}}
+{"id":"multiple_128","valid":true,"result":{"Ok":[{"calculate_return_on_equity":{"net_income":2000000,"shareholder_equity":10000000,"dividends_paid":200000}}]}}
+{"id":"multiple_129","valid":true,"result":{"Ok":[{"compound_interest":{"principal":10000,"annual_rate":5,"compounding_freq":"annually","time_in_years":5}}]}}
+{"id":"multiple_130","valid":true,"result":{"Ok":[{"calculate_cagr":{"initial_value":2000,"final_value":3000,"period_in_years":1}}]}}
+{"id":"multiple_131","valid":true,"result":{"Ok":[{"market_performance.get_data":{"indexes":["S&P 500","Dow Jones"],"days":1,"detailed":false}}]}}
+{"id":"multiple_132","valid":true,"result":{"Ok":[{"finance.calculate_future_value":{"initial_investment":20000,"rate_of_return":0.08,"years":5}}]}}
+{"id":"multiple_133","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the interest rate for the loan."}}}}
+{"id":"multiple_134","valid":true,"result":{"Ok":[{"crime_record.get_record":{"case_number":"CA123456","county":"San Diego County"}}]}}
+{"id":"multiple_135","valid":true,"result":{"Ok":[{"get_case_info":{"docket":"2022/AL2562","court":"California","info_type":"accused"}}]}}
+{"id":"multiple_136","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is about the minimum wage, but the available functions are for retrieving crime rates and determining poker game winners. None of the provided functions can be used to answer the question about the minimum wage."}}}}
+{"id":"multiple_137","valid":true,"result":{"Ok":[{"lawsuit_search":{"company":"Google","start_date":"2021-01-01","location":"California","status":"ongoing"}}]}}
+{"id":"multiple_138","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is a mathematical probability problem that does not require any of the provided functions to solve."}}}}
+{"id":"multiple_139","valid":true,"result":{"Ok":[{"lawsuit_details.find":{"company_name":"Apple Inc.","year":2010,"case_type":"Patent"}}]}}
+{"id":"multiple_140","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question."}}}}
+{"id":"multiple_141","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide any relevant functions to answer the query."}}}}
+{"id":"multiple_142","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to find the nearest airport to Miami, Florida."}}}}
+{"id":"multiple_143","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to calculate the shortest path between two geographical coordinates."}}}}
+{"id":"multiple_144","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The given functions do not support retrieving the Index of Economic Freedom."}}}}
+{"id":"multiple_145","valid":true,"result":{"Ok":[{"calculate_emissions":{"distance":12000,"fuel_type":"gasoline","fuel_efficiency":20}}]}}
+{"id":"multiple_146","valid":true,"result":{"Ok":[{"restaurant.find_nearby":{"location":"Seattle, WA","cuisine":"Chinese"}}]}}
+{"id":"multiple_147","valid":true,"result":{"Ok":[{"map_service.get_directions":{"start":"New York","end":"Los Angeles","avoid":["tolls","highways","ferries"]}}]}}
+{"id":"multiple_148","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide the necessary information to determine the amount of stock owned. Please provide additional details."}}}}
+{"id":"multiple_149","valid":true,"result":{"Ok":[{"sentiment_analysis":{"text":"I will not let you go! You are the one who has been waiting for me all along.","language":"en"}}]}}
+{"id":"multiple_150","valid":true,"result":{"Ok":[{"calculate_neuronal_activity":{"input_synaptic_rate":200,"decay_rate":0.1}}]}}
+{"id":"multiple_151","valid":true,"result":{"Ok":[{"social_media_analytics.most_followed":{"topic":"Twitter","sub_topics":["social media","follow"],"region":"global"}}]}}
+{"id":"multiple_152","valid":true,"result":{"Ok":[{"history.get_key_events":{"country":"Germany","start_year":1871,"end_year":1945}}]}}
+{"id":"multiple_153","valid":true,"result":{"Ok":[{"get_event_date":{"event":"Lisbon tour","location":"Lisbon"}}]}}
+{"id":"multiple_154","valid":true,"result":{"Ok":[{"US_president.in_year":{"year":1861}}]}}
+{"id":"multiple_155","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about what a neutron is."}}}}
+{"id":"multiple_156","valid":true,"result":{"Ok":[{"historical_contrib.get_contrib":{"scientist":"Albert Einstein","date":"1915-05-17"}}]}}
+{"id":"multiple_157","valid":true,"result":{"Ok":[{"get_earliest_reference":{"name":"Jesu Kraịst","source":"scriptures"}}]}}
+{"id":"multiple_158","valid":true,"result":{"Ok":[{"religious_history.get_papal_biography":{"papal_name":"Innocent III","include_contributions":true}}]}}
+{"id":"multiple_159","valid":true,"result":{"Ok":[{"calculate_paint_needed":{"coverage_rate":350,"length":30,"height":12}}]}}
+{"id":"multiple_160","valid":true,"result":{"Ok":[{"get_sculpture_info":{"artist_name":"James Plensa","detail":true}}]}}
+{"id":"multiple_161","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to determine the best way to get from New York to the airport."}}}}
+{"id":"multiple_162","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question."}}}}
+{"id":"multiple_163","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the functions can be used to answer the question."}}}}
+{"id":"multiple_164","valid":true,"result":{"Ok":[{"instrument_price.get":{"brand":"Fender","model":"American Professional II Stratocaster","finish":"rosewood"}}]}}
+{"id":"multiple_165","valid":true,"result":{"Ok":[{"guitar_price.find":{"model":"Gibson Les Paul","condition":"Good","location":"Chicago"}}]}}
+{"id":"multiple_166","valid":true,"result":{"Ok":[{"concert.search":{"genre":"classic movie","location":"Los Angeles","date":"this weekend","price_range":"cheap"}}]}}
+{"id":"multiple_167","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide enough information to determine the grade for the student. The given parameters do not align with any of the available functions."}}}}
+{"id":"multiple_168","valid":true,"result":{"Ok":[{"get_song_lyrics":{"song_title":"Bohemian Rhapsody","artist_name":"Queen","lang":"English"}}]}}
+{"id":"multiple_169","valid":true,"result":{"Ok":[{"musical_scale":{"key":"C sharp","scale_type":"major"}}]}}
+{"id":"multiple_170","valid":true,"result":{"Ok":[{"soccer_stat.get_player_stats":{"player_name":"Cristiano Ronaldo","season":"2019-2020"}}]}}
+{"id":"multiple_171","valid":true,"result":{"Ok":[{"game_result.get_winner":{"teams":["Lakers","Clippers"],"date":"2021-01-28"}}]}}
+{"id":"multiple_172","valid":true,"result":{"Ok":[{"sports_db.find_athlete":{"name":"LeBron James","sport":"Basketball"}}]}}
+{"id":"multiple_173","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about which NBA player had a breakout year in 2021."}}}}
+{"id":"multiple_174","valid":true,"result":{"Ok":[{"sports_ranking":{"team":"Manchester United","league":"Premier League"}}]}}
+{"id":"multiple_175","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question is not clear and does not provide enough information to determine the answer. It is also not possible to use any of the provided functions to answer this question."}}}}
+{"id":"multiple_176","valid":true,"result":{"Ok":[{"sports_team.get_schedule":{"team_name":"Manchester United","num_of_games":1,"league":"Premier League"}}]}}
+{"id":"multiple_177","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about chess clubs in New York with over 2300 members."}}}}
+{"id":"multiple_178","valid":true,"result":{"Ok":[{"find_card_in_deck":{"rank":"Queen","suit":"Hearts"}}]}}
+{"id":"multiple_179","valid":true,"result":{"Ok":[{"poker_probability.full_house":{"deck_size":52,"hand_size":5}}]}}
+{"id":"multiple_180","valid":true,"result":{"Ok":[{"game_stats.fetch_player_statistics":{"game":"Zelda","username":"Sam","platform":"Switch"}}]}}
+{"id":"multiple_181","valid":true,"result":{"Ok":[{"soccer.get_last_match":{"team_name":"Liverpool F.C.","include_stats":false}}]}}
+{"id":"multiple_182","valid":true,"result":{"Ok":[{"multiplayer_game_finder":{"platform":"Windows 10","rating":4.5}}]}}
+{"id":"multiple_183","valid":true,"result":{"Ok":[{"recipe_info.get_calories":{"website":"Foodnetwork.com","recipe":"Beef Lasagna"}}]}}
+{"id":"multiple_184","valid":true,"result":{"Ok":[{"recipe_search":{"dietary_restriction":"Elderly","ingredients":["pasta"],"servings":1}}]}}
+{"id":"multiple_185","valid":true,"result":{"Ok":[{"restaurant_search.find_closest":{"location":"Boston","cuisine":"Sushi","amenities":["Patio"]}}]}}
+{"id":"multiple_186","valid":true,"result":{"Ok":[{"find_recipe":{"dietary_restrictions":"vegan","recipe_type":"dessert","time":30}}]}}
+{"id":"multiple_187","valid":true,"result":{"Ok":[{"whole_foods.check_price":{"location":"Los Angeles","items":["tomato","lettuce"]}}]}}
+{"id":"multiple_188","valid":true,"result":{"Ok":[{"grocery_store.find_best":{"my_location":"Berkeley","products":["tomato","house"]}}]}}
+{"id":"multiple_189","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The question does not provide the necessary information to calculate the distance or its multiple."}}}}
+{"id":"multiple_190","valid":true,"result":{"Ok":[{"book_hotel":{"hotel_name":"Hilton Hotel","location":"Chicago","room_type":"double","start_date":"2022-11-10","nights":1}}]}}
+{"id":"multiple_191","valid":true,"result":{"Ok":[{"book_hotel":{"hotel_name":"Hotel Paradise","location":"Las Vegas","room_type":"any","start_date":"05-12-2022","stay_duration":1,"view":"city"}}]}}
+{"id":"multiple_192","valid":true,"result":{"Ok":[{"currency_conversion.convert":{"amount":1,"from_currency":"EUR","to_currency":"CAD"}}]}}
+{"id":"multiple_193","valid":true,"result":{"Ok":[{"math.factorial":{"number":5}}]}}
+{"id":"multiple_194","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"None of the provided functions can be used to answer the question about the difference between the Kingdom of God, the Metropolitan, and the Satōdee."}}}}
+{"id":"multiple_195","valid":false,"result":{"Err":{"JsonDecodeError":{"error_message":"expected value at line 1 column 1","raw_output":"The provided functions do not include one that calculates the pressure of a gas based on temperature and volume. Therefore, it is not possible to determine the pressure using the given functions."}}}}
+{"id":"multiple_196","valid":true,"result":{"Ok":[{"cellbio.get_proteins":{"cell_compartment":"plasma membrane","include_description":true}}]}}
+{"id":"multiple_197","valid":true,"result":{"Ok":[{"mutation_type.find":{"snp_id":"rs6034464"}}]}}
+{"id":"multiple_198","valid":true,"result":{"Ok":[{"calculate_genotype_frequency":{"allele_frequency":0.3,"genotype":"AA"}}]}}
+{"id":"multiple_199","valid":true,"result":{"Ok":[{"db_fetch_records":{"database_name":"general_knowledge","table_name":"locations","conditions":{"name":"Yellowstone"},"fetch_limit":1}}]}}
